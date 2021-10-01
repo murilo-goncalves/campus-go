@@ -6,3 +6,12 @@
 //
 
 import Foundation
+import UIKit
+
+class ProfileViewController: UIViewController {
+    
+    @IBOutlet var profileView: ProfileView!
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
