@@ -12,4 +12,5 @@ class ProfileView: UIView {
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var profileImage: UIImageView!
+    @IBOutlet weak var recentAchievementView: UICollectionView!
 }

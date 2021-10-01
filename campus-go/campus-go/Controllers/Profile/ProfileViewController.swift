@@ -13,5 +13,30 @@ class ProfileViewController: UIViewController {
     @IBOutlet var profileView: ProfileView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        profileView.recentAchievementView.delegate = self
+        profileView.recentAchievementView.dataSource = self
     }
+}
+
+extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellView = profileView.recentAchievementView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath as IndexPath) as! AchievementCell
+        cellView.titleLabel.text = "Lorem Ipsum"
+        cellView.image.image = UIImage(named: "books")
+        cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
+        cellView.layer.borderWidth = 0.5
+        return cellView
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        print("You selected cell #\(indexPath.item)!")
+
+    }
+    
 }
