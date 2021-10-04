@@ -13,4 +13,5 @@ class ProfileView: UIView {
     
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var recentAchievementView: UICollectionView!
+    @IBOutlet weak var achievementsListButton: UIButton!
 }

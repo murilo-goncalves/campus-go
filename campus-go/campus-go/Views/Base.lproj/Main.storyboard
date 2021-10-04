@@ -49,8 +49,8 @@
         <!--Profile-->
         <scene sceneID="aFb-wK-UAY">
             <objects>
-                <viewControllerPlaceholder storyboardName="Profile" referencedIdentifier="Profile" id="r2t-1b-Nsc" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Item" id="16D-Oy-pl0"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="r2t-1b-Nsc" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Perfil" id="16D-Oy-pl0"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1ut-iF-el9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

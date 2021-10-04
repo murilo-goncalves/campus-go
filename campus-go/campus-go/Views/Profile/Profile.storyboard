@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WFW-H3-5UE">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Item-->
+        <!--Perfil-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="Profile" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="ProfileViewController" customModule="campus_go" customModuleProvider="target" sceneMemberID="viewController">
@@ -17,14 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Perfil" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rK3-JF-f22">
-                                <rect key="frame" x="16" y="132" width="382" height="41"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PNU-22-Zyb">
-                                <rect key="frame" x="157" y="215" width="100" height="104"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="books" translatesAutoresizingMaskIntoConstraints="NO" id="PNU-22-Zyb">
+                                <rect key="frame" x="157" y="182" width="100" height="137"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tJT-a0-eEQ">
                                 <rect key="frame" x="187" y="335" width="40" height="24"/>
@@ -113,20 +107,25 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdF-qe-XUI">
+                                <rect key="frame" x="309" y="490" width="89" height="16"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Ver tudo">
+                                    <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
+                                </buttonConfiguration>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zDo-2X-hWf" firstAttribute="top" secondItem="tJT-a0-eEQ" secondAttribute="bottom" constant="16" id="5Q8-vx-AOJ"/>
-                            <constraint firstItem="PNU-22-Zyb" firstAttribute="top" secondItem="rK3-JF-f22" secondAttribute="bottom" constant="42" id="69L-iQ-wvf"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="qdF-qe-XUI" secondAttribute="trailing" constant="16" id="6vF-fu-EAt"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="9xv-Ey-VeS" secondAttribute="trailing" id="AH8-7W-BC5"/>
-                            <constraint firstItem="rK3-JF-f22" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="Clv-PG-Ajs"/>
+                            <constraint firstItem="PNU-22-Zyb" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="42" id="Cj8-0b-shA"/>
                             <constraint firstItem="Isv-NT-yys" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="67" id="Ewh-EO-tgn"/>
                             <constraint firstItem="tJT-a0-eEQ" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Grm-7Z-oWQ"/>
                             <constraint firstItem="ePn-TB-2vs" firstAttribute="top" secondItem="Isv-NT-yys" secondAttribute="bottom" constant="85" id="RGx-v6-kl7"/>
-                            <constraint firstItem="rK3-JF-f22" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="88" id="THD-dn-fOB"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="9xv-Ey-VeS" secondAttribute="bottom" constant="62" id="XGg-7f-XKr"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="rK3-JF-f22" secondAttribute="trailing" constant="16" id="Yra-Dd-gCL"/>
                             <constraint firstItem="PNU-22-Zyb" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="157" id="ZGs-Ri-5wh"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zDo-2X-hWf" secondAttribute="bottom" constant="434" id="ZMx-aY-2QX"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="PNU-22-Zyb" secondAttribute="trailing" constant="157" id="e6Y-jh-YEg"/>
@@ -134,6 +133,7 @@
                             <constraint firstItem="Isv-NT-yys" firstAttribute="top" secondItem="zDo-2X-hWf" secondAttribute="bottom" constant="6" id="kNX-Fd-Puq"/>
                             <constraint firstItem="ePn-TB-2vs" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="mCZ-dr-qwi"/>
                             <constraint firstItem="zDo-2X-hWf" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="mq9-gC-2Wa"/>
+                            <constraint firstItem="9xv-Ey-VeS" firstAttribute="top" secondItem="qdF-qe-XUI" secondAttribute="bottom" constant="17" id="p2O-0b-Ayb"/>
                             <constraint firstItem="9xv-Ey-VeS" firstAttribute="top" secondItem="ePn-TB-2vs" secondAttribute="bottom" constant="16" id="xLJ-Gy-GcN"/>
                             <constraint firstItem="tJT-a0-eEQ" firstAttribute="top" secondItem="PNU-22-Zyb" secondAttribute="bottom" constant="16" id="zbW-VS-WHI"/>
                             <constraint firstItem="9xv-Ey-VeS" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="zwM-0X-7HY"/>
@@ -141,10 +141,13 @@
                         <connections>
                             <outlet property="ProfileImage" destination="PNU-22-Zyb" id="7KO-qY-izg"/>
                             <outlet property="TitleLabel" destination="tJT-a0-eEQ" id="427-34-qYA"/>
+                            <outlet property="achievementsListButton" destination="qdF-qe-XUI" id="dnq-PI-Cp7"/>
+                            <outlet property="profileImage" destination="PNU-22-Zyb" id="crX-ua-qQ4"/>
                             <outlet property="recentAchievementView" destination="9xv-Ey-VeS" id="yiO-wk-sYh"/>
+                            <outlet property="titleLabel" destination="tJT-a0-eEQ" id="pTe-mV-WhJ"/>
                         </connections>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" id="Vaf-1N-2hs"/>
+                    <navigationItem key="navigationItem" title="Perfil" id="Z0A-5r-CGH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileView" destination="5EZ-qb-Rvc" id="ino-A8-L5z"/>
@@ -152,11 +155,38 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1026.0869565217392" y="123.88392857142857"/>
+        </scene>
+        <!--Perfil-->
+        <scene sceneID="k1n-rR-slc">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nm1-p0-TG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <navigationController title="Perfil" automaticallyAdjustsScrollViewInsets="NO" id="WFW-H3-5UE" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Perfil" image="crown.fill" catalog="system" id="Vaf-1N-2hs"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ruj-DZ-N3e">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="X7g-a6-4Px">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="ypL-7v-YkI"/>
+                    </connections>
+                </navigationController>
+            </objects>
             <point key="canvasLocation" x="115.94202898550725" y="123.88392857142857"/>
         </scene>
     </scenes>
     <resources>
+        <image name="books" width="512" height="512"/>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
+        <image name="crown.fill" catalog="system" width="128" height="92"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
