@@ -7,14 +7,20 @@
 
 import UIKit
 import CoreData
+import CoreLocation
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
+    public let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = kCLDistanceFilterNone
+        locationManager.startUpdatingLocation()
+        
         return true
     }
 
