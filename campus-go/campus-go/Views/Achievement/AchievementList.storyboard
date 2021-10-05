@@ -92,6 +92,7 @@
                                         <connections>
                                             <outlet property="image" destination="r3Z-5E-TII" id="zPi-NO-OJY"/>
                                             <outlet property="titleLabel" destination="rx8-mS-oDL" id="C5k-FJ-l39"/>
+                                            <segue destination="20Y-5a-fid" kind="show" identifier="showAchievement" id="YAW-nt-aO0"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -110,6 +111,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kkk-yO-3o9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1621.7391304347827" y="188.83928571428569"/>
+        </scene>
+        <!--Achievement-->
+        <scene sceneID="htM-Hk-mE8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Achievement" id="20Y-5a-fid" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hMR-FD-OCO"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T51-NR-ELU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2258" y="96"/>
         </scene>
     </scenes>
     <resources>
