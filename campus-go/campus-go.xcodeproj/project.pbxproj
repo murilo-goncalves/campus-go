@@ -31,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
 		5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementList.storyboard; sourceTree = "<group>"; };
 		5F3CC070270B34FF00D33B44 /* AchievementListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListController.swift; sourceTree = "<group>"; };
 		5F3CC072270B351600D33B44 /* AchievementListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListView.swift; sourceTree = "<group>"; };
@@ -129,6 +130,7 @@
 		62C2DF12270493D4002118A0 /* campus-go */ = {
 			isa = PBXGroup;
 			children = (
+				5F0F136A270C805600105B7D /* campus-go.entitlements */,
 				5FD052CB27074DC300F09B5A /* Extensions */,
 				62C2DF13270493D4002118A0 /* AppDelegate.swift */,
 				62C2DF15270493D4002118A0 /* SceneDelegate.swift */,
@@ -499,9 +501,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "campus-go/campus-go.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X78RBU5682;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -527,9 +530,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "campus-go/campus-go.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X78RBU5682;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
