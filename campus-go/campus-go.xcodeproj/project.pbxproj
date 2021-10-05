@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */; };
 		629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BD3AC270B2EC60068FF7A /* MapConstants.swift */; };
 		62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF13270493D4002118A0 /* AppDelegate.swift */; };
 		62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF15270493D4002118A0 /* SceneDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		629BD3AC270B2EC60068FF7A /* MapConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConstants.swift; sourceTree = "<group>"; };
 		62C2DF10270493D4002118A0 /* campus-go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "campus-go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C2DF13270493D4002118A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				62C2DF342704958C002118A0 /* MapViewController.swift */,
+				628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
 				62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
@@ -440,7 +444,7 @@
 				DEVELOPMENT_TEAM = X78RBU5682;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -469,7 +473,7 @@
 				DEVELOPMENT_TEAM = X78RBU5682;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
