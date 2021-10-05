@@ -103,7 +103,7 @@
                                         <connections>
                                             <outlet property="image" destination="VU7-d4-vyj" id="oLm-1d-Z5Z"/>
                                             <outlet property="titleLabel" destination="Jzk-tq-l40" id="f3Y-lz-3yh"/>
-                                            <segue destination="Ftt-sd-6Rd" kind="show" id="OKv-1R-kMi"/>
+                                            <segue destination="Ftt-sd-6Rd" kind="show" identifier="showAchievement" id="OKv-1R-kMi"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

@@ -13,6 +13,6 @@ class AchievementController: UIViewController {
     @IBOutlet var achievementView: AchievementView!
     
     override func viewDidLoad() {
-        
+        super.viewDidLoad()
     }
 }

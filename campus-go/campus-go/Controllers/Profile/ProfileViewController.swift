@@ -33,10 +33,11 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         return cellView
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
-        print("You selected cell #\(indexPath.item)!")
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAchievement" {
+            let destVC = segue.destination as! AchievementController
+            destVC.loadViewIfNeeded()
+            destVC.achievementView.achievementLabel.text = "teste"
+        }
     }
-    
 }
