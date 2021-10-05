@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-class AchievementList: UIView {
+class AchievementListView: UIView {
     
     @IBOutlet weak var achievementCollection: UICollectionView!
 }

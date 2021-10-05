@@ -41,7 +41,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9xv-Ey-VeS">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9xv-Ey-VeS">
                                 <rect key="frame" x="0.0" y="523" width="414" height="228"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SDS-a7-Obh">
@@ -103,6 +103,7 @@
                                         <connections>
                                             <outlet property="image" destination="VU7-d4-vyj" id="oLm-1d-Z5Z"/>
                                             <outlet property="titleLabel" destination="Jzk-tq-l40" id="f3Y-lz-3yh"/>
+                                            <segue destination="Ftt-sd-6Rd" kind="show" id="OKv-1R-kMi"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -170,10 +171,19 @@
             </objects>
             <point key="canvasLocation" x="1650" y="124"/>
         </scene>
+        <!--Achievement-->
+        <scene sceneID="L2f-Hb-G5h">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Achievement" id="Ftt-sd-6Rd" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="87e-f9-MLe"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="d2w-ZK-JTy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="200"/>
+        </scene>
         <!--Perfil-->
         <scene sceneID="k1n-rR-slc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Nm1-p0-TG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <navigationController title="Perfil" automaticallyAdjustsScrollViewInsets="NO" id="WFW-H3-5UE" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Perfil" image="crown.fill" catalog="system" id="Vaf-1N-2hs"/>
                     <toolbarItems/>
@@ -192,6 +202,7 @@
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="ypL-7v-YkI"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nm1-p0-TG5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="115.94202898550725" y="123.88392857142857"/>
         </scene>
