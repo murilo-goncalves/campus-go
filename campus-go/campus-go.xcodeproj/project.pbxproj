@@ -9,9 +9,8 @@
 /* Begin PBXBuildFile section */
 		615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */; };
 		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
-		61D2C95D270C7BC400FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C95C270C7BC400FA22FA /* PlaceCellsState.swift */; };
-		61D2C95F270C85BA00FA22FA /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C95E270C85BA00FA22FA /* Place.swift */; };
 		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
+		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
 		62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF13270493D4002118A0 /* AppDelegate.swift */; };
 		62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF15270493D4002118A0 /* SceneDelegate.swift */; };
 		62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C2DF19270493D4002118A0 /* Main.storyboard */; };
@@ -29,9 +28,8 @@
 /* Begin PBXFileReference section */
 		615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
-		61D2C95C270C7BC400FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PlaceCellsState.swift; path = ../../../../../PlaceCellsState.swift; sourceTree = "<group>"; };
-		61D2C95E270C85BA00FA22FA /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Place.swift; path = ../../../../../Place.swift; sourceTree = "<group>"; };
 		61D2C960270C888F00FA22FA /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
 		62C2DF10270493D4002118A0 /* campus-go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "campus-go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C2DF13270493D4002118A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C2DF15270493D4002118A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,11 +57,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		61D2C95B270C7B8900FA22FA /* Places */ = {
+		61D2C962270C9BAE00FA22FA /* Places */ = {
 			isa = PBXGroup;
 			children = (
-				61D2C95C270C7BC400FA22FA /* PlaceCellsState.swift */,
-				61D2C95E270C85BA00FA22FA /* Place.swift */,
+				61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -114,9 +111,7 @@
 		62C2DF2B270493EE002118A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				61D2C95B270C7B8900FA22FA /* Places */,
-				62C2DF3E270495FB002118A0 /* Profile */,
-				62C2DF3D270495F7002118A0 /* Map */,
+				61D2C962270C9BAE00FA22FA /* Places */,
 				61D2C960270C888F00FA22FA /* Address.swift */,
 			);
 			path = Models;
@@ -162,20 +157,6 @@
 				615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */,
 			);
 			path = Places;
-			sourceTree = "<group>";
-		};
-		62C2DF3D270495F7002118A0 /* Map */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Map;
-			sourceTree = "<group>";
-		};
-		62C2DF3E270495FB002118A0 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		62C2DF402704961C002118A0 /* Map */ = {
@@ -297,12 +278,11 @@
 			files = (
 				615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
-				61D2C95D270C7BC400FA22FA /* PlaceCellsState.swift in Sources */,
 				61D2C961270C888F00FA22FA /* Address.swift in Sources */,
+				61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */,
 				62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
 				62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */,
-				61D2C95F270C85BA00FA22FA /* Place.swift in Sources */,
 				62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */,
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
 			);
