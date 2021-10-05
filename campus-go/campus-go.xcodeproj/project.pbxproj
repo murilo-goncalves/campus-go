@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */; };
 		629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BD3AC270B2EC60068FF7A /* MapConstants.swift */; };
+		5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */; };
+		5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC070270B34FF00D33B44 /* AchievementListController.swift */; };
+		5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC072270B351600D33B44 /* AchievementListView.swift */; };
+		5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC076270B442600D33B44 /* Achievement.storyboard */; };
+		5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC078270B444000D33B44 /* AchievementView.swift */; };
+		5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC07C270B46EF00D33B44 /* AchievementController.swift */; };
+		5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD052CC27074DD400F09B5A /* UIColor.swift */; };
+		5FF8B78227072E2600D7BE7D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF8B78127072E2600D7BE7D /* ProfileView.swift */; };
+		5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF8B7862707390700D7BE7D /* AchievementCell.swift */; };
 		62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF13270493D4002118A0 /* AppDelegate.swift */; };
 		62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF15270493D4002118A0 /* SceneDelegate.swift */; };
 		62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C2DF19270493D4002118A0 /* Main.storyboard */; };
@@ -26,6 +35,16 @@
 /* Begin PBXFileReference section */
 		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		629BD3AC270B2EC60068FF7A /* MapConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConstants.swift; sourceTree = "<group>"; };
+		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
+		5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementList.storyboard; sourceTree = "<group>"; };
+		5F3CC070270B34FF00D33B44 /* AchievementListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListController.swift; sourceTree = "<group>"; };
+		5F3CC072270B351600D33B44 /* AchievementListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListView.swift; sourceTree = "<group>"; };
+		5F3CC076270B442600D33B44 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
+		5F3CC078270B444000D33B44 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
+		5F3CC07C270B46EF00D33B44 /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
+		5FD052CC27074DD400F09B5A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		5FF8B78127072E2600D7BE7D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		5FF8B7862707390700D7BE7D /* AchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCell.swift; sourceTree = "<group>"; };
 		62C2DF10270493D4002118A0 /* campus-go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "campus-go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C2DF13270493D4002118A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C2DF15270493D4002118A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +72,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5F3CC06C270B270700D33B44 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */,
+				5F3CC072270B351600D33B44 /* AchievementListView.swift */,
+				5F3CC076270B442600D33B44 /* Achievement.storyboard */,
+				5F3CC078270B444000D33B44 /* AchievementView.swift */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		5F3CC06F270B34EC00D33B44 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+				5F3CC070270B34FF00D33B44 /* AchievementListController.swift */,
+				5F3CC07C270B46EF00D33B44 /* AchievementController.swift */,
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		5F3CC075270B3A8100D33B44 /* Achievement */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Achievement;
+			sourceTree = "<group>";
+		};
+		5FD052CB27074DC300F09B5A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5FD052CC27074DD400F09B5A /* UIColor.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5FF8B7852707380500D7BE7D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5FF8B7862707390700D7BE7D /* AchievementCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		62C2DF07270493D4002118A0 = {
 			isa = PBXGroup;
 			children = (
@@ -72,6 +134,8 @@
 		62C2DF12270493D4002118A0 /* campus-go */ = {
 			isa = PBXGroup;
 			children = (
+				5F0F136A270C805600105B7D /* campus-go.entitlements */,
+				5FD052CB27074DC300F09B5A /* Extensions */,
 				62C2DF13270493D4002118A0 /* AppDelegate.swift */,
 				62C2DF15270493D4002118A0 /* SceneDelegate.swift */,
 				62C2DF2B270493EE002118A0 /* Models */,
@@ -88,6 +152,7 @@
 		62C2DF2A270493E7002118A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F3CC06C270B270700D33B44 /* Achievement */,
 				62C2DF422704962A002118A0 /* Places */,
 				62C2DF4127049623002118A0 /* Profile */,
 				62C2DF402704961C002118A0 /* Map */,
@@ -99,6 +164,7 @@
 		62C2DF2B270493EE002118A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5F3CC075270B3A8100D33B44 /* Achievement */,
 				62C2DF3F27049600002118A0 /* Places */,
 				62C2DF3E270495FB002118A0 /* Profile */,
 				62C2DF3D270495F7002118A0 /* Map */,
@@ -109,6 +175,7 @@
 		62C2DF2C2704940C002118A0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5F3CC06F270B34EC00D33B44 /* Achievement */,
 				62C2DF3C270495E0002118A0 /* Places */,
 				62C2DF3B270495D5002118A0 /* Profile */,
 				62C2DF3A270495D0002118A0 /* Map */,
@@ -182,8 +249,9 @@
 		62C2DF4127049623002118A0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				5FF8B7852707380500D7BE7D /* Components */,
 				62C2DF2F27049444002118A0 /* Profile.storyboard */,
-				62C2DF4327049634002118A0 /* Components */,
+				5FF8B78127072E2600D7BE7D /* ProfileView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -195,13 +263,6 @@
 				62C2DF442704963A002118A0 /* Components */,
 			);
 			path = Places;
-			sourceTree = "<group>";
-		};
-		62C2DF4327049634002118A0 /* Components */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Components;
 			sourceTree = "<group>";
 		};
 		62C2DF442704963A002118A0 /* Components */ = {
@@ -274,6 +335,8 @@
 				62C2DF3027049444002118A0 /* Profile.storyboard in Resources */,
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,
 				62C2DF3227049454002118A0 /* Places.storyboard in Resources */,
+				5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */,
+				5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */,
 				62C2DF2E27049437002118A0 /* Map.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,11 +349,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
+				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
+				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
 				62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */,
+				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
+				5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */,
+				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
+				5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */,
 				62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */,
 				62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */,
+				5FF8B78227072E2600D7BE7D /* ProfileView.swift in Sources */,
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
 			);
@@ -439,9 +509,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "campus-go/campus-go.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X78RBU5682;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
@@ -468,9 +539,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "campus-go/campus-go.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = X78RBU5682;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";

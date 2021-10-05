@@ -8,6 +8,7 @@
 import UIKit
 import CoreData
 import CoreLocation
+import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -20,6 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
+        
+        // Override point for customization after application launch.
+        registerForPushNotifications()
         
         return true
     }
@@ -82,6 +86,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+
+    //MARK: - Push Notification
+    func registerForPushNotifications() {
+      //1
+        UNUserNotificationCenter.current()
+          .requestAuthorization(
+            options: [.alert, .sound, .badge]) { [weak self] granted, _ in
+            print("Permission granted: \(granted)")
+            guard granted else { return }
+            self?.getNotificationSettings()
+          }
+
+    }
+    
+    func getNotificationSettings() {
+      UNUserNotificationCenter.current().getNotificationSettings { settings in
+        print("Notification settings: \(settings)")
+      }
+    }
+
 
 }
 
