@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i8I-lz-hzk">
-                                <rect key="frame" x="0.0" y="86" width="414" height="725"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="i8I-lz-hzk">
+                                <rect key="frame" x="16" y="88" width="382" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FiS-az-Rbf">
                                     <size key="itemSize" width="128" height="128"/>
@@ -48,7 +48,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Lugares" image="flag.fill" catalog="system" id="c37-zR-sM1"/>
-                    <navigationItem key="navigationItem" title="Lugares" leftItemsSupplementBackButton="YES" id="HZU-wz-QtW"/>
+                    <navigationItem key="navigationItem" title="Lugares" leftItemsSupplementBackButton="YES" largeTitleDisplayMode="always" id="HZU-wz-QtW"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="i8I-lz-hzk" id="kuA-ru-xwa"/>
