@@ -20,8 +20,9 @@ class PlaceCollectionViewCell: UICollectionViewCell {
     public func configure(with image: UIImage){
         imageView.image = image
         self.layer.cornerRadius = imageView.frame.width * 0.05
-       
-        self.layer.borderWidth = 1
+        imageView.layer.borderWidth = 1
+        
+        
     }
     static func nib() -> UINib{
         return UINib(nibName: "PlaceCollectionViewCell",bundle: nil )

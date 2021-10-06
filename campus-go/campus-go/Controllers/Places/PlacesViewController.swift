@@ -49,7 +49,11 @@ class PlacesViewController: UIViewController{
         }else if(state == PlaceCellsState.large){
             state = PlaceCellsState.small
         }
-        self.viewDidLoad()
+        
+        UIView.animate(withDuration: 0.2) {
+            self.viewDidLoad()
+        }
+        
     }
     
 }
