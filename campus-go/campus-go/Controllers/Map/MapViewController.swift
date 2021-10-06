@@ -39,7 +39,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         setupMapView()
         setupResultsTableView()
         setupSearchController()
-        
+        definesPresentationContext = true
         searchCompleter.delegate = self
     }
     
