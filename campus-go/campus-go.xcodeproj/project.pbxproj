@@ -18,6 +18,10 @@
 		5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD052CC27074DD400F09B5A /* UIColor.swift */; };
 		5FF8B78227072E2600D7BE7D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF8B78127072E2600D7BE7D /* ProfileView.swift */; };
 		5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FF8B7862707390700D7BE7D /* AchievementCell.swift */; };
+		615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */; };
+		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
+		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
+		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
 		62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF13270493D4002118A0 /* AppDelegate.swift */; };
 		62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF15270493D4002118A0 /* SceneDelegate.swift */; };
 		62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C2DF19270493D4002118A0 /* Main.storyboard */; };
@@ -33,6 +37,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
+		615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
+		61D2C960270C888F00FA22FA /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
+		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
 		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		629BD3AC270B2EC60068FF7A /* MapConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConstants.swift; sourceTree = "<group>"; };
 		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
@@ -72,6 +80,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		61D2C962270C9BAE00FA22FA /* Places */ = {
+			isa = PBXGroup;
+			children = (
+				61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */,
+			);
+			path = Places;
+			sourceTree = "<group>";
+		};
 		5F3CC06C270B270700D33B44 /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +180,8 @@
 		62C2DF2B270493EE002118A0 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				61D2C962270C9BAE00FA22FA /* Places */,
+				61D2C960270C888F00FA22FA /* Address.swift */,
 				5F3CC075270B3A8100D33B44 /* Achievement */,
 				62C2DF3F27049600002118A0 /* Places */,
 				62C2DF3E270495FB002118A0 /* Profile */,
@@ -211,6 +229,7 @@
 			isa = PBXGroup;
 			children = (
 				62C2DF38270495A7002118A0 /* PlacesViewController.swift */,
+				615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -268,6 +287,7 @@
 		62C2DF442704963A002118A0 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -338,6 +358,7 @@
 				5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */,
 				5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */,
 				62C2DF2E27049437002118A0 /* Map.storyboard in Resources */,
+				615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -348,9 +369,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */,
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
+				61D2C961270C888F00FA22FA /* Address.swift in Sources */,
+				61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */,
 				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
 				62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,

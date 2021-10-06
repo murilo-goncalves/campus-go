@@ -40,7 +40,7 @@
         <!--Places-->
         <scene sceneID="dPE-0C-8Fs">
             <objects>
-                <viewControllerPlaceholder storyboardName="Places" referencedIdentifier="Places" id="6i8-mB-Jbu" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Places" id="6i8-mB-Jbu" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Ylg-2l-zDl"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8J1-8F-muf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
