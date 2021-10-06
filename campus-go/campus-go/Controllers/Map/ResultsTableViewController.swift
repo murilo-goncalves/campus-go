@@ -8,7 +8,18 @@
 import Foundation
 import UIKit
 
-class ResultsTableViewController: UITableViewController {
+protocol ResultsTableViewDelegate: AnyObject {
+    func setup(resultsTableViewController: ResultsTableViewController?)
+}
+
+class ResultsTableViewController: UIViewController {
+    @IBOutlet weak var tableView: UITableView!
+    weak var delegate: ResultsTableViewDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        delegate?.setup(resultsTableViewController: self)
+    }
     
 }
 
