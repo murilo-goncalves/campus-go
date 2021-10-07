@@ -69,7 +69,7 @@ extension PlacesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCollectionViewCell.identifier, for: indexPath) as! PlaceCollectionViewCell
         // TODO: Tratar caso de imagem nao carregar
-        cell.configure(with: UIImage(named: "Unicamp_PB")! )
+        cell.configure(with: UIImage(named: "Unicamp_PB")!, isVisited: (indexPath.item%3 == 0) )
         return cell
     }
     
