@@ -39,7 +39,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         setupMapView()
         setupResultsTableView()
         setupSearchController()
-        
+        definesPresentationContext = true
         searchCompleter.delegate = self
     }
     
@@ -52,8 +52,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     
     private func setupResultsTableView() {
         resultsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultsTableViewController") as? ResultsTableViewController
-        resultsTableViewController?.tableView.delegate = self
-        resultsTableViewController?.tableView.dataSource = self
+        resultsTableViewController?.delegate = self
     }
     
     private func setupSearchController() {
@@ -114,5 +113,12 @@ extension MapViewController: MKLocalSearchCompleterDelegate {
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         // handle error
+    }
+}
+
+extension MapViewController: ResultsTableViewDelegate {
+    func setup(resultsTableViewController: ResultsTableViewController?) {
+        resultsTableViewController?.tableView.delegate = self
+        resultsTableViewController?.tableView.dataSource = self
     }
 }
