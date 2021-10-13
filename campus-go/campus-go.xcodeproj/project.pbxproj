@@ -35,7 +35,18 @@
 		62C2DF352704958C002118A0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF342704958C002118A0 /* MapViewController.swift */; };
 		62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF3627049597002118A0 /* ProfileViewController.swift */; };
 		62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF38270495A7002118A0 /* PlacesViewController.swift */; };
+		62C44E5127172778002F9E05 /* campus_go_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C44E5027172778002F9E05 /* campus_go_tests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		62C44E5227172778002F9E05 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 62C2DF08270493D4002118A0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 62C2DF0F270493D4002118A0;
+			remoteInfo = "campus-go";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
@@ -69,10 +80,19 @@
 		62C2DF342704958C002118A0 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		62C2DF3627049597002118A0 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		62C2DF38270495A7002118A0 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
+		62C44E4E27172778002F9E05 /* campus-go-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "campus-go-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		62C44E5027172778002F9E05 /* campus_go_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = campus_go_tests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		62C2DF0D270493D4002118A0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C44E4B27172778002F9E05 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -138,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				62C2DF12270493D4002118A0 /* campus-go */,
+				62C44E4F27172778002F9E05 /* campus-go-tests */,
 				62C2DF11270493D4002118A0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -146,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				62C2DF10270493D4002118A0 /* campus-go.app */,
+				62C44E4E27172778002F9E05 /* campus-go-tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -295,6 +317,14 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		62C44E4F27172778002F9E05 /* campus-go-tests */ = {
+			isa = PBXGroup;
+			children = (
+				62C44E5027172778002F9E05 /* campus_go_tests.swift */,
+			);
+			path = "campus-go-tests";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,6 +345,24 @@
 			productReference = 62C2DF10270493D4002118A0 /* campus-go.app */;
 			productType = "com.apple.product-type.application";
 		};
+		62C44E4D27172778002F9E05 /* campus-go-tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 62C44E5627172778002F9E05 /* Build configuration list for PBXNativeTarget "campus-go-tests" */;
+			buildPhases = (
+				62C44E4A27172778002F9E05 /* Sources */,
+				62C44E4B27172778002F9E05 /* Frameworks */,
+				62C44E4C27172778002F9E05 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				62C44E5327172778002F9E05 /* PBXTargetDependency */,
+			);
+			name = "campus-go-tests";
+			productName = "campus-go-tests";
+			productReference = 62C44E4E27172778002F9E05 /* campus-go-tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -327,6 +375,10 @@
 				TargetAttributes = {
 					62C2DF0F270493D4002118A0 = {
 						CreatedOnToolsVersion = 13.0;
+					};
+					62C44E4D27172778002F9E05 = {
+						CreatedOnToolsVersion = 13.0;
+						TestTargetID = 62C2DF0F270493D4002118A0;
 					};
 				};
 			};
@@ -344,6 +396,7 @@
 			projectRoot = "";
 			targets = (
 				62C2DF0F270493D4002118A0 /* campus-go */,
+				62C44E4D27172778002F9E05 /* campus-go-tests */,
 			);
 		};
 /* End PBXProject section */
@@ -362,6 +415,13 @@
 				5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */,
 				62C2DF2E27049437002118A0 /* Map.storyboard in Resources */,
 				615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		62C44E4C27172778002F9E05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,7 +454,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		62C44E4A27172778002F9E05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				62C44E5127172778002F9E05 /* campus_go_tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		62C44E5327172778002F9E05 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 62C2DF0F270493D4002118A0 /* campus-go */;
+			targetProxy = 62C44E5227172778002F9E05 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		62C2DF19270493D4002118A0 /* Main.storyboard */ = {
@@ -592,6 +668,52 @@
 			};
 			name = Release;
 		};
+		62C44E5427172778002F9E05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X78RBU5682;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.dac.m203904.campus-go-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/campus-go.app/campus-go";
+			};
+			name = Debug;
+		};
+		62C44E5527172778002F9E05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X78RBU5682;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.dac.m203904.campus-go-tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/campus-go.app/campus-go";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -609,6 +731,15 @@
 			buildConfigurations = (
 				62C2DF28270493D6002118A0 /* Debug */,
 				62C2DF29270493D6002118A0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		62C44E5627172778002F9E05 /* Build configuration list for PBXNativeTarget "campus-go-tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				62C44E5427172778002F9E05 /* Debug */,
+				62C44E5527172778002F9E05 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
