@@ -21,12 +21,12 @@
 		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
 		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
 		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
+		623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */; };
 		628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */; };
 		629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BD3AC270B2EC60068FF7A /* MapConstants.swift */; };
 		62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF13270493D4002118A0 /* AppDelegate.swift */; };
 		62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF15270493D4002118A0 /* SceneDelegate.swift */; };
 		62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C2DF19270493D4002118A0 /* Main.storyboard */; };
-		62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF1C270493D4002118A0 /* campus_go.xcdatamodeld */; };
 		62C2DF20270493D6002118A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 62C2DF1F270493D6002118A0 /* Assets.xcassets */; };
 		62C2DF23270493D6002118A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C2DF21270493D6002118A0 /* LaunchScreen.storyboard */; };
 		62C2DF2E27049437002118A0 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C2DF2D27049437002118A0 /* Map.storyboard */; };
@@ -36,7 +36,6 @@
 		62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF3627049597002118A0 /* ProfileViewController.swift */; };
 		62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF38270495A7002118A0 /* PlacesViewController.swift */; };
 		62C44E5127172778002F9E05 /* campus_go_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C44E5027172778002F9E05 /* campus_go_tests.swift */; };
-		62EA56C72728460B00C67ECD /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EA56C62728460B00C67ECD /* CoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,13 +64,13 @@
 		615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
 		61D2C960270C888F00FA22FA /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
+		623AADFB27297894002FFB06 /* campusGo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = campusGo.xcdatamodel; sourceTree = "<group>"; };
 		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		629BD3AC270B2EC60068FF7A /* MapConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConstants.swift; sourceTree = "<group>"; };
 		62C2DF10270493D4002118A0 /* campus-go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "campus-go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C2DF13270493D4002118A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C2DF15270493D4002118A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		62C2DF1A270493D4002118A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		62C2DF1D270493D4002118A0 /* campus_go.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = campus_go.xcdatamodel; sourceTree = "<group>"; };
 		62C2DF1F270493D6002118A0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		62C2DF22270493D6002118A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		62C2DF24270493D6002118A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -83,7 +82,6 @@
 		62C2DF38270495A7002118A0 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		62C44E4E27172778002F9E05 /* campus-go-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "campus-go-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C44E5027172778002F9E05 /* campus_go_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = campus_go_tests.swift; sourceTree = "<group>"; };
-		62EA56C62728460B00C67ECD /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +175,6 @@
 		62C2DF12270493D4002118A0 /* campus-go */ = {
 			isa = PBXGroup;
 			children = (
-				62EA56C5272845F700C67ECD /* Managers */,
 				5F0F136A270C805600105B7D /* campus-go.entitlements */,
 				5FD052CB27074DC300F09B5A /* Extensions */,
 				62C2DF13270493D4002118A0 /* AppDelegate.swift */,
@@ -187,8 +184,8 @@
 				62C2DF2C2704940C002118A0 /* Controllers */,
 				62C2DF21270493D6002118A0 /* LaunchScreen.storyboard */,
 				62C2DF24270493D6002118A0 /* Info.plist */,
-				62C2DF1C270493D4002118A0 /* campus_go.xcdatamodeld */,
 				62C2DF1F270493D6002118A0 /* Assets.xcassets */,
+				623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */,
 			);
 			path = "campus-go";
 			sourceTree = "<group>";
@@ -328,14 +325,6 @@
 			path = "campus-go-tests";
 			sourceTree = "<group>";
 		};
-		62EA56C5272845F700C67ECD /* Managers */ = {
-			isa = PBXGroup;
-			children = (
-				62EA56C62728460B00C67ECD /* CoreDataManager.swift */,
-			);
-			path = Managers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -447,10 +436,10 @@
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
+				623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */,
 				61D2C961270C888F00FA22FA /* Address.swift in Sources */,
 				61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */,
 				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
-				62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
 				5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */,
 				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
@@ -461,7 +450,6 @@
 				5FF8B78227072E2600D7BE7D /* ProfileView.swift in Sources */,
 				613C4C49270F2909005BF46E /* UIImage.swift in Sources */,
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
-				62EA56C72728460B00C67ECD /* CoreDataManager.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -759,13 +747,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		62C2DF1C270493D4002118A0 /* campus_go.xcdatamodeld */ = {
+		623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				62C2DF1D270493D4002118A0 /* campus_go.xcdatamodel */,
+				623AADFB27297894002FFB06 /* campusGo.xcdatamodel */,
 			);
-			currentVersion = 62C2DF1D270493D4002118A0 /* campus_go.xcdatamodel */;
-			path = campus_go.xcdatamodeld;
+			currentVersion = 623AADFB27297894002FFB06 /* campusGo.xcdatamodel */;
+			path = campusGo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

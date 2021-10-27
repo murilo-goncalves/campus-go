@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Achievement" representedClassName="Achievement" syncable="YES" codeGenerationType="class">
+        <attribute name="condition" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="xpPoints" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="places" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="relatedAchievements" inverseEntity="Place"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="achievements" inverseEntity="User"/>
+    </entity>
+    <entity name="Coordinate" representedClassName="Coordinate" syncable="YES" codeGenerationType="class">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="coordinate" inverseEntity="Place"/>
+    </entity>
+    <entity name="Place" representedClassName="Place" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coordinate" inverseName="place" inverseEntity="Coordinate"/>
+        <relationship name="relatedAchievements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Achievement" inverseName="places" inverseEntity="Achievement"/>
+        <relationship name="visitedPlace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="VisitedPlace" inverseName="place" inverseEntity="VisitedPlace"/>
+    </entity>
+    <entity name="Title" representedClassName="Title" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="titles" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="xpPoints" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="achievements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Achievement" inverseName="users" inverseEntity="Achievement"/>
+        <relationship name="titles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Title" inverseName="users" inverseEntity="Title"/>
+        <relationship name="visitedPlaces" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="VisitedPlace" inverseName="user" inverseEntity="VisitedPlace"/>
+    </entity>
+    <entity name="VisitedPlace" representedClassName="VisitedPlace" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="visitedPlace" inverseEntity="Place"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="visitedPlaces" inverseEntity="User"/>
+    </entity>
+    <elements>
+        <element name="Place" positionX="-36" positionY="9" width="128" height="89"/>
+        <element name="Title" positionX="0" positionY="45" width="128" height="59"/>
+        <element name="Achievement" positionX="27" positionY="72" width="128" height="104"/>
+        <element name="User" positionX="54" positionY="108" width="128" height="104"/>
+        <element name="Coordinate" positionX="9" positionY="90" width="128" height="74"/>
+        <element name="VisitedPlace" positionX="18" positionY="99" width="128" height="74"/>
+    </elements>
+</model>
