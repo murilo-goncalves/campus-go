@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,38 +17,63 @@
                 <rect key="frame" x="0.0" y="0.0" width="262" height="203"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ckb-AD-Hkj">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gsO-Ny-L01">
                         <rect key="frame" x="0.0" y="0.0" width="262" height="203"/>
-                    </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mappin.slash.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UhI-Eo-F9U">
-                        <rect key="frame" x="105" y="76" width="52" height="51"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="O5X-Il-Ikd">
+                                <rect key="frame" x="0.0" y="0.0" width="262" height="172.5"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unknown-pin" translatesAutoresizingMaskIntoConstraints="NO" id="x3P-ls-ueC">
+                                <rect key="frame" x="106.5" y="47.5" width="49" height="77.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="x3P-ls-ueC" secondAttribute="height" multiplier="51:81" id="jqk-rb-kA3"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Em Rota" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKp-ht-sav">
+                                <rect key="frame" x="12" y="172.5" width="238" height="30.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemGreenColor"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="UhI-Eo-F9U" secondAttribute="height" multiplier="1:1" id="gTp-l3-5OY"/>
+                            <constraint firstItem="x3P-ls-ueC" firstAttribute="centerX" secondItem="O5X-Il-Ikd" secondAttribute="centerX" id="8jE-RE-PPb"/>
+                            <constraint firstAttribute="trailing" secondItem="UKp-ht-sav" secondAttribute="trailing" constant="12" id="AlQ-HJ-jhu"/>
+                            <constraint firstItem="UKp-ht-sav" firstAttribute="top" secondItem="O5X-Il-Ikd" secondAttribute="bottom" id="KBg-eb-9J3"/>
+                            <constraint firstItem="x3P-ls-ueC" firstAttribute="height" secondItem="O5X-Il-Ikd" secondAttribute="height" multiplier="0.45" id="KeN-oD-gp6"/>
+                            <constraint firstAttribute="bottom" secondItem="UKp-ht-sav" secondAttribute="bottom" id="TWJ-9g-DSd"/>
+                            <constraint firstItem="O5X-Il-Ikd" firstAttribute="leading" secondItem="gsO-Ny-L01" secondAttribute="leading" id="UKj-i0-pW1"/>
+                            <constraint firstItem="O5X-Il-Ikd" firstAttribute="top" secondItem="gsO-Ny-L01" secondAttribute="top" id="VWY-vI-2AO"/>
+                            <constraint firstAttribute="trailing" secondItem="O5X-Il-Ikd" secondAttribute="trailing" id="ViV-sS-M8f"/>
+                            <constraint firstItem="UKp-ht-sav" firstAttribute="leading" secondItem="gsO-Ny-L01" secondAttribute="leading" constant="12" id="YnS-gC-fYb"/>
+                            <constraint firstItem="x3P-ls-ueC" firstAttribute="centerY" secondItem="O5X-Il-Ikd" secondAttribute="centerY" id="gfB-Rp-mqi"/>
+                            <constraint firstItem="O5X-Il-Ikd" firstAttribute="height" secondItem="gsO-Ny-L01" secondAttribute="height" multiplier="0.85" id="wfV-2P-skE"/>
                         </constraints>
-                    </imageView>
+                    </view>
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="UhI-Eo-F9U" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2x7-PX-6v2"/>
-                <constraint firstItem="UhI-Eo-F9U" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="580-6p-bOu"/>
-                <constraint firstItem="ckb-AD-Hkj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="6Oq-Ot-III"/>
-                <constraint firstAttribute="trailing" secondItem="ckb-AD-Hkj" secondAttribute="trailing" id="FmB-ZO-JEs"/>
-                <constraint firstAttribute="bottom" secondItem="ckb-AD-Hkj" secondAttribute="bottom" id="Mb4-QH-ExS"/>
-                <constraint firstItem="UhI-Eo-F9U" firstAttribute="width" secondItem="ckb-AD-Hkj" secondAttribute="width" multiplier="0.2" id="QvR-nH-gm2"/>
-                <constraint firstItem="ckb-AD-Hkj" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Tsh-th-mjN"/>
-                <constraint firstItem="ckb-AD-Hkj" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="p8L-ae-E22"/>
-                <constraint firstItem="ckb-AD-Hkj" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="yxD-M1-iAc"/>
+                <constraint firstAttribute="trailing" secondItem="gsO-Ny-L01" secondAttribute="trailing" id="9AE-6y-07O"/>
+                <constraint firstItem="gsO-Ny-L01" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Rj4-Wi-Pj3"/>
+                <constraint firstItem="gsO-Ny-L01" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="ZHs-L3-iwI"/>
+                <constraint firstAttribute="bottom" secondItem="gsO-Ny-L01" secondAttribute="bottom" id="xr7-x5-aNL"/>
             </constraints>
             <size key="customSize" width="262" height="203"/>
             <connections>
-                <outlet property="imageView" destination="ckb-AD-Hkj" id="8Dw-b4-oWS"/>
-                <outlet property="mapFlagImage" destination="UhI-Eo-F9U" id="MOP-If-Cs1"/>
+                <outlet property="bottomColor" destination="gsO-Ny-L01" id="cse-ix-GQP"/>
+                <outlet property="imageView" destination="O5X-Il-Ikd" id="rOU-uC-sor"/>
+                <outlet property="label" destination="UKp-ht-sav" id="Xrm-Qa-yJr"/>
+                <outlet property="mapPin" destination="x3P-ls-ueC" id="mfk-Jn-KzZ"/>
             </connections>
             <point key="canvasLocation" x="285.50724637681162" y="58.59375"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="mappin.slash.circle" catalog="system" width="128" height="121"/>
+        <image name="unknown-pin" width="167" height="279"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>
