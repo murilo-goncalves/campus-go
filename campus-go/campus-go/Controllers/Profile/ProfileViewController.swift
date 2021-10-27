@@ -14,8 +14,24 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setProfileTitle()
+        
+        profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
+        
+        
+        profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.delegate = self
         profileView.recentAchievementView.dataSource = self
+    }
+    
+    func setProfileTitle() {
+        profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
+//        profileView.profileTitleView.imageView.image = UIImage(named: "books")
+        profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
+        profileView.profileTitleView.imageView.layer.borderWidth = 1
+        profileView.profileTitleView.imageView.layer.cornerRadius = 50
+        profileView.profileTitleView.clipsToBounds = true
+        profileView.profileTitleView.title.text = "Titulo"
     }
 }
 
