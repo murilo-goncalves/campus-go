@@ -18,13 +18,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conquistas recentes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ePn-TB-2vs">
-                                <rect key="frame" x="16" y="471" width="164" height="36"/>
+                                <rect key="frame" x="16" y="478" width="164" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9xv-Ey-VeS">
-                                <rect key="frame" x="16" y="523" width="382" height="228"/>
+                                <rect key="frame" x="16" y="530" width="382" height="221"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SDS-a7-Obh">
                                     <size key="itemSize" width="382" height="76"/>
@@ -82,8 +82,8 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="leading" secondItem="xpd-2m-sSs" secondAttribute="leadingMargin" constant="-8" id="FhK-xi-zz0"/>
-                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="top" secondItem="xpd-2m-sSs" secondAttribute="topMargin" constant="-8" id="akA-Nh-4jg"/>
+                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="top" secondItem="xpd-2m-sSs" secondAttribute="topMargin" constant="-8" id="JaY-Zz-RGa"/>
+                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="leading" secondItem="xpd-2m-sSs" secondAttribute="leadingMargin" constant="-8" id="a50-h3-58b"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="image" destination="VU7-d4-vyj" id="oLm-1d-Z5Z"/>
@@ -105,7 +105,7 @@
                                 </userDefinedRuntimeAttributes>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdF-qe-XUI">
-                                <rect key="frame" x="308" y="472" width="90" height="34"/>
+                                <rect key="frame" x="308" y="479" width="90" height="34"/>
                                 <color key="tintColor" systemColor="systemPinkColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Ver mais">
@@ -155,10 +155,60 @@
                                 </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DIl-rw-4nP" customClass="ProfileProgressView" customModule="campus_go" customModuleProvider="target">
-                                <rect key="frame" x="16" y="312" width="382" height="143"/>
+                                <rect key="frame" x="16" y="312" width="382" height="150"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlN-YM-hSn">
+                                        <rect key="frame" x="33" y="16" width="49.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nji-0m-T24" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="52" width="83.5" height="82"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-FG-uyF" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
+                                        <rect key="frame" x="151" y="52" width="82" height="82"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6If-qP-rNM" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
+                                        <rect key="frame" x="284" y="52" width="82" height="82"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jeJ-Py-kd5">
+                                        <rect key="frame" x="179" y="16" width="24.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Oj-7t-zIV">
+                                        <rect key="frame" x="314.5" y="16" width="21.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="DIl-rw-4nP" secondAttribute="height" multiplier="382:143" id="NIg-F9-8PA"/>
+                                    <constraint firstItem="6If-qP-rNM" firstAttribute="centerY" secondItem="HK4-FG-uyF" secondAttribute="centerY" id="0bw-CW-JAK"/>
+                                    <constraint firstItem="5Oj-7t-zIV" firstAttribute="centerX" secondItem="6If-qP-rNM" secondAttribute="centerX" id="72Z-uE-yod"/>
+                                    <constraint firstAttribute="bottom" secondItem="6If-qP-rNM" secondAttribute="bottom" constant="16" id="8Gk-wz-bgO"/>
+                                    <constraint firstItem="jeJ-Py-kd5" firstAttribute="top" secondItem="DIl-rw-4nP" secondAttribute="top" constant="16" id="FZC-rv-EUw"/>
+                                    <constraint firstItem="HK4-FG-uyF" firstAttribute="centerY" secondItem="Nji-0m-T24" secondAttribute="centerY" id="Hon-3G-XdP"/>
+                                    <constraint firstItem="vlN-YM-hSn" firstAttribute="top" secondItem="DIl-rw-4nP" secondAttribute="top" constant="16" id="KuP-46-1s7"/>
+                                    <constraint firstItem="vlN-YM-hSn" firstAttribute="centerX" secondItem="Nji-0m-T24" secondAttribute="centerX" id="M3K-60-cR3"/>
+                                    <constraint firstAttribute="width" secondItem="DIl-rw-4nP" secondAttribute="height" multiplier="382:143" constant="-18.699300699300693" id="NIg-F9-8PA"/>
+                                    <constraint firstItem="jeJ-Py-kd5" firstAttribute="centerX" secondItem="DIl-rw-4nP" secondAttribute="centerX" id="YWb-YI-sNR"/>
+                                    <constraint firstItem="6If-qP-rNM" firstAttribute="leading" secondItem="DIl-rw-4nP" secondAttribute="leading" constant="284" id="bDr-7v-B7T"/>
+                                    <constraint firstItem="vlN-YM-hSn" firstAttribute="leading" secondItem="DIl-rw-4nP" secondAttribute="leading" constant="33" id="dXH-04-LhE"/>
+                                    <constraint firstItem="5Oj-7t-zIV" firstAttribute="top" secondItem="DIl-rw-4nP" secondAttribute="top" constant="16" id="gW6-NV-UcW"/>
+                                    <constraint firstAttribute="bottom" secondItem="Nji-0m-T24" secondAttribute="bottom" constant="16" id="jSS-3f-qhj"/>
+                                    <constraint firstAttribute="trailing" secondItem="6If-qP-rNM" secondAttribute="trailing" constant="16" id="nci-4F-S4W"/>
+                                    <constraint firstItem="Nji-0m-T24" firstAttribute="top" secondItem="vlN-YM-hSn" secondAttribute="bottom" constant="12" id="ndl-9P-LDY"/>
+                                    <constraint firstItem="HK4-FG-uyF" firstAttribute="leading" secondItem="Nji-0m-T24" secondAttribute="trailing" constant="51.5" id="sq3-G5-c8z"/>
+                                    <constraint firstItem="Nji-0m-T24" firstAttribute="leading" secondItem="DIl-rw-4nP" secondAttribute="leading" constant="16" id="uLC-fa-TOd"/>
+                                    <constraint firstItem="HK4-FG-uyF" firstAttribute="top" secondItem="6If-qP-rNM" secondAttribute="top" id="zC2-VG-SOx"/>
+                                    <constraint firstItem="6If-qP-rNM" firstAttribute="leading" secondItem="HK4-FG-uyF" secondAttribute="trailing" constant="51" id="ziK-2X-Mca"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -168,6 +218,11 @@
                                         <integer key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="achievementProgressView" destination="6If-qP-rNM" id="XN5-Eh-EfA"/>
+                                    <outlet property="experienceProgressView" destination="Nji-0m-T24" id="QpS-YB-U5d"/>
+                                    <outlet property="placesProgressView" destination="HK4-FG-uyF" id="XQC-RN-OZ2"/>
+                                </connections>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>

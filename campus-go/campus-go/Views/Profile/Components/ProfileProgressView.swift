@@ -9,5 +9,9 @@ import Foundation
 import UIKit
 
 class ProfileProgressView: UIView {
+    @IBOutlet weak var achievementProgressView: CircularProgressView!
+    @IBOutlet weak var placesProgressView: CircularProgressView!
+    @IBOutlet weak var experienceProgressView: CircularProgressView!
     
 }
+
