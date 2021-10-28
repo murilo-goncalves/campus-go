@@ -7,8 +7,14 @@
 
 import Foundation
 
-enum PlaceCellsState: Int{
+enum PlaceScreenState: Int{
     case small = 2
     case large = 1
     
+}
+
+enum PlaceCellStatus: Int{
+    case onRoute = 3
+    case unknown = 2
+    case known = 1
 }

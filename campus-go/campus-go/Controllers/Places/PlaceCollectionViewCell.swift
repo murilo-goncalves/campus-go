@@ -9,9 +9,10 @@ import UIKit
 
 class PlaceCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet weak var mapFlagImage: UIImageView!
-    
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var mapPin: UIImageView!
+    @IBOutlet weak var bottomColor: UIView!
     
     static let identifier = "PlaceCollectionViewCell"
     
@@ -19,18 +20,36 @@ class PlaceCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
     }
-    public func configure(with image: UIImage,isVisited: Bool){
+    public func configure(with image: UIImage,status: PlaceCellStatus , screenState: PlaceScreenState){
         
         self.layer.cornerRadius = imageView.frame.width * 0.05
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor.lightGray.cgColor
+        mapPin.image = mapPin.image?.withRenderingMode(.alwaysTemplate)
         
-        if(isVisited){
+        
+        
+        if(status == PlaceCellStatus.known){
             imageView.image = image
-            mapFlagImage.isHidden = true
-        }else{
+            mapPin.isHidden = true
+            label.text = screenState == PlaceScreenState.small ? "" : "Nome do lugar"
+            bottomColor.backgroundColor = UIColor(red: 106, green: 217, blue: 134)
+            
+        }else if(status == PlaceCellStatus.unknown){
             imageView.image = image.convertToGrayScale()
-            mapFlagImage.isHidden = false
+            mapPin.isHidden = false
+            label.text = screenState == PlaceScreenState.small ? "" : "Desconhecido"
+            mapPin.image = UIImage(named: "unknown-pin-soft-purple")
+            bottomColor.backgroundColor = UIColor(red: 154, green: 153, blue: 238)
+            
+        }else {
+            imageView.image = image.convertToGrayScale()
+            mapPin.isHidden = false
+            label.text = screenState == PlaceScreenState.small ? "" : "Em rota"
+            mapPin.image =  UIImage(named: "unknown-pin-soft-orange")
+            bottomColor.backgroundColor = UIColor(red: 252, green: 178, blue: 74)
+            
+            
         }
 
     }
