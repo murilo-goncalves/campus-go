@@ -39,15 +39,15 @@ class PlaceCollectionViewCell: UICollectionViewCell {
             imageView.image = image.convertToGrayScale()
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Desconhecido"
-            mapPin.tintColor = UIColor(red: 154, green: 153, blue: 238)
-            bottomColor.backgroundColor = mapPin.tintColor
+            mapPin.image = UIImage(named: "unknown-pin-soft-purple")
+            bottomColor.backgroundColor = UIColor(red: 154, green: 153, blue: 238)
             
         }else {
             imageView.image = image.convertToGrayScale()
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Em rota"
-            mapPin.tintColor = UIColor(red: 255, green: 191, blue: 102)
-            bottomColor.backgroundColor = mapPin.tintColor
+            mapPin.image =  UIImage(named: "unknown-pin-soft-orange")
+            bottomColor.backgroundColor = UIColor(red: 252, green: 178, blue: 74)
             
             
         }
