@@ -17,24 +17,73 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lrc-Wc-7yZ">
-                                <rect key="frame" x="35" y="102" width="343" height="242"/>
+                                <rect key="frame" x="36" y="72" width="343" height="242"/>
                                 <edgeInsets key="layoutMargins" top="8" left="16" bottom="8" right="16"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="YDg-dy-meo"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="WYm-Oc-g6F"/>
                             </scrollView>
-                            <pageControl opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-Ru-2WZ">
-                                <rect key="frame" x="130" y="352" width="155" height="26"/>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-Ru-2WZ">
+                                <rect key="frame" x="129.5" y="322.5" width="155.5" height="26"/>
                                 <color key="pageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" systemColor="systemPinkColor"/>
                             </pageControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" distribution="fillEqually" spacing="240" translatesAutoresizingMaskIntoConstraints="NO" id="3TP-ze-5CY">
+                                <rect key="frame" x="45.5" y="378" width="323" height="20.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Sz-sm-R3m">
+                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UBN-AP-MgV">
+                                        <rect key="frame" x="281.5" y="0.0" width="41.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SHM-hU-I4g">
+                                <rect key="frame" x="36" y="407" width="164" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="linkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Button">
+                                    <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
+                                </buttonConfiguration>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90U-1E-XcO">
+                                <rect key="frame" x="215" y="407" width="164" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Conquistas relacionadas" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OZI-ua-hVj">
+                                <rect key="frame" x="36" y="465" width="187" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t8o-ui-fhC">
+                                <rect key="frame" x="279" y="465" width="100" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Ver mais"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BUc-zp-h1Q"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Lrc-Wc-7yZ" firstAttribute="centerX" secondItem="BUc-zp-h1Q" secondAttribute="centerX" id="1No-UN-7bm"/>
-                            <constraint firstItem="Bbo-Ru-2WZ" firstAttribute="centerX" secondItem="BUc-zp-h1Q" secondAttribute="centerX" id="MXt-p7-3iS"/>
+                            <constraint firstItem="3TP-ze-5CY" firstAttribute="width" secondItem="fzf-Wc-OU3" secondAttribute="width" multiplier="0.780193" id="2aY-cY-80C"/>
+                            <constraint firstItem="Bbo-Ru-2WZ" firstAttribute="top" secondItem="Lrc-Wc-7yZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Ejs-56-cJ7"/>
+                            <constraint firstItem="Bbo-Ru-2WZ" firstAttribute="centerX" secondItem="BUc-zp-h1Q" secondAttribute="centerX" id="Erq-N6-EnC"/>
+                            <constraint firstItem="3TP-ze-5CY" firstAttribute="centerX" secondItem="BUc-zp-h1Q" secondAttribute="centerX" id="IYL-vN-J6H"/>
                             <constraint firstItem="Lrc-Wc-7yZ" firstAttribute="top" secondItem="BUc-zp-h1Q" secondAttribute="top" constant="14" id="PcG-bZ-2FE"/>
-                            <constraint firstItem="Bbo-Ru-2WZ" firstAttribute="top" secondItem="Lrc-Wc-7yZ" secondAttribute="bottom" id="puj-v8-pjq"/>
                             <constraint firstItem="Lrc-Wc-7yZ" firstAttribute="width" secondItem="BUc-zp-h1Q" secondAttribute="width" multiplier="0.828502" id="umV-03-zQs"/>
                             <constraint firstItem="Lrc-Wc-7yZ" firstAttribute="height" secondItem="BUc-zp-h1Q" secondAttribute="height" multiplier="0.333793" id="zRo-Xc-7Tm"/>
                         </constraints>
@@ -43,6 +92,8 @@
                     <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="K9D-DN-OwM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="distanciaLugar" destination="UBN-AP-MgV" id="ycJ-1Y-0Xs"/>
+                        <outlet property="nomeLugar" destination="4Sz-sm-R3m" id="x0T-Ix-4DF"/>
                         <outlet property="pageControl" destination="Bbo-Ru-2WZ" id="ppc-xC-5VE"/>
                         <outlet property="scrollView" destination="Lrc-Wc-7yZ" id="HH4-oI-9mo"/>
                     </connections>
@@ -54,6 +105,9 @@
     </scenes>
     <resources>
         <image name="play.fill" catalog="system" width="116" height="128"/>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
