@@ -14,6 +14,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate{
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var nomeLugar: UILabel!
     @IBOutlet weak var distanciaLugar: UILabel!
+    @IBOutlet weak var goButton: UIButton!
+    
     
     var images: [String] = ["RS-1", "RS-2", "RS-3"]
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -25,8 +27,6 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate{
         pageControl.currentPage = 0
         nomeLugar.text = "Lugar desconhecido"
         distanciaLugar.text = "2.2 Km"
-        
-        
         
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{
