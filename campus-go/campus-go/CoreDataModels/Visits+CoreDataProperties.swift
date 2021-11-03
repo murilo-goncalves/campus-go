@@ -2,7 +2,7 @@
 //  Visits+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 28/10/21.
+//  Created by Murilo Gonçalves on 03/11/21.
 //
 //
 
@@ -17,8 +17,8 @@ extension Visits {
     }
 
     @NSManaged public var timestamp: Date?
-    @NSManaged public var user: User?
     @NSManaged public var place: Place?
+    @NSManaged public var user: User?
 
 }
 

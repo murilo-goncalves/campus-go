@@ -2,7 +2,7 @@
 //  Achievement+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 28/10/21.
+//  Created by Murilo Gonçalves on 03/11/21.
 //
 //
 
@@ -19,6 +19,7 @@ extension Achievement {
     @NSManaged public var condition: String?
     @NSManaged public var name: String?
     @NSManaged public var xpPoints: Int64
+    @NSManaged public var uid: UUID?
     @NSManaged public var relatedPlaces: NSSet?
     @NSManaged public var users: NSSet?
 
