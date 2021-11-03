@@ -38,7 +38,7 @@ extension AchievementListController: UICollectionViewDataSource, UICollectionVie
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
             destVC.loadViewIfNeeded()
-            destVC.achievementView.achievementLabel.text = "teste"
+            //destVC.achievementView.achievementLabel.text = "teste"
         }
     }
 }

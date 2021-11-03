@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1sR-0p-JYv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="1sR-0p-JYv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -92,7 +92,7 @@
                                         <connections>
                                             <outlet property="image" destination="r3Z-5E-TII" id="zPi-NO-OJY"/>
                                             <outlet property="titleLabel" destination="rx8-mS-oDL" id="C5k-FJ-l39"/>
-                                            <segue destination="20Y-5a-fid" kind="show" identifier="showAchievement" id="YAW-nt-aO0"/>
+                                            <segue destination="20Y-5a-fid" kind="showDetail" identifier="showAchievement" id="YAW-nt-aO0"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
