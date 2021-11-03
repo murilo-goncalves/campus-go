@@ -2,7 +2,7 @@
 //  Place+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 28/10/21.
+//  Created by Murilo Gonçalves on 03/11/21.
 //
 //
 
@@ -17,26 +17,10 @@ extension Place {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var uid: UUID?
     @NSManaged public var coordinate: Coordinate?
-    @NSManaged public var relatedAchievements: NSSet?
     @NSManaged public var isVisited: NSSet?
-
-}
-
-// MARK: Generated accessors for relatedAchievements
-extension Place {
-
-    @objc(addRelatedAchievementsObject:)
-    @NSManaged public func addToRelatedAchievements(_ value: Achievement)
-
-    @objc(removeRelatedAchievementsObject:)
-    @NSManaged public func removeFromRelatedAchievements(_ value: Achievement)
-
-    @objc(addRelatedAchievements:)
-    @NSManaged public func addToRelatedAchievements(_ values: NSSet)
-
-    @objc(removeRelatedAchievements:)
-    @NSManaged public func removeFromRelatedAchievements(_ values: NSSet)
+    @NSManaged public var relatedAchievements: NSSet?
 
 }
 
@@ -54,6 +38,23 @@ extension Place {
 
     @objc(removeIsVisited:)
     @NSManaged public func removeFromIsVisited(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for relatedAchievements
+extension Place {
+
+    @objc(addRelatedAchievementsObject:)
+    @NSManaged public func addToRelatedAchievements(_ value: Achievement)
+
+    @objc(removeRelatedAchievementsObject:)
+    @NSManaged public func removeFromRelatedAchievements(_ value: Achievement)
+
+    @objc(addRelatedAchievements:)
+    @NSManaged public func addToRelatedAchievements(_ values: NSSet)
+
+    @objc(removeRelatedAchievements:)
+    @NSManaged public func removeFromRelatedAchievements(_ values: NSSet)
 
 }
 
