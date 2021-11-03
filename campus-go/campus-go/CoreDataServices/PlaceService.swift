@@ -9,13 +9,6 @@ import CoreData
 import UIKit
 
 class PlaceService: CoreDataService {
-    var context: NSManagedObjectContext
-    
-    init() {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        context = appDelegate.persistentContainer.viewContext
-    }
-    
     func create(newObj: NSManagedObject) {
         <#code#>
     }
