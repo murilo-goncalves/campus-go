@@ -216,7 +216,6 @@
 		62C2DF07270493D4002118A0 = {
 			isa = PBXGroup;
 			children = (
-				623AAE48272ACA63002FFB06 /* CoreDataModels */,
 				62C2DF12270493D4002118A0 /* campus-go */,
 				62C44E4F27172778002F9E05 /* campus-go-tests */,
 				62C2DF11270493D4002118A0 /* Products */,
@@ -235,6 +234,7 @@
 		62C2DF12270493D4002118A0 /* campus-go */ = {
 			isa = PBXGroup;
 			children = (
+				623AAE48272ACA63002FFB06 /* CoreDataModels */,
 				5F0F136A270C805600105B7D /* campus-go.entitlements */,
 				5FD052CB27074DC300F09B5A /* Extensions */,
 				62C2DF13270493D4002118A0 /* AppDelegate.swift */,
