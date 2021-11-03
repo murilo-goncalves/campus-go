@@ -9,8 +9,6 @@ import CoreData
 import UIKit
 
 protocol CoreDataService {
-    var context: NSManagedObjectContext {get}
-    
     func create(newObj: NSManagedObject)
     
     func read(uid: UUID) -> NSManagedObject
@@ -18,4 +16,10 @@ protocol CoreDataService {
     func update(newObj: NSManagedObject, uid: UUID)
     
     func delete(uid: UUID)
+}
+
+extension CoreDataService {
+    var context: NSManagedObjectContext {
+        return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    }
 }
