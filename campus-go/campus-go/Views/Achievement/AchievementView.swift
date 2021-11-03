@@ -10,5 +10,10 @@ import UIKit
 
 class AchievementView: UIView {
     
-    @IBOutlet weak var achievementLabel: UILabel!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var firstLabel: UILabel!
+    @IBOutlet weak var secondLabel: UILabel!
+    @IBOutlet weak var xp: UILabel!
+    @IBOutlet weak var title: UILabel!
+    
 }
