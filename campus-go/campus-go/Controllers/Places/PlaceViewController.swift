@@ -8,12 +8,13 @@
 import Foundation
 import UIKit
 
-class PlaceViewController: UIViewController, UIScrollViewDelegate{
+class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate{
 
 
     @IBOutlet var placeView: PlaceView!
     
-    var images: [String] = ["RS-1", "RS-2", "RS-3"]
+    var images: [String] = ["Unicamp_PB", "Unicamp_PB", "Unicamp_PB"]
+    
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     override func viewDidLoad() {
@@ -23,6 +24,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate{
         placeView.pageControl.currentPage = 0
         placeView.nomeLugar.text = "Lugar desconhecido"
         placeView.distanciaLugar.text = "2.2 Km"
+
         
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{
@@ -32,7 +34,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate{
             self.placeView.scrollView.addSubview(imgView)
 
             imgView.image = UIImage(named: images[index])
-            imgView.contentMode = .scaleAspectFit
+            imgView.contentMode = .scaleAspectFill
+            imgView.layer.cornerRadius = 10
             imgView.clipsToBounds = true
             
             //precisa setar manualmente as constraints na scrollView
@@ -66,6 +69,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate{
         }
         placeView.scrollView.delegate = self
         placeView.scrollView.isPagingEnabled = true
+        placeView.recentAchievement.dataSource = self
+        placeView.recentAchievement.delegate = self
     }
     
     //Depois de aparecer na tela
@@ -86,4 +91,29 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate{
         placeView.pageControl.currentPage = Int(pageNumber)
     }
     
+}
+
+extension PlaceViewController: UICollectionViewDataSource{
+
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
+
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 3
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cellView = placeView.recentAchievement.dequeueReusableCell(withReuseIdentifier: "recentAchievementCell", for: indexPath as IndexPath) as! RecentAchievementCell
+        cellView.achievementName.text = "Name"
+        cellView.achievementImage.image = UIImage(named: "books")
+        cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
+        cellView.layer.borderWidth = 0.5
+        cellView.achievementDescription.text = "Description"
+        return cellView
+    }
+    
+
+  
+
 }
