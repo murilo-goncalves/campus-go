@@ -2,7 +2,7 @@
 //  Patent+CoreDataClass.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 28/10/21.
+//  Created by Murilo Gonçalves on 03/11/21.
 //
 //
 

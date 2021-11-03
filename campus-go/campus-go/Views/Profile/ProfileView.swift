@@ -9,9 +9,10 @@ import Foundation
 import UIKit
 
 class ProfileView: UIView {
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var profileTitleView: ProfileTitleView!
     
-    @IBOutlet weak var profileImage: UIImageView!
+    
+    @IBOutlet weak var profileProgressView: ProfileProgressView!
     @IBOutlet weak var recentAchievementView: UICollectionView!
     @IBOutlet weak var achievementsListButton: UIButton!
 }
