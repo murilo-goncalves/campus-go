@@ -11,5 +11,6 @@ import UIKit
 class AchievementCell: UICollectionViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var image: UIImageView!
+    
+    @IBOutlet weak var achievementProgressView: AchievementProgressView!
 }
