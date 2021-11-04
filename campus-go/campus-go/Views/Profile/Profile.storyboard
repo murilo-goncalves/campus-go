@@ -73,8 +73,8 @@
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <constraints>
-                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="leading" secondItem="xpd-2m-sSs" secondAttribute="leadingMargin" constant="-8" id="MIt-BF-TBC"/>
-                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="top" secondItem="xpd-2m-sSs" secondAttribute="topMargin" constant="-8" id="dc5-XT-4es"/>
+                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="top" secondItem="xpd-2m-sSs" secondAttribute="topMargin" constant="-8" id="8Jg-Og-OPK"/>
+                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="leading" secondItem="xpd-2m-sSs" secondAttribute="leadingMargin" constant="-8" id="kaN-jS-LbP"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="achievementProgressView" destination="GHt-Po-Ucb" id="efv-5N-JhJ"/>

@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
     
     func setProfileTitle() {
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
-//        profileView.profileTitleView.imageView.image = UIImage(named: "books")
         profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderWidth = 1
         profileView.profileTitleView.imageView.layer.cornerRadius = 50
@@ -35,6 +34,7 @@ class ProfileViewController: UIViewController {
     }
     
     func setProgressView() {
+        
         profileView.profileProgressView.experienceProgressView.text = "25%"
         profileView.profileProgressView.experienceProgressView.textColor = UIColor.init(rgb: 0xFF9500)
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
