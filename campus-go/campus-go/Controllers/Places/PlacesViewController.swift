@@ -15,7 +15,7 @@ class PlacesViewController: UIViewController{
     //MARK: variables calculated in viewDidLoad
     var cellWidth:Double = 0;
     var cellHeight:Double = 0;
-    var state:PlaceCellsState = PlaceCellsState.small; // initial view state with small cells
+    var state:PlaceScreenState = PlaceScreenState.small; // initial view state with small cells
     
     //MARK: constants
     let lateralEmptySpace:Double = 32 ;//horizontal distances to safe area
@@ -44,10 +44,13 @@ class PlacesViewController: UIViewController{
     }
     
     @objc func changeState(sender: UIButton!) {
-        if(state == PlaceCellsState.small){
-            state = PlaceCellsState.large
-        }else if(state == PlaceCellsState.large){
-            state = PlaceCellsState.small
+        if(state == PlaceScreenState.small){
+            state = PlaceScreenState.large
+        }else if(state == PlaceScreenState.large){
+            state = PlaceScreenState.small
+        }
+        for i in stride(from: 0,to: Int(numberOfCells), by:1) {
+            collectionView.reloadItems(at: [IndexPath(item: i, section: 0)])
         }
         
         UIView.animate(withDuration: 0.2) {
@@ -73,7 +76,7 @@ extension PlacesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCollectionViewCell.identifier, for: indexPath) as! PlaceCollectionViewCell
         // TODO: Tratar caso de imagem nao carregar
-        cell.configure(with: UIImage(named: "Unicamp_PB")!, isVisited: (indexPath.item%3 == 0) )
+        cell.configure(with: UIImage(named: "unicamp-pb")!, status: PlaceCellStatus(rawValue: indexPath.item%3+1)!,screenState: state )
         return cell
     }
     
