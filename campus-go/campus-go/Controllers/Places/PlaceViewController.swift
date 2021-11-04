@@ -13,7 +13,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
 
     @IBOutlet var placeView: PlaceView!
     
-    var images: [String] = ["Unicamp_PB", "Unicamp_PB", "Unicamp_PB"]
+    var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
     
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     
@@ -24,7 +24,10 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.pageControl.currentPage = 0
         placeView.nomeLugar.text = "Lugar desconhecido"
         placeView.distanciaLugar.text = "2.2 Km"
-
+        placeView.recentAchievement.layer.cornerRadius = 15.0
+        placeView.recentAchievement.layer.borderWidth = 5.0
+        placeView.recentAchievement.layer.borderColor = UIColor.clear.cgColor
+        placeView.recentAchievement.layer.masksToBounds = true
         
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{
@@ -94,6 +97,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
 }
 
 extension PlaceViewController: UICollectionViewDataSource{
+    
+
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -106,10 +111,15 @@ extension PlaceViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellView = placeView.recentAchievement.dequeueReusableCell(withReuseIdentifier: "recentAchievementCell", for: indexPath as IndexPath) as! RecentAchievementCell
         cellView.achievementName.text = "Name"
+        cellView.achievementDescription.text = "Description"
         cellView.achievementImage.image = UIImage(named: "books")
         cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
         cellView.layer.borderWidth = 0.5
-        cellView.achievementDescription.text = "Description"
+//        let firstItem:IndexPath = IndexPath(row: 0, section: 0)
+//            if indexPath == firstItem {
+//                cellView.layer.cornerRadius = 10
+//            }
+        
         return cellView
     }
     
@@ -117,3 +127,7 @@ extension PlaceViewController: UICollectionViewDataSource{
   
 
 }
+extension UICollectionView {
+}
+
+

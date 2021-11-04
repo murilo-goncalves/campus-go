@@ -13,6 +13,5 @@ class RecentAchievementCell: UICollectionViewCell {
     @IBOutlet weak var achievementName: UILabel!
     @IBOutlet weak var achievementImage: UIImageView!
     @IBOutlet weak var achievementDescription: UILabel!
-    
 }
 
