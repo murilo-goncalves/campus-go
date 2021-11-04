@@ -8,11 +8,6 @@
         <relationship name="relatedPlaces" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Place" inverseName="relatedAchievements" inverseEntity="Place"/>
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="achievements" inverseEntity="User"/>
     </entity>
-    <entity name="Coordinate" representedClassName="Coordinate" syncable="YES">
-        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="coordinate" inverseEntity="Place"/>
-    </entity>
     <entity name="Patent" representedClassName="Patent" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="uid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
@@ -20,9 +15,10 @@
         <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="patents" inverseEntity="User"/>
     </entity>
     <entity name="Place" representedClassName="Place" syncable="YES">
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="uid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="coordinate" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Coordinate" inverseName="place" inverseEntity="Coordinate"/>
         <relationship name="isVisited" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Visits" inverseName="place" inverseEntity="Visits"/>
         <relationship name="relatedAchievements" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Achievement" inverseName="relatedPlaces" inverseEntity="Achievement"/>
     </entity>
@@ -36,15 +32,15 @@
     </entity>
     <entity name="Visits" representedClassName="Visits" syncable="YES">
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="uid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="place" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Place" inverseName="isVisited" inverseEntity="Place"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="visits" inverseEntity="User"/>
     </entity>
     <elements>
         <element name="Achievement" positionX="27" positionY="72" width="128" height="119"/>
-        <element name="Coordinate" positionX="9" positionY="90" width="128" height="74"/>
         <element name="Patent" positionX="0" positionY="45" width="128" height="89"/>
-        <element name="Place" positionX="-36" positionY="9" width="128" height="104"/>
+        <element name="Place" positionX="-36" positionY="9" width="128" height="119"/>
         <element name="User" positionX="54" positionY="108" width="128" height="119"/>
-        <element name="Visits" positionX="27" positionY="117" width="128" height="74"/>
+        <element name="Visits" positionX="27" positionY="117" width="128" height="89"/>
     </elements>
 </model>

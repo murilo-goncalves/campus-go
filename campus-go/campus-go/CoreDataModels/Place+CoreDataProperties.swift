@@ -2,7 +2,7 @@
 //  Place+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 03/11/21.
+//  Created by Murilo Gonçalves on 04/11/21.
 //
 //
 
@@ -18,7 +18,8 @@ extension Place {
 
     @NSManaged public var name: String?
     @NSManaged public var uid: UUID?
-    @NSManaged public var coordinate: Coordinate?
+    @NSManaged public var latitude: Double
+    @NSManaged public var longitude: Double
     @NSManaged public var isVisited: NSSet?
     @NSManaged public var relatedAchievements: NSSet?
 
