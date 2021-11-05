@@ -13,6 +13,8 @@
 		5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC076270B442600D33B44 /* Achievement.storyboard */; };
 		5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC078270B444000D33B44 /* AchievementView.swift */; };
 		5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC07C270B46EF00D33B44 /* AchievementController.swift */; };
+		5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9B24132732B1820012D92D /* AchievementProgressView.xib */; };
+		5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B24152732B3900012D92D /* AchievementProgressView.swift */; };
 		5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */; };
 		5FA84E012729837A005C4D23 /* ProfileProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84E002729837A005C4D23 /* ProfileProgressView.swift */; };
 		5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD052CC27074DD400F09B5A /* UIColor.swift */; };
@@ -79,6 +81,8 @@
 		5F3CC076270B442600D33B44 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		5F3CC078270B444000D33B44 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		5F3CC07C270B46EF00D33B44 /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
+		5F9B24132732B1820012D92D /* AchievementProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementProgressView.xib; sourceTree = "<group>"; };
+		5F9B24152732B3900012D92D /* AchievementProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementProgressView.swift; sourceTree = "<group>"; };
 		5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
 		5FA84E002729837A005C4D23 /* ProfileProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProgressView.swift; sourceTree = "<group>"; };
 		5FD052CC27074DD400F09B5A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -166,6 +170,15 @@
 				5F3CC07C270B46EF00D33B44 /* AchievementController.swift */,
 			);
 			path = Achievement;
+			sourceTree = "<group>";
+		};
+		5F9B24122732B1560012D92D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5F9B24132732B1820012D92D /* AchievementProgressView.xib */,
+				5F9B24152732B3900012D92D /* AchievementProgressView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		5FD052CB27074DC300F09B5A /* Extensions */ = {
@@ -275,6 +288,7 @@
 		62C2DF2A270493E7002118A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F9B24122732B1560012D92D /* Components */,
 				5F3CC06C270B270700D33B44 /* Achievement */,
 				62C2DF422704962A002118A0 /* Places */,
 				62C2DF4127049623002118A0 /* Profile */,
@@ -487,6 +501,7 @@
 				62C2DF23270493D6002118A0 /* LaunchScreen.storyboard in Resources */,
 				62C2DF20270493D6002118A0 /* Assets.xcassets in Resources */,
 				62C2DF3027049444002118A0 /* Profile.storyboard in Resources */,
+				5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */,
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,
 				62C2DF3227049454002118A0 /* Places.storyboard in Resources */,
 				5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */,
@@ -512,6 +527,9 @@
 			files = (
 				615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */,
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
+				623AAE5E272AD439002FFB06 /* Coordinate+CoreDataProperties.swift in Sources */,
+				5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */,
+				623AAE60272AD439002FFB06 /* Achievement+CoreDataProperties.swift in Sources */,
 				62037AB02732BE1700CBEEAD /* Place+CoreDataClass.swift in Sources */,
 				62037ABA2732BE1700CBEEAD /* Visits+CoreDataClass.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
