@@ -14,7 +14,7 @@ class AchievementListController: UIViewController {
     @IBOutlet var achievementListView: AchievementListView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Here 222")
+        
         
         achievementListView.achievementCollection.delegate = self
         achievementListView.achievementCollection.dataSource = self
@@ -28,12 +28,12 @@ extension AchievementListController: UICollectionViewDataSource, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellView = achievementListView.achievementCollection.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath)
-        print("Here")
+        
         
         //cellView.titleLabel.text = "Lorem Ipsum"
         //cellView.image.image = UIImage(named: "books")
-        //cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
-        //cellView.layer.borderWidth = 0.5
+        cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
+        cellView.layer.borderWidth = 0.5
         return cellView
     }
     

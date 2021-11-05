@@ -27,7 +27,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qdF-qe-XUI">
-                                <rect key="frame" x="308" y="462" width="90" height="24"/>
+                                <rect key="frame" x="308.5" y="462" width="89.5" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="9dp-Mk-jmJ"/>
                                 </constraints>
@@ -44,7 +44,7 @@
                                 <rect key="frame" x="16" y="140" width="382" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capivara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48Q-Bz-ZfU">
-                                        <rect key="frame" x="140" y="24" width="67" height="21"/>
+                                        <rect key="frame" x="140" y="24" width="67" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -174,12 +174,23 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-aa-env">
                                                     <rect key="frame" x="353.5" y="32" width="12.5" height="16.5"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="achievementTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzk-tq-l40">
-                                                    <rect key="frame" x="96" y="30" width="129.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dqm-oF-wXx">
+                                                    <rect key="frame" x="96" y="19.5" width="106.5" height="41"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-dR-u8L">
+                                                            <rect key="frame" x="0.0" y="0.0" width="106.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conheça tudo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzk-tq-l40">
+                                                            <rect key="frame" x="0.0" y="20.5" width="106.5" height="20.5"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
+                                                            <color key="textColor" systemColor="systemGray2Color"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHt-Po-Ucb" customClass="AchievementProgressView" customModule="campus_go" customModuleProvider="target">
                                                     <rect key="frame" x="16" y="8" width="64" height="64"/>
                                                     <constraints>
@@ -190,14 +201,14 @@
                                             <constraints>
                                                 <constraint firstItem="GHn-aa-env" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="5Sq-dL-ZHK"/>
                                                 <constraint firstItem="GHt-Po-Ucb" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="Drj-YY-X1m"/>
-                                                <constraint firstItem="Jzk-tq-l40" firstAttribute="leading" secondItem="GHt-Po-Ucb" secondAttribute="trailing" constant="16" id="Kyv-j0-sfX"/>
                                                 <constraint firstAttribute="trailing" secondItem="GHn-aa-env" secondAttribute="trailing" constant="16" id="LIz-bj-ebs"/>
                                                 <constraint firstAttribute="width" constant="382" id="LfX-i9-KeP"/>
                                                 <constraint firstAttribute="bottom" secondItem="GHt-Po-Ucb" secondAttribute="bottom" constant="8" id="Ljk-ej-xD1"/>
-                                                <constraint firstItem="Jzk-tq-l40" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="MkJ-cn-bcc"/>
                                                 <constraint firstAttribute="height" constant="80" id="cCw-bc-r3Q"/>
+                                                <constraint firstItem="Dqm-oF-wXx" firstAttribute="leading" secondItem="GHt-Po-Ucb" secondAttribute="trailing" constant="16" id="dXg-LZ-ax4"/>
                                                 <constraint firstItem="GHt-Po-Ucb" firstAttribute="leading" secondItem="ul4-UB-PNK" secondAttribute="leading" constant="16" id="dsf-36-aCY"/>
                                                 <constraint firstItem="GHt-Po-Ucb" firstAttribute="top" secondItem="ul4-UB-PNK" secondAttribute="top" constant="8" id="e5q-0e-EeE"/>
+                                                <constraint firstItem="Dqm-oF-wXx" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="ic0-rU-yfG"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <constraints>
@@ -314,6 +325,9 @@
         <image name="crown.fill" catalog="system" width="128" height="92"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGray2Color">
+            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
