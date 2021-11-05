@@ -37,7 +37,7 @@ class ProfileViewController: UIViewController {
         
         profileView.profileProgressView.experienceProgressView.text = "25%"
         profileView.profileProgressView.experienceProgressView.textColor = UIColor.init(rgb: 0xFF9500)
-        profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
+        profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(1)
         profileView.profileProgressView.experienceProgressView.textSize = CGFloat(20)
         profileView.profileProgressView.experienceProgressView.backgroundBarColor = UIColor.init(rgb: 0xFF9500).withAlphaComponent(0.2)
         profileView.profileProgressView.experienceProgressView.foregroundBarColor = UIColor.init(rgb: 0xFF9500)

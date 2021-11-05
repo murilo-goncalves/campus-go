@@ -3,14 +3,13 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Achievement List Controller-->
+        <!--Conquistas-->
         <scene sceneID="3ih-MC-w2K">
             <objects>
                 <viewController id="1sR-0p-JYv" customClass="AchievementListController" customModule="campus_go" customModuleProvider="target" sceneMemberID="viewController">
@@ -18,19 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3K-Kg-W0Z">
-                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Conquistas" id="Agc-Af-w3W">
-                                        <barButtonItem key="rightBarButtonItem" id="nUc-qE-2aD">
-                                            <imageReference key="image" image="line.3.horizontal.decrease" catalog="system" symbolScale="default"/>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PNO-fl-Vsg">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="XXl-If-hJ4">
@@ -41,57 +29,48 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="achievementCell" id="uA2-zX-vbi" customClass="AchievementCell" customModule="campus_go" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="achievementCell" id="uA2-zX-vbi">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rSV-Yb-aQB">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSV-Yb-aQB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="r3Z-5E-TII">
-                                                    <rect key="frame" x="16" y="16" width="44" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="NOG-A2-HLM"/>
-                                                        <constraint firstAttribute="width" constant="44" id="fX7-gL-hMD"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.colorBorder">
-                                                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <real key="value" value="0.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="4"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-0x-hic">
+                                                    <rect key="frame" x="369.5" y="30" width="12.5" height="16.5"/>
                                                 </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-0x-hic">
-                                                    <rect key="frame" x="385.5" y="34" width="12.5" height="8.5"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="achievementTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx8-mS-oDL">
-                                                    <rect key="frame" x="68" y="27" width="130" height="22"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="djfioajidjsjas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx8-mS-oDL">
+                                                    <rect key="frame" x="92" y="26" width="107" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11F-Xu-Cgj" customClass="AchievementProgressView" customModule="campus_go" customModuleProvider="target">
+                                                    <rect key="frame" x="16" y="8" width="60" height="60"/>
+                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="11F-Xu-Cgj" secondAttribute="height" multiplier="1:1" id="z3R-wB-cKm"/>
+                                                    </constraints>
+                                                </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="rx8-mS-oDL" firstAttribute="leading" secondItem="r3Z-5E-TII" secondAttribute="trailing" constant="8" id="3lW-b2-oTO"/>
-                                                <constraint firstAttribute="bottom" secondItem="QbK-0x-hic" secondAttribute="bottom" constant="32" id="CaU-rf-f78"/>
-                                                <constraint firstAttribute="trailing" secondItem="QbK-0x-hic" secondAttribute="trailing" constant="16" id="Cmw-yT-A2K"/>
-                                                <constraint firstItem="rx8-mS-oDL" firstAttribute="top" secondItem="rSV-Yb-aQB" secondAttribute="top" constant="27" id="D0m-oa-QqL"/>
-                                                <constraint firstAttribute="bottom" secondItem="rx8-mS-oDL" secondAttribute="bottom" constant="27" id="G6J-xs-VHd"/>
-                                                <constraint firstAttribute="bottom" secondItem="r3Z-5E-TII" secondAttribute="bottom" constant="16" id="HdE-2d-SX1"/>
-                                                <constraint firstItem="QbK-0x-hic" firstAttribute="top" secondItem="rSV-Yb-aQB" secondAttribute="top" constant="32" id="ICl-wh-Nwd"/>
-                                                <constraint firstItem="r3Z-5E-TII" firstAttribute="top" secondItem="rSV-Yb-aQB" secondAttribute="top" constant="16" id="OWD-6V-TzH"/>
-                                                <constraint firstItem="r3Z-5E-TII" firstAttribute="leading" secondItem="rSV-Yb-aQB" secondAttribute="leading" constant="16" id="lIS-tC-tDj"/>
+                                                <constraint firstAttribute="trailing" secondItem="QbK-0x-hic" secondAttribute="trailing" constant="32" id="C91-MY-5VQ"/>
+                                                <constraint firstItem="QbK-0x-hic" firstAttribute="centerY" secondItem="rSV-Yb-aQB" secondAttribute="centerY" id="Kut-KI-cIo"/>
+                                                <constraint firstAttribute="bottom" secondItem="11F-Xu-Cgj" secondAttribute="bottom" constant="8" id="PD6-jo-4a4"/>
+                                                <constraint firstItem="11F-Xu-Cgj" firstAttribute="centerY" secondItem="rSV-Yb-aQB" secondAttribute="centerY" id="b7J-5H-e9z"/>
+                                                <constraint firstItem="rx8-mS-oDL" firstAttribute="leading" secondItem="11F-Xu-Cgj" secondAttribute="trailing" constant="16" id="nDe-aK-z9e"/>
+                                                <constraint firstItem="11F-Xu-Cgj" firstAttribute="top" secondItem="rSV-Yb-aQB" secondAttribute="top" constant="8" id="ry3-qt-603"/>
+                                                <constraint firstItem="rx8-mS-oDL" firstAttribute="centerY" secondItem="rSV-Yb-aQB" secondAttribute="centerY" id="wjY-Qb-5P4"/>
+                                                <constraint firstItem="11F-Xu-Cgj" firstAttribute="leading" secondItem="rSV-Yb-aQB" secondAttribute="leading" constant="16" id="xoy-Fq-LP7"/>
                                             </constraints>
                                         </collectionViewCellContentView>
+                                        <constraints>
+                                            <constraint firstItem="rSV-Yb-aQB" firstAttribute="leading" secondItem="uA2-zX-vbi" secondAttribute="leadingMargin" constant="-8" id="7ZU-6h-vOJ"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="rSV-Yb-aQB" secondAttribute="bottom" constant="-8" id="GCj-cD-qoJ"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="rSV-Yb-aQB" secondAttribute="trailing" constant="-8" id="dBD-lK-0jl"/>
+                                            <constraint firstItem="rSV-Yb-aQB" firstAttribute="top" secondItem="uA2-zX-vbi" secondAttribute="topMargin" constant="-8" id="kpH-t3-uug"/>
+                                        </constraints>
                                         <size key="customSize" width="414" height="76"/>
                                         <connections>
-                                            <outlet property="image" destination="r3Z-5E-TII" id="zPi-NO-OJY"/>
-                                            <outlet property="titleLabel" destination="rx8-mS-oDL" id="C5k-FJ-l39"/>
                                             <segue destination="20Y-5a-fid" kind="showDetail" identifier="showAchievement" id="YAW-nt-aO0"/>
                                         </connections>
                                     </collectionViewCell>
@@ -104,6 +83,7 @@
                             <outlet property="achievementCollection" destination="PNO-fl-Vsg" id="E8M-H2-eds"/>
                         </connections>
                     </view>
+                    <navigationItem key="navigationItem" title="Conquistas" largeTitleDisplayMode="never" id="O5D-KF-bXn"/>
                     <connections>
                         <outlet property="achievementListView" destination="SCo-yH-RMg" id="nzd-NT-lwW"/>
                     </connections>
@@ -125,7 +105,6 @@
     </scenes>
     <resources>
         <image name="chevron.right" catalog="system" width="96" height="128"/>
-        <image name="line.3.horizontal.decrease" catalog="system" width="128" height="73"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
