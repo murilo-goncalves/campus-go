@@ -56,7 +56,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2788.4057971014495" y="-79.017857142857139"/>
+            <point key="canvasLocation" x="2942" y="240"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0ML-mt-jZg">
@@ -69,12 +69,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="2dh-ke-VD5"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="Drc-kv-bpO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ary-67-ZQZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1878.2608695652175" y="-79.017857142857139"/>
+        </scene>
+        <!--Place-->
+        <scene sceneID="lu4-HL-5jX">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Place" id="87P-NM-Hp4" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="a3v-QA-fua"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PPp-kE-ZEb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2924" y="-392"/>
         </scene>
     </scenes>
     <resources>
