@@ -14,8 +14,10 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     @IBOutlet var placeView: PlaceView!
     
     var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
-    
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    
+    //apenas recebendo infomração do PlacesViewController
+    var indexPath: IndexPath!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,9 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.recentAchievement.layer.borderWidth = 5.0
         placeView.recentAchievement.layer.borderColor = UIColor.clear.cgColor
         placeView.recentAchievement.layer.masksToBounds = true
+       
+        //apenas usando a informação do PlacesViewController
+        print("You tapped me", indexPath! )
         
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{
@@ -97,8 +102,6 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
 }
 
 extension PlaceViewController: UICollectionViewDataSource{
-    
-
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
@@ -115,16 +118,9 @@ extension PlaceViewController: UICollectionViewDataSource{
         cellView.achievementImage.image = UIImage(named: "books")
         cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
         cellView.layer.borderWidth = 0.5
-//        let firstItem:IndexPath = IndexPath(row: 0, section: 0)
-//            if indexPath == firstItem {
-//                cellView.layer.cornerRadius = 10
-//            }
         
         return cellView
     }
-    
-
-  
 
 }
 extension UICollectionView {
