@@ -84,7 +84,7 @@ class ProfileViewController: UIViewController {
         let managedContext = appDelegate.persistentContainer.viewContext
         
         let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "username = %Q", "teste")
+        fetchRequest.predicate = NSPredicate(format: "name = %@", "teste")
         
         do {
             let test = try managedContext.fetch(fetchRequest)
