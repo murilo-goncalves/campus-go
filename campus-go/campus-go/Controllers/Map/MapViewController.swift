@@ -53,11 +53,14 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
     }
     
+    
+    
     private func addCustomPin(coordinate: CLLocationCoordinate2D){
         let pin = MKPointAnnotation()
         pin.coordinate = coordinate
-        pin.title = "Lugar desconhecido >"
-        //pin.subtitle = "Visitar o lugar"
+        pin.title = "Lugar desconhecido"
+        
+        pin.subtitle = "Visitar o lugar"
         
         mapView.addAnnotation(pin)
     }
@@ -78,7 +81,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
         annotationView?.image = UIImage(named: "unknown-pin-purple")
         annotationView?.frame.size = CGSize(width: 18, height: 30)
-        
+        let btn = UIButton(type: .detailDisclosure )
+                btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
+                annotationView?.rightCalloutAccessoryView = btn
         return annotationView
     }
     
@@ -86,9 +91,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // do something
         view.frame.size = CGSize(width: 36, height: 60)
         view.centerOffset = .zero
-        if view.isSelected{
-            performSegue(withIdentifier: "placeDetails", sender: nil)
-        }
+        
+//        if view.isSelected{
+//            performSegue(withIdentifier: "placeDetails", sender: nil)
+//        }
         
     }
     
@@ -98,6 +104,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         })
     }
     
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+            //print("Tap")
+        performSegue(withIdentifier: "placeDetails", sender: nil)
+    }
     
     private func setupMapView() {
         
