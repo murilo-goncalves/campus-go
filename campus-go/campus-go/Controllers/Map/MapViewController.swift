@@ -7,6 +7,7 @@
 
 import MapKit
 import CoreLocation
+import UIKit
 
 extension MKMapView {
     
@@ -46,6 +47,44 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         definesPresentationContext = true
         searchCompleter.delegate = self
         
+        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
+        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
+       
+        
+    }
+    
+    private func addCustomPin(coordinate: CLLocationCoordinate2D){
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = "Lugar desconhecido >"
+        //pin.subtitle = "Visitar o lugar"
+        
+        mapView.addAnnotation(pin)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else{
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        
+        if annotationView == nil{
+            //Create the view
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+            
+        }else{
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        annotationView?.frame.size = CGSize(width: 18, height: 30)
+        
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // do something
+        view.frame.size = CGSize(width: 36, height: 60)
     }
     
     private func setupMapView() {

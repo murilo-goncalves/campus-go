@@ -84,13 +84,13 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     //Depois de aparecer na tela
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(placeView.scrollView.frame)
+        //print(placeView.scrollView.frame)
     }
     
     //Antes de aparecer na tela
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(placeView.scrollView.frame)
+        //print(placeView.scrollView.frame)
     }
     
     //atualizar o pageControl
