@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5961B0BB273409F300E65B8F /* AchievmentTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */; };
+		5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */; };
+		59BB17D02732C05600572780 /* AchievementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB17CF2732C05600572780 /* AchievementService.swift */; };
 		5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */; };
 		5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC070270B34FF00D33B44 /* AchievementListController.swift */; };
 		5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC072270B351600D33B44 /* AchievementListView.swift */; };
@@ -26,8 +29,6 @@
 		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
 		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
 		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
-		62037A982732B99400CBEEAD /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037A972732B99400CBEEAD /* CoreDataService.swift */; };
-		62037A9B2732BCF700CBEEAD /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037A9A2732BCF700CBEEAD /* PlaceService.swift */; };
 		62037AB02732BE1700CBEEAD /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AA42732BE1700CBEEAD /* Place+CoreDataClass.swift */; };
 		62037AB12732BE1700CBEEAD /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AA52732BE1700CBEEAD /* Place+CoreDataProperties.swift */; };
 		62037AB22732BE1700CBEEAD /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AA62732BE1700CBEEAD /* User+CoreDataClass.swift */; };
@@ -68,6 +69,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievmentTest.storyboard; sourceTree = "<group>"; };
+		5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentTestView.swift; sourceTree = "<group>"; };
+		59BB17CF2732C05600572780 /* AchievementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementService.swift; sourceTree = "<group>"; };
 		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
 		5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementList.storyboard; sourceTree = "<group>"; };
 		5F3CC070270B34FF00D33B44 /* AchievementListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListController.swift; sourceTree = "<group>"; };
@@ -88,8 +92,6 @@
 		615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
 		61D2C960270C888F00FA22FA /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
-		62037A972732B99400CBEEAD /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
-		62037A9A2732BCF700CBEEAD /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
 		62037AA42732BE1700CBEEAD /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
 		62037AA52732BE1700CBEEAD /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62037AA62732BE1700CBEEAD /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -147,6 +149,8 @@
 				5F3CC072270B351600D33B44 /* AchievementListView.swift */,
 				5F3CC076270B442600D33B44 /* Achievement.storyboard */,
 				5F3CC078270B444000D33B44 /* AchievementView.swift */,
+				5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */,
+				5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -194,8 +198,7 @@
 		62037A992732B9A000CBEEAD /* CoreDataServices */ = {
 			isa = PBXGroup;
 			children = (
-				62037A972732B99400CBEEAD /* CoreDataService.swift */,
-				62037A9A2732BCF700CBEEAD /* PlaceService.swift */,
+				59BB17CF2732C05600572780 /* AchievementService.swift */,
 			);
 			path = CoreDataServices;
 			sourceTree = "<group>";
@@ -475,6 +478,7 @@
 				62C2DF20270493D6002118A0 /* Assets.xcassets in Resources */,
 				62C2DF3027049444002118A0 /* Profile.storyboard in Resources */,
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,
+				5961B0BB273409F300E65B8F /* AchievmentTest.storyboard in Resources */,
 				62C2DF3227049454002118A0 /* Places.storyboard in Resources */,
 				5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */,
 				5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */,
@@ -502,6 +506,7 @@
 				62037AB02732BE1700CBEEAD /* Place+CoreDataClass.swift in Sources */,
 				62037ABA2732BE1700CBEEAD /* Visits+CoreDataClass.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
+				5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */,
 				5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
 				623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */,
@@ -520,6 +525,7 @@
 				62037AB42732BE1700CBEEAD /* Achievement+CoreDataClass.swift in Sources */,
 				62037AB52732BE1700CBEEAD /* Achievement+CoreDataProperties.swift in Sources */,
 				62037AB92732BE1700CBEEAD /* Patent+CoreDataProperties.swift in Sources */,
+				59BB17D02732C05600572780 /* AchievementService.swift in Sources */,
 				62037AB82732BE1700CBEEAD /* Patent+CoreDataClass.swift in Sources */,
 				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
@@ -528,9 +534,7 @@
 				62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */,
 				62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */,
 				62037AB12732BE1700CBEEAD /* Place+CoreDataProperties.swift in Sources */,
-				62037A982732B99400CBEEAD /* CoreDataService.swift in Sources */,
 				5FF8B78227072E2600D7BE7D /* ProfileView.swift in Sources */,
-				62037A9B2732BCF700CBEEAD /* PlaceService.swift in Sources */,
 				613C4C49270F2909005BF46E /* UIImage.swift in Sources */,
 				62037ABB2732BE1700CBEEAD /* Visits+CoreDataProperties.swift in Sources */,
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
@@ -706,10 +710,10 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = AchievmentTest;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -737,10 +741,10 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = AchievmentTest;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
