@@ -17,8 +17,8 @@ extension Patent {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var xpPoints: Int64
     @NSManaged public var uid: UUID?
+    @NSManaged public var xpPoints: Int64
     @NSManaged public var users: NSSet?
 
 }

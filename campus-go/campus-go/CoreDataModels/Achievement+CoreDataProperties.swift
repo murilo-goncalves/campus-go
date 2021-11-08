@@ -18,8 +18,8 @@ extension Achievement {
 
     @NSManaged public var condition: String?
     @NSManaged public var name: String?
-    @NSManaged public var xpPoints: Int64
     @NSManaged public var uid: UUID?
+    @NSManaged public var xpPoints: Int64
     @NSManaged public var relatedPlaces: NSSet?
     @NSManaged public var users: NSSet?
 

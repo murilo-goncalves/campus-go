@@ -7,9 +7,14 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var button: UIButton!
+    @IBOutlet weak var removeButton: UIButton!
+    @IBOutlet weak var updateButton: UIButton!
     @IBOutlet var profileView: ProfileView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +27,83 @@ class ProfileViewController: UIViewController {
         profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.delegate = self
         profileView.recentAchievementView.dataSource = self
+        
+        retrieveData()
+        
+        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        updateButton.addTarget(self, action: #selector(self.updateTapped), for: .touchUpInside)
+        
     }
+        
+    
+    func retrieveData() {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        print("ENTROU")
+        do {
+            let result = try managedContext.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+                print(data.value(forKey: "name") as! String)
+                titleLabel.text = data.value(forKey: "name") as! String
+            }
+        } catch {
+            print("Deu ruim")
+        }
+        
+        
+    }
+    
+    @objc func buttonTapped(sender : UIButton) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let userEntity = NSEntityDescription.entity(forEntityName: "User", in: managedContext)!
+        
+        let user = NSManagedObject(entity: userEntity, insertInto: managedContext)
+        
+        user.setValue("teste", forKey: "name")
+        print("FOI SALVO")
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Deu Ruim \(error), \(error.userInfo)")
+        }
+        
+    }
+    
+    @objc func updateTapped(sender : UIButton) {
+        
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        
+        let managedContext = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: "username = %Q", "teste")
+        
+        do {
+            let test = try managedContext.fetch(fetchRequest)
+            
+            let objectUpdate = test[0] as! NSManagedObject
+            objectUpdate.setValue("ATUALIZADO", forKey: "name")
+            do {
+                try managedContext.save()
+            }
+            catch {
+                print("Deu update ruim")
+            }
+        }
+        catch {
+            print("Deu update ruim")
+        }
+    }
+    
+    
     
     func setProfileTitle() {
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor

@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 03/11/21.
+//  Created by Vitor Jundi Moriya on 08/11/21.
 //
 //
 
@@ -16,9 +16,9 @@ extension User {
         return NSFetchRequest<User>(entityName: "User")
     }
 
-    @NSManaged public var name: Int64
-    @NSManaged public var xpPoints: Int64
+    @NSManaged public var name: String?
     @NSManaged public var uid: UUID?
+    @NSManaged public var xpPoints: Int64
     @NSManaged public var achievements: NSSet?
     @NSManaged public var patents: NSSet?
     @NSManaged public var visits: NSSet?

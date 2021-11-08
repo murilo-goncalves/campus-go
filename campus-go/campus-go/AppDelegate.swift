@@ -45,6 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "campusGo")
+        container.persistentStoreDescriptions.append(storeDescription)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -64,6 +65,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    private lazy var storeDescription: NSPersistentStoreDescription = {
+            let storeDescription = NSPersistentStoreDescription()
+            storeDescription.shouldMigrateStoreAutomatically = true
+            storeDescription.shouldInferMappingModelAutomatically = true
+            return storeDescription
+    }()
+    
+    
     // MARK: - Core Data Saving support
 
     func saveContext () {
