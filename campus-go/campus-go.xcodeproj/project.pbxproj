@@ -13,6 +13,8 @@
 		5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC076270B442600D33B44 /* Achievement.storyboard */; };
 		5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC078270B444000D33B44 /* AchievementView.swift */; };
 		5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC07C270B46EF00D33B44 /* AchievementController.swift */; };
+		5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9B24132732B1820012D92D /* AchievementProgressView.xib */; };
+		5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B24152732B3900012D92D /* AchievementProgressView.swift */; };
 		5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */; };
 		5FA84E012729837A005C4D23 /* ProfileProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84E002729837A005C4D23 /* ProfileProgressView.swift */; };
 		5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD052CC27074DD400F09B5A /* UIColor.swift */; };
@@ -52,6 +54,10 @@
 		62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF3627049597002118A0 /* ProfileViewController.swift */; };
 		62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF38270495A7002118A0 /* PlacesViewController.swift */; };
 		62C44E5127172778002F9E05 /* campus_go_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C44E5027172778002F9E05 /* campus_go_tests.swift */; };
+		FC58847C2730360100CF3EAB /* RecentAchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58847B2730360100CF3EAB /* RecentAchievementCell.swift */; };
+		FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58847D2730382700CF3EAB /* PlaceView.swift */; };
+		FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89EC7A27296DD900BE724D /* PlaceViewController.swift */; };
+		FCAC4D0027284B3600F7F9D1 /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +78,8 @@
 		5F3CC076270B442600D33B44 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		5F3CC078270B444000D33B44 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		5F3CC07C270B46EF00D33B44 /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
+		5F9B24132732B1820012D92D /* AchievementProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementProgressView.xib; sourceTree = "<group>"; };
+		5F9B24152732B3900012D92D /* AchievementProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementProgressView.swift; sourceTree = "<group>"; };
 		5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
 		5FA84E002729837A005C4D23 /* ProfileProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProgressView.swift; sourceTree = "<group>"; };
 		5FD052CC27074DD400F09B5A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -114,6 +122,10 @@
 		62C2DF38270495A7002118A0 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		62C44E4E27172778002F9E05 /* campus-go-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "campus-go-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C44E5027172778002F9E05 /* campus_go_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = campus_go_tests.swift; sourceTree = "<group>"; };
+		FC58847B2730360100CF3EAB /* RecentAchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievementCell.swift; sourceTree = "<group>"; };
+		FC58847D2730382700CF3EAB /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
+		FC89EC7A27296DD900BE724D /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +164,15 @@
 				5F3CC07C270B46EF00D33B44 /* AchievementController.swift */,
 			);
 			path = Achievement;
+			sourceTree = "<group>";
+		};
+		5F9B24122732B1560012D92D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5F9B24132732B1820012D92D /* AchievementProgressView.xib */,
+				5F9B24152732B3900012D92D /* AchievementProgressView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		5FD052CB27074DC300F09B5A /* Extensions */ = {
@@ -258,6 +279,7 @@
 		62C2DF2A270493E7002118A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F9B24122732B1560012D92D /* Components */,
 				5F3CC06C270B270700D33B44 /* Achievement */,
 				62C2DF422704962A002118A0 /* Places */,
 				62C2DF4127049623002118A0 /* Profile */,
@@ -318,6 +340,7 @@
 			children = (
 				62C2DF38270495A7002118A0 /* PlacesViewController.swift */,
 				615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */,
+				FC89EC7A27296DD900BE724D /* PlaceViewController.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -361,6 +384,8 @@
 			children = (
 				62C2DF3127049454002118A0 /* Places.storyboard */,
 				62C2DF442704963A002118A0 /* Components */,
+				FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */,
+				FC58847D2730382700CF3EAB /* PlaceView.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -369,6 +394,7 @@
 			isa = PBXGroup;
 			children = (
 				615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */,
+				FC58847B2730360100CF3EAB /* RecentAchievementCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -462,9 +488,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCAC4D0027284B3600F7F9D1 /* Place.storyboard in Resources */,
 				62C2DF23270493D6002118A0 /* LaunchScreen.storyboard in Resources */,
 				62C2DF20270493D6002118A0 /* Assets.xcassets in Resources */,
 				62C2DF3027049444002118A0 /* Profile.storyboard in Resources */,
+				5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */,
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,
 				62C2DF3227049454002118A0 /* Places.storyboard in Resources */,
 				5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */,
@@ -492,6 +520,11 @@
 				627B21DC2734100B0065608E /* Achievement+CoreDataClass.swift in Sources */,
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
 				627B21E32734100B0065608E /* Patent+CoreDataProperties.swift in Sources */,
+				623AAE5E272AD439002FFB06 /* Coordinate+CoreDataProperties.swift in Sources */,
+				5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */,
+				623AAE60272AD439002FFB06 /* Achievement+CoreDataProperties.swift in Sources */,
+				62037AB02732BE1700CBEEAD /* Place+CoreDataClass.swift in Sources */,
+				62037ABA2732BE1700CBEEAD /* Visits+CoreDataClass.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
@@ -503,6 +536,9 @@
 				627B21E22734100B0065608E /* Patent+CoreDataClass.swift in Sources */,
 				61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */,
 				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
+				62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */,
+				FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */,
+				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
 				627B21E02734100B0065608E /* Place+CoreDataClass.swift in Sources */,
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,
@@ -521,6 +557,7 @@
 				613C4C49270F2909005BF46E /* UIImage.swift in Sources */,
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
 				627B21E42734100B0065608E /* Visits+CoreDataClass.swift in Sources */,
+				FC58847C2730360100CF3EAB /* RecentAchievementCell.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
 				627B21E52734100B0065608E /* Visits+CoreDataProperties.swift in Sources */,
 			);

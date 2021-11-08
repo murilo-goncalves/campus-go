@@ -26,7 +26,6 @@ class ProfileViewController: UIViewController {
     
     func setProfileTitle() {
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
-//        profileView.profileTitleView.imageView.image = UIImage(named: "books")
         profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderWidth = 1
         profileView.profileTitleView.imageView.layer.cornerRadius = 50
@@ -35,6 +34,7 @@ class ProfileViewController: UIViewController {
     }
     
     func setProgressView() {
+        
         profileView.profileProgressView.experienceProgressView.text = "25%"
         profileView.profileProgressView.experienceProgressView.textColor = UIColor.init(rgb: 0xFF9500)
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
@@ -77,15 +77,15 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellView = profileView.recentAchievementView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath as IndexPath) as! AchievementCell
         cellView.titleLabel.text = "Lorem Ipsum"
-        cellView.image.image = UIImage(named: "books")
         cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
         cellView.layer.borderWidth = 0.5
+        cellView.achievementProgressView.awakeFromNib()
         return cellView
     }
     
@@ -93,7 +93,7 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
             destVC.loadViewIfNeeded()
-            destVC.achievementView.achievementLabel.text = "teste"
+            //destVC.achievementView.achievementLabel.text = "teste"
         }
     }
 }

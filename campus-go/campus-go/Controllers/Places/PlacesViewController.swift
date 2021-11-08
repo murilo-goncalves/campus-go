@@ -65,8 +65,15 @@ class PlacesViewController: UIViewController{
 extension PlacesViewController: UICollectionViewDelegate{
     // MARK: UICollectionViewDelegate methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "placeDetails", sender: collectionView.cellForItem(at: indexPath))
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("You tapped me",indexPath )
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "placeDetails", let dest = segue.destination as? PlaceViewController, let cell = sender as? UICollectionViewCell {
+            dest.indexPath = self.collectionView.indexPath(for: cell)!
+        }
     }
 }
 
@@ -76,7 +83,7 @@ extension PlacesViewController: UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCollectionViewCell.identifier, for: indexPath) as! PlaceCollectionViewCell
         // TODO: Tratar caso de imagem nao carregar
-        cell.configure(with: UIImage(named: "Unicamp_PB")!, status: PlaceCellStatus(rawValue: indexPath.item%3+1)!,screenState: state )
+        cell.configure(with: UIImage(named: "unicamp-pb")!, status: PlaceCellStatus(rawValue: indexPath.item%3+1)!,screenState: state )
         return cell
     }
     
