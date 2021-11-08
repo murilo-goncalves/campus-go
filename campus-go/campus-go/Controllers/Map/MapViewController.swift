@@ -46,6 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
+        title = "mapas"
         
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
@@ -59,9 +60,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         let pin = MKPointAnnotation()
         pin.coordinate = coordinate
         pin.title = "Lugar desconhecido"
-        
         pin.subtitle = "Visitar o lugar"
-        
         mapView.addAnnotation(pin)
     }
     
@@ -82,8 +81,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         annotationView?.image = UIImage(named: "unknown-pin-purple")
         annotationView?.frame.size = CGSize(width: 18, height: 30)
         let btn = UIButton(type: .detailDisclosure )
-                btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
-                annotationView?.rightCalloutAccessoryView = btn
+            btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
+            annotationView?.rightCalloutAccessoryView = btn
         return annotationView
     }
     
@@ -91,11 +90,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         // do something
         view.frame.size = CGSize(width: 36, height: 60)
         view.centerOffset = .zero
-        
-//        if view.isSelected{
-//            performSegue(withIdentifier: "placeDetails", sender: nil)
-//        }
-        
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
