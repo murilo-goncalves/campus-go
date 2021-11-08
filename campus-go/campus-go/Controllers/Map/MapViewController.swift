@@ -85,6 +85,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // do something
         view.frame.size = CGSize(width: 36, height: 60)
+        view.annotation?.coordinate = CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731)
     }
     
     private func setupMapView() {
