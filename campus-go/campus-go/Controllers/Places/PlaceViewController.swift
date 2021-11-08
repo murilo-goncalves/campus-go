@@ -32,7 +32,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.recentAchievement.layer.masksToBounds = true
        
         //apenas usando a informação do PlacesViewController
-        print("You tapped me", indexPath! )
+        //print("You tapped me", indexPath! )
         
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{

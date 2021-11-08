@@ -85,8 +85,19 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // do something
         view.frame.size = CGSize(width: 36, height: 60)
-        view.annotation?.coordinate = CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731)
+        view.centerOffset = .zero
+        if view.isSelected{
+            performSegue(withIdentifier: "placeDetails", sender: nil)
+        }
+        
     }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.frame.size = CGSize(width: 18, height: 30)
+        })
+    }
+    
     
     private func setupMapView() {
         
