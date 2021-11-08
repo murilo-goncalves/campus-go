@@ -65,8 +65,15 @@ class PlacesViewController: UIViewController{
 extension PlacesViewController: UICollectionViewDelegate{
     // MARK: UICollectionViewDelegate methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "placeDetails", sender: collectionView.cellForItem(at: indexPath))
         collectionView.deselectItem(at: indexPath, animated: true)
-        print("You tapped me",indexPath )
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "placeDetails", let dest = segue.destination as? PlaceViewController, let cell = sender as? UICollectionViewCell {
+            dest.indexPath = self.collectionView.indexPath(for: cell)!
+        }
     }
 }
 
