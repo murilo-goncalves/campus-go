@@ -32,22 +32,22 @@
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="achievementCell" id="uA2-zX-vbi">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSV-Yb-aQB">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSV-Yb-aQB">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-0x-hic">
-                                                    <rect key="frame" x="369.5" y="30" width="12.5" height="16.5"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" ambiguous="YES" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QbK-0x-hic">
+                                                    <rect key="frame" x="369.5" y="40" width="12.5" height="16.5"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="11F-Xu-Cgj" customClass="AchievementProgressView" customModule="campus_go" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="8" width="60" height="60"/>
+                                                    <rect key="frame" x="16" y="8" width="80" height="80"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="80" id="Nh8-dc-1yP"/>
                                                         <constraint firstAttribute="width" secondItem="11F-Xu-Cgj" secondAttribute="height" multiplier="1:1" id="z3R-wB-cKm"/>
                                                     </constraints>
                                                 </view>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-nk-2DG">
-                                                    <rect key="frame" x="92" y="8" width="261.5" height="60"/>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q1o-nk-2DG">
+                                                    <rect key="frame" x="92" y="8" width="261.5" height="80"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Titulo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rx8-mS-oDL">
                                                             <rect key="frame" x="16" y="8" width="45.5" height="21"/>
@@ -56,13 +56,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5% concluído" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kas-Oo-Xmn">
-                                                            <rect key="frame" x="16" y="35" width="87" height="17"/>
+                                                            <rect key="frame" x="16" y="55" width="87" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" systemColor="systemGray2Color"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conheça tudo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nfa-ko-tjb">
-                                                            <rect key="frame" x="16" y="21.5" width="91" height="17"/>
+                                                            <rect key="frame" x="16" y="31.5" width="91" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                                             <color key="textColor" systemColor="systemGray2Color"/>
                                                             <nil key="highlightedColor"/>
@@ -92,12 +92,6 @@
                                                 <constraint firstItem="11F-Xu-Cgj" firstAttribute="leading" secondItem="rSV-Yb-aQB" secondAttribute="leading" constant="16" id="xoy-Fq-LP7"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <constraints>
-                                            <constraint firstItem="rSV-Yb-aQB" firstAttribute="leading" secondItem="uA2-zX-vbi" secondAttribute="leadingMargin" constant="-8" id="7ZU-6h-vOJ"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="rSV-Yb-aQB" secondAttribute="bottom" constant="-8" id="GCj-cD-qoJ"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="rSV-Yb-aQB" secondAttribute="trailing" constant="-8" id="dBD-lK-0jl"/>
-                                            <constraint firstItem="rSV-Yb-aQB" firstAttribute="top" secondItem="uA2-zX-vbi" secondAttribute="topMargin" constant="-8" id="kpH-t3-uug"/>
-                                        </constraints>
                                         <size key="customSize" width="414" height="76"/>
                                         <connections>
                                             <segue destination="20Y-5a-fid" kind="showDetail" identifier="showAchievement" id="YAW-nt-aO0"/>
