@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5961B0BB273409F300E65B8F /* AchievmentTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */; };
+		5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */; };
+		59BB17D02732C05600572780 /* AchievementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB17CF2732C05600572780 /* AchievementService.swift */; };
 		5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */; };
 		5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC070270B34FF00D33B44 /* AchievementListController.swift */; };
 		5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC072270B351600D33B44 /* AchievementListView.swift */; };
@@ -28,18 +31,11 @@
 		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
 		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
 		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
-		62037A9B2732BCF700CBEEAD /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037A9A2732BCF700CBEEAD /* PlaceService.swift */; };
+		62037AB42732BE1700CBEEAD /* Achievement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AA82732BE1700CBEEAD /* Achievement+CoreDataClass.swift */; };
+		62037AB52732BE1700CBEEAD /* Achievement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AA92732BE1700CBEEAD /* Achievement+CoreDataProperties.swift */; };
+		62037AB82732BE1700CBEEAD /* Patent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AAC2732BE1700CBEEAD /* Patent+CoreDataClass.swift */; };
+		62037AB92732BE1700CBEEAD /* Patent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */; };
 		623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */; };
-		627B21DC2734100B0065608E /* Achievement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D22734100B0065608E /* Achievement+CoreDataClass.swift */; };
-		627B21DD2734100B0065608E /* Achievement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D32734100B0065608E /* Achievement+CoreDataProperties.swift */; };
-		627B21DE2734100B0065608E /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D42734100B0065608E /* User+CoreDataClass.swift */; };
-		627B21DF2734100B0065608E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D52734100B0065608E /* User+CoreDataProperties.swift */; };
-		627B21E02734100B0065608E /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D62734100B0065608E /* Place+CoreDataClass.swift */; };
-		627B21E12734100B0065608E /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D72734100B0065608E /* Place+CoreDataProperties.swift */; };
-		627B21E22734100B0065608E /* Patent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D82734100B0065608E /* Patent+CoreDataClass.swift */; };
-		627B21E32734100B0065608E /* Patent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D92734100B0065608E /* Patent+CoreDataProperties.swift */; };
-		627B21E42734100B0065608E /* Visits+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21DA2734100B0065608E /* Visits+CoreDataClass.swift */; };
-		627B21E52734100B0065608E /* Visits+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21DB2734100B0065608E /* Visits+CoreDataProperties.swift */; };
 		628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */; };
 		629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BD3AC270B2EC60068FF7A /* MapConstants.swift */; };
 		62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF13270493D4002118A0 /* AppDelegate.swift */; };
@@ -71,6 +67,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievmentTest.storyboard; sourceTree = "<group>"; };
+		5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentTestView.swift; sourceTree = "<group>"; };
+		59BB17CF2732C05600572780 /* AchievementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementService.swift; sourceTree = "<group>"; };
 		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
 		5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementList.storyboard; sourceTree = "<group>"; };
 		5F3CC070270B34FF00D33B44 /* AchievementListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementListController.swift; sourceTree = "<group>"; };
@@ -94,17 +93,11 @@
 		61D2C960270C888F00FA22FA /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
 		62037A9A2732BCF700CBEEAD /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
+		62037AA82732BE1700CBEEAD /* Achievement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataClass.swift"; sourceTree = "<group>"; };
+		62037AA92732BE1700CBEEAD /* Achievement+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		62037AAC2732BE1700CBEEAD /* Patent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataClass.swift"; sourceTree = "<group>"; };
+		62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		623AADFB27297894002FFB06 /* campusGo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = campusGo.xcdatamodel; sourceTree = "<group>"; };
-		627B21D22734100B0065608E /* Achievement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataClass.swift"; sourceTree = "<group>"; };
-		627B21D32734100B0065608E /* Achievement+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		627B21D42734100B0065608E /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
-		627B21D52734100B0065608E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		627B21D62734100B0065608E /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
-		627B21D72734100B0065608E /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		627B21D82734100B0065608E /* Patent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataClass.swift"; sourceTree = "<group>"; };
-		627B21D92734100B0065608E /* Patent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		627B21DA2734100B0065608E /* Visits+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visits+CoreDataClass.swift"; sourceTree = "<group>"; };
-		627B21DB2734100B0065608E /* Visits+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visits+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		629BD3AC270B2EC60068FF7A /* MapConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConstants.swift; sourceTree = "<group>"; };
 		62C2DF10270493D4002118A0 /* campus-go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "campus-go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +139,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		590B35B7273AA1060001EC1C /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				62037AA82732BE1700CBEEAD /* Achievement+CoreDataClass.swift */,
+				62037AA92732BE1700CBEEAD /* Achievement+CoreDataProperties.swift */,
+				62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */,
+				62037AAC2732BE1700CBEEAD /* Patent+CoreDataClass.swift */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		5F3CC06C270B270700D33B44 /* Achievement */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +157,8 @@
 				5F3CC072270B351600D33B44 /* AchievementListView.swift */,
 				5F3CC076270B442600D33B44 /* Achievement.storyboard */,
 				5F3CC078270B444000D33B44 /* AchievementView.swift */,
+				5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */,
+				5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -209,6 +215,7 @@
 		62037A992732B9A000CBEEAD /* CoreDataServices */ = {
 			isa = PBXGroup;
 			children = (
+				59BB17CF2732C05600572780 /* AchievementService.swift */,
 				62037A9A2732BCF700CBEEAD /* PlaceService.swift */,
 			);
 			path = CoreDataServices;
@@ -217,16 +224,6 @@
 		623AAE48272ACA63002FFB06 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				627B21D22734100B0065608E /* Achievement+CoreDataClass.swift */,
-				627B21D32734100B0065608E /* Achievement+CoreDataProperties.swift */,
-				627B21D42734100B0065608E /* User+CoreDataClass.swift */,
-				627B21D52734100B0065608E /* User+CoreDataProperties.swift */,
-				627B21D62734100B0065608E /* Place+CoreDataClass.swift */,
-				627B21D72734100B0065608E /* Place+CoreDataProperties.swift */,
-				627B21D82734100B0065608E /* Patent+CoreDataClass.swift */,
-				627B21D92734100B0065608E /* Patent+CoreDataProperties.swift */,
-				627B21DA2734100B0065608E /* Visits+CoreDataClass.swift */,
-				627B21DB2734100B0065608E /* Visits+CoreDataProperties.swift */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -244,6 +241,7 @@
 				62C2DF12270493D4002118A0 /* campus-go */,
 				62C44E4F27172778002F9E05 /* campus-go-tests */,
 				62C2DF11270493D4002118A0 /* Products */,
+				590B35B7273AA1060001EC1C /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -494,6 +492,7 @@
 				62C2DF3027049444002118A0 /* Profile.storyboard in Resources */,
 				5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */,
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,
+				5961B0BB273409F300E65B8F /* AchievmentTest.storyboard in Resources */,
 				62C2DF3227049454002118A0 /* Places.storyboard in Resources */,
 				5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */,
 				5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */,
@@ -517,44 +516,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */,
-				627B21DC2734100B0065608E /* Achievement+CoreDataClass.swift in Sources */,
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
-				627B21E32734100B0065608E /* Patent+CoreDataProperties.swift in Sources */,
 				5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
+				5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */,
 				5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
 				623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */,
-				627B21DD2734100B0065608E /* Achievement+CoreDataProperties.swift in Sources */,
-				627B21DF2734100B0065608E /* User+CoreDataProperties.swift in Sources */,
-				627B21DE2734100B0065608E /* User+CoreDataClass.swift in Sources */,
 				61D2C961270C888F00FA22FA /* Address.swift in Sources */,
-				627B21E22734100B0065608E /* Patent+CoreDataClass.swift in Sources */,
 				61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */,
 				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
 				FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */,
 				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
-				627B21E02734100B0065608E /* Place+CoreDataClass.swift in Sources */,
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,
 				5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */,
 				5FFFB587272AEA4800C80C6F /* FloatingPoint.swift in Sources */,
 				5FA84E012729837A005C4D23 /* ProfileProgressView.swift in Sources */,
 				5FFFB585272AEA2500C80C6F /* CGFloat.swift in Sources */,
+				62037AB42732BE1700CBEEAD /* Achievement+CoreDataClass.swift in Sources */,
+				62037AB52732BE1700CBEEAD /* Achievement+CoreDataProperties.swift in Sources */,
+				62037AB92732BE1700CBEEAD /* Patent+CoreDataProperties.swift in Sources */,
+				59BB17D02732C05600572780 /* AchievementService.swift in Sources */,
+				62037AB82732BE1700CBEEAD /* Patent+CoreDataClass.swift in Sources */,
 				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
 				5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */,
 				62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */,
 				62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */,
-				627B21E12734100B0065608E /* Place+CoreDataProperties.swift in Sources */,
 				5FF8B78227072E2600D7BE7D /* ProfileView.swift in Sources */,
-				62037A9B2732BCF700CBEEAD /* PlaceService.swift in Sources */,
 				613C4C49270F2909005BF46E /* UIImage.swift in Sources */,
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
-				627B21E42734100B0065608E /* Visits+CoreDataClass.swift in Sources */,
 				FC58847C2730360100CF3EAB /* RecentAchievementCell.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
-				627B21E52734100B0065608E /* Visits+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
