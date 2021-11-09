@@ -520,11 +520,7 @@
 				627B21DC2734100B0065608E /* Achievement+CoreDataClass.swift in Sources */,
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
 				627B21E32734100B0065608E /* Patent+CoreDataProperties.swift in Sources */,
-				623AAE5E272AD439002FFB06 /* Coordinate+CoreDataProperties.swift in Sources */,
 				5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */,
-				623AAE60272AD439002FFB06 /* Achievement+CoreDataProperties.swift in Sources */,
-				62037AB02732BE1700CBEEAD /* Place+CoreDataClass.swift in Sources */,
-				62037ABA2732BE1700CBEEAD /* Visits+CoreDataClass.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
@@ -536,7 +532,6 @@
 				627B21E22734100B0065608E /* Patent+CoreDataClass.swift in Sources */,
 				61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */,
 				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
-				62C2DF1E270493D4002118A0 /* campus_go.xcdatamodeld in Sources */,
 				FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */,
 				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
@@ -728,6 +723,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -759,6 +755,7 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
