@@ -32,7 +32,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.recentAchievement.layer.masksToBounds = true
        
         //apenas usando a informação do PlacesViewController
-        print("You tapped me", indexPath! )
+        //print("You tapped me", indexPath! )
         
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{
@@ -84,13 +84,13 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     //Depois de aparecer na tela
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        print(placeView.scrollView.frame)
+        //print(placeView.scrollView.frame)
     }
     
     //Antes de aparecer na tela
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        print(placeView.scrollView.frame)
+        //print(placeView.scrollView.frame)
     }
     
     //atualizar o pageControl

@@ -9,6 +9,7 @@
 
 import MapKit
 import CoreLocation
+import UIKit
 
 extension MKMapView {
     
@@ -47,7 +48,61 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
+        title = "mapas"
         
+        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
+        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
+       
+        
+    }
+    
+    
+    
+    private func addCustomPin(coordinate: CLLocationCoordinate2D){
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = "Lugar desconhecido"
+        pin.subtitle = "Visitar o lugar"
+        mapView.addAnnotation(pin)
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else{
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        
+        if annotationView == nil{
+            //Create the view
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+            
+        }else{
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        annotationView?.frame.size = CGSize(width: 18, height: 30)
+        let btn = UIButton(type: .detailDisclosure )
+            btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
+            annotationView?.rightCalloutAccessoryView = btn
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // do something
+        view.frame.size = CGSize(width: 36, height: 60)
+        view.centerOffset = .zero
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.frame.size = CGSize(width: 18, height: 30)
+        })
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+            //print("Tap")
+        performSegue(withIdentifier: "placeDetails", sender: nil)
     }
     
     private func setupMapView() {

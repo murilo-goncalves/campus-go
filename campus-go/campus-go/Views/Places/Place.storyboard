@@ -109,14 +109,10 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Y8-5h-YSN">
-                                                    <rect key="frame" x="302" y="34" width="25" height="8.5"/>
+                                                    <rect key="frame" x="314.5" y="34" width="12.5" height="8.5"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h0J-LY-9KE">
                                                     <rect key="frame" x="16" y="16" width="44" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="HnW-hn-Mci"/>
-                                                        <constraint firstAttribute="width" constant="44" id="RY5-Tb-hNt"/>
-                                                    </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="layer.colorBorder">
                                                             <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -144,6 +140,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="8Y8-5h-YSN" firstAttribute="top" secondItem="cDi-JU-Czo" secondAttribute="top" constant="32" id="Dqi-gB-daH"/>
+                                                <constraint firstItem="h0J-LY-9KE" firstAttribute="width" secondItem="cDi-JU-Czo" secondAttribute="height" multiplier="11:19" id="Ech-qX-TO6"/>
                                                 <constraint firstItem="fCP-hw-rTP" firstAttribute="leading" secondItem="h0J-LY-9KE" secondAttribute="trailing" constant="16" id="MKm-86-D7r"/>
                                                 <constraint firstItem="h0J-LY-9KE" firstAttribute="leading" secondItem="cDi-JU-Czo" secondAttribute="leading" constant="16" id="O3V-dc-n7X"/>
                                                 <constraint firstAttribute="bottom" secondItem="h0J-LY-9KE" secondAttribute="bottom" constant="16" id="Og9-e4-SHc"/>
@@ -152,7 +149,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="8Y8-5h-YSN" secondAttribute="trailing" constant="16" id="d32-xD-kok"/>
                                                 <constraint firstItem="fCP-hw-rTP" firstAttribute="top" secondItem="cDi-JU-Czo" secondAttribute="top" constant="16" id="fEt-W0-ggB"/>
                                                 <constraint firstItem="xce-H9-0kc" firstAttribute="leading" secondItem="h0J-LY-9KE" secondAttribute="trailing" constant="16" id="kmi-Jz-Wdy"/>
-                                                <constraint firstItem="8Y8-5h-YSN" firstAttribute="leading" secondItem="h0J-LY-9KE" secondAttribute="trailing" constant="242" id="s2X-bs-Eon"/>
                                                 <constraint firstAttribute="width" secondItem="cDi-JU-Czo" secondAttribute="height" multiplier="191:38" id="vm0-Lw-K2o"/>
                                                 <constraint firstAttribute="bottom" secondItem="8Y8-5h-YSN" secondAttribute="bottom" constant="32" id="wek-7y-drh"/>
                                             </constraints>
