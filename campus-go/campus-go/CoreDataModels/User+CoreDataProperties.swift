@@ -2,7 +2,7 @@
 //  User+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 03/11/21.
+//  Created by Murilo Gonçalves on 04/11/21.
 //
 //
 
@@ -17,8 +17,8 @@ extension User {
     }
 
     @NSManaged public var name: Int64
-    @NSManaged public var xpPoints: Int64
     @NSManaged public var uid: UUID?
+    @NSManaged public var xpPoints: Int64
     @NSManaged public var achievements: NSSet?
     @NSManaged public var patents: NSSet?
     @NSManaged public var visits: NSSet?

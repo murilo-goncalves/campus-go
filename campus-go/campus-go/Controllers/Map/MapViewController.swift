@@ -5,6 +5,8 @@
 //  Created by Murilo Gonçalves on 29/09/21.
 //  Controller for Map Screen
 
+// TODO: add locationManager?.requestAlwaysAuthorization() when using locationManager
+
 import MapKit
 import CoreLocation
 

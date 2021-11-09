@@ -16,6 +16,8 @@
 		5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC076270B442600D33B44 /* Achievement.storyboard */; };
 		5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC078270B444000D33B44 /* AchievementView.swift */; };
 		5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC07C270B46EF00D33B44 /* AchievementController.swift */; };
+		5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9B24132732B1820012D92D /* AchievementProgressView.xib */; };
+		5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B24152732B3900012D92D /* AchievementProgressView.swift */; };
 		5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */; };
 		5FA84E012729837A005C4D23 /* ProfileProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84E002729837A005C4D23 /* ProfileProgressView.swift */; };
 		5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FD052CC27074DD400F09B5A /* UIColor.swift */; };
@@ -41,7 +43,18 @@
 		62037AB92732BE1700CBEEAD /* Patent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */; };
 		62037ABA2732BE1700CBEEAD /* Visits+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AAE2732BE1700CBEEAD /* Visits+CoreDataClass.swift */; };
 		62037ABB2732BE1700CBEEAD /* Visits+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AAF2732BE1700CBEEAD /* Visits+CoreDataProperties.swift */; };
+		62037A9B2732BCF700CBEEAD /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037A9A2732BCF700CBEEAD /* PlaceService.swift */; };
 		623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */; };
+		627B21DC2734100B0065608E /* Achievement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D22734100B0065608E /* Achievement+CoreDataClass.swift */; };
+		627B21DD2734100B0065608E /* Achievement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D32734100B0065608E /* Achievement+CoreDataProperties.swift */; };
+		627B21DE2734100B0065608E /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D42734100B0065608E /* User+CoreDataClass.swift */; };
+		627B21DF2734100B0065608E /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D52734100B0065608E /* User+CoreDataProperties.swift */; };
+		627B21E02734100B0065608E /* Place+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D62734100B0065608E /* Place+CoreDataClass.swift */; };
+		627B21E12734100B0065608E /* Place+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D72734100B0065608E /* Place+CoreDataProperties.swift */; };
+		627B21E22734100B0065608E /* Patent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D82734100B0065608E /* Patent+CoreDataClass.swift */; };
+		627B21E32734100B0065608E /* Patent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21D92734100B0065608E /* Patent+CoreDataProperties.swift */; };
+		627B21E42734100B0065608E /* Visits+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21DA2734100B0065608E /* Visits+CoreDataClass.swift */; };
+		627B21E52734100B0065608E /* Visits+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 627B21DB2734100B0065608E /* Visits+CoreDataProperties.swift */; };
 		628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */; };
 		629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629BD3AC270B2EC60068FF7A /* MapConstants.swift */; };
 		62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF13270493D4002118A0 /* AppDelegate.swift */; };
@@ -56,6 +69,10 @@
 		62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF3627049597002118A0 /* ProfileViewController.swift */; };
 		62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C2DF38270495A7002118A0 /* PlacesViewController.swift */; };
 		62C44E5127172778002F9E05 /* campus_go_tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C44E5027172778002F9E05 /* campus_go_tests.swift */; };
+		FC58847C2730360100CF3EAB /* RecentAchievementCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58847B2730360100CF3EAB /* RecentAchievementCell.swift */; };
+		FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58847D2730382700CF3EAB /* PlaceView.swift */; };
+		FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89EC7A27296DD900BE724D /* PlaceViewController.swift */; };
+		FCAC4D0027284B3600F7F9D1 /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +96,8 @@
 		5F3CC076270B442600D33B44 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		5F3CC078270B444000D33B44 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		5F3CC07C270B46EF00D33B44 /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
+		5F9B24132732B1820012D92D /* AchievementProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementProgressView.xib; sourceTree = "<group>"; };
+		5F9B24152732B3900012D92D /* AchievementProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementProgressView.swift; sourceTree = "<group>"; };
 		5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
 		5FA84E002729837A005C4D23 /* ProfileProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProgressView.swift; sourceTree = "<group>"; };
 		5FD052CC27074DD400F09B5A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -104,7 +123,18 @@
 		62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		62037AAE2732BE1700CBEEAD /* Visits+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visits+CoreDataClass.swift"; sourceTree = "<group>"; };
 		62037AAF2732BE1700CBEEAD /* Visits+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visits+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		62037A9A2732BCF700CBEEAD /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
 		623AADFB27297894002FFB06 /* campusGo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = campusGo.xcdatamodel; sourceTree = "<group>"; };
+		627B21D22734100B0065608E /* Achievement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataClass.swift"; sourceTree = "<group>"; };
+		627B21D32734100B0065608E /* Achievement+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		627B21D42734100B0065608E /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
+		627B21D52734100B0065608E /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		627B21D62734100B0065608E /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
+		627B21D72734100B0065608E /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		627B21D82734100B0065608E /* Patent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataClass.swift"; sourceTree = "<group>"; };
+		627B21D92734100B0065608E /* Patent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		627B21DA2734100B0065608E /* Visits+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visits+CoreDataClass.swift"; sourceTree = "<group>"; };
+		627B21DB2734100B0065608E /* Visits+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Visits+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		629BD3AC270B2EC60068FF7A /* MapConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConstants.swift; sourceTree = "<group>"; };
 		62C2DF10270493D4002118A0 /* campus-go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "campus-go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +152,10 @@
 		62C2DF38270495A7002118A0 /* PlacesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesViewController.swift; sourceTree = "<group>"; };
 		62C44E4E27172778002F9E05 /* campus-go-tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "campus-go-tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C44E5027172778002F9E05 /* campus_go_tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = campus_go_tests.swift; sourceTree = "<group>"; };
+		FC58847B2730360100CF3EAB /* RecentAchievementCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentAchievementCell.swift; sourceTree = "<group>"; };
+		FC58847D2730382700CF3EAB /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
+		FC89EC7A27296DD900BE724D /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
+		FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +198,15 @@
 			path = Achievement;
 			sourceTree = "<group>";
 		};
+		5F9B24122732B1560012D92D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5F9B24132732B1820012D92D /* AchievementProgressView.xib */,
+				5F9B24152732B3900012D92D /* AchievementProgressView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5FD052CB27074DC300F09B5A /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +241,11 @@
 		62037A992732B9A000CBEEAD /* CoreDataServices */ = {
 			isa = PBXGroup;
 			children = (
+
 				59BB17CF2732C05600572780 /* AchievementService.swift */,
+
+				62037A9A2732BCF700CBEEAD /* PlaceService.swift */,
+
 			);
 			path = CoreDataServices;
 			sourceTree = "<group>";
@@ -206,18 +253,16 @@
 		623AAE48272ACA63002FFB06 /* CoreDataModels */ = {
 			isa = PBXGroup;
 			children = (
-				62037AA42732BE1700CBEEAD /* Place+CoreDataClass.swift */,
-				62037AA52732BE1700CBEEAD /* Place+CoreDataProperties.swift */,
-				62037AA62732BE1700CBEEAD /* User+CoreDataClass.swift */,
-				62037AA72732BE1700CBEEAD /* User+CoreDataProperties.swift */,
-				62037AA82732BE1700CBEEAD /* Achievement+CoreDataClass.swift */,
-				62037AA92732BE1700CBEEAD /* Achievement+CoreDataProperties.swift */,
-				62037AAA2732BE1700CBEEAD /* Coordinate+CoreDataClass.swift */,
-				62037AAB2732BE1700CBEEAD /* Coordinate+CoreDataProperties.swift */,
-				62037AAC2732BE1700CBEEAD /* Patent+CoreDataClass.swift */,
-				62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */,
-				62037AAE2732BE1700CBEEAD /* Visits+CoreDataClass.swift */,
-				62037AAF2732BE1700CBEEAD /* Visits+CoreDataProperties.swift */,
+				627B21D22734100B0065608E /* Achievement+CoreDataClass.swift */,
+				627B21D32734100B0065608E /* Achievement+CoreDataProperties.swift */,
+				627B21D42734100B0065608E /* User+CoreDataClass.swift */,
+				627B21D52734100B0065608E /* User+CoreDataProperties.swift */,
+				627B21D62734100B0065608E /* Place+CoreDataClass.swift */,
+				627B21D72734100B0065608E /* Place+CoreDataProperties.swift */,
+				627B21D82734100B0065608E /* Patent+CoreDataClass.swift */,
+				627B21D92734100B0065608E /* Patent+CoreDataProperties.swift */,
+				627B21DA2734100B0065608E /* Visits+CoreDataClass.swift */,
+				627B21DB2734100B0065608E /* Visits+CoreDataProperties.swift */,
 			);
 			path = CoreDataModels;
 			sourceTree = "<group>";
@@ -270,6 +315,7 @@
 		62C2DF2A270493E7002118A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				5F9B24122732B1560012D92D /* Components */,
 				5F3CC06C270B270700D33B44 /* Achievement */,
 				62C2DF422704962A002118A0 /* Places */,
 				62C2DF4127049623002118A0 /* Profile */,
@@ -330,6 +376,7 @@
 			children = (
 				62C2DF38270495A7002118A0 /* PlacesViewController.swift */,
 				615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */,
+				FC89EC7A27296DD900BE724D /* PlaceViewController.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -373,6 +420,8 @@
 			children = (
 				62C2DF3127049454002118A0 /* Places.storyboard */,
 				62C2DF442704963A002118A0 /* Components */,
+				FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */,
+				FC58847D2730382700CF3EAB /* PlaceView.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -381,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */,
+				FC58847B2730360100CF3EAB /* RecentAchievementCell.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -474,9 +524,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FCAC4D0027284B3600F7F9D1 /* Place.storyboard in Resources */,
 				62C2DF23270493D6002118A0 /* LaunchScreen.storyboard in Resources */,
 				62C2DF20270493D6002118A0 /* Assets.xcassets in Resources */,
 				62C2DF3027049444002118A0 /* Profile.storyboard in Resources */,
+				5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */,
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,
 				5961B0BB273409F300E65B8F /* AchievmentTest.storyboard in Resources */,
 				62C2DF3227049454002118A0 /* Places.storyboard in Resources */,
@@ -502,23 +554,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */,
+				627B21DC2734100B0065608E /* Achievement+CoreDataClass.swift in Sources */,
 				628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */,
-				62037AB02732BE1700CBEEAD /* Place+CoreDataClass.swift in Sources */,
-				62037ABA2732BE1700CBEEAD /* Visits+CoreDataClass.swift in Sources */,
+				627B21E32734100B0065608E /* Patent+CoreDataProperties.swift in Sources */,
+				5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */,
 				5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */,
 				62C2DF39270495A7002118A0 /* PlacesViewController.swift in Sources */,
 				623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */,
+				627B21DD2734100B0065608E /* Achievement+CoreDataProperties.swift in Sources */,
+				627B21DF2734100B0065608E /* User+CoreDataProperties.swift in Sources */,
+				627B21DE2734100B0065608E /* User+CoreDataClass.swift in Sources */,
 				61D2C961270C888F00FA22FA /* Address.swift in Sources */,
-				62037AB32732BE1700CBEEAD /* User+CoreDataProperties.swift in Sources */,
-				62037AB22732BE1700CBEEAD /* User+CoreDataClass.swift in Sources */,
+				627B21E22734100B0065608E /* Patent+CoreDataClass.swift in Sources */,
 				61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */,
 				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
+				FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */,
+				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
+				627B21E02734100B0065608E /* Place+CoreDataClass.swift in Sources */,
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,
 				5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */,
-				62037AB72732BE1700CBEEAD /* Coordinate+CoreDataProperties.swift in Sources */,
 				5FFFB587272AEA4800C80C6F /* FloatingPoint.swift in Sources */,
 				5FA84E012729837A005C4D23 /* ProfileProgressView.swift in Sources */,
 				5FFFB585272AEA2500C80C6F /* CGFloat.swift in Sources */,
@@ -529,16 +586,17 @@
 				62037AB82732BE1700CBEEAD /* Patent+CoreDataClass.swift in Sources */,
 				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
-				62037AB62732BE1700CBEEAD /* Coordinate+CoreDataClass.swift in Sources */,
 				5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */,
 				62C2DF3727049597002118A0 /* ProfileViewController.swift in Sources */,
 				62C2DF16270493D4002118A0 /* SceneDelegate.swift in Sources */,
-				62037AB12732BE1700CBEEAD /* Place+CoreDataProperties.swift in Sources */,
+				627B21E12734100B0065608E /* Place+CoreDataProperties.swift in Sources */,
 				5FF8B78227072E2600D7BE7D /* ProfileView.swift in Sources */,
 				613C4C49270F2909005BF46E /* UIImage.swift in Sources */,
-				62037ABB2732BE1700CBEEAD /* Visits+CoreDataProperties.swift in Sources */,
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
+				627B21E42734100B0065608E /* Visits+CoreDataClass.swift in Sources */,
+				FC58847C2730360100CF3EAB /* RecentAchievementCell.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
+				627B21E52734100B0065608E /* Visits+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,10 +765,11 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = AchievmentTest;
+				INFOPLIST_KEY_UIMainStoryboardFile = PlaceServiceTest;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -738,10 +797,11 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "campus-go/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = AchievmentTest;
+				INFOPLIST_KEY_UIMainStoryboardFile = PlaceServiceTest;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
