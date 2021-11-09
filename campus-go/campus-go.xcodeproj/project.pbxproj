@@ -31,10 +31,6 @@
 		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
 		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
 		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
-		62037AB42732BE1700CBEEAD /* Achievement+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AA82732BE1700CBEEAD /* Achievement+CoreDataClass.swift */; };
-		62037AB52732BE1700CBEEAD /* Achievement+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AA92732BE1700CBEEAD /* Achievement+CoreDataProperties.swift */; };
-		62037AB82732BE1700CBEEAD /* Patent+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AAC2732BE1700CBEEAD /* Patent+CoreDataClass.swift */; };
-		62037AB92732BE1700CBEEAD /* Patent+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */; };
 		623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */; };
 		628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */; };
 		6292EC5B273AA37A00033BEC /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292EC51273AA37A00033BEC /* User+CoreDataClass.swift */; };
@@ -103,10 +99,6 @@
 		61D2C960270C888F00FA22FA /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
 		62037A9A2732BCF700CBEEAD /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
-		62037AA82732BE1700CBEEAD /* Achievement+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataClass.swift"; sourceTree = "<group>"; };
-		62037AA92732BE1700CBEEAD /* Achievement+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Achievement+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		62037AAC2732BE1700CBEEAD /* Patent+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataClass.swift"; sourceTree = "<group>"; };
-		62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Patent+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		623AADFB27297894002FFB06 /* campusGo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = campusGo.xcdatamodel; sourceTree = "<group>"; };
 		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		6292EC51273AA37A00033BEC /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -162,10 +154,6 @@
 		590B35B7273AA1060001EC1C /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				62037AA82732BE1700CBEEAD /* Achievement+CoreDataClass.swift */,
-				62037AA92732BE1700CBEEAD /* Achievement+CoreDataProperties.swift */,
-				62037AAD2732BE1700CBEEAD /* Patent+CoreDataProperties.swift */,
-				62037AAC2732BE1700CBEEAD /* Patent+CoreDataClass.swift */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -569,11 +557,7 @@
 				5FFFB587272AEA4800C80C6F /* FloatingPoint.swift in Sources */,
 				5FA84E012729837A005C4D23 /* ProfileProgressView.swift in Sources */,
 				5FFFB585272AEA2500C80C6F /* CGFloat.swift in Sources */,
-				62037AB42732BE1700CBEEAD /* Achievement+CoreDataClass.swift in Sources */,
-				62037AB52732BE1700CBEEAD /* Achievement+CoreDataProperties.swift in Sources */,
-				62037AB92732BE1700CBEEAD /* Patent+CoreDataProperties.swift in Sources */,
 				59BB17D02732C05600572780 /* AchievementService.swift in Sources */,
-				62037AB82732BE1700CBEEAD /* Patent+CoreDataClass.swift in Sources */,
 				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
 				6292EC5C273AA37A00033BEC /* User+CoreDataProperties.swift in Sources */,
@@ -761,7 +745,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = PlaceServiceTest;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -793,7 +777,7 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Utilizamos sua localização para validar seus desafios.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = PlaceServiceTest;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
