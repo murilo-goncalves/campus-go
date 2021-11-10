@@ -33,25 +33,22 @@ class PlaceCollectionViewCell: UICollectionViewCell {
             imageView.image = image
             mapPin.isHidden = true
             label.text = screenState == PlaceScreenState.small ? "" : "Nome do lugar"
-            bottomColor.backgroundColor = UIColor(red: 106, green: 217, blue: 134)
+            bottomColor.backgroundColor = Color.lightGreen
             
-        }else if(status == PlaceCellStatus.unknown){
+        } else if(status == PlaceCellStatus.unknown){
             imageView.image = image.convertToGrayScale()
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Desconhecido"
             mapPin.image = UIImage(named: "unknown-pin-soft-purple")
-            bottomColor.backgroundColor = UIColor(red: 154, green: 153, blue: 238)
+            bottomColor.backgroundColor = Color.lightPurple
             
-        }else {
+        } else {
             imageView.image = image.convertToGrayScale()
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Em rota"
             mapPin.image =  UIImage(named: "unknown-pin-soft-orange")
-            bottomColor.backgroundColor = UIColor(red: 252, green: 178, blue: 74)
-            
-            
+            bottomColor.backgroundColor = Color.lightOrange
         }
-
     }
     static func nib() -> UINib{
         return UINib(nibName: "PlaceCollectionViewCell",bundle: nil )

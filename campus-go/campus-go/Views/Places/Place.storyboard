@@ -110,6 +110,7 @@
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Y8-5h-YSN">
                                                     <rect key="frame" x="314.5" y="34" width="12.5" height="8.5"/>
+                                                    <color key="tintColor" systemColor="systemPinkColor"/>
                                                 </imageView>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h0J-LY-9KE">
                                                     <rect key="frame" x="16" y="16" width="44" height="44"/>

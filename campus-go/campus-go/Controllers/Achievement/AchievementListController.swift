@@ -10,14 +10,13 @@ import UIKit
 
 class AchievementListController: UIViewController {
     
-    
     @IBOutlet var achievementListView: AchievementListView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         achievementListView.achievementCollection.delegate = self
         achievementListView.achievementCollection.dataSource = self
+        
     }
 }
 

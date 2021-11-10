@@ -166,13 +166,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="achievementCell" id="xpd-2m-sSs" customClass="AchievementCell" customModule="campus_go" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul4-UB-PNK">
-                                            <rect key="frame" x="0.0" y="0.0" width="382" height="80"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul4-UB-PNK">
+                                            <rect key="frame" x="0.0" y="0.0" width="382" height="76"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-aa-env">
                                                     <rect key="frame" x="353.5" y="32" width="12.5" height="16.5"/>
+                                                    <color key="tintColor" systemColor="systemPinkColor"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dqm-oF-wXx">
                                                     <rect key="frame" x="96" y="19.5" width="106.5" height="41"/>
@@ -211,12 +212,6 @@
                                                 <constraint firstItem="Dqm-oF-wXx" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="ic0-rU-yfG"/>
                                             </constraints>
                                         </collectionViewCellContentView>
-                                        <constraints>
-                                            <constraint firstAttribute="trailingMargin" secondItem="ul4-UB-PNK" secondAttribute="trailing" constant="-8" id="LEo-FH-cqV"/>
-                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="top" secondItem="xpd-2m-sSs" secondAttribute="topMargin" constant="-8" id="bWo-sJ-H3s"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="ul4-UB-PNK" secondAttribute="bottom" constant="-8" id="h1q-gQ-XgP"/>
-                                            <constraint firstItem="ul4-UB-PNK" firstAttribute="leading" secondItem="xpd-2m-sSs" secondAttribute="leadingMargin" constant="-8" id="qpQ-N1-qLf"/>
-                                        </constraints>
                                         <connections>
                                             <outlet property="achievementProgressView" destination="GHt-Po-Ucb" id="efv-5N-JhJ"/>
                                             <outlet property="titleLabel" destination="Jzk-tq-l40" id="f3Y-lz-3yh"/>
@@ -302,6 +297,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="ruj-DZ-N3e">
                         <rect key="frame" x="0.0" y="44" width="414" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="systemPinkColor"/>
                         <textAttributes key="largeTitleTextAttributes">
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                         </textAttributes>

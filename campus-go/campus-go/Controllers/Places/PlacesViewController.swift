@@ -30,6 +30,7 @@ class PlacesViewController: UIViewController{
         title = "Lugares"
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: navBarButtonImages[state.rawValue] ?? ""), style: .plain , target: self, action: #selector(changeState) )
+        navigationItem.rightBarButtonItem?.tintColor = Color.pink
         
         collectionView.register(PlaceCollectionViewCell.nib(), forCellWithReuseIdentifier: PlaceCollectionViewCell.identifier)
         collectionView.delegate = self

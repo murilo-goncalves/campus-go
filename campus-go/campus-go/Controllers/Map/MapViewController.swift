@@ -24,9 +24,7 @@ extension MKMapView {
             longitudinalMeters: regionRadius)
         
         setRegion(coordinateRegion, animated: true)
-        
     }
-    
 }
 
 class MapViewController: UIViewController, MKMapViewDelegate {
@@ -52,11 +50,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
-       
-        
     }
-    
-    
     
     private func addCustomPin(coordinate: CLLocationCoordinate2D){
         let pin = MKPointAnnotation()
@@ -67,24 +61,24 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else{
+        guard !(annotation is MKUserLocation) else {
             return nil
         }
         var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
         
-        if annotationView == nil{
+        if annotationView == nil {
             //Create the view
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
             annotationView?.canShowCallout = true
-            
-        }else{
+        } else {
             annotationView?.annotation = annotation
         }
         annotationView?.image = UIImage(named: "unknown-pin-purple")
         annotationView?.frame.size = CGSize(width: 18, height: 30)
         let btn = UIButton(type: .detailDisclosure )
-            btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
-            annotationView?.rightCalloutAccessoryView = btn
+        btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
+        btn.tintColor = Color.pink
+        annotationView?.rightCalloutAccessoryView = btn
         return annotationView
     }
     
@@ -106,12 +100,10 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func setupMapView() {
-        
         mapView.delegate = self
         mapView.showsUserLocation = true
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
-        
     }
     
     private func setupResultsTableView() {
@@ -130,7 +122,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         searchController.searchBar.sizeToFit()
         searchController.searchBar.frame.size.width = topView.frame.size.width
         searchController.searchBar.searchBarStyle = .minimal
-        
+        searchController.searchBar.tintColor = Color.pink
     }
 }
 
