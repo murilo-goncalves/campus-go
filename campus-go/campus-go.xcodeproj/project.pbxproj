@@ -32,6 +32,8 @@
 		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
 		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
 		623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */; };
+		628270BA273D3CE000A540D3 /* MapServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628270B9273D3CE000A540D3 /* MapServices.swift */; };
+		628270BC273D51B800A540D3 /* RouteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628270BB273D51B800A540D3 /* RouteDelegate.swift */; };
 		628EF86B270C82FD00353AA5 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */; };
 		6292EC5B273AA37A00033BEC /* User+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292EC51273AA37A00033BEC /* User+CoreDataClass.swift */; };
 		6292EC5C273AA37A00033BEC /* User+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6292EC52273AA37A00033BEC /* User+CoreDataProperties.swift */; };
@@ -101,6 +103,8 @@
 		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
 		62037A9A2732BCF700CBEEAD /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
 		623AADFB27297894002FFB06 /* campusGo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = campusGo.xcdatamodel; sourceTree = "<group>"; };
+		628270B9273D3CE000A540D3 /* MapServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapServices.swift; sourceTree = "<group>"; };
+		628270BB273D51B800A540D3 /* RouteDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDelegate.swift; sourceTree = "<group>"; };
 		628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
 		6292EC51273AA37A00033BEC /* User+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6292EC52273AA37A00033BEC /* User+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -342,6 +346,7 @@
 			children = (
 				62C2DF342704958C002118A0 /* MapViewController.swift */,
 				628EF86A270C82FD00353AA5 /* ResultsTableViewController.swift */,
+				628270BB273D51B800A540D3 /* RouteDelegate.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -368,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				629BD3AC270B2EC60068FF7A /* MapConstants.swift */,
+				628270B9273D3CE000A540D3 /* MapServices.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */,
 				6292EC61273AA37A00033BEC /* Achievement+CoreDataClass.swift in Sources */,
 				6292EC64273AA37A00033BEC /* Place+CoreDataProperties.swift in Sources */,
+				628270BA273D3CE000A540D3 /* MapServices.swift in Sources */,
 				6292EC5D273AA37A00033BEC /* Visits+CoreDataClass.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */,
@@ -574,6 +581,7 @@
 				62C2DF352704958C002118A0 /* MapViewController.swift in Sources */,
 				FC58847C2730360100CF3EAB /* RecentAchievementCell.swift in Sources */,
 				6292EC5E273AA37A00033BEC /* Visits+CoreDataProperties.swift in Sources */,
+				628270BC273D51B800A540D3 /* RouteDelegate.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
 				6292EC5B273AA37A00033BEC /* User+CoreDataClass.swift in Sources */,
 				6292EC63273AA37A00033BEC /* Place+CoreDataClass.swift in Sources */,

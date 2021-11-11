@@ -5,12 +5,11 @@
 //  Created by Vinícius Flores Ribeiro on 27/10/21.
 //
 
-import Foundation
 import UIKit
+import CoreLocation
 
 class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate{
-
-
+    
     @IBOutlet var placeView: PlaceView!
     
     var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
@@ -19,9 +18,12 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     //apenas recebendo infomração do PlacesViewController
     var indexPath: IndexPath!
     
+    var placeCoordinate: CLLocationCoordinate2D?
+    var routeDelegate: RouteDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+               
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
         placeView.nomeLugar.text = "Lugar desconhecido"
@@ -99,6 +101,10 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.pageControl.currentPage = Int(pageNumber)
     }
     
+    @IBAction func goBtnAction(_ sender: UIButton) {
+        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
+        self.dismiss(animated: true, completion: nil)
+    }
 }
 
 extension PlaceViewController: UICollectionViewDataSource{

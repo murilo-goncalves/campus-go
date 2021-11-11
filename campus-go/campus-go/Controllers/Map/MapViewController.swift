@@ -5,14 +5,11 @@
 //  Created by Murilo Gonçalves on 29/09/21.
 //  Controller for Map Screen
 
-// TODO: add locationManager?.requestAlwaysAuthorization() when using locationManager
-
 import MapKit
 import CoreLocation
 import UIKit
 
 extension MKMapView {
-    
     func centerToLocation(
         _ location: CLLocation,
         regionRadius: CLLocationDistance = MapConstants.initialRegionRadius
@@ -27,7 +24,7 @@ extension MKMapView {
     }
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var topView: UIView!
@@ -38,8 +35,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private let searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
     
+    private var mapServices: MapServices!
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setupMapView()
         setupResultsTableView()
@@ -50,6 +48,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
+        
+        mapServices = MapServices(mapView)
     }
     
     private func addCustomPin(coordinate: CLLocationCoordinate2D){
@@ -60,45 +60,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotation(pin)
     }
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else {
-            return nil
-        }
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
-        
-        if annotationView == nil {
-            //Create the view
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
-            annotationView?.canShowCallout = true
-        } else {
-            annotationView?.annotation = annotation
-        }
-        annotationView?.image = UIImage(named: "unknown-pin-purple")
-        annotationView?.frame.size = CGSize(width: 18, height: 30)
-        let btn = UIButton(type: .detailDisclosure )
-        btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
-        btn.tintColor = Color.pink
-        annotationView?.rightCalloutAccessoryView = btn
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // do something
-        view.frame.size = CGSize(width: 36, height: 60)
-        view.centerOffset = .zero
-    }
-    
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        UIView.animate(withDuration: 0.5, animations: {
-            view.frame.size = CGSize(width: 18, height: 30)
-        })
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-            //print("Tap")
-        performSegue(withIdentifier: "placeDetails", sender: nil)
-    }
-    
     private func setupMapView() {
         mapView.delegate = self
         mapView.showsUserLocation = true
@@ -107,14 +68,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func setupResultsTableView() {
-        
         resultsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultsTableViewController") as? ResultsTableViewController
         resultsTableViewController?.delegate = self
         
     }
     
     private func setupSearchController() {
-        
         searchController = UISearchController(searchResultsController: resultsTableViewController)
         searchController.searchResultsUpdater = resultsTableViewController
         searchController.searchBar.delegate = self
@@ -129,43 +88,33 @@ class MapViewController: UIViewController, MKMapViewDelegate {
 // MARK: - UITableViewDelegate
 
 extension MapViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
         print(indexPath.row)
-        
     }
 }
 
 // MARK: - UITableViewDataSource
 
 extension MapViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return MapConstants.resultsTableViewNumberOfSections
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return searchResults.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let searchResult = searchResults[indexPath.row]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         
         return cell
-        
     }
-    
 }
 
 // MARK: - UISearchBarDelegate
@@ -204,7 +153,74 @@ extension MapViewController: ResultsTableViewDelegate {
     func setup(resultsTableViewController: ResultsTableViewController?) {
         resultsTableViewController?.tableView.delegate = self
         resultsTableViewController?.tableView.dataSource = self
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
         
+        if annotationView == nil {
+            //Create the view
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        annotationView?.frame.size = CGSize(width: 18, height: 30)
+        let btn = UIButton(type: .detailDisclosure )
+        btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
+        btn.tintColor = Color.pink
+        annotationView?.rightCalloutAccessoryView = btn
+        return annotationView
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // do something
+        view.frame.size = CGSize(width: 36, height: 60)
+        view.centerOffset = .zero
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.frame.size = CGSize(width: 18, height: 30)
+        })
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        
+        let storyboard: UIStoryboard = UIStoryboard(name: "Place", bundle: nil)
+        let destVc = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as! PlaceViewController
+
+        destVc.modalPresentationStyle = UIModalPresentationStyle.automatic
+        destVc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
+        
+        destVc.placeCoordinate = view.annotation?.coordinate
+        destVc.routeDelegate = self
+        
+        present(destVc, animated: true, completion: nil)
+    }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.lineWidth = 5.0
+        renderer.strokeColor = Color.pink
+        
+        return renderer
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension MapViewController: RouteDelegate {
+    func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
+        let userCoordinate = mapServices.getUserCoordinate2D()
+        mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: destinationCoordinate)
+    }
 }
