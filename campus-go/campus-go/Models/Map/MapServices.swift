@@ -23,6 +23,37 @@ class MapServices: NSObject {
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
     }
+    
+    func displayRoute(sourceCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
+        let sourcePlacemark = MKPlacemark(coordinate: sourceCoordinate)
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        
+        let destinationPlacemark = MKPlacemark(coordinate: destinationCoordinate)
+        let destinationMapItem = MKMapItem(placemark: destinationPlacemark)
+           
+        let directionsRequest = MKDirections.Request()
+        directionsRequest.source = sourceMapItem
+        directionsRequest.destination = destinationMapItem
+        directionsRequest.transportType = .walking // TODO: user choose transport type
+        
+        let directions = MKDirections(request: directionsRequest)
+        
+        // remove last route
+        mapView?.removeOverlays(mapView!.overlays)
+        
+        directions.calculate { (response, error) in
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error.localizedDescription)")
+                }
+                return
+            }
+            
+            for route in response.routes {
+                self.mapView?.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
+            }
+        }
+    }
 }
 
 // ref: https://itnext.io/swift-ios-cllocationmanager-all-in-one-b786ffd37e4a
