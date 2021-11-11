@@ -18,9 +18,11 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     //apenas recebendo infomração do PlacesViewController
     var indexPath: IndexPath!
     
+    var routeDelegate: RouteDelegate?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+               
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
         placeView.nomeLugar.text = "Lugar desconhecido"
@@ -96,6 +98,9 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageNumber = round(scrollView.contentOffset.x/scrollView.frame.size.width)
         placeView.pageControl.currentPage = Int(pageNumber)
+    }
+    
+    @IBAction func goBtnAction(_ sender: Any) {
     }
 }
 

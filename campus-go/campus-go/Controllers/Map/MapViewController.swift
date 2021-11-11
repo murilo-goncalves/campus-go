@@ -88,43 +88,33 @@ class MapViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension MapViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
         print(indexPath.row)
-        
     }
 }
 
 // MARK: - UITableViewDataSource
 
 extension MapViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return MapConstants.resultsTableViewNumberOfSections
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return searchResults.count
-        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let searchResult = searchResults[indexPath.row]
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         cell.textLabel?.text = searchResult.title
         cell.detailTextLabel?.text = searchResult.subtitle
         
         return cell
-        
     }
-    
 }
 
 // MARK: - UISearchBarDelegate
@@ -206,7 +196,8 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-            //print("Tap")
+        
+        
         performSegue(withIdentifier: "placeDetails", sender: nil)
     }
     
@@ -216,5 +207,14 @@ extension MapViewController: MKMapViewDelegate {
         renderer.strokeColor = Color.pink
         
         return renderer
+    }
+}
+
+// MARK: - MKMapViewDelegate
+
+extension MapViewController: RouteDelegate {
+    func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
+        let userCoordinate = mapServices.getUserCoordinate2D()
+        mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: <#T##CLLocationCoordinate2D#>)
     }
 }

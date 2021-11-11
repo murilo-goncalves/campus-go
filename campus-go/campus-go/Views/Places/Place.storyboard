@@ -41,6 +41,7 @@
                                             <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                         </buttonConfiguration>
                                         <connections>
+                                            <action selector="goBtnAction:" destination="1w6-VN-eV4" eventType="touchUpInside" id="NEa-Ip-1Na"/>
                                             <action selector="goButton:" destination="1w6-VN-eV4" eventType="touchUpInside" id="GSe-Jh-8ao"/>
                                         </connections>
                                     </button>
