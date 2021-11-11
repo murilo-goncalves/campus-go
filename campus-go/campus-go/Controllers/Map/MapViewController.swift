@@ -209,4 +209,12 @@ extension MapViewController: MKMapViewDelegate {
             //print("Tap")
         performSegue(withIdentifier: "placeDetails", sender: nil)
     }
+    
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.lineWidth = 5.0
+        renderer.strokeColor = Color.pink
+        
+        return renderer
+    }
 }
