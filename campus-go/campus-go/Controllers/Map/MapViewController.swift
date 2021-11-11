@@ -197,8 +197,15 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
+        let storyboard: UIStoryboard = UIStoryboard(name: "PlaceDetails", bundle: Bundle.main)
+        let destVc = storyboard.instantiateViewController(withIdentifier: "desafioModal") as! PlaceViewController
+
+        destVc.modalPresentationStyle = UIModalPresentationStyle.automatic
+        destVc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
         
-        performSegue(withIdentifier: "placeDetails", sender: nil)
+        destVc.routeDelegate = self
+        
+        present(destVc, animated: true, completion: nil)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {

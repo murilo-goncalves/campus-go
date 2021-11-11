@@ -13,7 +13,7 @@
         <!--Title-->
         <scene sceneID="Ap7-Zg-vTH">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="1w6-VN-eV4" customClass="PlaceViewController" customModule="campus_go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1w6-VN-eV4" customClass="PlaceViewController" customModule="campus_go" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzf-Wc-OU3" customClass="PlaceView" customModule="campus_go" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
