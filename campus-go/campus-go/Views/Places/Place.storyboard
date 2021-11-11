@@ -42,7 +42,6 @@
                                         </buttonConfiguration>
                                         <connections>
                                             <action selector="goBtnAction:" destination="1w6-VN-eV4" eventType="touchUpInside" id="NEa-Ip-1Na"/>
-                                            <action selector="goButton:" destination="1w6-VN-eV4" eventType="touchUpInside" id="GSe-Jh-8ao"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90U-1E-XcO">

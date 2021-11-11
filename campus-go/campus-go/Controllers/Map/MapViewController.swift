@@ -153,9 +153,7 @@ extension MapViewController: ResultsTableViewDelegate {
     func setup(resultsTableViewController: ResultsTableViewController?) {
         resultsTableViewController?.tableView.delegate = self
         resultsTableViewController?.tableView.dataSource = self
-        
     }
-    
 }
 
 // MARK: - MKMapViewDelegate
@@ -197,12 +195,13 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         
-        let storyboard: UIStoryboard = UIStoryboard(name: "PlaceDetails", bundle: Bundle.main)
-        let destVc = storyboard.instantiateViewController(withIdentifier: "desafioModal") as! PlaceViewController
+        let storyboard: UIStoryboard = UIStoryboard(name: "Place", bundle: nil)
+        let destVc = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as! PlaceViewController
 
         destVc.modalPresentationStyle = UIModalPresentationStyle.automatic
         destVc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
         
+        destVc.placeCoordinate = view.annotation?.coordinate
         destVc.routeDelegate = self
         
         present(destVc, animated: true, completion: nil)
@@ -222,6 +221,6 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
         let userCoordinate = mapServices.getUserCoordinate2D()
-        mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: <#T##CLLocationCoordinate2D#>)
+        mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: destinationCoordinate)
     }
 }

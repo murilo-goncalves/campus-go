@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 protocol RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D)
