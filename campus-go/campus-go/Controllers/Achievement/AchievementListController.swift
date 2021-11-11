@@ -28,10 +28,7 @@ extension AchievementListController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cellView = achievementListView.achievementCollection.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath)
         
-        
-        //cellView.titleLabel.text = "Lorem Ipsum"
-        //cellView.image.image = UIImage(named: "books")
-        cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
+        cellView.layer.borderColor = Color.lightOrange.cgColor
         cellView.layer.borderWidth = 0.5
         return cellView
     }
@@ -40,7 +37,6 @@ extension AchievementListController: UICollectionViewDataSource, UICollectionVie
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
             destVC.loadViewIfNeeded()
-            //destVC.achievementView.achievementLabel.text = "teste"
         }
     }
 }

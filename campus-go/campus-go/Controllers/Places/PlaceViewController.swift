@@ -116,7 +116,7 @@ extension PlaceViewController: UICollectionViewDataSource{
         cellView.achievementName.text = "Name"
         cellView.achievementDescription.text = "Description"
         cellView.achievementImage.image = UIImage(named: "books")
-        cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
+        cellView.layer.borderColor = UIColor.systemGray.cgColor
         cellView.layer.borderWidth = 0.5
         
         return cellView
