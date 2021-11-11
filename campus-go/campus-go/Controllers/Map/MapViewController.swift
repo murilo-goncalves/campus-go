@@ -5,14 +5,11 @@
 //  Created by Murilo Gonçalves on 29/09/21.
 //  Controller for Map Screen
 
-// TODO: add locationManager?.requestAlwaysAuthorization() when using locationManager
-
 import MapKit
 import CoreLocation
 import UIKit
 
 extension MKMapView {
-    
     func centerToLocation(
         _ location: CLLocation,
         regionRadius: CLLocationDistance = MapConstants.initialRegionRadius
@@ -38,8 +35,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     private let searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
     
+    private var mapServices: MapServices!
+    
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         setupMapView()
         setupResultsTableView()
@@ -50,6 +48,8 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
         addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
+        
+        mapServices = MapServices(mapView)
     }
     
     private func addCustomPin(coordinate: CLLocationCoordinate2D){
@@ -107,14 +107,12 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     private func setupResultsTableView() {
-        
         resultsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultsTableViewController") as? ResultsTableViewController
         resultsTableViewController?.delegate = self
         
     }
     
     private func setupSearchController() {
-        
         searchController = UISearchController(searchResultsController: resultsTableViewController)
         searchController.searchResultsUpdater = resultsTableViewController
         searchController.searchBar.delegate = self

@@ -40,6 +40,9 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
                                             <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="goButton:" destination="1w6-VN-eV4" eventType="touchUpInside" id="GSe-Jh-8ao"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90U-1E-XcO">
                                         <rect key="frame" x="195" y="0.0" width="187" height="47.5"/>

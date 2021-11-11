@@ -9,10 +9,10 @@ import Foundation
 import MapKit
 
 class MapServices: NSObject {
-    private var mapView: MKMapView?
+    private var mapView: MKMapView!
     private var locationManager = CLLocationManager()
     
-    init(mapView: MKMapView?) {
+    init(_ mapView: MKMapView?) {
         super.init()
         locationManager.delegate = self
         self.mapView = mapView!
@@ -39,7 +39,7 @@ class MapServices: NSObject {
         let directions = MKDirections(request: directionsRequest)
         
         // remove last route
-        mapView?.removeOverlays(mapView!.overlays)
+        mapView.removeOverlays(mapView.overlays)
         
         directions.calculate { (response, error) in
             guard let response = response else {
@@ -50,9 +50,13 @@ class MapServices: NSObject {
             }
             
             for route in response.routes {
-                self.mapView?.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
+                self.mapView.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
             }
         }
+    }
+    
+    public func getUserCoordinate2D() -> CLLocationCoordinate2D {
+        return locationManager.location?.coordinate ?? CLLocationCoordinate2DMake(-22.816763, -47.068275)
     }
 }
 

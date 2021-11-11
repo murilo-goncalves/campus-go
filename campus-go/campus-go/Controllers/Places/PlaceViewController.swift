@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate{
-
-
+    
     @IBOutlet var placeView: PlaceView!
     
     var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
@@ -98,7 +97,6 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         let pageNumber = round(scrollView.contentOffset.x/scrollView.frame.size.width)
         placeView.pageControl.currentPage = Int(pageNumber)
     }
-    
 }
 
 extension PlaceViewController: UICollectionViewDataSource{
