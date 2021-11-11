@@ -44,7 +44,6 @@ class MapViewController: UIViewController {
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
-        title = "mapas"
         
         addCustomPin(coordinate: MapConstants.pracaPazCoordinate)
         addCustomPin(coordinate: MapConstants.cbCoordinate)
