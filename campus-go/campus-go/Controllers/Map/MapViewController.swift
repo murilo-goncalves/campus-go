@@ -24,7 +24,7 @@ extension MKMapView {
     }
 }
 
-class MapViewController: UIViewController, MKMapViewDelegate {
+class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var topView: UIView!
@@ -58,45 +58,6 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         pin.title = "Lugar desconhecido"
         pin.subtitle = "Visitar o lugar"
         mapView.addAnnotation(pin)
-    }
-    
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard !(annotation is MKUserLocation) else {
-            return nil
-        }
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
-        
-        if annotationView == nil {
-            //Create the view
-            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
-            annotationView?.canShowCallout = true
-        } else {
-            annotationView?.annotation = annotation
-        }
-        annotationView?.image = UIImage(named: "unknown-pin-purple")
-        annotationView?.frame.size = CGSize(width: 18, height: 30)
-        let btn = UIButton(type: .detailDisclosure )
-        btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
-        btn.tintColor = Color.pink
-        annotationView?.rightCalloutAccessoryView = btn
-        return annotationView
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // do something
-        view.frame.size = CGSize(width: 36, height: 60)
-        view.centerOffset = .zero
-    }
-    
-    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        UIView.animate(withDuration: 0.5, animations: {
-            view.frame.size = CGSize(width: 18, height: 30)
-        })
-    }
-    
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-            //print("Tap")
-        performSegue(withIdentifier: "placeDetails", sender: nil)
     }
     
     private func setupMapView() {
@@ -205,4 +166,47 @@ extension MapViewController: ResultsTableViewDelegate {
         
     }
     
+}
+
+// MARK: - MKMapViewDelegate
+
+extension MapViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: "custom")
+        
+        if annotationView == nil {
+            //Create the view
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "custom")
+            annotationView?.canShowCallout = true
+        } else {
+            annotationView?.annotation = annotation
+        }
+        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        annotationView?.frame.size = CGSize(width: 18, height: 30)
+        let btn = UIButton(type: .detailDisclosure )
+        btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
+        btn.tintColor = Color.pink
+        annotationView?.rightCalloutAccessoryView = btn
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        // do something
+        view.frame.size = CGSize(width: 36, height: 60)
+        view.centerOffset = .zero
+    }
+    
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            view.frame.size = CGSize(width: 18, height: 30)
+        })
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+            //print("Tap")
+        performSegue(withIdentifier: "placeDetails", sender: nil)
+    }
 }
