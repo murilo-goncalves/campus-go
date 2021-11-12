@@ -44,10 +44,9 @@ class MapViewController: UIViewController {
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
-        title = "mapas"
         
-        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
-        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
+        addCustomPin(coordinate: MapConstants.pracaPazCoordinate)
+        addCustomPin(coordinate: MapConstants.cbCoordinate)
         
         mapServices = MapServices(mapView)
     }
@@ -173,7 +172,7 @@ extension MapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         annotationView?.image = UIImage(named: "unknown-pin-purple")
-        annotationView?.frame.size = CGSize(width: 18, height: 30)
+        annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
         btn.tintColor = Color.pink
@@ -183,17 +182,15 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // do something
-        view.frame.size = CGSize(width: 36, height: 60)
+        view.frame.size = CGSize(width: MapConstants.selectedAnnitationWidht, height: MapConstants.selectedAnnotationHeight)
         view.centerOffset = .zero
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         UIView.animate(withDuration: 0.5, animations: {
-            view.frame.size = CGSize(width: 18, height: 30)
+            view.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         })
     }
-    
-
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         performSegue(withIdentifier: "placeDetails", sender: view.annotation)
@@ -201,7 +198,7 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.lineWidth = 5.0
+        renderer.lineWidth = MapConstants.routeLineWidth
         renderer.strokeColor = Color.pink
         
         return renderer
