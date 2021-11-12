@@ -16,6 +16,7 @@
 		5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC076270B442600D33B44 /* Achievement.storyboard */; };
 		5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC078270B444000D33B44 /* AchievementView.swift */; };
 		5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC07C270B46EF00D33B44 /* AchievementController.swift */; };
+		5F8C7710273D4AA600F3E336 /* Places.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F8C770F273D4AA600F3E336 /* Places.json */; };
 		5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9B24132732B1820012D92D /* AchievementProgressView.xib */; };
 		5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B24152732B3900012D92D /* AchievementProgressView.swift */; };
 		5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */; };
@@ -86,6 +87,7 @@
 		5F3CC076270B442600D33B44 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		5F3CC078270B444000D33B44 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		5F3CC07C270B46EF00D33B44 /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
+		5F8C770F273D4AA600F3E336 /* Places.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Places.json; sourceTree = "<group>"; };
 		5F9B24132732B1820012D92D /* AchievementProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementProgressView.xib; sourceTree = "<group>"; };
 		5F9B24152732B3900012D92D /* AchievementProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementProgressView.swift; sourceTree = "<group>"; };
 		5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTitleView.swift; sourceTree = "<group>"; };
@@ -295,6 +297,7 @@
 				62C2DF1F270493D6002118A0 /* Assets.xcassets */,
 				623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */,
 				62FFDA82273C0D3E00C67C9F /* Colors.swift */,
+				5F8C770F273D4AA600F3E336 /* Places.json */,
 			);
 			path = "campus-go";
 			sourceTree = "<group>";
@@ -521,6 +524,7 @@
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,
 				5961B0BB273409F300E65B8F /* AchievmentTest.storyboard in Resources */,
 				62C2DF3227049454002118A0 /* Places.storyboard in Resources */,
+				5F8C7710273D4AA600F3E336 /* Places.json in Resources */,
 				5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */,
 				5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */,
 				62C2DF2E27049437002118A0 /* Map.storyboard in Resources */,

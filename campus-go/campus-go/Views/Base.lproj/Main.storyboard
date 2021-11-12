@@ -31,7 +31,7 @@
         <!--Map-->
         <scene sceneID="jV4-Ph-HrP">
             <objects>
-                <viewControllerPlaceholder storyboardName="Map" referencedIdentifier="Map" id="rC3-uq-4ax" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Map" id="rC3-uq-4ax" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="Pd2-CI-fEZ"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cUv-au-aCs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

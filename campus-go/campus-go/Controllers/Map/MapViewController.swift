@@ -192,18 +192,10 @@ extension MapViewController: MKMapViewDelegate {
         })
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-        
-        let storyboard: UIStoryboard = UIStoryboard(name: "Place", bundle: nil)
-        let destVc = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as! PlaceViewController
 
-        destVc.modalPresentationStyle = UIModalPresentationStyle.automatic
-        destVc.modalTransitionStyle = UIModalTransitionStyle.coverVertical
-        
-        destVc.placeCoordinate = view.annotation?.coordinate
-        destVc.routeDelegate = self
-        
-        present(destVc, animated: true, completion: nil)
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        performSegue(withIdentifier: "placeDetails", sender: view.annotation)
     }
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -212,6 +204,16 @@ extension MapViewController: MKMapViewDelegate {
         renderer.strokeColor = Color.pink
         
         return renderer
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "placeDetails" {
+            if let destVC = segue.destination as? PlaceViewController,
+               let annotation = sender as? MKAnnotation {
+                destVC.placeCoordinate = annotation.coordinate
+                destVC.routeDelegate = self
+            }
+        }
     }
 }
 
