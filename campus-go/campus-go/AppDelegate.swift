@@ -13,8 +13,14 @@ import UserNotifications
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    var hasAlreadyLaunched: Bool!
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
+        
+        hasAlreadyLaunched ? print("teste") : UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+    
         // Override point for customization after application launch.
         registerForPushNotifications()
         
