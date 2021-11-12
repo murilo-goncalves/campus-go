@@ -119,6 +119,7 @@
 		6292EC59273AA37A00033BEC /* Place+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataClass.swift"; sourceTree = "<group>"; };
 		6292EC5A273AA37A00033BEC /* Place+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Place+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		629BD3AC270B2EC60068FF7A /* MapConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapConstants.swift; sourceTree = "<group>"; };
+		62BF4D59273EAC0100665F11 /* CB-RS.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "CB-RS.gpx"; sourceTree = "<group>"; };
 		62C2DF10270493D4002118A0 /* campus-go.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "campus-go.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		62C2DF13270493D4002118A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		62C2DF15270493D4002118A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -298,6 +299,7 @@
 				623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */,
 				62FFDA82273C0D3E00C67C9F /* Colors.swift */,
 				5F8C770F273D4AA600F3E336 /* Places.json */,
+				62BF4D59273EAC0100665F11 /* CB-RS.gpx */,
 			);
 			path = "campus-go";
 			sourceTree = "<group>";

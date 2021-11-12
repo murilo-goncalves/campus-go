@@ -192,8 +192,6 @@ extension MapViewController: MKMapViewDelegate {
         })
     }
     
-
-    
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         performSegue(withIdentifier: "placeDetails", sender: view.annotation)
     }
