@@ -46,17 +46,34 @@ class MapViewController: UIViewController {
         searchCompleter.delegate = self
         title = "mapas"
         
-        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.822403, longitude:  -47.067731))
-        addCustomPin(coordinate: CLLocationCoordinate2D(latitude: -22.817029, longitude:  -47.069759))
+        addCustomPinUnknown(coordinate: CLLocationCoordinate2D(latitude: -22.822267, longitude:  -47.067370))
+        addCustomPinKnown(coordinate: CLLocationCoordinate2D(latitude: -22.81753, longitude:  -47.068607))
+        addCustomPinRoute(coordinate: CLLocationCoordinate2D(latitude: -22.821969, longitude: -47.069792))
         
         mapServices = MapServices(mapView)
     }
     
-    private func addCustomPin(coordinate: CLLocationCoordinate2D){
+    private func addCustomPinUnknown(coordinate: CLLocationCoordinate2D){
         let pin = MKPointAnnotation()
         pin.coordinate = coordinate
         pin.title = "Lugar desconhecido"
-        pin.subtitle = "Visitar o lugar"
+        pin.subtitle = "Conhecer o lugar"
+        mapView.addAnnotation(pin)
+    }
+    
+    private func addCustomPinKnown(coordinate: CLLocationCoordinate2D){
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = "Ciclo Básico"
+        pin.subtitle = "Visitar novamente"
+        mapView.addAnnotation(pin)
+    }
+    
+    private func addCustomPinRoute(coordinate: CLLocationCoordinate2D){
+        let pin = MKPointAnnotation()
+        pin.coordinate = coordinate
+        pin.title = "Quase chegando!"
+//        pin.subtitle = "Visitar novamente"
         mapView.addAnnotation(pin)
     }
     
@@ -172,7 +189,14 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        if annotationView?.annotation?.title == "Lugar desconhecido" {
+            annotationView?.image = UIImage(named: "unknown-pin-purple")
+        } else if annotationView?.annotation?.title == "Quase chegando!"{
+            annotationView?.image = UIImage(named: "unknown-pin-orange")
+        } else {
+            annotationView?.image = UIImage(named: "known-pin-green")
+        }
+        
         annotationView?.frame.size = CGSize(width: 18, height: 30)
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
