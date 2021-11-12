@@ -19,8 +19,12 @@ class AchievementTestView: UITableViewController{
         fetchAchievement()
     }
     func fetchAchievement() {
-        guard let list = service.retrieve() else { return }
-        listAchievements = list
+        do {
+            guard let list = try service.retrieve() else { return }
+            listAchievements = list
+        } catch {
+            print("Não aguento mais passar raiva")
+        }
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
@@ -37,9 +41,13 @@ class AchievementTestView: UITableViewController{
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            service.delete(uid: listAchievements[indexPath.row].uid!)
-            listAchievements.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            do{
+                try service.delete(uid: listAchievements[indexPath.row].uid!)
+                listAchievements.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            } catch {
+                print("tô cansado de passar raiva")
+            }
         }
     }
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -48,8 +56,12 @@ class AchievementTestView: UITableViewController{
         let uid = listAchievements[indexPath.row].uid!
         let editAction = UIAlertAction(title: "concluir", style: .default) { [weak self, weak ac] action in
             guard let conquista = ac?.textFields?[0].text else { return }
-            self?.service.update(condition: nil, name: conquista, xpPoints: nil, uid: uid )
-            self?.listAchievements[indexPath.row].name = conquista
+            do{
+                try self?.service.update(condition: nil, name: conquista, xpPoints: nil, uid: uid )
+                self?.listAchievements[indexPath.row].name = conquista
+            } catch {
+                print("Já tô puto com isso")
+            }
         }
         ac.addAction(editAction)
         present(ac, animated: true)
@@ -66,8 +78,13 @@ class AchievementTestView: UITableViewController{
         present(ac, animated: true)
     }
     func submit(_ conquista: String){
-        guard let novaConquista = service.create(condition: "n sei", name: conquista, xpPoints: 2000) else { return }
-        listAchievements.insert(novaConquista, at: 0)
+        do{
+            guard let novaConquista = try service.create(condition: "n sei", name: conquista, xpPoints: 2000) else { return }
+            listAchievements.insert(novaConquista, at: 0)
+        } catch {
+            print("Eu não aguento mais")
+        }
+
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
