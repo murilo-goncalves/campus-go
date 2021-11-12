@@ -103,7 +103,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     @IBAction func goBtnAction(_ sender: UIButton) {
         routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
-        self.dismiss(animated: true, completion: nil)
+        _ = navigationController?.popViewController(animated: true)
     }
 }
 
