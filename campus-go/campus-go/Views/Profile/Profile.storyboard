@@ -44,13 +44,13 @@
                                 <rect key="frame" x="16" y="140" width="382" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capivara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48Q-Bz-ZfU">
-                                        <rect key="frame" x="140" y="24" width="67" height="20.5"/>
+                                        <rect key="frame" x="143.5" y="22.5" width="67" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="books" translatesAutoresizingMaskIntoConstraints="NO" id="MNj-X5-Wwl">
-                                        <rect key="frame" x="24" y="24" width="92" height="92"/>
+                                        <rect key="frame" x="24" y="22.5" width="95.5" height="95.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MNj-X5-Wwl" secondAttribute="height" multiplier="1:1" id="Mdc-jV-tza"/>
                                         </constraints>
@@ -61,7 +61,7 @@
                                 <constraints>
                                     <constraint firstItem="48Q-Bz-ZfU" firstAttribute="leading" secondItem="MNj-X5-Wwl" secondAttribute="trailing" constant="24" id="412-Df-ibY"/>
                                     <constraint firstItem="MNj-X5-Wwl" firstAttribute="centerY" secondItem="e6X-VH-HET" secondAttribute="centerY" id="RwW-m1-TMN"/>
-                                    <constraint firstItem="MNj-X5-Wwl" firstAttribute="width" secondItem="e6X-VH-HET" secondAttribute="width" multiplier="0.240838" id="eHo-TO-QAF"/>
+                                    <constraint firstItem="MNj-X5-Wwl" firstAttribute="width" secondItem="e6X-VH-HET" secondAttribute="width" multiplier="0.25" id="eHo-TO-QAF"/>
                                     <constraint firstAttribute="width" secondItem="e6X-VH-HET" secondAttribute="height" multiplier="191:70" id="gKI-5g-5PG"/>
                                     <constraint firstItem="MNj-X5-Wwl" firstAttribute="leading" secondItem="e6X-VH-HET" secondAttribute="leading" constant="24" id="kcl-KE-Ogj"/>
                                     <constraint firstItem="48Q-Bz-ZfU" firstAttribute="top" secondItem="MNj-X5-Wwl" secondAttribute="top" id="qic-ym-ft1"/>
@@ -90,21 +90,18 @@
                                     </label>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Nji-0m-T24" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
                                         <rect key="frame" x="16" y="48" width="86" height="86"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="Nji-0m-T24" secondAttribute="height" multiplier="1:1" id="AET-Al-sWX"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HK4-FG-uyF" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
                                         <rect key="frame" x="148" y="48" width="86" height="86"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="HK4-FG-uyF" secondAttribute="height" multiplier="1:1" id="Rej-TD-3hs"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6If-qP-rNM" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
                                         <rect key="frame" x="280" y="48" width="86" height="86"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="6If-qP-rNM" secondAttribute="height" multiplier="1:1" id="YI8-FV-1p0"/>
                                         </constraints>
@@ -165,57 +162,15 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="achievementCell" id="xpd-2m-sSs" customClass="AchievementCell" customModule="campus_go" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell" id="0ri-eZ-nHc" customClass="AchievementCollectionViewCell" customModule="campus_go" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul4-UB-PNK">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="meT-gF-pve">
                                             <rect key="frame" x="0.0" y="0.0" width="382" height="76"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GHn-aa-env">
-                                                    <rect key="frame" x="353.5" y="32" width="12.5" height="16.5"/>
-                                                    <color key="tintColor" systemColor="systemPinkColor"/>
-                                                </imageView>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Dqm-oF-wXx">
-                                                    <rect key="frame" x="96" y="19.5" width="106.5" height="41"/>
-                                                    <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xh9-dR-u8L">
-                                                            <rect key="frame" x="0.0" y="0.0" width="106.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conheça tudo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jzk-tq-l40">
-                                                            <rect key="frame" x="0.0" y="20.5" width="106.5" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="light" pointSize="17"/>
-                                                            <color key="textColor" systemColor="systemGray2Color"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
-                                                    </subviews>
-                                                </stackView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GHt-Po-Ucb" customClass="AchievementProgressView" customModule="campus_go" customModuleProvider="target">
-                                                    <rect key="frame" x="16" y="8" width="64" height="64"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" secondItem="GHt-Po-Ucb" secondAttribute="height" multiplier="1:1" id="74f-XO-4gO"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="GHn-aa-env" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="5Sq-dL-ZHK"/>
-                                                <constraint firstItem="GHt-Po-Ucb" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="Drj-YY-X1m"/>
-                                                <constraint firstAttribute="trailing" secondItem="GHn-aa-env" secondAttribute="trailing" constant="16" id="LIz-bj-ebs"/>
-                                                <constraint firstAttribute="width" constant="382" id="LfX-i9-KeP"/>
-                                                <constraint firstAttribute="bottom" secondItem="GHt-Po-Ucb" secondAttribute="bottom" constant="8" id="Ljk-ej-xD1"/>
-                                                <constraint firstAttribute="height" constant="80" id="cCw-bc-r3Q"/>
-                                                <constraint firstItem="Dqm-oF-wXx" firstAttribute="leading" secondItem="GHt-Po-Ucb" secondAttribute="trailing" constant="16" id="dXg-LZ-ax4"/>
-                                                <constraint firstItem="GHt-Po-Ucb" firstAttribute="leading" secondItem="ul4-UB-PNK" secondAttribute="leading" constant="16" id="dsf-36-aCY"/>
-                                                <constraint firstItem="GHt-Po-Ucb" firstAttribute="top" secondItem="ul4-UB-PNK" secondAttribute="top" constant="8" id="e5q-0e-EeE"/>
-                                                <constraint firstItem="Dqm-oF-wXx" firstAttribute="centerY" secondItem="ul4-UB-PNK" secondAttribute="centerY" id="ic0-rU-yfG"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="achievementProgressView" destination="GHt-Po-Ucb" id="efv-5N-JhJ"/>
-                                            <outlet property="titleLabel" destination="Jzk-tq-l40" id="f3Y-lz-3yh"/>
-                                            <segue destination="Ftt-sd-6Rd" kind="presentation" identifier="showAchievement" id="OKv-1R-kMi"/>
+                                            <segue destination="Ftt-sd-6Rd" kind="presentation" identifier="showAchievement" id="0TA-46-4uM"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -261,6 +216,7 @@
                     <navigationItem key="navigationItem" title="Perfil" id="Z0A-5r-CGH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomCollectionConstraint" destination="QqC-TL-WXa" id="laR-CH-HfM"/>
                         <outlet property="profileView" destination="5EZ-qb-Rvc" id="ino-A8-L5z"/>
                     </connections>
                 </viewController>
@@ -317,13 +273,9 @@
     </scenes>
     <resources>
         <image name="books" width="512" height="512"/>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="crown.fill" catalog="system" width="128" height="92"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

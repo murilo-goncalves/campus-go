@@ -16,4 +16,5 @@ struct Color {
     static let green = UIColor(rgb: 0x34C759)
     static let purple = UIColor(rgb: 0x5856D6)
     static let orange = UIColor(rgb: 0xFF9500)
+    
 }
