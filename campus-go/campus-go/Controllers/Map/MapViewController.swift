@@ -33,8 +33,6 @@ class MapViewController: UIViewController {
     private var searchController: UISearchController!
     private var resultsTableViewController: ResultsTableViewController!
     
-    private var listPlaces: [Place] = []
-    private let service = PlaceService()
     
     private let searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
@@ -43,12 +41,7 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            guard let list = try service.readAll() else { return }
-            listPlaces = list
-        } catch {
-            print("funciona pelo amor de deus")
-        }
+
         
         setupMapView()
         setupResultsTableView()
@@ -56,18 +49,8 @@ class MapViewController: UIViewController {
         definesPresentationContext = true
         searchCompleter.delegate = self
         
-        addCustomPin(coordinate: MapConstants.pracaPazCoordinate)
-        addCustomPin(coordinate: MapConstants.cbCoordinate)
-        
         mapServices = MapServices(mapView)
-    }
-    
-    private func addCustomPin(coordinate: CLLocationCoordinate2D){
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = "Lugar desconhecido"
-        pin.subtitle = "Visitar o lugar"
-        mapView.addAnnotation(pin)
+        mapServices.populateMap()
     }
     
     private func setupMapView() {
@@ -75,6 +58,7 @@ class MapViewController: UIViewController {
         mapView.showsUserLocation = true
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
+        
     }
     
     private func setupResultsTableView() {
@@ -214,17 +198,11 @@ extension MapViewController: MKMapViewDelegate {
         
         return renderer
     }
-    //getUserCoordinate2D()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeDetails" {
             if let destVC = segue.destination as? PlaceViewController,
-               let annotation = sender as? MKAnnotation {
-                for place in listPlaces {
-                    if place.latitude == annotation.coordinate.latitude && place.longitude == annotation.coordinate.longitude {
-                        destVC.place = place
-                        break
-                    }
-                }
+               let annotation = sender as? CustomAnnotation {
+                destVC.place = mapServices.getPlace(uid: annotation.uid)!
                 destVC.placeCoordinate = annotation.coordinate
                 destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self

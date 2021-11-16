@@ -20,7 +20,7 @@ class PlaceCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
     }
-    public func configure(with image: UIImage,status: PlaceCellStatus , screenState: PlaceScreenState){
+    public func configure(with image: UIImage,status: PlaceState , screenState: PlaceScreenState){
         
         self.layer.cornerRadius = imageView.frame.width * 0.05
         imageView.layer.borderWidth = 0.5
@@ -29,13 +29,13 @@ class PlaceCollectionViewCell: UICollectionViewCell {
         
         
         
-        if(status == PlaceCellStatus.known){
+        if(status == PlaceState.known){
             imageView.image = image
             mapPin.isHidden = true
             label.text = screenState == PlaceScreenState.small ? "" : "Nome do lugar"
             bottomColor.backgroundColor = Color.lightGreen
             
-        } else if(status == PlaceCellStatus.unknown){
+        } else if(status == PlaceState.unknown){
             imageView.image = image.convertToGrayScale()
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Desconhecido"

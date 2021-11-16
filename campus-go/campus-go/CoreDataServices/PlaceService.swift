@@ -29,6 +29,9 @@ class PlaceService {
         let uid = UUID()
         place.setValue(name, forKey: "name")
         place.setValue(uid, forKey: "uid")
+        place.setValue(latitude, forKey: "latitude")
+        place.setValue(longitude, forKey: "longitude")
+
         
         try context.save()
         
