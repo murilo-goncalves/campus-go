@@ -56,7 +56,7 @@ class MapServices: NSObject {
     }
     
     public func getUserCoordinate2D() -> CLLocationCoordinate2D {
-        return locationManager.location?.coordinate ?? CLLocationCoordinate2DMake(-22.816763, -47.068275)
+        return locationManager.location?.coordinate ?? MapConstants.unicampCoordinate
     }
 }
 
