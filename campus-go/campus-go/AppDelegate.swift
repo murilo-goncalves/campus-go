@@ -24,11 +24,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.locationManager!.delegate = self
         
         hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
-        
-        hasAlreadyLaunched ? print("teste") : UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
-    
+        self.preLoadCoreData()
+        if hasAlreadyLaunched {
+            print("teste")
+        }
+        else{
+            
+            UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+        }
+            
         // Override point for customization after application launch.
-        registerForPushNotifications()
         self.notificationCenter = UNUserNotificationCenter.current()
         notificationCenter!.delegate = self
         let options: UNAuthorizationOptions = [.alert, .sound]
@@ -40,6 +45,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         return true
+    }
+
+    func preLoadCoreData() {
+        guard let path = Bundle.main.path(forResource: "Places", ofType: "json") else { return }
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            print(data)
+            let context = persistentContainer.newBackgroundContext()
+            let decoder = JSONDecoder()
+            decoder.userInfo[.context!] = context
+            let result = try decoder.decode([Place].self, from: data)
+            for object in result {
+                try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude)
+            }
+            var teste = try! PlaceService().readAll()
+            for object in teste! {
+                print(object.name!)
+                print(object.latitude)
+            }
+        }
+        catch {
+            print("deu ruim \(error)")
+        }
     }
 
     // MARK: UISceneSession Lifecycle

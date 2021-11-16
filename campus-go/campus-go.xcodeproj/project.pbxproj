@@ -17,6 +17,7 @@
 		5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC078270B444000D33B44 /* AchievementView.swift */; };
 		5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC07C270B46EF00D33B44 /* AchievementController.swift */; };
 		5F8C7710273D4AA600F3E336 /* Places.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F8C770F273D4AA600F3E336 /* Places.json */; };
+		5F99FB372743EC0000EFD77A /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037A9A2732BCF700CBEEAD /* PlaceService.swift */; };
 		5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9B24132732B1820012D92D /* AchievementProgressView.xib */; };
 		5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F9B24152732B3900012D92D /* AchievementProgressView.swift */; };
 		5FA84DFF27297DFE005C4D23 /* ProfileTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FA84DFE27297DFE005C4D23 /* ProfileTitleView.swift */; };
@@ -555,6 +556,7 @@
 				6292EC61273AA37A00033BEC /* Achievement+CoreDataClass.swift in Sources */,
 				6292EC64273AA37A00033BEC /* Place+CoreDataProperties.swift in Sources */,
 				628270BA273D3CE000A540D3 /* MapServices.swift in Sources */,
+				5F99FB372743EC0000EFD77A /* PlaceService.swift in Sources */,
 				6292EC5D273AA37A00033BEC /* Visits+CoreDataClass.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
 				5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */,
