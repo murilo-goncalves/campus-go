@@ -10,26 +10,33 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
+    @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
     @IBOutlet var profileView: ProfileView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setProfileTitle()
-        setProgressView()
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
-        
-        
+        profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
         profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.delegate = self
         profileView.recentAchievementView.dataSource = self
+        let layout = UICollectionViewFlowLayout()
+        profileView.recentAchievementView.collectionViewLayout = layout
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        profileView.profileTitleView.clipsToBounds = true
+        profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2
+        setProgressView()
+        bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
     }
     
     func setProfileTitle() {
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderWidth = 1
-        profileView.profileTitleView.imageView.layer.cornerRadius = 50
-        profileView.profileTitleView.clipsToBounds = true
         profileView.profileTitleView.title.text = "Titulo"
     }
     
@@ -71,23 +78,37 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return  Int(collectionView.frame.height / 76)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellView = profileView.recentAchievementView.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath as IndexPath) as! AchievementCell
-        cellView.titleLabel.text = "Lorem Ipsum"
-        cellView.layer.borderColor = UIColor.systemGray.cgColor
-        cellView.layer.borderWidth = 0.5
-        cellView.achievementProgressView.awakeFromNib()
-        return cellView
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
+        cell.configure(hasProgress: false)
+        return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
             destVC.loadViewIfNeeded()
-            //destVC.achievementView.achievementLabel.text = "teste"
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showAchievement", sender: collectionView.cellForItem(at: indexPath))
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
+}
+
+extension ProfileViewController: UICollectionViewDelegateFlowLayout{
+    
+    // MARK: UICollectionViewDelegateFlowLayout methods
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: profileView.recentAchievementView.frame.width ,height: 76)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
 }
