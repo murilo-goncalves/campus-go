@@ -24,13 +24,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.locationManager!.delegate = self
         
         hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
-        self.preLoadCoreData()
+        
         if hasAlreadyLaunched {
-            print("teste")
+            var teste = try! PlaceService().readAll()
+            for object in teste! {
+                print(object.name!)
+                print(object.latitude)
+                print(object.placeID)
+            }
         }
         else{
-            
             UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+            self.preLoadCoreData()
         }
             
         // Override point for customization after application launch.
@@ -57,16 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             decoder.userInfo[.context!] = context
             let result = try decoder.decode([Place].self, from: data)
             for object in result {
-                try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude)
+                try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID)
             }
-            let teste = try! PlaceService().readAll()
-            for object in teste! {
-                print(object.name!)
-                print(object.latitude)
-            }
-        }
-        catch {
-            print("deu ruim \(error)")
+        } catch {
+            print("\(error)")
         }
     }
 

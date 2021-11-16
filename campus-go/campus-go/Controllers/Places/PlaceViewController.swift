@@ -84,11 +84,19 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.scrollView.isPagingEnabled = true
         placeView.recentAchievement.dataSource = self
         placeView.recentAchievement.delegate = self
+        
+        placeView.recentAchievement.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
+        let layout = UICollectionViewFlowLayout()
+        placeView.recentAchievement.collectionViewLayout = layout
+        
     }
     
     //Depois de aparecer na tela
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        placeView.recentAchievement.layer.borderWidth = 1
+        placeView.recentAchievement.layer.borderColor = UIColor.lightGray.cgColor
+        placeView.recentAchievement.layer.cornerRadius = 5
         //print(placeView.scrollView.frame)
     }
     
@@ -139,18 +147,32 @@ extension PlaceViewController: UICollectionViewDataSource{
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellView = placeView.recentAchievement.dequeueReusableCell(withReuseIdentifier: "recentAchievementCell", for: indexPath as IndexPath) as! RecentAchievementCell
-        cellView.achievementName.text = "Name"
-        cellView.achievementDescription.text = "Description"
-        cellView.achievementImage.image = UIImage(named: "books")
-        cellView.layer.borderColor = UIColor.systemGray.cgColor
-        cellView.layer.borderWidth = 0.5
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
+        cell.configure(hasProgress: false)
+        return cell
         
-        return cellView
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showAchievement" {
+            let destVC = segue.destination as! AchievementController
+            destVC.loadViewIfNeeded()
+        }
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showAchievement", sender: collectionView.cellForItem(at: indexPath))
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
     }
 
 }
-extension UICollectionView {
+extension PlaceViewController: UICollectionViewDelegateFlowLayout{
+    // MARK: UICollectionViewDelegateFlowLayout methods
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: placeView.recentAchievement.frame.width ,height: 76)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
 }
-
 
