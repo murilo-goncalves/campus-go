@@ -7,10 +7,12 @@
 
 import UIKit
 import CoreLocation
-
 class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate{
     
     @IBOutlet var placeView: PlaceView!
+    
+    var place = Place()
+    let service = PlaceService()
     
     var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -19,6 +21,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     var indexPath: IndexPath!
     
     var placeCoordinate: CLLocationCoordinate2D?
+    var userCoordinate: CLLocationCoordinate2D?
     var routeDelegate: RouteDelegate?
     
     override func viewDidLoad() {
@@ -26,8 +29,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
                
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
-        placeView.nomeLugar.text = "Lugar desconhecido"
-        placeView.distanciaLugar.text = "2.2 Km"
+        placeView.nomeLugar.text = "\(place.name ?? "Sem nome")"
+        placeView.distanciaLugar.text = "\(calculaDistancia(userCoordinate, placeCoordinate))"
         placeView.recentAchievement.layer.cornerRadius = 15.0
         placeView.recentAchievement.layer.borderWidth = 5.0
         placeView.recentAchievement.layer.borderColor = UIColor.clear.cgColor
@@ -93,6 +96,24 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //print(placeView.scrollView.frame)
+    }
+    
+    //Calcula a distância entre o usuário e o lugar
+    
+    func calculaDistancia(_ userLocation: CLLocationCoordinate2D?, _ placeLocation: CLLocationCoordinate2D?) -> Double {
+        
+        guard let userLocation = userLocation else {
+            return -1.0
+        }
+        guard let placeLocation = placeLocation else {
+            return -1.0
+        }
+        
+        let uLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+        let pLocation = CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude)
+        let distance  = uLocation.distance(from: pLocation)
+        
+        return Double(distance)
     }
     
     //atualizar o pageControl

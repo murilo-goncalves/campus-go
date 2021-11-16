@@ -8,6 +8,7 @@
 import MapKit
 import CoreLocation
 import UIKit
+import CoreData
 
 extension MKMapView {
     func centerToLocation(
@@ -32,6 +33,9 @@ class MapViewController: UIViewController {
     private var searchController: UISearchController!
     private var resultsTableViewController: ResultsTableViewController!
     
+    private var listPlaces: [Place] = []
+    private let service = PlaceService()
+    
     private let searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
     
@@ -39,6 +43,13 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            guard let list = try service.readAll() else { return }
+            listPlaces = list
+        } catch {
+            print("funciona pelo amor de deus")
+        }
+        
         setupMapView()
         setupResultsTableView()
         setupSearchController()
@@ -203,12 +214,19 @@ extension MapViewController: MKMapViewDelegate {
         
         return renderer
     }
-    
+    //getUserCoordinate2D()
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeDetails" {
             if let destVC = segue.destination as? PlaceViewController,
                let annotation = sender as? MKAnnotation {
+                for place in listPlaces {
+                    if place.latitude == annotation.coordinate.latitude && place.longitude == annotation.coordinate.longitude {
+                        destVC.place = place
+                        break
+                    }
+                }
                 destVC.placeCoordinate = annotation.coordinate
+                destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self
             }
         }
