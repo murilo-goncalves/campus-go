@@ -8,6 +8,7 @@
 import MapKit
 import CoreLocation
 import UIKit
+import CoreData
 
 extension MKMapView {
     func centerToLocation(
@@ -32,6 +33,7 @@ class MapViewController: UIViewController {
     private var searchController: UISearchController!
     private var resultsTableViewController: ResultsTableViewController!
     
+    
     private let searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
     
@@ -39,24 +41,16 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         setupMapView()
         setupResultsTableView()
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
         
-        addCustomPin(coordinate: MapConstants.pracaPazCoordinate)
-        addCustomPin(coordinate: MapConstants.cbCoordinate)
-        
         mapServices = MapServices(mapView)
-    }
-    
-    private func addCustomPin(coordinate: CLLocationCoordinate2D){
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = "Lugar desconhecido"
-        pin.subtitle = "Visitar o lugar"
-        mapView.addAnnotation(pin)
+        mapServices.populateMap()
     }
     
     private func setupMapView() {
@@ -64,6 +58,7 @@ class MapViewController: UIViewController {
         mapView.showsUserLocation = true
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
+        
     }
     
     private func setupResultsTableView() {
@@ -203,12 +198,13 @@ extension MapViewController: MKMapViewDelegate {
         
         return renderer
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeDetails" {
             if let destVC = segue.destination as? PlaceViewController,
-               let annotation = sender as? MKAnnotation {
+               let annotation = sender as? CustomAnnotation {
+                destVC.place = mapServices.getPlace(uid: annotation.uid)!
                 destVC.placeCoordinate = annotation.coordinate
+                destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self
             }
         }

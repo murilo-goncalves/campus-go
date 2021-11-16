@@ -64,8 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for object in result {
                 try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID)
             }
-        }
-        catch {
+        } catch {
             print("\(error)")
         }
     }
