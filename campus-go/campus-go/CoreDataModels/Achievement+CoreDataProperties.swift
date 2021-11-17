@@ -2,7 +2,7 @@
 //  Achievement+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 09/11/21.
+//  Created by Murilo Gonçalves on 17/11/21.
 //
 //
 
@@ -21,7 +21,6 @@ extension Achievement {
     @NSManaged public var uid: UUID?
     @NSManaged public var xpPoints: Int64
     @NSManaged public var relatedPlaces: NSSet?
-    @NSManaged public var users: NSSet?
 
 }
 
@@ -39,23 +38,6 @@ extension Achievement {
 
     @objc(removeRelatedPlaces:)
     @NSManaged public func removeFromRelatedPlaces(_ values: NSSet)
-
-}
-
-// MARK: Generated accessors for users
-extension Achievement {
-
-    @objc(addUsersObject:)
-    @NSManaged public func addToUsers(_ value: User)
-
-    @objc(removeUsersObject:)
-    @NSManaged public func removeFromUsers(_ value: User)
-
-    @objc(addUsers:)
-    @NSManaged public func addToUsers(_ values: NSSet)
-
-    @objc(removeUsers:)
-    @NSManaged public func removeFromUsers(_ values: NSSet)
 
 }
 
