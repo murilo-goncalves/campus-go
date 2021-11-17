@@ -82,12 +82,17 @@ class PlaceService {
         
         if newState == PlaceState.onRoute {
             for place in places {
-                if place.state == PlaceState.onRoute.rawValue {
+                if isOnRoute(uid: place.uid!) {
                     try! update(uid: place.uid!, newState: PlaceState.unknown)
                 }
             }
         }
         try update(uid: uid, newState: newState)
+    }
+    
+    func isOnRoute(uid: UUID) -> Bool {
+        let place = try! read(uid: uid)!
+        return place.state == PlaceState.onRoute.rawValue
     }
     
     func delete(uid: UUID) throws {

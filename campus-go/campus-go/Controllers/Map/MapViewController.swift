@@ -46,6 +46,7 @@ class MapViewController: UIViewController {
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
+        (UIApplication.shared.delegate as! AppDelegate).annotationDelegate = self
 
         mapServices = MapServices(mapView)
         mapServices.populateMap()
@@ -219,14 +220,12 @@ extension MapViewController: MKMapViewDelegate {
                 destVC.placeCoordinate = annotation.coordinate
                 destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self
+                destVC.annotationDelegate = self
             }
         }
     }
     
-    func updateAnnotations(){
-        mapView.removeAnnotations(mapView.annotations)
-        mapServices.populateMap()
-    }
+
 }
 
 // MARK: - MKMapViewDelegate
@@ -235,6 +234,12 @@ extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
         let userCoordinate = mapServices.getUserCoordinate2D()
         mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: destinationCoordinate)
-        updateAnnotations()
+    }
+}
+
+extension MapViewController: AnnotationDelegate {
+    func updateAnnotations(){
+        mapView.removeAnnotations(mapView.annotations)
+        mapServices.populateMap()
     }
 }
