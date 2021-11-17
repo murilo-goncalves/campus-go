@@ -48,21 +48,39 @@ class MapServices: NSObject {
         return nil
     }
     
+    private func createGeofenceRegion(geofenceRegionCenter: CLLocationCoordinate2D, radius: CLLocationDistance, identifier: String) -> CLRegion {
+            let geofenceRegion = CLCircularRegion(center: geofenceRegionCenter, radius: radius, identifier: identifier)
+            geofenceRegion.notifyOnEntry = true
+            
+            locationManager.startMonitoring(for: geofenceRegion)
+        
+            return geofenceRegion
+    }
+    
+    private func addCustomAnnotation(place: Place) {
+        let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+        let pin = CustomAnnotation(uid: place.uid!, state: PlaceState.unknown, coordinate: coordinate)
+        
+        switch pin.state {
+        case PlaceState.known:
+            pin.title = place.name
+        case PlaceState.onRoute:
+            pin.title = "Em rota"
+        case PlaceState.unknown:
+            pin.title = "Lugar desconhecido"
+        }
+        
+        let uid: String = place.uid!.uuidString
+        let region = createGeofenceRegion(geofenceRegionCenter: coordinate, radius: MapConstants.fenceRadius, identifier: uid)
+        
+        pin.region = region
+        
+        mapView.addAnnotation(pin)
+    }
+    
     public func populateMap(){
         for place in listPlaces {
-            let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
-            let pin = CustomAnnotation(uid: place.uid!, state: PlaceState.unknown, coordinate: coordinate)
-            
-            switch pin.state {
-            case PlaceState.known:
-                pin.title = place.name
-            case PlaceState.onRoute:
-                pin.title = "Em rota"
-            case PlaceState.unknown:
-                pin.title = "Lugar desconhecido"
-            }
-            
-            mapView.addAnnotation(pin)
+            addCustomAnnotation(place: place)
         }
     }
     
@@ -100,7 +118,6 @@ class MapServices: NSObject {
     public func getUserCoordinate2D() -> CLLocationCoordinate2D {
         return locationManager.location?.coordinate ?? MapConstants.unicampCoordinate
     }
-    
     
 }
 
