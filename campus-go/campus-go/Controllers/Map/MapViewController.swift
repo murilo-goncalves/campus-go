@@ -161,9 +161,12 @@ extension MapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
-        switch (annotationView?.annotation! as! CustomAnnotation).state {
+        let currentAnnotation = annotationView?.annotation as! CustomAnnotation
+        
+        switch currentAnnotation.state {
         case .unknown:
             annotationView?.image = UIImage(named: "unknown-pin-purple")
+            print(currentAnnotation.state)
         case .known:
             annotationView?.image = UIImage(named: "known-pin-green")
         case .onRoute:
@@ -221,9 +224,8 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func updateAnnotations(){
-        let annotations = mapView.annotations
-        mapView.removeAnnotations(annotations)
-        mapView.addAnnotations(annotations)
+        mapView.removeAnnotations(mapView.annotations)
+        mapServices.populateMap()
     }
 }
 
@@ -232,7 +234,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
         let userCoordinate = mapServices.getUserCoordinate2D()
-        updateAnnotations()
         mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: destinationCoordinate)
+        updateAnnotations()
     }
 }

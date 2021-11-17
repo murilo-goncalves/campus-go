@@ -131,8 +131,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     }
     
     @IBAction func goBtnAction(_ sender: UIButton) {
-        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
+        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         _ = navigationController?.popViewController(animated: true)
     }
 }
