@@ -25,4 +25,6 @@ struct MapConstants {
     static let annotationWidth = 18
     static let selectedAnnotationHeight = 60
     static let selectedAnnitationWidht = 36
+    
+    static let fenceRadius: Double = 10
 }

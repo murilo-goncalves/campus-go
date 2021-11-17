@@ -41,8 +41,6 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         setupMapView()
         setupResultsTableView()
         setupSearchController()
@@ -58,13 +56,12 @@ class MapViewController: UIViewController {
         mapView.showsUserLocation = true
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
-        
+        mapView.tintColor = Color.pink
     }
     
     private func setupResultsTableView() {
         resultsTableViewController = self.storyboard?.instantiateViewController(withIdentifier: "ResultsTableViewController") as? ResultsTableViewController
         resultsTableViewController?.delegate = self
-        
     }
     
     private func setupSearchController() {
@@ -116,9 +113,7 @@ extension MapViewController: UITableViewDataSource {
 extension MapViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         searchCompleter.queryFragment = searchText
-        
     }
     
 }
@@ -128,10 +123,8 @@ extension MapViewController: UISearchBarDelegate {
 extension MapViewController: MKLocalSearchCompleterDelegate {
     
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        
         searchResults = completer.results
         resultsTableViewController.tableView.reloadData()
-        
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {

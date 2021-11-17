@@ -25,15 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
         
-        if hasAlreadyLaunched {
-            var teste = try! PlaceService().readAll()
-            for object in teste! {
-                print(object.name!)
-                print(object.latitude)
-                print(object.placeID)
-            }
-        }
-        else{
+        if !hasAlreadyLaunched {
             UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
             self.preLoadCoreData()
         }
@@ -62,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             decoder.userInfo[.context!] = context
             let result = try decoder.decode([Place].self, from: data)
             for object in result {
-                try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID)
+                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages)
             }
         } catch {
             print("\(error)")
