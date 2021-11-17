@@ -146,6 +146,7 @@ extension MapViewController: ResultsTableViewDelegate {
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else {
             return nil
@@ -160,14 +161,22 @@ extension MapViewController: MKMapViewDelegate {
             annotationView?.annotation = annotation
         }
         
-        if annotationView?.annotation?.title == "Em rota" {
-            annotationView?.image = UIImage(named: "unknown-pin-orange")
-        } else if annotationView?.annotation?.title == "Lugar desconhecido" {
+        switch (annotationView?.annotation! as! CustomAnnotation).state {
+        case .unknown:
             annotationView?.image = UIImage(named: "unknown-pin-purple")
-        } else {
+        case .known:
             annotationView?.image = UIImage(named: "known-pin-green")
+        case .onRoute:
+            annotationView?.image = UIImage(named: "unknown-pin-orange")
         }
-        
+//        if annotationView?.annotation?.title == "Em rota" {
+//            annotationView?.image = UIImage(named: "unknown-pin-orange")
+//        } else if annotationView?.annotation?.title == "Lugar desconhecido" {
+//            annotationView?.image = UIImage(named: "unknown-pin-purple")
+//        } else {
+//            annotationView?.image = UIImage(named: "known-pin-green")
+//        }
+//
         annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
@@ -210,6 +219,12 @@ extension MapViewController: MKMapViewDelegate {
             }
         }
     }
+    
+    func updateAnnotations(){
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
+        mapView.addAnnotations(annotations)
+    }
 }
 
 // MARK: - MKMapViewDelegate
@@ -217,6 +232,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
         let userCoordinate = mapServices.getUserCoordinate2D()
+        updateAnnotations()
         mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: destinationCoordinate)
     }
 }
