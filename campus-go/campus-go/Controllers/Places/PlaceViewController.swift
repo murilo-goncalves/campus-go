@@ -26,11 +26,17 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-               
+        if let name = place.name {
+            title = name.components(separatedBy: " - ")[1]
+        }
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
         placeView.nomeLugar.text = "\(place.name ?? "Sem nome")"
-        placeView.distanciaLugar.text = "\(calculaDistancia(userCoordinate, placeCoordinate))"
+        if let userCoord = userCoordinate{
+            placeView.distanciaLugar.text = "\(calculaDistancia(userCoord, placeCoordinate))"
+        } else {
+            placeView.distanciaLugar.text = ""
+        }
         placeView.recentAchievement.layer.cornerRadius = 15.0
         placeView.recentAchievement.layer.borderWidth = 5.0
         placeView.recentAchievement.layer.borderColor = UIColor.clear.cgColor

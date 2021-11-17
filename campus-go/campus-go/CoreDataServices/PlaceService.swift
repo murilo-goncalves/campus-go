@@ -32,7 +32,7 @@ class PlaceService {
         place.setValue(latitude, forKey: "latitude")
         place.setValue(longitude, forKey: "longitude")
         place.setValue(placeID, forKey: "placeID")
-        place.setValue(0, forKey: "state")
+        place.setValue(PlaceState.unknown.rawValue, forKey: "state")
         place.setValue(nImages, forKey: "nImages")
         
         try context.save()

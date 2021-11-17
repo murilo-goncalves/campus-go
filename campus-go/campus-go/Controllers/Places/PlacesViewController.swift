@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 class PlacesViewController: UIViewController{
 
@@ -24,10 +25,20 @@ class PlacesViewController: UIViewController{
     
     //MARK: constants to be deleted
     let numberOfCells:Double = 12;
+    private let service = PlaceService()
     
+    private var places:[Place] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Lugares"
+        
+        do {
+            places = try service.readAll()!
+        } catch {
+            print(error)
+        }
+
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: navBarButtonImages[state.rawValue] ?? ""), style: .plain , target: self, action: #selector(changeState) )
         navigationItem.rightBarButtonItem?.tintColor = Color.pink
@@ -66,14 +77,15 @@ class PlacesViewController: UIViewController{
 extension PlacesViewController: UICollectionViewDelegate{
     // MARK: UICollectionViewDelegate methods
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.performSegue(withIdentifier: "placeDetails", sender: collectionView.cellForItem(at: indexPath))
+        self.performSegue(withIdentifier: "placeDetails", sender: places[indexPath.item] )
         collectionView.deselectItem(at: indexPath, animated: true)
-        
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "placeDetails", let dest = segue.destination as? PlaceViewController, let cell = sender as? UICollectionViewCell {
-            dest.indexPath = self.collectionView.indexPath(for: cell)!
+        if segue.identifier == "placeDetails", let dest = segue.destination as? PlaceViewController, let place = sender as? Place {
+            dest.place = place
+            dest.placeCoordinate = CLLocationCoordinate2D.init(latitude: place.latitude, longitude: place.longitude)
         }
     }
 }
@@ -82,15 +94,20 @@ extension PlacesViewController: UICollectionViewDelegate{
 extension PlacesViewController: UICollectionViewDataSource{
     // MARK: UICollectionViewDataSource methods
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCollectionViewCell.identifier, for: indexPath) as! PlaceCollectionViewCell
-        // TODO: Tratar caso de imagem nao carregar
-        cell.configure(with: UIImage(named: "unicamp-pb")!, status: PlaceState(rawValue: indexPath.item%3+1)!,screenState: state )
+
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCollectionViewCell.identifier,
+                                                      for: indexPath) as! PlaceCollectionViewCell
+        
+        cell.configure(screenState: state,place: places[indexPath.item] )
         return cell
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(numberOfCells)
+        return Int(places.count)
     }
+    
 }
 
 
