@@ -22,16 +22,18 @@ class PlaceService {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    func create(name: String, latitude: Double, longitude: Double, placeID: Int16) throws -> UUID {
+    func create(name: String, latitude: Double, longitude: Double, placeID: Int64, nImages: Int64) throws -> UUID {
         let placeEntity = NSEntityDescription.entity(forEntityName: "Place", in: context)!
         let place = NSManagedObject(entity: placeEntity, insertInto: context)
         
         let uid = UUID()
-        place.setValue(name, forKey: "name")
         place.setValue(uid, forKey: "uid")
+        place.setValue(name, forKey: "name")
         place.setValue(latitude, forKey: "latitude")
         place.setValue(longitude, forKey: "longitude")
         place.setValue(placeID, forKey: "placeID")
+        place.setValue(PlaceState.unknown.rawValue, forKey: "state")
+        place.setValue(nImages, forKey: "nImages")
         
         try context.save()
         
@@ -63,6 +65,15 @@ class PlaceService {
         objUpdate.setValue(name, forKey: "name")
         objUpdate.setValue(latitude, forKey: "latitude")
         objUpdate.setValue(longitude, forKey: "longitude")
+        try context.save()
+    }
+    
+    func updateState(uid: UUID, newState: PlaceState) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
+        fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
+        let obj = try context.fetch(fetchRequest)
+        let objUpdate = obj[0] as! NSManagedObject
+        objUpdate.setValue(newState.rawValue, forKey: "state")
         try context.save()
     }
     

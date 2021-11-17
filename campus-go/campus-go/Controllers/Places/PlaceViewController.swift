@@ -12,7 +12,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     @IBOutlet var placeView: PlaceView!
     
     var place = Place()
-    let service = PlaceService()
+    let placeService = PlaceService()
     
     var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
@@ -132,6 +132,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     @IBAction func goBtnAction(_ sender: UIButton) {
         routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
+        try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
         _ = navigationController?.popViewController(animated: true)
     }
 }
