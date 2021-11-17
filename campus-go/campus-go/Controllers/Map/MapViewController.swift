@@ -49,7 +49,6 @@ class MapViewController: UIViewController {
         definesPresentationContext = true
         searchCompleter.delegate = self
 
-        
         mapServices = MapServices(mapView)
         mapServices.populateMap()
     }
@@ -167,8 +166,15 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-
-        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        
+        if annotationView?.annotation?.title == "Em rota" {
+            annotationView?.image = UIImage(named: "unknown-pin-orange")
+        } else if annotationView?.annotation?.title == "Lugar desconhecido" {
+            annotationView?.image = UIImage(named: "unknown-pin-purple")
+        } else {
+            annotationView?.image = UIImage(named: "known-pin-green")
+        }
+        
         annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
