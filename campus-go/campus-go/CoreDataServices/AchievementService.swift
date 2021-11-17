@@ -12,7 +12,7 @@ class AchievementService{
     var context: NSManagedObjectContext {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
-    func create(condition: String, name: String, xpPoints: Int64) -> Achievement? {
+    func create(condition: String, name: String, xpPoints: Int64) throws -> Achievement? {
         let achievementEntity = NSEntityDescription.entity(forEntityName: "Achievement", in: context)!
         let achievement = NSManagedObject(entity: achievementEntity, insertInto: context)
         let uid = UUID();
@@ -21,92 +21,60 @@ class AchievementService{
         achievement.setValue(xpPoints, forKey: "xpPoints")
         achievement.setValue(uid, forKey: "uid")
         
-        do {
-            try context.save()
-        } catch {
-            print("Não foi possível criar a nova conquista")
-        }
+        try context.save()
+
         return achievement as? Achievement
         
     }
-    func retrieve() -> [Achievement]? {
+    func retrieve() throws -> [Achievement]? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
-        
-        do {
-            let result = try context.fetch(fetchRequest)
-            return result as? [Achievement]
-        } catch {
-            print("Não foi possível ler as conquistas")
-        }
-        return nil
+    
+        let result = try context.fetch(fetchRequest)
+        return result as? [Achievement]
     }
         
-    func retrieve(uid: UUID) -> Achievement? {
+    func retrieve(uid: UUID) throws -> Achievement? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
-        
-        do {
-            let result = try context.fetch(fetchRequest)
-            return result[0] as? Achievement
-        } catch {
-            print("Não existe conquista com este uid \(uid)")
-        }
-        return nil
+
+        let result = try context.fetch(fetchRequest)
+        return result[0] as? Achievement
     }
     
-    func update(condition: String?, name: String?, xpPoints: Int64?, uid: UUID) {
+    func update(condition: String?, name: String?, xpPoints: Int64?, uid: UUID) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
+    
+        let result =  try context.fetch(fetchRequest)
+        let objectUpdate = result[0] as! NSManagedObject
         
-        do {
-            let result =  try context.fetch(fetchRequest)
-            let objectUpdate = result[0] as! NSManagedObject
-            
-            if let newCondition = condition {
-                objectUpdate.setValue(newCondition, forKey: "condition")
-            }
-            
-            if let newName = name {
-                objectUpdate.setValue(newName, forKey: "name")
-            }
-            
-            if let newXp = xpPoints {
-                objectUpdate.setValue(newXp, forKey: "xpPoints")
-            }
-            
-            do {
-                try context.save()
-            } catch {
-                print("Não foi possível salvar as alterações nesta conquista")
-            }
-        } catch {
-            print("Não foi possível encontrar uma conquista com esse uid")
+        if let newCondition = condition {
+            objectUpdate.setValue(newCondition, forKey: "condition")
         }
+        
+        if let newName = name {
+            objectUpdate.setValue(newName, forKey: "name")
+        }
+        
+        if let newXp = xpPoints {
+            objectUpdate.setValue(newXp, forKey: "xpPoints")
+        }
+        try context.save()
         
     }
     
-    func delete(uid: UUID) {
+    func delete(uid: UUID) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
         
-        do {
-            let result = try context.fetch(fetchRequest)
-            let objectToDelete = result[0] as! NSManagedObject
-            context.delete(objectToDelete)
-            
-            do {
-                try context.save()
-            }
-            catch {
-               print("Não foi possível deletar a conquista")
-            }
-            
-        } catch {
-            print("Esta conquista não existe ou já foi deletada")
-        }
+        let result = try context.fetch(fetchRequest)
+        let objectToDelete = result[0] as! NSManagedObject
+        context.delete(objectToDelete)
+        
+        try context.save()
         
     }
 }

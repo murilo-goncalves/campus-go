@@ -43,6 +43,5 @@ class AchievementProgressView: UIView {
         layer.lineCap = .round
         contentView.layer.addSublayer(layer)
         addSubview(contentView)
-        
     }
 }

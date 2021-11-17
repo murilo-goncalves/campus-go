@@ -12,6 +12,9 @@ class MapServices: NSObject {
     private var mapView: MKMapView!
     private var locationManager = CLLocationManager()
     
+    private var listPlaces: [Place] = []
+    private let service = PlaceService()
+    
     init(_ mapView: MKMapView?) {
         super.init()
         locationManager.delegate = self
@@ -22,6 +25,45 @@ class MapServices: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
+        listPlaces = getPlaces()!
+        
+    }
+    func getPlace(uid: UUID) -> Place? {
+        do {
+            guard let place = try service.read(uid: uid) else { return nil }
+            return place
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    func getPlaces() -> [Place]? {
+        do {
+            guard let list = try service.readAll() else { return nil }
+            return list
+        } catch {
+            print(error)
+        }
+        return nil
+    }
+    
+    public func populateMap(){
+        for place in listPlaces {
+            let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
+            let pin = CustomAnnotation(uid: place.uid!, state: PlaceState.unknown, coordinate: coordinate)
+            
+            switch pin.state {
+            case PlaceState.known:
+                pin.title = place.name
+            case PlaceState.onRoute:
+                pin.title = "Em rota"
+            case PlaceState.unknown:
+                pin.title = "Lugar desconhecido"
+            }
+            
+            mapView.addAnnotation(pin)
+        }
     }
     
     func displayRoute(sourceCoordinate: CLLocationCoordinate2D, destinationCoordinate: CLLocationCoordinate2D) {
@@ -56,8 +98,10 @@ class MapServices: NSObject {
     }
     
     public func getUserCoordinate2D() -> CLLocationCoordinate2D {
-        return locationManager.location?.coordinate ?? CLLocationCoordinate2DMake(-22.816763, -47.068275)
+        return locationManager.location?.coordinate ?? MapConstants.unicampCoordinate
     }
+    
+    
 }
 
 // ref: https://itnext.io/swift-ios-cllocationmanager-all-in-one-b786ffd37e4a

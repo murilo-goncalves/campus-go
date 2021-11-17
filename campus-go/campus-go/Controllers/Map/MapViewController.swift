@@ -8,6 +8,7 @@
 import MapKit
 import CoreLocation
 import UIKit
+import CoreData
 
 extension MKMapView {
     func centerToLocation(
@@ -32,6 +33,7 @@ class MapViewController: UIViewController {
     private var searchController: UISearchController!
     private var resultsTableViewController: ResultsTableViewController!
     
+    
     private let searchCompleter = MKLocalSearchCompleter()
     private var searchResults = [MKLocalSearchCompletion]()
     
@@ -39,42 +41,17 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        
         setupMapView()
         setupResultsTableView()
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
-        title = "mapas"
-        
-        addCustomPinUnknown(coordinate: CLLocationCoordinate2D(latitude: -22.822267, longitude:  -47.067370))
-        addCustomPinKnown(coordinate: CLLocationCoordinate2D(latitude: -22.81753, longitude:  -47.068607))
-        addCustomPinRoute(coordinate: CLLocationCoordinate2D(latitude: -22.821969, longitude: -47.069792))
+
         
         mapServices = MapServices(mapView)
-    }
-    
-    private func addCustomPinUnknown(coordinate: CLLocationCoordinate2D){
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = "Lugar desconhecido"
-        pin.subtitle = "Conhecer o lugar"
-        mapView.addAnnotation(pin)
-    }
-    
-    private func addCustomPinKnown(coordinate: CLLocationCoordinate2D){
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = "Ciclo Básico"
-        pin.subtitle = "Visitar novamente"
-        mapView.addAnnotation(pin)
-    }
-    
-    private func addCustomPinRoute(coordinate: CLLocationCoordinate2D){
-        let pin = MKPointAnnotation()
-        pin.coordinate = coordinate
-        pin.title = "Quase chegando!"
-//        pin.subtitle = "Visitar novamente"
-        mapView.addAnnotation(pin)
+        mapServices.populateMap()
     }
     
     private func setupMapView() {
@@ -82,6 +59,7 @@ class MapViewController: UIViewController {
         mapView.showsUserLocation = true
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
+        
     }
     
     private func setupResultsTableView() {
@@ -189,15 +167,9 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        if annotationView?.annotation?.title == "Lugar desconhecido" {
-            annotationView?.image = UIImage(named: "unknown-pin-purple")
-        } else if annotationView?.annotation?.title == "Quase chegando!"{
-            annotationView?.image = UIImage(named: "unknown-pin-orange")
-        } else {
-            annotationView?.image = UIImage(named: "known-pin-green")
-        }
-        
-        annotationView?.frame.size = CGSize(width: 18, height: 30)
+
+        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
         btn.tintColor = Color.pink
@@ -207,17 +179,15 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         // do something
-        view.frame.size = CGSize(width: 36, height: 60)
+        view.frame.size = CGSize(width: MapConstants.selectedAnnitationWidht, height: MapConstants.selectedAnnotationHeight)
         view.centerOffset = .zero
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         UIView.animate(withDuration: 0.5, animations: {
-            view.frame.size = CGSize(width: 18, height: 30)
+            view.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         })
     }
-    
-
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         performSegue(withIdentifier: "placeDetails", sender: view.annotation)
@@ -225,17 +195,18 @@ extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
-        renderer.lineWidth = 5.0
+        renderer.lineWidth = MapConstants.routeLineWidth
         renderer.strokeColor = Color.pink
         
         return renderer
     }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeDetails" {
             if let destVC = segue.destination as? PlaceViewController,
-               let annotation = sender as? MKAnnotation {
+               let annotation = sender as? CustomAnnotation {
+                destVC.place = mapServices.getPlace(uid: annotation.uid)!
                 destVC.placeCoordinate = annotation.coordinate
+                destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self
             }
         }

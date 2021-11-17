@@ -13,7 +13,7 @@ enum PlaceScreenState: Int{
     
 }
 
-enum PlaceCellStatus: Int{
+enum PlaceState: Int{
     case onRoute = 3
     case unknown = 2
     case known = 1

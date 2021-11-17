@@ -16,13 +16,6 @@ extension Place {
         return NSFetchRequest<Place>(entityName: "Place")
     }
 
-    @NSManaged public var latitude: Double
-    @NSManaged public var longitude: Double
-    @NSManaged public var name: String?
-    @NSManaged public var uid: UUID?
-    @NSManaged public var isVisited: NSSet?
-    @NSManaged public var relatedAchievements: NSSet?
-
 }
 
 // MARK: Generated accessors for isVisited
