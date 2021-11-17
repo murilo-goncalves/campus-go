@@ -56,6 +56,7 @@ class MapViewController: UIViewController {
         mapView.showsUserLocation = true
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
+        mapView.tintColor = Color.pink
     }
     
     private func setupResultsTableView() {
