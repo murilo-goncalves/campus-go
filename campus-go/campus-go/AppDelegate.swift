@@ -120,6 +120,11 @@ extension AppDelegate: CLLocationManagerDelegate {
                                             content: content,
                                             trigger: trigger)
         
+        // switch place state to "known"
+        let placeService = PlaceService()
+        let uid = UUID(uuidString: region.identifier)
+        try! placeService.updateState(uid: uid!, newState: PlaceState.known)
+        
         locationManager?.stopMonitoring(for: region!)
 
         notificationCenter!.add(request, withCompletionHandler: { (error) in
