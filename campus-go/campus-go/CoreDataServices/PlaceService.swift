@@ -22,7 +22,7 @@ class PlaceService {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    func create(name: String, latitude: Double, longitude: Double) throws -> UUID {
+    func create(name: String, latitude: Double, longitude: Double, placeID: Int16) throws -> UUID {
         let placeEntity = NSEntityDescription.entity(forEntityName: "Place", in: context)!
         let place = NSManagedObject(entity: placeEntity, insertInto: context)
         
@@ -31,7 +31,7 @@ class PlaceService {
         place.setValue(uid, forKey: "uid")
         place.setValue(latitude, forKey: "latitude")
         place.setValue(longitude, forKey: "longitude")
-
+        place.setValue(placeID, forKey: "placeID")
         
         try context.save()
         
