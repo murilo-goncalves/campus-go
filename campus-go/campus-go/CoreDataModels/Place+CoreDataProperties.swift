@@ -2,7 +2,7 @@
 //  Place+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 09/11/21.
+//  Created by Murilo Gonçalves on 17/11/21.
 //
 //
 
@@ -16,22 +16,14 @@ extension Place {
         return NSFetchRequest<Place>(entityName: "Place")
     }
 
-}
-
-// MARK: Generated accessors for isVisited
-extension Place {
-
-    @objc(addIsVisitedObject:)
-    @NSManaged public func addToIsVisited(_ value: Visits)
-
-    @objc(removeIsVisitedObject:)
-    @NSManaged public func removeFromIsVisited(_ value: Visits)
-
-    @objc(addIsVisited:)
-    @NSManaged public func addToIsVisited(_ values: NSSet)
-
-    @objc(removeIsVisited:)
-    @NSManaged public func removeFromIsVisited(_ values: NSSet)
+    @NSManaged public var latitude: Double
+    @NSManaged public var longitude: Double
+    @NSManaged public var name: String?
+    @NSManaged public var placeID: Int64
+    @NSManaged public var uid: UUID?
+    @NSManaged public var nImages: Int64
+    @NSManaged public var state: Int64
+    @NSManaged public var relatedAchievements: NSSet?
 
 }
 
