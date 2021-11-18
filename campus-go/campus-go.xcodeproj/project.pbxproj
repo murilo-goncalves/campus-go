@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5908F9AA2743E6640021A80B /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037A9A2732BCF700CBEEAD /* PlaceService.swift */; };
 		5908F9AC2743F6440021A80B /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5908F9AB2743F6440021A80B /* CustomAnnotation.swift */; };
+		593192EA27452E6C007F9312 /* Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593192E927452E6C007F9312 /* Pictures.swift */; };
 		5961B0BB273409F300E65B8F /* AchievmentTest.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */; };
 		5961B0BF27340A5100E65B8F /* AchievmentTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */; };
 		59BB17D02732C05600572780 /* AchievementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB17CF2732C05600572780 /* AchievementService.swift */; };
@@ -82,6 +83,7 @@
 
 /* Begin PBXFileReference section */
 		5908F9AB2743F6440021A80B /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
+		593192E927452E6C007F9312 /* Pictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictures.swift; sourceTree = "<group>"; };
 		5961B0BA273409F300E65B8F /* AchievmentTest.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievmentTest.storyboard; sourceTree = "<group>"; };
 		5961B0BE27340A5100E65B8F /* AchievmentTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievmentTestView.swift; sourceTree = "<group>"; };
 		59BB17CF2732C05600572780 /* AchievementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementService.swift; sourceTree = "<group>"; };
@@ -233,6 +235,7 @@
 			children = (
 				61D2C960270C888F00FA22FA /* Address.swift */,
 				61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */,
+				593192E927452E6C007F9312 /* Pictures.swift */,
 			);
 			path = Places;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,
 				5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */,
 				5FFFB587272AEA4800C80C6F /* FloatingPoint.swift in Sources */,
+				593192EA27452E6C007F9312 /* Pictures.swift in Sources */,
 				5FA84E012729837A005C4D23 /* ProfileProgressView.swift in Sources */,
 				5FFFB585272AEA2500C80C6F /* CGFloat.swift in Sources */,
 				6254B62D27454D6900CE80F4 /* AnnotationDelegate.swift in Sources */,

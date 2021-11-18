@@ -7,14 +7,15 @@
 
 import UIKit
 import CoreLocation
+import Foundation
 class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate {
     
     @IBOutlet var placeView: PlaceView!
     
     var place = Place()
+    var pictureService = Pictures()
+    var images: [String] = []
     let placeService = PlaceService()
-    
-    var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     //apenas recebendo infomração do PlacesViewController
@@ -27,11 +28,18 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-               
+        pictureService = Pictures(placeID: Int(place.placeID), numberOfPictures: Int(place.nImages))
+        images = pictureService.listPictures
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
-        placeView.nomeLugar.text = "\(place.name ?? "Sem nome")"
-        placeView.distanciaLugar.text = "\(calculaDistancia(userCoordinate, placeCoordinate))"
+        let nomeLugar = place.name ?? "Sem nome"
+        placeView.nomeLugar.text = nomeLugar
+        let index = nomeLugar.firstIndex(of: " ") ?? nomeLugar.endIndex
+        let sigla = index == nomeLugar.endIndex ? "No name" : nomeLugar[..<index]
+        title = "\(sigla)"
+        
+        let dist = calculaDistancia(userCoordinate, placeCoordinate)
+        placeView.distanciaLugar.text = dist < 1.0 ? "\(dist*1000) m" : "\((dist*10).rounded()/10) km"
         placeView.recentAchievement.layer.cornerRadius = 15.0
         placeView.recentAchievement.layer.borderWidth = 5.0
         placeView.recentAchievement.layer.borderColor = UIColor.clear.cgColor
@@ -120,9 +128,14 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         
         let uLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
         let pLocation = CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude)
-        let distance  = uLocation.distance(from: pLocation)
-        
-        return Double(distance)
+        var distance  = uLocation.distance(from: pLocation) as Double
+        formataDistancia(&distance)
+        return distance
+    }
+    
+    func formataDistancia(_ distance: inout Double) {
+        distance = distance/1000.0
+        distance = (distance*100).rounded()/100
     }
     
     //atualizar o pageControl

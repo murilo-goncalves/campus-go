@@ -57,6 +57,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for object in result {
                 let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages)
             }
+            let teste = try PlaceService().readAll()
+            for t in teste! {
+                print(t.nImages, t.placeID)
+            }
         } catch {
             print("\(error)")
         }
