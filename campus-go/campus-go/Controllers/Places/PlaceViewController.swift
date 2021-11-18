@@ -52,8 +52,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
             imgView.layer.cornerRadius = 10
             imgView.clipsToBounds = true
             
-            //precisa setar manualmente as constraints na scrollView
-            //primeira imagem, intermediárias, última imagem
+            // precisa setar manualmente as constraints na scrollView
+            // primeira imagem, intermediárias, última imagem
             if index == 0 {
                 let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),

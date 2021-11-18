@@ -170,14 +170,7 @@ extension MapViewController: MKMapViewDelegate {
         case .onRoute:
             annotationView?.image = UIImage(named: "unknown-pin-orange")
         }
-//        if annotationView?.annotation?.title == "Em rota" {
-//            annotationView?.image = UIImage(named: "unknown-pin-orange")
-//        } else if annotationView?.annotation?.title == "Lugar desconhecido" {
-//            annotationView?.image = UIImage(named: "unknown-pin-purple")
-//        } else {
-//            annotationView?.image = UIImage(named: "known-pin-green")
-//        }
-//
+
         annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
