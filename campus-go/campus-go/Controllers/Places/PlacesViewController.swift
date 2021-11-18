@@ -75,7 +75,11 @@ class PlacesViewController: UIViewController{
     func sortPlaces(){
         places.sort(by: { $0.state > $1.state })
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        sortPlaces()
+        self.collectionView.reloadData()
+    }
+
 }
 
 
