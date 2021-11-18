@@ -35,6 +35,7 @@ class PlacesViewController: UIViewController{
         
         do {
             places = try service.readAll()!
+            sortPlaces()
         } catch {
             print(error)
         }
@@ -69,6 +70,10 @@ class PlacesViewController: UIViewController{
             self.viewDidLoad()
         }
         
+    }
+    
+    func sortPlaces(){
+        places.sort(by: { $0.state > $1.state })
     }
     
 }
