@@ -164,6 +164,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         annotationDelegate?.updateAnnotations()
         _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.tabBarController?.selectedIndex = 1
     }
 }
 
