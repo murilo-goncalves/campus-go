@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 import Foundation
-class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate{
+class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate {
     
     @IBOutlet var placeView: PlaceView!
     
@@ -24,6 +24,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     var placeCoordinate: CLLocationCoordinate2D?
     var userCoordinate: CLLocationCoordinate2D?
     var routeDelegate: RouteDelegate?
+    var annotationDelegate: AnnotationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,8 +60,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
             imgView.layer.cornerRadius = 10
             imgView.clipsToBounds = true
             
-            //precisa setar manualmente as constraints na scrollView
-            //primeira imagem, intermediárias, última imagem
+            // precisa setar manualmente as constraints na scrollView
+            // primeira imagem, intermediárias, última imagem
             if index == 0 {
                 let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
@@ -144,8 +145,9 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     }
     
     @IBAction func goBtnAction(_ sender: UIButton) {
-        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
+        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
+        annotationDelegate?.updateAnnotations()
         _ = navigationController?.popViewController(animated: true)
     }
 }

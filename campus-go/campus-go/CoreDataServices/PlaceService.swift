@@ -32,7 +32,7 @@ class PlaceService {
         place.setValue(latitude, forKey: "latitude")
         place.setValue(longitude, forKey: "longitude")
         place.setValue(placeID, forKey: "placeID")
-        place.setValue(0, forKey: "state")
+        place.setValue(PlaceState.unknown.rawValue, forKey: "state")
         place.setValue(nImages, forKey: "nImages")
         
         try context.save()
@@ -68,13 +68,31 @@ class PlaceService {
         try context.save()
     }
     
-    func updateState(uid: UUID, newState: PlaceState) throws {
+    private func update(uid:UUID, newState: PlaceState) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
         fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
         let obj = try context.fetch(fetchRequest)
         let objUpdate = obj[0] as! NSManagedObject
         objUpdate.setValue(newState.rawValue, forKey: "state")
         try context.save()
+    }
+    
+    func updateState(uid: UUID, newState: PlaceState) throws {
+        let places = try! readAll()!
+        
+        if newState == PlaceState.onRoute {
+            for place in places {
+                if isOnRoute(uid: place.uid!) {
+                    try! update(uid: place.uid!, newState: PlaceState.unknown)
+                }
+            }
+        }
+        try update(uid: uid, newState: newState)
+    }
+    
+    func isOnRoute(uid: UUID) -> Bool {
+        let place = try! read(uid: uid)!
+        return place.state == PlaceState.onRoute.rawValue
     }
     
     func delete(uid: UUID) throws {

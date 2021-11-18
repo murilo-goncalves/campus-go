@@ -15,9 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var locationManager: CLLocationManager?
     var notificationCenter: UNUserNotificationCenter?
-    
 
     var hasAlreadyLaunched: Bool!
+    
+    var annotationDelegate: AnnotationDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.locationManager = CLLocationManager()
@@ -124,13 +125,19 @@ extension AppDelegate: CLLocationManagerDelegate {
                                             content: content,
                                             trigger: trigger)
         
-        locationManager?.stopMonitoring(for: region!)
-
-        notificationCenter!.add(request, withCompletionHandler: { (error) in
-            if error != nil {
-                print("Error adding notification with identifier: \(identifier)")
-            }
-        })
+        // if region was on route switch place state to "known" and show notification
+        let placeService = PlaceService()
+        let uid = UUID(uuidString: region.identifier)
+        if (placeService.isOnRoute(uid: uid!)) {
+            try! placeService.updateState(uid: uid!, newState: PlaceState.known)
+            annotationDelegate?.updateAnnotations()
+            locationManager?.stopMonitoring(for: region!)
+            notificationCenter!.add(request, withCompletionHandler: { (error) in
+                if error != nil {
+                    print("Error adding notification with identifier: \(identifier)")
+                }
+            })
+        }
     }
 }
 
