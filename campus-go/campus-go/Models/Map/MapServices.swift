@@ -12,7 +12,6 @@ class MapServices: NSObject {
     private var mapView: MKMapView!
     private var locationManager = CLLocationManager()
     
-    private var listPlaces: [Place] = []
     private let service = PlaceService()
     
     init(_ mapView: MKMapView?) {
@@ -25,8 +24,6 @@ class MapServices: NSObject {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.distanceFilter = kCLDistanceFilterNone
         locationManager.startUpdatingLocation()
-        listPlaces = getPlaces()!
-        
     }
     func getPlace(uid: UUID) -> Place? {
         do {
@@ -59,7 +56,7 @@ class MapServices: NSObject {
     
     private func addCustomAnnotation(place: Place) {
         let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
-        let pin = CustomAnnotation(uid: place.uid!, state: PlaceState.unknown, coordinate: coordinate)
+        let pin = CustomAnnotation(uid: place.uid!, state: PlaceState(rawValue: Int(place.state))!, coordinate: coordinate)
         
         switch pin.state {
         case PlaceState.known:
@@ -79,6 +76,7 @@ class MapServices: NSObject {
     }
     
     public func populateMap(){
+        let listPlaces = getPlaces()!
         for place in listPlaces {
             addCustomAnnotation(place: place)
         }

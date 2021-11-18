@@ -46,7 +46,8 @@ class MapViewController: UIViewController {
         setupSearchController()
         definesPresentationContext = true
         searchCompleter.delegate = self
-        
+        (UIApplication.shared.delegate as! AppDelegate).annotationDelegate = self
+
         mapServices = MapServices(mapView)
         mapServices.populateMap()
     }
@@ -56,6 +57,7 @@ class MapViewController: UIViewController {
         mapView.showsUserLocation = true
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
+        mapView.tintColor = Color.pink
     }
     
     private func setupResultsTableView() {
@@ -81,8 +83,6 @@ extension MapViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        print(indexPath.row)
     }
 }
 
@@ -145,6 +145,7 @@ extension MapViewController: ResultsTableViewDelegate {
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         guard !(annotation is MKUserLocation) else {
             return nil
@@ -158,7 +159,18 @@ extension MapViewController: MKMapViewDelegate {
         } else {
             annotationView?.annotation = annotation
         }
-        annotationView?.image = UIImage(named: "unknown-pin-purple")
+        
+        let currentAnnotation = annotationView?.annotation as! CustomAnnotation
+        
+        switch currentAnnotation.state {
+        case .unknown:
+            annotationView?.image = UIImage(named: "unknown-pin-purple")
+        case .known:
+            annotationView?.image = UIImage(named: "known-pin-green")
+        case .onRoute:
+            annotationView?.image = UIImage(named: "unknown-pin-orange")
+        }
+
         annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
@@ -198,9 +210,12 @@ extension MapViewController: MKMapViewDelegate {
                 destVC.placeCoordinate = annotation.coordinate
                 destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self
+                destVC.annotationDelegate = self
             }
         }
     }
+    
+
 }
 
 // MARK: - MKMapViewDelegate
@@ -209,5 +224,12 @@ extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
         let userCoordinate = mapServices.getUserCoordinate2D()
         mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: destinationCoordinate)
+    }
+}
+
+extension MapViewController: AnnotationDelegate {
+    func updateAnnotations(){
+        mapView.removeAnnotations(mapView.annotations)
+        mapServices.populateMap()
     }
 }

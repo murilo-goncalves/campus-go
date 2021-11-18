@@ -7,14 +7,15 @@
 
 import UIKit
 import CoreLocation
-class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate{
+import Foundation
+class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate {
     
     @IBOutlet var placeView: PlaceView!
     
     var place = Place()
+    var pictureService = Pictures()
+    var images: [String] = []
     let placeService = PlaceService()
-    
-    var images: [String] = ["unicamp-pb", "unicamp-pb", "unicamp-pb"]
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     
     //apenas recebendo infomração do PlacesViewController
@@ -23,20 +24,37 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     var placeCoordinate: CLLocationCoordinate2D?
     var userCoordinate: CLLocationCoordinate2D?
     var routeDelegate: RouteDelegate?
+    var annotationDelegate: AnnotationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         if let name = place.name {
-            title = name.components(separatedBy: " - ")[1]
+            title = name.components(separatedBy: " - ")[0]
+            placeView.nomeLugar.text = name
+        } else {
+            title = ""
+            placeView.nomeLugar.text = ""
         }
+       
+        
+        pictureService = Pictures(placeID: Int(place.placeID), numberOfPictures: Int(place.nImages))
+        images = pictureService.listPictures
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
-        placeView.nomeLugar.text = "\(place.name ?? "Sem nome")"
+
+        
         if let userCoord = userCoordinate{
-            placeView.distanciaLugar.text = "\(calculaDistancia(userCoord, placeCoordinate))"
+            let dist = calculaDistancia(userCoord, placeCoordinate)
+            placeView.distanciaLugar.text = dist < 1.0 ? "\(dist*1000) m" : "\((dist*10).rounded()/10) km"
+            
+           
         } else {
             placeView.distanciaLugar.text = ""
         }
+
+        
+        
         placeView.recentAchievement.layer.cornerRadius = 15.0
         placeView.recentAchievement.layer.borderWidth = 5.0
         placeView.recentAchievement.layer.borderColor = UIColor.clear.cgColor
@@ -57,8 +75,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
             imgView.layer.cornerRadius = 10
             imgView.clipsToBounds = true
             
-            //precisa setar manualmente as constraints na scrollView
-            //primeira imagem, intermediárias, última imagem
+            // precisa setar manualmente as constraints na scrollView
+            // primeira imagem, intermediárias, última imagem
             if index == 0 {
                 let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
@@ -125,9 +143,14 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         
         let uLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
         let pLocation = CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude)
-        let distance  = uLocation.distance(from: pLocation)
-        
-        return Double(distance)
+        var distance  = uLocation.distance(from: pLocation) as Double
+        formataDistancia(&distance)
+        return distance
+    }
+    
+    func formataDistancia(_ distance: inout Double) {
+        distance = distance/1000.0
+        distance = (distance*100).rounded()/100
     }
     
     //atualizar o pageControl
@@ -137,8 +160,9 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     }
     
     @IBAction func goBtnAction(_ sender: UIButton) {
-        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
+        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
+        annotationDelegate?.updateAnnotations()
         _ = navigationController?.popViewController(animated: true)
     }
 }
