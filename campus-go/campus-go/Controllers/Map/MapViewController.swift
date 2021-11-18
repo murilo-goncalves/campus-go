@@ -83,8 +83,6 @@ extension MapViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        print(indexPath.row)
     }
 }
 
@@ -167,7 +165,6 @@ extension MapViewController: MKMapViewDelegate {
         switch currentAnnotation.state {
         case .unknown:
             annotationView?.image = UIImage(named: "unknown-pin-purple")
-            print(currentAnnotation.state)
         case .known:
             annotationView?.image = UIImage(named: "known-pin-green")
         case .onRoute:
