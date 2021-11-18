@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var hasAlreadyLaunched: Bool!
     
-    var annotationDelegate: AnnotationDelegate?
+    weak var annotationDelegate: AnnotationDelegate?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.locationManager = CLLocationManager()

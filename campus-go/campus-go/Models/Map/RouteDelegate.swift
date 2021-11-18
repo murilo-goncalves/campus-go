@@ -8,6 +8,6 @@
 import Foundation
 import CoreLocation
 
-protocol RouteDelegate {
+protocol RouteDelegate: AnyObject {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D)
 }

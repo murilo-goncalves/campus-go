@@ -7,6 +7,6 @@
 
 import Foundation
 
-protocol AnnotationDelegate {
+protocol AnnotationDelegate: AnyObject {
     func updateAnnotations()
 }

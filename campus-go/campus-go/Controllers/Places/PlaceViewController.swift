@@ -23,8 +23,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     var placeCoordinate: CLLocationCoordinate2D?
     var userCoordinate: CLLocationCoordinate2D?
-    var routeDelegate: RouteDelegate?
-    var annotationDelegate: AnnotationDelegate?
+    weak var routeDelegate: RouteDelegate?
+    weak var annotationDelegate: AnnotationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
