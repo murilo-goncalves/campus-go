@@ -13,8 +13,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     @IBOutlet var placeView: PlaceView!
     
     var place = Place()
-    let pictureService = Pictures()
-    var images: [String] = ["1-1"]
+    var pictureService = Pictures()
+    var images: [String] = []
     let placeService = PlaceService()
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     
@@ -27,8 +27,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        images = pictureService.listPictures[Int(place.placeID)]
-        print(place.placeID)
+        pictureService = Pictures(placeID: Int(place.placeID), numberOfPictures: Int(place.nImages))
+        images = pictureService.listPictures
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
         let nomeLugar = place.name ?? "Sem nome"

@@ -8,16 +8,18 @@
 import Foundation
 
 struct Pictures {
-    var numberOfPictures = 11
-    var listPictures: [[String]]
+    var numberOfPictures: Int
+    var listPictures: [String]
     
-    init(){
-        listPictures = Array(repeating: [String](), count: numberOfPictures)
-        for i in 1...10 {
-            for j in 1...3 {
-                listPictures[i].append("\(i)-\(j)")
-            }
+    init(placeID: Int, numberOfPictures: Int){
+        listPictures = [String]()
+        self.numberOfPictures = numberOfPictures
+        for i in 1...numberOfPictures {
+            self.listPictures.append("\(placeID)-\(i)")
         }
-        print(listPictures)
+    }
+    init(){
+        numberOfPictures = 0
+        listPictures = []
     }
 }

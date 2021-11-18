@@ -196,7 +196,6 @@ extension MapViewController: MKMapViewDelegate {
             if let destVC = segue.destination as? PlaceViewController,
                let annotation = sender as? CustomAnnotation {
                 destVC.place = mapServices.getPlace(uid: annotation.uid)!
-                print(destVC.place.placeID, destVC.place.name, destVC.place.longitude)
                 destVC.placeCoordinate = annotation.coordinate
                 destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self
