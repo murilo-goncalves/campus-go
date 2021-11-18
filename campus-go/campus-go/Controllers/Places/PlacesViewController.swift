@@ -73,7 +73,12 @@ class PlacesViewController: UIViewController{
     }
     
     func sortPlaces(){
-        places.sort(by: { $0.state > $1.state })
+        places.sort(by: {
+            if $0.state == $1.state {
+                return $0.name! < $1.name!
+            }
+            return $0.state > $1.state
+        })
     }
     override func viewDidAppear(_ animated: Bool) {
         sortPlaces()
