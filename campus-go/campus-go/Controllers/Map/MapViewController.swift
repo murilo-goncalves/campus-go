@@ -39,8 +39,10 @@ class MapViewController: UIViewController {
     
     private var mapServices: MapServices!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Mapa"
         setupMapView()
         setupResultsTableView()
         setupSearchController()
@@ -74,6 +76,9 @@ class MapViewController: UIViewController {
         searchController.searchBar.frame.size.width = topView.frame.size.width
         searchController.searchBar.searchBarStyle = .minimal
         searchController.searchBar.tintColor = Color.pink
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        mapServices.populateMap()
     }
 }
 
@@ -207,8 +212,6 @@ extension MapViewController: MKMapViewDelegate {
             if let destVC = segue.destination as? PlaceViewController,
                let annotation = sender as? CustomAnnotation {
                 destVC.place = mapServices.getPlace(uid: annotation.uid)!
-                destVC.placeCoordinate = annotation.coordinate
-                destVC.userCoordinate = mapServices.getUserCoordinate2D()
                 destVC.routeDelegate = self
                 destVC.annotationDelegate = self
             }
@@ -222,8 +225,6 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
-        let userCoordinate = mapServices.getUserCoordinate2D()
-        mapServices.displayRoute(sourceCoordinate: userCoordinate, destinationCoordinate: destinationCoordinate)
     }
 }
 
