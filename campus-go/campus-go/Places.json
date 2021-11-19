@@ -1,0 +1,73 @@
+[
+  {
+    "latitude": -22.815350,
+    "longitude":  -47.062635,
+    "name": "RS - Restaurante Saturnino",
+    "placeID": 1,
+    "nImages": 3
+  },
+  {
+    "latitude": -22.825738,
+    "longitude": -47.066380,
+    "name": "HC - Hospital das Clínicas",
+    "placeID": 2,
+    "nImages": 2
+  },
+  {
+    "latitude": -22.818904,
+    "longitude": -47.065072,
+    "name": "FEM - Faculdade de Engenharia Mecânica",
+    "placeID": 3,
+    "nImages": 2
+  },
+  {
+    "latitude": -22.820827,
+    "longitude": -47.066632,
+    "name": "FEEC - Faculdade de Engenharia Elétrica e Computação",
+    "placeID": 4,
+    "nImages": 2
+  },
+  {
+    "latitude": -22.821969,
+    "longitude": -47.069792,
+    "name": "Placa Av. 2 - Placa da Unicamp Av. 2",
+    "placeID": 5,
+    "nImages": 2
+  },
+  {
+    "latitude": -22.819469,
+    "longitude": -47.067232,
+    "name": "IQ - Instituto de Química",
+    "placeID": 6,
+    "nImages": 3
+  },
+  {
+    "latitude": -22.822267,
+    "longitude": -47.067370,
+    "name": "Praça da Paz",
+    "placeID": 7,
+    "nImages": 3
+  },
+  {
+    "latitude": -22.817532,
+    "longitude": -47.068607,
+    "name": "CB - Ciclo Básico 1",
+    "placeID": 8,
+    "nImages": 3
+  },
+  {
+    "latitude": -22.819391,
+    "longitude": -47.069174,
+    "name": "IB - Instituto de Biologia",
+    "placeID": 9,
+    "nImages": 3
+  },
+  {
+    "latitude": -22.813798,
+    "longitude": -47.063971,
+    "name": "IC - Instituto de Computação",
+    "placeID": 10,
+    "nImages": 1
+  }
+  
+]
