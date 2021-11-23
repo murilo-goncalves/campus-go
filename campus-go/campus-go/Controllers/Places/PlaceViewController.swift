@@ -30,8 +30,14 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         super.viewDidLoad()
         
         if let name = place.name {
-            title = name.components(separatedBy: " - ")[0]
-            placeView.nomeLugar.text = name
+            if(place.state == PlaceState.known.rawValue) {
+                title = name.components(separatedBy: " - ")[0]
+                placeView.nomeLugar.text = name
+            } else {
+                title = "Desconhecido"
+                placeView.nomeLugar.text = "Lugar desconhecido"
+            }
+            
         } else {
             title = ""
             placeView.nomeLugar.text = ""
