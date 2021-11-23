@@ -153,7 +153,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         formataDistancia(&distance)
         return distance
     }
-    
+    //formata a distancia para quilômetros com duas casas decimais
     func formataDistancia(_ distance: inout Double) {
         distance = distance/1000.0
         distance = (distance*100).rounded()/100
@@ -180,7 +180,7 @@ extension PlaceViewController: UICollectionViewDataSource{
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return Int(collectionView.frame.height / 76)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
