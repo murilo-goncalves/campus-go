@@ -27,7 +27,7 @@ class AchievementProgressView: UIView {
         let progressLayer = CAShapeLayer()
         progressLayer.path = path.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.strokeColor = UIColor.init(rgb: 0xFF9500).withAlphaComponent(0.2).cgColor
+        progressLayer.strokeColor = Color.lightOrange.cgColor
         progressLayer.strokeStart = 0
         progressLayer.strokeEnd = 1
         progressLayer.lineWidth = 2
@@ -36,13 +36,12 @@ class AchievementProgressView: UIView {
         let layer = CAShapeLayer()
         layer.path = path.cgPath
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = UIColor.init(rgb: 0xFF9500).cgColor
+        layer.strokeColor = Color.lightOrange.cgColor
         layer.strokeStart = 0.8
         layer.strokeEnd = 1
         layer.lineWidth = 2
         layer.lineCap = .round
         contentView.layer.addSublayer(layer)
         addSubview(contentView)
-        
     }
 }

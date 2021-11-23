@@ -20,38 +20,34 @@ class PlaceCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
 
     }
-    public func configure(with image: UIImage,status: PlaceCellStatus , screenState: PlaceScreenState){
-        
+    public func configure(screenState: PlaceScreenState,place: Place){
         self.layer.cornerRadius = imageView.frame.width * 0.05
         imageView.layer.borderWidth = 0.5
         imageView.layer.borderColor = UIColor.lightGray.cgColor
         mapPin.image = mapPin.image?.withRenderingMode(.alwaysTemplate)
-        
-        
-        
-        if(status == PlaceCellStatus.known){
-            imageView.image = image
+        let status = PlaceState(rawValue: Int(place.state))
+        if(status == PlaceState.known){
+            imageView.image = UIImage(named: String(place.placeID) + "-1")
             mapPin.isHidden = true
-            label.text = screenState == PlaceScreenState.small ? "" : "Nome do lugar"
-            bottomColor.backgroundColor = UIColor(red: 106, green: 217, blue: 134)
+            label.text = screenState == PlaceScreenState.small ? "" : place.name
+            bottomColor.backgroundColor = Color.lightGreen
             
-        }else if(status == PlaceCellStatus.unknown){
-            imageView.image = image.convertToGrayScale()
+
+        } else if(status == PlaceState.unknown){
+            imageView.image = UIImage(named: String(place.placeID) + "-1")!.convertToGrayScale()
+
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Desconhecido"
             mapPin.image = UIImage(named: "unknown-pin-soft-purple")
-            bottomColor.backgroundColor = UIColor(red: 154, green: 153, blue: 238)
+            bottomColor.backgroundColor = Color.lightPurple
             
-        }else {
-            imageView.image = image.convertToGrayScale()
+        } else {
+            imageView.image = UIImage(named: String(place.placeID) + "-1")!.convertToGrayScale()
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Em rota"
             mapPin.image =  UIImage(named: "unknown-pin-soft-orange")
-            bottomColor.backgroundColor = UIColor(red: 252, green: 178, blue: 74)
-            
-            
+            bottomColor.backgroundColor = Color.lightOrange
         }
-
     }
     static func nib() -> UINib{
         return UINib(nibName: "PlaceCollectionViewCell",bundle: nil )

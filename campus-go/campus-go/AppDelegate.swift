@@ -12,53 +12,73 @@ import UserNotifications
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var locationManager: CLLocationManager?
+    var notificationCenter: UNUserNotificationCenter?
 
+    var hasAlreadyLaunched: Bool!
+    
+    weak var annotationDelegate: AnnotationDelegate?
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        self.locationManager = CLLocationManager()
+        self.locationManager!.delegate = self
         
+        hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
+        
+        if !hasAlreadyLaunched {
+            UserDefaults.standard.set(true, forKey: "hasAlreadyLaunched")
+            self.preLoadCoreData()
+        }
+            
         // Override point for customization after application launch.
-        registerForPushNotifications()
+        self.notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter!.delegate = self
+        let options: UNAuthorizationOptions = [.alert, .sound]
+        
+        notificationCenter!.requestAuthorization(options: options) { (granted, error) in
+            if !granted {
+                print("Permission not granted")
+            }
+        }
         
         return true
+    }
+
+    func preLoadCoreData() {
+        guard let path = Bundle.main.path(forResource: "Places", ofType: "json") else { return }
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            print(data)
+            let context = persistentContainer.newBackgroundContext()
+            let decoder = JSONDecoder()
+            decoder.userInfo[.context!] = context
+            let result = try decoder.decode([Place].self, from: data)
+            for object in result {
+                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages)
+            }
+            let teste = try PlaceService().readAll()
+            for t in teste! {
+                print(t.nImages, t.placeID)
+            }
+        } catch {
+            print("\(error)")
+        }
     }
 
     // MARK: UISceneSession Lifecycle
 
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
-
-    func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        // Called when the user discards a scene session.
-        // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
-        // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
     // MARK: - Core Data stack
 
     lazy var persistentContainer: NSPersistentContainer = {
-        /*
-         The persistent container for the application. This implementation
-         creates and returns a container, having loaded the store for the
-         application to it. This property is optional since there are legitimate
-         error conditions that could cause the creation of the store to fail.
-        */
         let container = NSPersistentContainer(name: "campusGo")
         container.persistentStoreDescriptions.append(storeDescription)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
-                /*
-                 Typical reasons for an error here include:
-                 * The parent directory does not exist, cannot be created, or disallows writing.
-                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
-                 * The device is out of space.
-                 * The store could not be migrated to the current model version.
-                 Check the error message to determine what the actual problem was.
-                 */
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
@@ -81,33 +101,60 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             do {
                 try context.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
+}
 
-    //MARK: - Push Notification
-    func registerForPushNotifications() {
-      //1
-        UNUserNotificationCenter.current()
-          .requestAuthorization(
-            options: [.alert, .sound, .badge]) { [weak self] granted, _ in
-            print("Permission granted: \(granted)")
-            guard granted else { return }
-            self?.getNotificationSettings()
-          }
+// MARK: - Geofencing and push Notification
 
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion) {
+        if region is CLCircularRegion {
+            // Do what you want if this information
+            self.handleEvent(forRegion: region)
+            locationManager?.stopMonitoring(for: region)
+        }
     }
     
-    func getNotificationSettings() {
-      UNUserNotificationCenter.current().getNotificationSettings { settings in
-        print("Notification settings: \(settings)")
-      }
+    func handleEvent(forRegion region: CLRegion!) {
+        let content = UNMutableNotificationContent()
+        content.title = "Parabéns!"
+        content.body = "Lugar desbloqueado"
+        content.sound = UNNotificationSound.default
+
+        let timeInSeconds: TimeInterval = (1)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInSeconds, repeats: false)
+
+        let identifier = region.identifier
+
+        let request = UNNotificationRequest(identifier: identifier,
+                                            content: content,
+                                            trigger: trigger)
+        
+        // if region was on route switch place state to "known" and show notification
+        let placeService = PlaceService()
+        let uid = UUID(uuidString: region.identifier)
+        if (placeService.isOnRoute(uid: uid!)) {
+            try! placeService.updateState(uid: uid!, newState: PlaceState.known)
+            annotationDelegate?.updateAnnotations()
+            locationManager?.stopMonitoring(for: region!)
+            notificationCenter!.add(request, withCompletionHandler: { (error) in
+                if error != nil {
+                    print("Error adding notification with identifier: \(identifier)")
+                }
+            })
+        }
     }
+}
 
-
+extension AppDelegate: UNUserNotificationCenterDelegate {
+  
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        // when app is open and in foregroud
+        completionHandler([.list, .banner])
+    }
 }
 

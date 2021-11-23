@@ -10,14 +10,17 @@ import UIKit
 
 class AchievementListController: UIViewController {
     
-    
     @IBOutlet var achievementListView: AchievementListView!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         achievementListView.achievementCollection.delegate = self
         achievementListView.achievementCollection.dataSource = self
+        achievementListView.achievementCollection.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
+        let layout = UICollectionViewFlowLayout()
+        achievementListView.achievementCollection.collectionViewLayout = layout
     }
 }
 
@@ -27,21 +30,32 @@ extension AchievementListController: UICollectionViewDataSource, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellView = achievementListView.achievementCollection.dequeueReusableCell(withReuseIdentifier: "achievementCell", for: indexPath)
         
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
+        cell.configure(hasProgress: true)
+        return cell
         
-        //cellView.titleLabel.text = "Lorem Ipsum"
-        //cellView.image.image = UIImage(named: "books")
-        cellView.layer.borderColor = UIColor(rgb: 0xC7C7CC).cgColor
-        cellView.layer.borderWidth = 0.5
-        return cellView
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
             destVC.loadViewIfNeeded()
-            //destVC.achievementView.achievementLabel.text = "teste"
         }
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: "showAchievement", sender: collectionView.cellForItem(at: indexPath))
+        collectionView.deselectItem(at: indexPath, animated: true)
+        
+    }
+}
+extension AchievementListController: UICollectionViewDelegateFlowLayout{
+    // MARK: UICollectionViewDelegateFlowLayout methods
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: achievementListView.achievementCollection.frame.width ,height: 76)
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
+    }
+    
 }

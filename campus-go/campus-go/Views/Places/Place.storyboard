@@ -13,7 +13,7 @@
         <!--Title-->
         <scene sceneID="Ap7-Zg-vTH">
             <objects>
-                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="1w6-VN-eV4" customClass="PlaceViewController" customModule="campus_go" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PlaceDetails" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1w6-VN-eV4" customClass="PlaceViewController" customModule="campus_go" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fzf-Wc-OU3" customClass="PlaceView" customModule="campus_go" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -40,6 +40,9 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="small"/>
                                             <color key="baseBackgroundColor" systemColor="systemPinkColor"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="goBtnAction:" destination="1w6-VN-eV4" eventType="touchUpInside" id="NEa-Ip-1Na"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90U-1E-XcO">
                                         <rect key="frame" x="195" y="0.0" width="187" height="47.5"/>
@@ -65,6 +68,9 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Ver mais" titleAlignment="automatic">
                                             <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <segue destination="vW8-HE-d1w" kind="show" id="2JW-et-ASp"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -91,7 +97,7 @@
                                     <constraint firstItem="UBN-AP-MgV" firstAttribute="width" secondItem="4Sz-sm-R3m" secondAttribute="width" multiplier="0.3" id="hoy-4C-lk4"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" preservesSuperviewLayoutMargins="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1BY-Ti-KbK">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1BY-Ti-KbK">
                                 <rect key="frame" x="16" y="511.5" width="382" height="285.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lPZ-hc-sgD">
@@ -101,80 +107,18 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="recentAchievementCell" id="f4Z-gO-EAD" customClass="RecentAchievementCell" customModule="campus_go" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="cell" id="gUS-Xc-W7P">
                                         <rect key="frame" x="19.5" y="0.0" width="343" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cDi-JU-Czo">
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" insetsLayoutMarginsFromSafeArea="NO" id="v1c-NX-bp7">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="76"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="8Y8-5h-YSN">
-                                                    <rect key="frame" x="302" y="34" width="25" height="8.5"/>
-                                                </imageView>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="h0J-LY-9KE">
-                                                    <rect key="frame" x="16" y="16" width="44" height="44"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="44" id="HnW-hn-Mci"/>
-                                                        <constraint firstAttribute="width" constant="44" id="RY5-Tb-hNt"/>
-                                                    </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="layer.colorBorder">
-                                                            <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                                            <real key="value" value="0.5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                            <integer key="value" value="4"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xce-H9-0kc">
-                                                    <rect key="frame" x="76" y="39.5" width="41.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="achievementTitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fCP-hw-rTP">
-                                                    <rect key="frame" x="76" y="16" width="129.5" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="8Y8-5h-YSN" firstAttribute="top" secondItem="cDi-JU-Czo" secondAttribute="top" constant="32" id="Dqi-gB-daH"/>
-                                                <constraint firstItem="fCP-hw-rTP" firstAttribute="leading" secondItem="h0J-LY-9KE" secondAttribute="trailing" constant="16" id="MKm-86-D7r"/>
-                                                <constraint firstItem="h0J-LY-9KE" firstAttribute="leading" secondItem="cDi-JU-Czo" secondAttribute="leading" constant="16" id="O3V-dc-n7X"/>
-                                                <constraint firstAttribute="bottom" secondItem="h0J-LY-9KE" secondAttribute="bottom" constant="16" id="Og9-e4-SHc"/>
-                                                <constraint firstAttribute="bottom" secondItem="xce-H9-0kc" secondAttribute="bottom" constant="16" id="SBE-da-RgV"/>
-                                                <constraint firstItem="h0J-LY-9KE" firstAttribute="top" secondItem="cDi-JU-Czo" secondAttribute="top" constant="16" id="axy-R1-kl6"/>
-                                                <constraint firstAttribute="trailing" secondItem="8Y8-5h-YSN" secondAttribute="trailing" constant="16" id="d32-xD-kok"/>
-                                                <constraint firstItem="fCP-hw-rTP" firstAttribute="top" secondItem="cDi-JU-Czo" secondAttribute="top" constant="16" id="fEt-W0-ggB"/>
-                                                <constraint firstItem="xce-H9-0kc" firstAttribute="leading" secondItem="h0J-LY-9KE" secondAttribute="trailing" constant="16" id="kmi-Jz-Wdy"/>
-                                                <constraint firstItem="8Y8-5h-YSN" firstAttribute="leading" secondItem="h0J-LY-9KE" secondAttribute="trailing" constant="242" id="s2X-bs-Eon"/>
-                                                <constraint firstAttribute="width" secondItem="cDi-JU-Czo" secondAttribute="height" multiplier="191:38" id="vm0-Lw-K2o"/>
-                                                <constraint firstAttribute="bottom" secondItem="8Y8-5h-YSN" secondAttribute="bottom" constant="32" id="wek-7y-drh"/>
-                                            </constraints>
+                                            <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
                                         <connections>
-                                            <outlet property="achievementDescription" destination="xce-H9-0kc" id="9q7-kV-5yd"/>
-                                            <outlet property="achievementImage" destination="h0J-LY-9KE" id="E2v-w3-vNi"/>
-                                            <outlet property="achievementName" destination="fCP-hw-rTP" id="UQq-Fx-ibl"/>
+                                            <segue destination="su2-Mv-c0B" kind="presentation" identifier="showAchievement" id="fzv-RJ-nKM"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="5"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="BUc-zp-h1Q"/>
@@ -225,9 +169,26 @@
             </objects>
             <point key="canvasLocation" x="-771.01449275362324" y="58.928571428571423"/>
         </scene>
+        <!--Achievement-->
+        <scene sceneID="VIH-Rq-byl">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Achievement" id="su2-Mv-c0B" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JSv-Y6-y5j" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60" y="129"/>
+        </scene>
+        <!--AchievementList-->
+        <scene sceneID="Rb3-1Q-hvt">
+            <objects>
+                <viewControllerPlaceholder storyboardName="AchievementList" id="vW8-HE-d1w" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="0Fn-pB-46q"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q6n-hA-gam" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="44" y="1"/>
+        </scene>
     </scenes>
     <resources>
-        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <image name="goButton" width="16" height="25"/>
         <image name="mapButton" width="23" height="25"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>
