@@ -23,8 +23,6 @@ class PlacesViewController: UIViewController{
     private let spaceBetweenCells:Double = 8//space between cells
     private let navBarButtonImages = [1: "rectangle.grid.2x2.fill",2 :"rectangle.grid.1x2.fill"] //navbar right button image names
     
-    //MARK: constants to be deleted
-    private let numberOfCells:Double = 12
     private let service = PlaceService()
     
     private var places:[Place] = []
@@ -40,18 +38,18 @@ class PlacesViewController: UIViewController{
             print(error)
         }
 
-        navigationItem.rightBarButtonItem?.tintColor = Color.pink
         collectionView.register(PlaceCollectionViewCell.nib(), forCellWithReuseIdentifier: PlaceCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = UIColor(rgb: 0xF2F2F7)
         self.view.backgroundColor = UIColor(rgb: 0xF2F2F7)
-        
         updateCollectionViewLayout()
     }
     
     private func updateCollectionViewLayout(){
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: navBarButtonImages[state.rawValue] ?? ""), style: .plain , target: self, action: #selector(changeState) )
+        navigationItem.rightBarButtonItem?.tintColor = Color.pink
+        
         cellWidth = (Double(self.view.frame.size.width) - lateralEmptySpace) / Double(state.rawValue) - spaceBetweenCells
         cellHeight = cellWidth * 0.7
         let layout = UICollectionViewFlowLayout()
@@ -92,7 +90,6 @@ extension PlacesViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "placeDetails", sender: places[indexPath.item] )
         collectionView.deselectItem(at: indexPath, animated: true)
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -111,7 +108,6 @@ extension PlacesViewController: UICollectionViewDataSource{
                                                       for: indexPath) as! PlaceCollectionViewCell
         cell.configure(screenState: state,place: places[indexPath.item] )
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
