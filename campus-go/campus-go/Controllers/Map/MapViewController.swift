@@ -185,15 +185,26 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        let xOffset = (MapConstants.selectedAnnitationWidht - MapConstants.annotationWidth)/2
         // do something
-        view.frame.size = CGSize(width: MapConstants.selectedAnnitationWidht, height: MapConstants.selectedAnnotationHeight)
-        view.centerOffset = .zero
+        //view.frame.size = CGSize(width: MapConstants.selectedAnnitationWidht, height: MapConstants.selectedAnnotationHeight)
+//        view.frame = CGRect(x: 100, y: view.center.y, width: MapConstants.selectedAnnitationWidht, height: MapConstants.selectedAnnotationHeight)
+        view.transform = CGAffineTransform.identity
+       // view.transform = view.transform.translatedBy(x: -xOffset, y: 0)
+        UIView.animate(withDuration: 0.5, animations: {
+            view.transform = view.transform.scaledBy(x: 2, y: 2)
+        })
+//        view.detailCalloutAccessoryView.
+//        view.centerOffset = .zero
+
     }
-    
+            
+
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         UIView.animate(withDuration: 0.5, animations: {
-            view.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
+            view.transform = CGAffineTransform.identity
         })
+        
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
