@@ -15,7 +15,7 @@ class AchievementService{
     func create(condition: String, name: String, xpPoints: Int64) throws -> Achievement? {
         let achievementEntity = NSEntityDescription.entity(forEntityName: "Achievement", in: context)!
         let achievement = NSManagedObject(entity: achievementEntity, insertInto: context)
-        let uid = UUID();
+        let uid = UUID()
         achievement.setValue(condition, forKey: "condition")
         achievement.setValue(name, forKey: "name")
         achievement.setValue(xpPoints, forKey: "xpPoints")

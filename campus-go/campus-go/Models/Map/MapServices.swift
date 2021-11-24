@@ -17,7 +17,7 @@ class MapServices: NSObject {
     init(_ mapView: MKMapView?) {
         super.init()
         locationManager.delegate = self
-        self.mapView = mapView!
+        self.mapView = mapView
         locationManager = CLLocationManager()
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestAlwaysAuthorization()
@@ -71,14 +71,23 @@ class MapServices: NSObject {
         let region = createGeofenceRegion(geofenceRegionCenter: coordinate, radius: MapConstants.fenceRadius, identifier: uid)
         
         pin.region = region
+        if let mapView_ = mapView {
+            mapView_.addAnnotation(pin)
+        }
         
-        mapView.addAnnotation(pin)
     }
     
     public func populateMap(){
+        if let mapView_ = mapView {
+            mapView_.removeOverlays(mapView.overlays)
+        }
         let listPlaces = getPlaces()!
         for place in listPlaces {
             addCustomAnnotation(place: place)
+            if(Int(place.state) == Int(PlaceState.onRoute.rawValue)) {
+                self.displayRoute(sourceCoordinate: self.getUserCoordinate2D() ,
+                                  destinationCoordinate: CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude))
+            }
         }
     }
     
@@ -97,7 +106,10 @@ class MapServices: NSObject {
         let directions = MKDirections(request: directionsRequest)
         
         // remove last route
-        mapView.removeOverlays(mapView.overlays)
+        if let mapView_ = mapView {
+            mapView_.removeOverlays(mapView.overlays)
+        }
+        
         
         directions.calculate { (response, error) in
             guard let response = response else {
@@ -108,7 +120,9 @@ class MapServices: NSObject {
             }
             
             for route in response.routes {
-                self.mapView.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
+                if let mapView_ = self.mapView {
+                    mapView_.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
+                }
             }
         }
     }

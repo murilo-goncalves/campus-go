@@ -14,17 +14,17 @@ class PlacesViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: variables calculated in viewDidLoad
-    var cellWidth:Double = 0;
-    var cellHeight:Double = 0;
-    var state:PlaceScreenState = PlaceScreenState.small; // initial view state with small cells
+    var cellWidth:Double = 0
+    var cellHeight:Double = 0
+    var state:PlaceScreenState = PlaceScreenState.large // initial view state with small cells
     
     //MARK: constants
-    let lateralEmptySpace:Double = 32 ;//horizontal distances to safe area
-    let spaceBetweenCells:Double = 8; //space between cells
+    let lateralEmptySpace:Double = 32//horizontal distances to safe area
+    let spaceBetweenCells:Double = 8//space between cells
     let navBarButtonImages = [1: "rectangle.grid.2x2.fill",2 :"rectangle.grid.1x2.fill"] //navbar right button image names
     
     //MARK: constants to be deleted
-    let numberOfCells:Double = 12;
+    let numberOfCells:Double = 12
     private let service = PlaceService()
     
     private var places:[Place] = []
@@ -54,6 +54,8 @@ class PlacesViewController: UIViewController{
         let layout = UICollectionViewFlowLayout()
         collectionView.collectionViewLayout = layout
         collectionView.setContentOffset(CGPoint(x: 0,y:-1), animated: false)
+        collectionView.backgroundColor = UIColor(rgb: 0xF2F2F7)
+        self.view.backgroundColor = UIColor(rgb: 0xF2F2F7)
     }
     
     @objc func changeState(sender: UIButton!) {

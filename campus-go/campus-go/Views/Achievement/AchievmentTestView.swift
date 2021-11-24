@@ -23,7 +23,7 @@ class AchievementTestView: UITableViewController{
             guard let list = try service.retrieve() else { return }
             listAchievements = list
         } catch {
-            print("Não aguento mais passar raiva")
+            print(error)
         }
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -46,7 +46,7 @@ class AchievementTestView: UITableViewController{
                 listAchievements.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .fade)
             } catch {
-                print("tô cansado de passar raiva")
+                print(error)
             }
         }
     }
@@ -60,7 +60,7 @@ class AchievementTestView: UITableViewController{
                 try self?.service.update(condition: nil, name: conquista, xpPoints: nil, uid: uid )
                 self?.listAchievements[indexPath.row].name = conquista
             } catch {
-                print("Já tô puto com isso")
+                print(error)
             }
         }
         ac.addAction(editAction)
@@ -82,7 +82,7 @@ class AchievementTestView: UITableViewController{
             guard let novaConquista = try service.create(condition: "n sei", name: conquista, xpPoints: 2000) else { return }
             listAchievements.insert(novaConquista, at: 0)
         } catch {
-            print("Eu não aguento mais")
+            print(error)
         }
 
         let indexPath = IndexPath(row: 0, section: 0)

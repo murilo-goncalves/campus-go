@@ -18,6 +18,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     var images: [String] = []
     let placeService = PlaceService()
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
+    let mapService = MapServices(nil)
+    
     
     //apenas recebendo infomração do PlacesViewController
     var indexPath: IndexPath!
@@ -29,6 +31,10 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor(rgb: 0xF2F2F7)
+        userCoordinate = mapService.getUserCoordinate2D()
+        placeCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         
         if let name = place.name {
             if(place.state == PlaceState.known.rawValue) {
@@ -54,8 +60,6 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         if let userCoord = userCoordinate{
             let dist = calculaDistancia(userCoord, placeCoordinate)
             placeView.distanciaLugar.text = dist < 1.0 ? "\(dist*1000) m" : "\((dist*10).rounded()/10) km"
-            
-           
         } else {
             placeView.distanciaLugar.text = ""
         }
@@ -169,11 +173,15 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     @IBAction func goBtnAction(_ sender: UIButton) {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
-        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         annotationDelegate?.updateAnnotations()
         _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.tabBarController?.selectedIndex = 1
     }
 }
+
+
+
+
 
 extension PlaceViewController: UICollectionViewDataSource {
 
@@ -196,7 +204,6 @@ extension PlaceViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showAchievement", sender: collectionView.cellForItem(at: indexPath))
         collectionView.deselectItem(at: indexPath, animated: true)
-        
     }
 
 }
@@ -210,4 +217,5 @@ extension PlaceViewController: UICollectionViewDelegateFlowLayout{
     }
     
 }
+
 
