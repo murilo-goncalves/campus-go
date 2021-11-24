@@ -16,8 +16,9 @@ struct Color {
     static let green = UIColor.systemGreen
     static let purple = UIColor.systemPurple
     static let orange = UIColor.systemOrange
-//    static let greenTrans = UIColor.systemGreen.withAlphaComponent(0.2)
-//    static let purpleTrans = UIColor.systemPurple.withAlphaComponent(0.2)
-//    static let orangeTrans = UIColor.systemOrange.withAlphaComponent(0.2)
+    static let greenTrans = UIColor.systemGreen.withAlphaComponent(0.2)
+    static let purpleTrans = UIColor.systemPurple.withAlphaComponent(0.2)
+    static let orangeTrans = UIColor.systemOrange.withAlphaComponent(0.2)
+    static let background = UIColor.systemGray6
     
 }

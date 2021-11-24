@@ -33,11 +33,11 @@ class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Color.background
         title = "Mapa"
         setupMapView()
         definesPresentationContext = true
         (UIApplication.shared.delegate as! AppDelegate).annotationDelegate = self
-
         mapServices = MapServices(mapView)
         mapServices.populateMap()
     }

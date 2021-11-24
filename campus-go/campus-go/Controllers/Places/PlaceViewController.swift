@@ -34,7 +34,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(rgb: 0xF2F2F7)
+        self.view.backgroundColor = Color.background
         userCoordinate = mapService.getUserCoordinate2D()
         placeCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         
@@ -81,6 +81,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
 
             imgView.image = UIImage(named: images[index])
             imgView.contentMode = .scaleAspectFill
+            imgView.layer.borderWidth = 0.5
+            imgView.layer.borderColor = UIColor.lightGray.cgColor
             imgView.layer.cornerRadius = 10
             imgView.clipsToBounds = true
             
