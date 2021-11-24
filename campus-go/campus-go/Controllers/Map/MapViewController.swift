@@ -60,6 +60,7 @@ class MapViewController: UIViewController {
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
         mapView.tintColor = Color.pink
+        mapView.pointOfInterestFilter = .excludingAll
     }
     
     private func setupResultsTableView() {
