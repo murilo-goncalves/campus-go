@@ -48,6 +48,7 @@ class MapViewController: UIViewController {
         let initialLocation = MapConstants.unicamp
         mapView.centerToLocation(initialLocation)
         mapView.tintColor = Color.pink
+        mapView.pointOfInterestFilter = .excludingAll
     }
     
     override func viewDidAppear(_ animated: Bool) {
