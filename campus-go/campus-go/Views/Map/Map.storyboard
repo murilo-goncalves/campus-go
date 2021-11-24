@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="e4i-7h-bAt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Mapa-->
+        <!--Map View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
                 <viewController storyboardIdentifier="Map" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="MapViewController" customModule="campus_go" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,19 +19,17 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="5BR-Sg-BCl">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <rect key="frame" x="0.0" y="140" width="414" height="673"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="5BR-Sg-BCl" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" id="DKl-6Z-GR4"/>
                             <constraint firstItem="5BR-Sg-BCl" firstAttribute="bottom" secondItem="kyF-ZE-Vnz" secondAttribute="top" id="Xcd-v9-Xbi"/>
-                            <constraint firstItem="5BR-Sg-BCl" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="lKJ-Qi-bb7"/>
+                            <constraint firstItem="5BR-Sg-BCl" firstAttribute="top" secondItem="fN7-is-o7K" secondAttribute="bottom" id="lKJ-Qi-bb7"/>
                             <constraint firstAttribute="trailing" secondItem="5BR-Sg-BCl" secondAttribute="trailing" id="s2R-i6-DjU"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
-                    <tabBarItem key="tabBarItem" title="Mapa" image="map.fill" catalog="system" id="yXy-fD-h1M"/>
                     <navigationItem key="navigationItem" id="KI8-Ut-O39"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -41,7 +39,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="970" y="126"/>
+            <point key="canvasLocation" x="1879.7101449275365" y="125.89285714285714"/>
         </scene>
         <!--Place-->
         <scene sceneID="hnm-LK-kfj">
@@ -51,7 +49,26 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZU-Au-hw7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="116"/>
+            <point key="canvasLocation" x="2518.1159420289855" y="115.84821428571428"/>
+        </scene>
+        <!--Mapa-->
+        <scene sceneID="awD-G9-fvp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="e4i-7h-bAt" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Mapa" image="map.fill" catalog="system" id="yXy-fD-h1M"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="zce-FE-3kZ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="6W8-wl-jf4"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="STD-Lq-ZAe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="969.56521739130437" y="125.89285714285714"/>
         </scene>
     </scenes>
     <resources>
