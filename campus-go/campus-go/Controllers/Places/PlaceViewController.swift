@@ -10,6 +10,7 @@ import CoreLocation
 import Foundation
 class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate {
     
+    @IBOutlet weak var bottomCollectionConstraints: NSLayoutConstraint!
     @IBOutlet var placeView: PlaceView!
     @IBOutlet weak var goButton: UIButton!
     @IBOutlet weak var placeButton: UIButton!
@@ -133,6 +134,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.recentAchievement.layer.borderWidth = 1
         placeView.recentAchievement.layer.borderColor = UIColor.lightGray.cgColor
         placeView.recentAchievement.layer.cornerRadius = 5
+        bottomCollectionConstraints.constant = bottomCollectionConstraints.constant + CGFloat(Int(placeView.recentAchievement.frame.height) % 76)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -176,11 +178,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
 
 
 
-extension PlaceViewController: UICollectionViewDataSource{
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+extension PlaceViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Int(collectionView.frame.height / 76)

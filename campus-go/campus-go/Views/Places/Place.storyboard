@@ -166,6 +166,7 @@
                     <navigationItem key="navigationItem" title="Title" largeTitleDisplayMode="never" id="K9D-DN-OwM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="bottomCollectionConstraints" destination="RiI-Xw-f28" id="qRM-wY-8kw"/>
                         <outlet property="goButton" destination="SHM-hU-I4g" id="4yX-xY-mZA"/>
                         <outlet property="placeButton" destination="90U-1E-XcO" id="kao-Rx-AIP"/>
                         <outlet property="placeView" destination="fzf-Wc-OU3" id="Zvn-Sw-tNY"/>
