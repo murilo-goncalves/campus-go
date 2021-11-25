@@ -41,8 +41,8 @@ class PlacesViewController: UIViewController{
         collectionView.register(PlaceCollectionViewCell.nib(), forCellWithReuseIdentifier: PlaceCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.backgroundColor = UIColor(rgb: 0xF2F2F7)
-        self.view.backgroundColor = UIColor(rgb: 0xF2F2F7)
+        collectionView.backgroundColor = Color.background
+        self.view.backgroundColor = Color.background
         updateCollectionViewLayout()
     }
     
@@ -77,11 +77,11 @@ class PlacesViewController: UIViewController{
             return $0.state > $1.state
         })
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         sortPlaces()
         self.collectionView.reloadData()
+        
     }
-
 }
 
 
