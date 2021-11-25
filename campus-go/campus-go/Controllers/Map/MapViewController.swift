@@ -30,7 +30,8 @@ class MapViewController: UIViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     private var mapServices: MapServices!
-    
+    private var placeService = PlaceService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Mapa"
@@ -49,10 +50,6 @@ class MapViewController: UIViewController {
         mapView.centerToLocation(initialLocation)
         mapView.tintColor = Color.pink
         mapView.pointOfInterestFilter = .excludingAll
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        mapServices.populateMap()
     }
 }
 
@@ -117,11 +114,14 @@ extension MapViewController: MKMapViewDelegate {
         
         return renderer
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeDetails" {
             if let destVC = segue.destination as? PlaceViewController,
                let annotation = sender as? CustomAnnotation {
                 destVC.place = mapServices.getPlace(uid: annotation.uid)!
+                destVC.userCoordinate = mapServices.getUserCoordinate2D()
+                destVC.annotation = annotation
                 destVC.routeDelegate = self
                 destVC.annotationDelegate = self
             }
@@ -133,12 +133,24 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
+        mapServices.displayRoute(sourceCoordinate: mapServices.getUserCoordinate2D(),
+                                 destinationCoordinate: destinationCoordinate)
     }
 }
 
 extension MapViewController: AnnotationDelegate {
     func updateAnnotations(){
-        mapView.removeAnnotations(mapView.annotations)
-        mapServices.populateMap()
+        for annotation in mapView.annotations {
+            DispatchQueue.main.async {
+                self.updateAnnotation(annotation: annotation as! CustomAnnotation)
+            }
+        }
+    }
+    
+    func updateAnnotation(annotation: CustomAnnotation) {
+        mapView.removeAnnotation(annotation)
+        let uid = annotation.uid
+        let place = try! placeService.read(uid: uid)
+        mapServices.addCustomAnnotation(place: place!)
     }
 }
