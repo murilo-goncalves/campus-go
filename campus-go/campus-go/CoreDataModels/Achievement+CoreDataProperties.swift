@@ -16,30 +16,15 @@ extension Achievement {
         return NSFetchRequest<Achievement>(entityName: "Achievement")
     }
 
-    @NSManaged public var condition: String?
-    @NSManaged public var name: String?
-    @NSManaged public var uid: UUID?
+    @NSManaged public var progress: Double
+    @NSManaged public var name: String
+    @NSManaged public var uid: UUID
     @NSManaged public var xpPoints: Int64
-    @NSManaged public var relatedPlaces: NSSet?
+    @NSManaged public var achievementID: String
 
 }
 
-// MARK: Generated accessors for relatedPlaces
-extension Achievement {
 
-    @objc(addRelatedPlacesObject:)
-    @NSManaged public func addToRelatedPlaces(_ value: Place)
-
-    @objc(removeRelatedPlacesObject:)
-    @NSManaged public func removeFromRelatedPlaces(_ value: Place)
-
-    @objc(addRelatedPlaces:)
-    @NSManaged public func addToRelatedPlaces(_ values: NSSet)
-
-    @objc(removeRelatedPlaces:)
-    @NSManaged public func removeFromRelatedPlaces(_ values: NSSet)
-
-}
 
 extension Achievement : Identifiable {
 

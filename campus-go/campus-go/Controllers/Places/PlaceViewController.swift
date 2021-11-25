@@ -19,6 +19,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     var pictureService = Pictures()
     var images: [String] = []
     let placeService = PlaceService()
+    let achievementService = AchievementService()
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
     let mapService = MapServices(nil)
     
@@ -195,6 +196,12 @@ extension PlaceViewController: UICollectionViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
+//            do {
+//                destVC.conquista_ = try achievementService.retrieve(uid: UUID())
+//            } catch {
+//                print(error)
+//            }
+            
             destVC.loadViewIfNeeded()
         }
     }

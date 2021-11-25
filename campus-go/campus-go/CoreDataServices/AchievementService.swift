@@ -12,13 +12,14 @@ class AchievementService{
     var context: NSManagedObjectContext {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
-    func create(condition: String, name: String, xpPoints: Int64) throws -> Achievement? {
+    func create(achievementID: String, name: String, progress: Double, uid: UUID, xpPoints: Int64) throws -> Achievement? {
         let achievementEntity = NSEntityDescription.entity(forEntityName: "Achievement", in: context)!
         let achievement = NSManagedObject(entity: achievementEntity, insertInto: context)
         let uid = UUID()
-        achievement.setValue(condition, forKey: "condition")
+        achievement.setValue(progress, forKey: "progress")
         achievement.setValue(name, forKey: "name")
         achievement.setValue(xpPoints, forKey: "xpPoints")
+        achievement.setValue(achievementID, forKey: "achievementID")
         achievement.setValue(uid, forKey: "uid")
         
         try context.save()

@@ -12,9 +12,17 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
     @IBOutlet var profileView: ProfileView!
+    let achievementService = AchievementService()
+    var listAchievements: [Achievement]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            guard let list = try achievementService.retrieve() else { return }
+            listAchievements = list
+        } catch {
+            print(error)
+        }
         self.view.backgroundColor = Color.background
         setProfileTitle()
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
@@ -83,13 +91,18 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
-        cell.configure(hasProgress: false)
+        cell.configure(achievement: listAchievements[indexPath.row])
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
+//            do {
+//                destVC.conquista_ = try achievementService.retrieve(uid: UUID())
+//            } catch {
+//                print(error)
+//            }
             destVC.loadViewIfNeeded()
         }
     }
