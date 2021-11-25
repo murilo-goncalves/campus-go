@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
     @IBOutlet var profileView: ProfileView!
     let achievementService = AchievementService()
-    var listAchievements: [Achievement]
+    var listAchievements: [Achievement] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -98,11 +98,12 @@ extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataS
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
-//            do {
-//                destVC.conquista_ = try achievementService.retrieve(uid: UUID())
-//            } catch {
-//                print(error)
-//            }
+            let cell = sender as! AchievementCollectionViewCell
+            do {
+                destVC.conquista_ = try achievementService.retrieve(uid: cell.uid!)
+            } catch {
+                print(error)
+            }
             destVC.loadViewIfNeeded()
         }
     }

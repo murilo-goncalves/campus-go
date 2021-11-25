@@ -16,6 +16,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     @IBOutlet weak var placeButton: UIButton!
     
     var place = Place()
+    var listAchievements: [Achievement] = []
     var pictureService = Pictures()
     var images: [String] = []
     let placeService = PlaceService()
@@ -34,6 +35,13 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do {
+            guard let list = try achievementService.retrieve() else { return }
+            listAchievements = list
+        } catch {
+            print(error)
+        }
         
         self.view.backgroundColor = Color.background
         userCoordinate = mapService.getUserCoordinate2D()
@@ -189,19 +197,19 @@ extension PlaceViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
-        cell.configure(hasProgress: false)
+        cell.configure(achievement: listAchievements[indexPath.row])
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
-//            do {
-//                destVC.conquista_ = try achievementService.retrieve(uid: UUID())
-//            } catch {
-//                print(error)
-//            }
-            
+            let cell = sender as! AchievementCollectionViewCell
+            do {
+                destVC.conquista_ = try achievementService.retrieve(uid: cell.uid!)
+            } catch {
+                print(error)
+            }
             destVC.loadViewIfNeeded()
         }
     }

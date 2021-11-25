@@ -11,11 +11,18 @@ import UIKit
 class AchievementListController: UIViewController {
     
     @IBOutlet var achievementListView: AchievementListView!
-    
+    let achievementService = AchievementService()
+    var listAchievements: [Achievement] = []
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            guard let list = try achievementService.retrieve() else { return }
+            listAchievements = list
+        } catch {
+            print(error)
+        }
         achievementListView.achievementCollection.delegate = self
         achievementListView.achievementCollection.dataSource = self
         achievementListView.achievementCollection.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
@@ -32,7 +39,7 @@ extension AchievementListController: UICollectionViewDataSource, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
-        cell.configure(hasProgress: true)
+        cell.configure(achievement: listAchievements[indexPath.row])
         return cell
         
     }
