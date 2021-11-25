@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var locationManager: CLLocationManager?
     var notificationCenter: UNUserNotificationCenter?
-
+    
+    //O ideal é fazer um singleton
+    var clickedLocation: CLLocationCoordinate2D?
+    
     var hasAlreadyLaunched: Bool!
     
     weak var annotationDelegate: AnnotationDelegate?
