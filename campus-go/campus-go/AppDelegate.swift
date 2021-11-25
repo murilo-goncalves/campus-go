@@ -45,6 +45,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    
+    // MARK: First CoreData Load
     func preLoadCoreData() {
         guard let path = Bundle.main.path(forResource: "Places", ofType: "json") else { return }
         do {
@@ -61,6 +63,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for t in teste! {
                 print(t.nImages, t.placeID)
             }
+            
+            _ = try! UserService().create(name: "Kakakak", xp: 420)
+            
         } catch {
             print("\(error)")
         }

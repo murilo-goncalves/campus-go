@@ -56,18 +56,6 @@
                                         </constraints>
                                         <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="91u-z9-848">
-                                        <rect key="frame" x="300" y="11" width="68" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Insert"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yH0-qF-J6b">
-                                        <rect key="frame" x="293" y="61" width="81" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="remove"/>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="clE-n0-Pq3">
                                         <rect key="frame" x="302" y="107" width="78" height="35"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -236,7 +224,6 @@
                     <connections>
                         <outlet property="bottomCollectionConstraint" destination="QqC-TL-WXa" id="laR-CH-HfM"/>
                         <outlet property="profileView" destination="5EZ-qb-Rvc" id="ino-A8-L5z"/>
-                        <outlet property="removeButton" destination="yH0-qF-J6b" id="tKR-tU-AK9"/>
                         <outlet property="titleLabel" destination="48Q-Bz-ZfU" id="KSX-dk-Sb5"/>
                         <outlet property="updateButton" destination="clE-n0-Pq3" id="BvH-R4-7xx"/>
                     </connections>

@@ -13,8 +13,6 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var button: UIButton!
-    @IBOutlet weak var removeButton: UIButton!
     @IBOutlet weak var updateButton: UIButton!
     @IBOutlet var profileView: ProfileView!
     
@@ -30,9 +28,8 @@ class ProfileViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         profileView.recentAchievementView.collectionViewLayout = layout
         
-        retrieveData()
+
         
-        button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
         updateButton.addTarget(self, action: #selector(self.updateTapped), for: .touchUpInside)
         
     }
@@ -45,71 +42,10 @@ class ProfileViewController: UIViewController {
         bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
     }
     
-    func retrieveData() {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
-        print("ENTROU")
-        do {
-            let result = try managedContext.fetch(fetchRequest)
-            for data in result as! [NSManagedObject] {
-                print(data.value(forKey: "name") as! String)
-                titleLabel.text = data.value(forKey: "name") as! String
-            }
-        } catch {
-            print("Deu ruim")
-        }
-        
-        
-    }
-    
-    @objc func buttonTapped(sender : UIButton) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let userEntity = NSEntityDescription.entity(forEntityName: "User", in: managedContext)!
-        
-        let user = NSManagedObject(entity: userEntity, insertInto: managedContext)
-        
-        user.setValue("teste", forKey: "name")
-        print("FOI SALVO")
-        do {
-            try managedContext.save()
-        } catch let error as NSError {
-            print("Deu Ruim \(error), \(error.userInfo)")
-        }
-        
-    }
-    
     @objc func updateTapped(sender : UIButton) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        
-        let managedContext = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest.init(entityName: "User")
-        fetchRequest.predicate = NSPredicate(format: "name = %@", "teste")
-        
-        do {
-            let test = try managedContext.fetch(fetchRequest)
-            
-            let objectUpdate = test[0] as! NSManagedObject
-            objectUpdate.setValue("ATUALIZADO", forKey: "name")
-            do {
-                try managedContext.save()
-            }
-            catch {
-                print("Deu update ruim")
-            }
-        }
-        catch {
-            print("Deu update ruim")
-        }
+        try! UserService().update(name: "Deu bom", xp: 520)
+        let user = try! UserService().read()
+        profileView.profileTitleView.title.text = user?.name
     }
     
     
@@ -118,7 +54,8 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderWidth = 1
-        profileView.profileTitleView.title.text = "Titulo"
+        let user = try! UserService().read()
+        profileView.profileTitleView.title.text = user?.name
     }
     
     func setProgressView() {
