@@ -20,14 +20,13 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     var images: [String] = []
     let placeService = PlaceService()
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-    let mapService = MapServices(nil)
-    
     
     //apenas recebendo infomração do PlacesViewController
     var indexPath: IndexPath!
     
-    var placeCoordinate: CLLocationCoordinate2D?
+    var annotation: CustomAnnotation?
     var userCoordinate: CLLocationCoordinate2D?
+    var placeCoordinate: CLLocationCoordinate2D?
     weak var routeDelegate: RouteDelegate?
     weak var annotationDelegate: AnnotationDelegate?
     
@@ -35,7 +34,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         super.viewDidLoad()
         
         self.view.backgroundColor = Color.background
-        userCoordinate = mapService.getUserCoordinate2D()
+
         placeCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         
         if let name = place.name {
@@ -169,6 +168,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     @IBAction func goBtnAction(_ sender: UIButton) {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
+        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         annotationDelegate?.updateAnnotations()
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.tabBarController?.selectedIndex = 1
@@ -182,9 +182,6 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         
     }
 }
-
-
-
 
 
 extension PlaceViewController: UICollectionViewDataSource {
