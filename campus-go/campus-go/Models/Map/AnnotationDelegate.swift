@@ -9,4 +9,6 @@ import Foundation
 
 protocol AnnotationDelegate: AnyObject {
     func updateAnnotations()
+    
+    func updateAnnotation(annotation: CustomAnnotation)
 }

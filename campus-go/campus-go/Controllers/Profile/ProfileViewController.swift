@@ -20,7 +20,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = Color.background
         setProfileTitle()
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
@@ -126,7 +126,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.experienceProgressView.textColor = Color.orange
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.experienceProgressView.textSize = CGFloat(20)
-        profileView.profileProgressView.experienceProgressView.backgroundBarColor = Color.lightOrange
+        profileView.profileProgressView.experienceProgressView.backgroundBarColor = Color.orangeTrans
         profileView.profileProgressView.experienceProgressView.foregroundBarColor = Color.orange
         profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.orange
         profileView.profileProgressView.experienceProgressView.animationDuration = TimeInterval(1.0)
@@ -137,7 +137,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.placesProgressView.textColor = Color.orange
         profileView.profileProgressView.placesProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.placesProgressView.textSize = CGFloat(20)
-        profileView.profileProgressView.placesProgressView.backgroundBarColor = Color.lightOrange
+        profileView.profileProgressView.placesProgressView.backgroundBarColor = Color.orangeTrans
         profileView.profileProgressView.placesProgressView.foregroundBarColor = Color.orange
         profileView.profileProgressView.placesProgressView.maximumBarColor = Color.orange
         profileView.profileProgressView.placesProgressView.animationDuration = TimeInterval(1.0)
@@ -148,7 +148,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.achievementProgressView.textColor = Color.orange
         profileView.profileProgressView.achievementProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.achievementProgressView.textSize = CGFloat(20)
-        profileView.profileProgressView.achievementProgressView.backgroundBarColor = Color.lightOrange
+        profileView.profileProgressView.achievementProgressView.backgroundBarColor = Color.orangeTrans
         profileView.profileProgressView.achievementProgressView.foregroundBarColor = Color.orange
         profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.orange
         profileView.profileProgressView.achievementProgressView.animationDuration = TimeInterval(1.0)

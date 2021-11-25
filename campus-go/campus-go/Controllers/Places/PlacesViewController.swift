@@ -14,17 +14,15 @@ class PlacesViewController: UIViewController{
     @IBOutlet weak var collectionView: UICollectionView!
     
     //MARK: variables calculated in viewDidLoad
-    var cellWidth:Double = 0
-    var cellHeight:Double = 0
-    var state:PlaceScreenState = PlaceScreenState.large // initial view state with small cells
+    private var cellWidth:Double = 0
+    private var cellHeight:Double = 0
+    private var state:PlaceScreenState = PlaceScreenState.large // initial view state with small cells
     
     //MARK: constants
-    let lateralEmptySpace:Double = 32//horizontal distances to safe area
-    let spaceBetweenCells:Double = 8//space between cells
-    let navBarButtonImages = [1: "rectangle.grid.2x2.fill",2 :"rectangle.grid.1x2.fill"] //navbar right button image names
+    private let lateralEmptySpace:Double = 32//horizontal distances to safe area
+    private let spaceBetweenCells:Double = 8//space between cells
+    private let navBarButtonImages = [1: "rectangle.grid.2x2.fill",2 :"rectangle.grid.1x2.fill"] //navbar right button image names
     
-    //MARK: constants to be deleted
-    let numberOfCells:Double = 12
     private let service = PlaceService()
     
     private var places:[Place] = []
@@ -40,38 +38,35 @@ class PlacesViewController: UIViewController{
             print(error)
         }
 
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: navBarButtonImages[state.rawValue] ?? ""), style: .plain , target: self, action: #selector(changeState) )
-        navigationItem.rightBarButtonItem?.tintColor = Color.pink
-        
         collectionView.register(PlaceCollectionViewCell.nib(), forCellWithReuseIdentifier: PlaceCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = Color.background
+        self.view.backgroundColor = Color.background
+        updateCollectionViewLayout()
+    }
+    
+    private func updateCollectionViewLayout(){
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: navBarButtonImages[state.rawValue] ?? ""), style: .plain , target: self, action: #selector(changeState) )
+        navigationItem.rightBarButtonItem?.tintColor = Color.pink
         
         cellWidth = (Double(self.view.frame.size.width) - lateralEmptySpace) / Double(state.rawValue) - spaceBetweenCells
         cellHeight = cellWidth * 0.7
-        
         let layout = UICollectionViewFlowLayout()
         collectionView.collectionViewLayout = layout
         collectionView.setContentOffset(CGPoint(x: 0,y:-1), animated: false)
-        collectionView.backgroundColor = UIColor(rgb: 0xF2F2F7)
-        self.view.backgroundColor = UIColor(rgb: 0xF2F2F7)
+        collectionView.reloadData()
     }
     
     @objc func changeState(sender: UIButton!) {
         if(state == PlaceScreenState.small){
             state = PlaceScreenState.large
-        }else if(state == PlaceScreenState.large){
+        } else {
             state = PlaceScreenState.small
         }
-        for i in stride(from: 0,to: Int(numberOfCells), by:1) {
-            collectionView.reloadItems(at: [IndexPath(item: i, section: 0)])
-        }
-        
         UIView.animate(withDuration: 0.2) {
-            self.viewDidLoad()
+            self.updateCollectionViewLayout()
         }
-        
     }
     
     func sortPlaces(){
@@ -82,11 +77,11 @@ class PlacesViewController: UIViewController{
             return $0.state > $1.state
         })
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         sortPlaces()
         self.collectionView.reloadData()
+        
     }
-
 }
 
 
@@ -95,7 +90,6 @@ extension PlacesViewController: UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "placeDetails", sender: places[indexPath.item] )
         collectionView.deselectItem(at: indexPath, animated: true)
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -110,14 +104,10 @@ extension PlacesViewController: UICollectionViewDelegate{
 extension PlacesViewController: UICollectionViewDataSource{
     // MARK: UICollectionViewDataSource methods
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PlaceCollectionViewCell.identifier,
                                                       for: indexPath) as! PlaceCollectionViewCell
-        
         cell.configure(screenState: state,place: places[indexPath.item] )
         return cell
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
