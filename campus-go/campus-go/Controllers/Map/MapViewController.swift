@@ -29,6 +29,8 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    //public var location: CLLocationCoordinate2D?
+    
     private var mapServices: MapServices!
     
     override func viewDidLoad() {
@@ -53,6 +55,9 @@ class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         mapServices.populateMap()
+        if ((UIApplication.shared.delegate as! AppDelegate).clickedLocation != nil){
+            self.mapView.centerToLocation(CLLocation(latitude: (UIApplication.shared.delegate as! AppDelegate).clickedLocation!.latitude, longitude: (UIApplication.shared.delegate as! AppDelegate).clickedLocation!.longitude))
+        }
     }
 }
 
@@ -133,6 +138,11 @@ extension MapViewController: MKMapViewDelegate {
 
 extension MapViewController: RouteDelegate {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
+    }
+    
+    func didTapLocation(locationCoordinate: CLLocationCoordinate2D) {
+        (UIApplication.shared.delegate as! AppDelegate).clickedLocation = locationCoordinate
+        self.mapView.setCenter(locationCoordinate, animated: true)
     }
 }
 
