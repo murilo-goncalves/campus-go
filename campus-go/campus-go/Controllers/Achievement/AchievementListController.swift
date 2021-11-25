@@ -33,7 +33,7 @@ class AchievementListController: UIViewController {
 
 extension AchievementListController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        return listAchievements.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -47,6 +47,12 @@ extension AchievementListController: UICollectionViewDataSource, UICollectionVie
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
+            let cell = sender as! AchievementCollectionViewCell
+            do {
+                destVC.conquista_ = try achievementService.retrieve(uid: cell.uid!)
+            } catch {
+                print(error)
+            }
             destVC.loadViewIfNeeded()
         }
     }
