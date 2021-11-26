@@ -54,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         guard let path = Bundle.main.path(forResource: "Places", ofType: "json") else { return }
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            print(data)
             let context = persistentContainer.newBackgroundContext()
             let decoder = JSONDecoder()
             decoder.userInfo[.context!] = context
@@ -63,11 +62,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages)
             }
             let teste = try PlaceService().readAll()
-            for t in teste! {
-                print(t.nImages, t.placeID)
-            }
             
-            _ = try! UserService().create(name: "Kakakak", xp: 420)
+            _ = try! UserService().create(name: "placeholder", xp: 420)
             
         } catch {
             print("\(error)")

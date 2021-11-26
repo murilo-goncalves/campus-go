@@ -14,9 +14,9 @@ class UserService {
     }
     
     func create(name: String, xp: Int64) {
+        
         let userEntity = NSEntityDescription.entity(forEntityName: "User", in: context)!
         let user = NSManagedObject(entity: userEntity, insertInto: context)
-        print("salvei")
         user.setValue(name, forKey: "name")
         user.setValue(xp, forKey: "xpPoints")
         
