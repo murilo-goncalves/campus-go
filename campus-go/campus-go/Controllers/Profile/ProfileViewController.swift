@@ -7,15 +7,18 @@
 
 import Foundation
 import UIKit
+import CoreData
 
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var profileView: ProfileView!
     let achievementService = AchievementService()
     var listAchievements: [Achievement] = []
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         do {
             guard let list = try achievementService.retrieve() else { return }
@@ -32,24 +35,28 @@ class ProfileViewController: UIViewController {
         profileView.recentAchievementView.dataSource = self
         let layout = UICollectionViewFlowLayout()
         profileView.recentAchievementView.collectionViewLayout = layout
+        
     }
-    
+        
     override func viewDidAppear(_ animated: Bool) {
+        
         profileView.profileTitleView.clipsToBounds = true
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2
         setProgressView()
         bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
     }
     
-    func setProfileTitle() {
+    private func setProfileTitle() {
+        
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderWidth = 1
-        profileView.profileTitleView.title.text = "Titulo"
+        let user = try! UserService().read()
+        profileView.profileTitleView.title.text = user?.name
     }
     
-    func setProgressView() {
-        profileView.profileProgressView.experienceProgressView.text = "25%"
+    private func setProgressView() {
+        
         profileView.profileProgressView.experienceProgressView.textColor = Color.orange
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.experienceProgressView.textSize = CGFloat(20)
@@ -57,9 +64,9 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.experienceProgressView.foregroundBarColor = Color.orange
         profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.orange
         profileView.profileProgressView.experienceProgressView.animationDuration = TimeInterval(1.0)
-        profileView.profileProgressView.experienceProgressView.setProgress(to: 0.25, animated: true)
         profileView.profileProgressView.experienceProgressView.awakeFromNib()
-   
+        setExperiencePercentage()
+        
         profileView.profileProgressView.placesProgressView.text = "50%"
         profileView.profileProgressView.placesProgressView.textColor = Color.orange
         profileView.profileProgressView.placesProgressView.lineWidth = CGFloat(7)
@@ -82,6 +89,13 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.achievementProgressView.setProgress(to: 0.6, animated: true)
         profileView.profileProgressView.achievementProgressView.awakeFromNib()
     }
+    
+    private func setExperiencePercentage() {
+        let user = try! UserService().read()
+        profileView.profileProgressView.experienceProgressView.text = "\(String(format: "%.0f", Double(user!.xpPoints)/Constant.totalXP * 100))%"
+        profileView.profileProgressView.experienceProgressView.setProgress(to: Double(user!.xpPoints)/Constant.totalXP, animated: true)
+    }
+    
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
