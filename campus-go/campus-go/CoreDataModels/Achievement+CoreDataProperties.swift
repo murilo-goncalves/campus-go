@@ -2,7 +2,7 @@
 //  Achievement+CoreDataProperties.swift
 //  campus-go
 //
-//  Created by Murilo Gonçalves on 17/11/21.
+//  Created by Luiz Gustavo Silva Aguiar on 26/11/21.
 //
 //
 
@@ -16,15 +16,14 @@ extension Achievement {
         return NSFetchRequest<Achievement>(entityName: "Achievement")
     }
 
+    @NSManaged public var achievementID: Int64
+    @NSManaged public var name: String?
     @NSManaged public var progress: Double
-    @NSManaged public var name: String
-    @NSManaged public var uid: UUID
+    @NSManaged public var uid: UUID?
     @NSManaged public var xpPoints: Int64
-    @NSManaged public var achievementID: String
+    @NSManaged public var objective: String?
 
 }
-
-
 
 extension Achievement : Identifiable {
 
