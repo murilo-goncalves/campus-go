@@ -183,6 +183,13 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         self.navigationController?.tabBarController?.selectedIndex = 1
     }
     
+    @IBAction func mapButtonAction(_ sender: UIButton) {
+        _ = navigationController?.popViewController(animated: true)
+        self.tabBarController?.selectedIndex = 1
+        (UIApplication.shared.delegate as! AppDelegate).clickedLocation = placeCoordinate!
+        routeDelegate?.didTapLocation(locationCoordinate: placeCoordinate!)
+        
+    }
 }
 
 
