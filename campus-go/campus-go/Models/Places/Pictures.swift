@@ -18,6 +18,11 @@ struct Pictures {
             self.listPictures.append("\(placeID)-\(i)")
         }
     }
+    init(achievementID: Int) {
+        listPictures = [String]()
+        listPictures.append("A-\(achievementID)")
+        numberOfPictures = 1
+    }
     init(){
         numberOfPictures = 0
         listPictures = []
