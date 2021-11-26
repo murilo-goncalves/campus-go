@@ -26,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self
-        
         hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
         
         if !hasAlreadyLaunched {
@@ -49,8 +48,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     
-    // MARK: First CoreData Load
-    func preLoadCoreData() {
+    func populateCoreDataAchievements() {
+        guard let path = Bundle.main.path(forResource: "Achievements", ofType: "json") else {return}
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            let context = persistentContainer.newBackgroundContext()
+            let decoder = JSONDecoder()
+            decoder.userInfo[.context!] = context
+            let result = try decoder.decode([Achievement].self, from: data)
+
+            for object in result {
+                do {
+                    let _ = try AchievementService().create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints)
+                } catch {
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func populateCoreDataPlaces() {
         guard let path = Bundle.main.path(forResource: "Places", ofType: "json") else { return }
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
@@ -61,14 +80,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for object in result {
                 let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages)
             }
-            let teste = try PlaceService().readAll()
-            
-            _ = try! UserService().create(name: "placeholder", xp: 420)
-            
         } catch {
             print("\(error)")
         }
     }
+    
+    // MARK: First CoreData Load
+    func preLoadCoreData() {
+        populateCoreDataPlaces()
+        populateCoreDataAchievements()
+    }
+    
 
     // MARK: UISceneSession Lifecycle
 
