@@ -48,11 +48,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    
+    // MARK: First CoreData Load
     func preLoadCoreData() {
         guard let path = Bundle.main.path(forResource: "Places", ofType: "json") else { return }
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            print(data)
             let context = persistentContainer.newBackgroundContext()
             let decoder = JSONDecoder()
             decoder.userInfo[.context!] = context
@@ -61,9 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages)
             }
             let teste = try PlaceService().readAll()
-            for t in teste! {
-                print(t.nImages, t.placeID)
-            }
+            
+            _ = try! UserService().create(name: "placeholder", xp: 420)
+            
         } catch {
             print("\(error)")
         }
@@ -79,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "campusGo")
+        container.persistentStoreDescriptions.append(storeDescription)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -87,6 +89,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    private lazy var storeDescription: NSPersistentStoreDescription = {
+            let storeDescription = NSPersistentStoreDescription()
+            storeDescription.shouldMigrateStoreAutomatically = true
+            storeDescription.shouldInferMappingModelAutomatically = true
+            return storeDescription
+    }()
+    
+    
     // MARK: - Core Data Saving support
 
     func saveContext () {
