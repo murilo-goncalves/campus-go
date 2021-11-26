@@ -155,7 +155,12 @@ extension MapViewController: AnnotationDelegate {
     func updateAnnotations(){
         for annotation in mapView.annotations {
             DispatchQueue.main.async {
-                self.updateAnnotation(annotation: annotation as! CustomAnnotation)
+                if let annotation = annotation as? CustomAnnotation {
+                    self.updateAnnotation(annotation: annotation)
+                } else {
+                    print(annotation)
+                }
+                
             }
         }
     }

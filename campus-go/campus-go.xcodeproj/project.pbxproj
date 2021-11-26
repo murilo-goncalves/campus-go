@@ -16,6 +16,8 @@
 		5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC076270B442600D33B44 /* Achievement.storyboard */; };
 		5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC078270B444000D33B44 /* AchievementView.swift */; };
 		5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC07C270B46EF00D33B44 /* AchievementController.swift */; };
+		5F3FC701274FCD8F00B1E4B4 /* UserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3FC700274FCD8F00B1E4B4 /* UserService.swift */; };
+		5F58A6C6275114E600700969 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F58A6C5275114E600700969 /* Constant.swift */; };
 		5F8C7710273D4AA600F3E336 /* Places.json in Resources */ = {isa = PBXBuildFile; fileRef = 5F8C770F273D4AA600F3E336 /* Places.json */; };
 		5F99FB372743EC0000EFD77A /* PlaceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62037A9A2732BCF700CBEEAD /* PlaceService.swift */; };
 		5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5F9B24132732B1820012D92D /* AchievementProgressView.xib */; };
@@ -88,6 +90,8 @@
 		5F3CC076270B442600D33B44 /* Achievement.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Achievement.storyboard; sourceTree = "<group>"; };
 		5F3CC078270B444000D33B44 /* AchievementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementView.swift; sourceTree = "<group>"; };
 		5F3CC07C270B46EF00D33B44 /* AchievementController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementController.swift; sourceTree = "<group>"; };
+		5F3FC700274FCD8F00B1E4B4 /* UserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserService.swift; sourceTree = "<group>"; };
+		5F58A6C5275114E600700969 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		5F8C770F273D4AA600F3E336 /* Places.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Places.json; sourceTree = "<group>"; };
 		5F9B24132732B1820012D92D /* AchievementProgressView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementProgressView.xib; sourceTree = "<group>"; };
 		5F9B24152732B3900012D92D /* AchievementProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementProgressView.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 			children = (
 				59BB17CF2732C05600572780 /* AchievementService.swift */,
 				62037A9A2732BCF700CBEEAD /* PlaceService.swift */,
+				5F3FC700274FCD8F00B1E4B4 /* UserService.swift */,
 			);
 			path = CoreDataServices;
 			sourceTree = "<group>";
@@ -387,6 +392,7 @@
 		62C2DF3E270495FB002118A0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				5F58A6C5275114E600700969 /* Constant.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -551,6 +557,7 @@
 			files = (
 				615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */,
 				5F9B24162732B3910012D92D /* AchievementProgressView.swift in Sources */,
+				5F58A6C6275114E600700969 /* Constant.swift in Sources */,
 				628270BA273D3CE000A540D3 /* MapServices.swift in Sources */,
 				5F99FB372743EC0000EFD77A /* PlaceService.swift in Sources */,
 				5F3CC073270B351600D33B44 /* AchievementListView.swift in Sources */,
@@ -579,6 +586,7 @@
 				6254B629274531D300CE80F4 /* Place+CoreDataProperties.swift in Sources */,
 				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
+				5F3FC701274FCD8F00B1E4B4 /* UserService.swift in Sources */,
 				61363655273E8690005EEDB4 /* AchievementCollectionViewCell.swift in Sources */,
 				5908F9AC2743F6440021A80B /* CustomAnnotation.swift in Sources */,
 				5FD052CD27074DD400F09B5A /* UIColor.swift in Sources */,
