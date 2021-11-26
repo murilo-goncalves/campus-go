@@ -67,6 +67,7 @@
 		FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC58847D2730382700CF3EAB /* PlaceView.swift */; };
 		FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC89EC7A27296DD900BE724D /* PlaceViewController.swift */; };
 		FCAC4D0027284B3600F7F9D1 /* Place.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */; };
+		FCF26F6D2751087A0096DEAE /* Achievements.json in Resources */ = {isa = PBXBuildFile; fileRef = FCF26F6C2751087A0096DEAE /* Achievements.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +146,7 @@
 		FC58847D2730382700CF3EAB /* PlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceView.swift; sourceTree = "<group>"; };
 		FC89EC7A27296DD900BE724D /* PlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceViewController.swift; sourceTree = "<group>"; };
 		FCAC4CFF27284B3600F7F9D1 /* Place.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Place.storyboard; sourceTree = "<group>"; };
+		FCF26F6C2751087A0096DEAE /* Achievements.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Achievements.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +307,7 @@
 				62FFDA82273C0D3E00C67C9F /* Colors.swift */,
 				5F8C770F273D4AA600F3E336 /* Places.json */,
 				62BF4D59273EAC0100665F11 /* CB-RS.gpx */,
+				FCF26F6C2751087A0096DEAE /* Achievements.json */,
 			);
 			path = "campus-go";
 			sourceTree = "<group>";
@@ -528,6 +531,7 @@
 				FCAC4D0027284B3600F7F9D1 /* Place.storyboard in Resources */,
 				62C2DF23270493D6002118A0 /* LaunchScreen.storyboard in Resources */,
 				62C2DF20270493D6002118A0 /* Assets.xcassets in Resources */,
+				FCF26F6D2751087A0096DEAE /* Achievements.json in Resources */,
 				62C2DF3027049444002118A0 /* Profile.storyboard in Resources */,
 				5F9B24142732B1820012D92D /* AchievementProgressView.xib in Resources */,
 				62C2DF1B270493D4002118A0 /* Main.storyboard in Resources */,

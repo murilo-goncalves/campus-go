@@ -65,7 +65,9 @@
             <size key="customSize" width="346" height="76"/>
             <connections>
                 <outlet property="chevron" destination="zgV-SQ-0WH" id="SSW-xy-66U"/>
-                <outlet property="progress" destination="gAL-vi-4fV" id="5gr-nl-xKb"/>
+                <outlet property="name" destination="sac-5m-bkS" id="Cmv-W8-lfO"/>
+                <outlet property="objective" destination="WjD-YN-KjE" id="GNV-Ay-o28"/>
+                <outlet property="progressBar" destination="gAL-vi-4fV" id="JWg-jR-62T"/>
                 <outlet property="progressLabel" destination="YMo-fo-mPi" id="huZ-Bm-lVQ"/>
                 <outlet property="stackLabels" destination="SfE-rM-hP8" id="YgF-af-sEj"/>
             </connections>
