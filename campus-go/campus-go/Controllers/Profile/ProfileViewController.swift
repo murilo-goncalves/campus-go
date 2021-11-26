@@ -13,10 +13,23 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
     @IBOutlet var profileView: ProfileView!
     
+    @objc func alertTest(){
+        let alertUtil = AlertUtil()
+        alertUtil.showAlert(viewController: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Color.background
         setProfileTitle()
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(alertTest))
+        profileView.profileTitleView.imageView.isUserInteractionEnabled = true
+        profileView.profileTitleView.imageView.addGestureRecognizer(tapGestureRecognizer)
+        
+       
+        
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
         profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
@@ -111,4 +124,13 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout{
         return 0
     }
     
+}
+extension ProfileViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
+    }
 }

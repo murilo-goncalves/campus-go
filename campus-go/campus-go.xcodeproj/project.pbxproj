@@ -35,6 +35,9 @@
 		613C4C49270F2909005BF46E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C4C48270F2909005BF46E /* UIImage.swift */; };
 		615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */; };
 		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
+		61C32DEE274FCB4C00DDA279 /* AlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C32DED274FCB4C00DDA279 /* AlertViewController.swift */; };
+		61C32DF0274FCBBE00DDA279 /* Alert.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 61C32DEF274FCBBE00DDA279 /* Alert.storyboard */; };
+		61C32DF2274FD03F00DDA279 /* AlertUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61C32DF1274FD03F00DDA279 /* AlertUtil.swift */; };
 		61D2C961270C888F00FA22FA /* Address.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C960270C888F00FA22FA /* Address.swift */; };
 		61D2C964270C9BDA00FA22FA /* PlaceCellsState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */; };
 		623AADFC27297894002FFB06 /* campusGo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 623AADFA27297894002FFB06 /* campusGo.xcdatamodeld */; };
@@ -108,6 +111,9 @@
 		613C4C48270F2909005BF46E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
+		61C32DED274FCB4C00DDA279 /* AlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertViewController.swift; sourceTree = "<group>"; };
+		61C32DEF274FCBBE00DDA279 /* Alert.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Alert.storyboard; sourceTree = "<group>"; };
+		61C32DF1274FD03F00DDA279 /* AlertUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertUtil.swift; sourceTree = "<group>"; };
 		61D2C960270C888F00FA22FA /* Address.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Address.swift; sourceTree = "<group>"; };
 		61D2C963270C9BDA00FA22FA /* PlaceCellsState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCellsState.swift; sourceTree = "<group>"; };
 		62037A9A2732BCF700CBEEAD /* PlaceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceService.swift; sourceTree = "<group>"; };
@@ -227,6 +233,23 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		61C32DE5274FABFC00DDA279 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				61C32DED274FCB4C00DDA279 /* AlertViewController.swift */,
+				61C32DF1274FD03F00DDA279 /* AlertUtil.swift */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
+		61C32DEC274FADDF00DDA279 /* Alert */ = {
+			isa = PBXGroup;
+			children = (
+				61C32DEF274FCBBE00DDA279 /* Alert.storyboard */,
+			);
+			path = Alert;
+			sourceTree = "<group>";
+		};
 		61D2C962270C9BAE00FA22FA /* Places */ = {
 			isa = PBXGroup;
 			children = (
@@ -313,6 +336,7 @@
 		62C2DF2A270493E7002118A0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				61C32DEC274FADDF00DDA279 /* Alert */,
 				5F9B24122732B1560012D92D /* Components */,
 				5F3CC06C270B270700D33B44 /* Achievement */,
 				62C2DF422704962A002118A0 /* Places */,
@@ -337,6 +361,7 @@
 		62C2DF2C2704940C002118A0 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				61C32DE5274FABFC00DDA279 /* Alert */,
 				5F3CC06F270B34EC00D33B44 /* Achievement */,
 				62C2DF3C270495E0002118A0 /* Places */,
 				62C2DF3B270495D5002118A0 /* Profile */,
@@ -539,6 +564,7 @@
 				5F3CC077270B442600D33B44 /* Achievement.storyboard in Resources */,
 				62C2DF2E27049437002118A0 /* Map.storyboard in Resources */,
 				615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */,
+				61C32DF0274FCBBE00DDA279 /* Alert.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -572,6 +598,7 @@
 				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,
+				61C32DF2274FD03F00DDA279 /* AlertUtil.swift in Sources */,
 				5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */,
 				5FFFB587272AEA4800C80C6F /* FloatingPoint.swift in Sources */,
 				593192EA27452E6C007F9312 /* Pictures.swift in Sources */,
@@ -599,6 +626,7 @@
 				FC58847C2730360100CF3EAB /* RecentAchievementCell.swift in Sources */,
 				628270BC273D51B800A540D3 /* RouteDelegate.swift in Sources */,
 				6254B627274531D300CE80F4 /* Achievement+CoreDataProperties.swift in Sources */,
+				61C32DEE274FCB4C00DDA279 /* AlertViewController.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
 				6254B626274531D300CE80F4 /* Achievement+CoreDataClass.swift in Sources */,
 			);
