@@ -23,6 +23,7 @@ extension Place {
     @NSManaged public var uid: UUID?
     @NSManaged public var nImages: Int64
     @NSManaged public var state: Int64
+    @NSManaged public var relatedAchievements: String?
 
 }
 

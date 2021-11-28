@@ -44,8 +44,17 @@ class AchievementService{
         let result = try context.fetch(fetchRequest)
         return result[0] as? Achievement
     }
+    func retrieve(achievementID: Int64) throws -> UUID? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "achievementID = \(achievementID)", achievementID as CVarArg)
+
+        let result = try context.fetch(fetchRequest)
+        let achievement = result[0] as? Achievement
+        return achievement?.uid
+    }
     
-    func update(condition: String?, name: String?, xpPoints: Int64?, uid: UUID) throws {
+    func update(objective: String?, name: String?, progress: Double?, xpPoints: Int64?, uid: UUID) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
         fetchRequest.fetchLimit = 1
         fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
@@ -53,16 +62,17 @@ class AchievementService{
         let result =  try context.fetch(fetchRequest)
         let objectUpdate = result[0] as! NSManagedObject
         
-        if let newCondition = condition {
-            objectUpdate.setValue(newCondition, forKey: "condition")
+        if let newObjective = objective {
+            objectUpdate.setValue(newObjective, forKey: "objective")
         }
-        
         if let newName = name {
             objectUpdate.setValue(newName, forKey: "name")
         }
-        
-        if let newXp = xpPoints {
-            objectUpdate.setValue(newXp, forKey: "xpPoints")
+        if let newProgress = progress {
+            objectUpdate.setValue(newProgress, forKey: "progress")
+        }
+        if let newXP = xpPoints {
+            objectUpdate.setValue(newXP, forKey: "xpPoints")
         }
         try context.save()
         
