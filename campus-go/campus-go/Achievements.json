@@ -93,16 +93,16 @@
   {
     "progress": 0,
     "name": "O Explorador",
-    "xpPoints": 500,
+    "xpPoints": 5000,
     "achievementID": 14,
-    "objective": "Descubra 10 locais."
+    "objective": "Visite todos os locais desconhecidos."
   },
   {
     "progress": 0,
-    "name": "Colocando a Dora no Chinelo.",
-    "xpPoints": 5000,
+    "name": "Exibicionista",
+    "xpPoints": 500,
     "achievementID": 15,
-    "objective": "Visite todos os locais desconhecidos."
+    "objective": "Compartilhe o seu perfil."
   }
   
 ]
