@@ -11,6 +11,7 @@ import UIKit
 class AchievementProgressView: UIView {
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var achievementImage: UIImageView!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
