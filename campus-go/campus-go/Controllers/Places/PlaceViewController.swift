@@ -150,12 +150,13 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     @objc private func cancelRoute() {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.unknown)
-        annotationDelegate?.updateAnnotations()
         goButton.setImage(UIImage(named: "goButton"), for: .normal)
         goButton.setTitle("Go!", for: .normal)
         goButton.backgroundColor = Color.pink
         routeDelegate?.didTapCancel()
         goButton.removeTarget(self, action: #selector(self.cancelRoute), for: .touchUpInside)
+        _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.tabBarController?.selectedIndex = 1
     }
     
     private func roundButtonsCorners(){
