@@ -29,7 +29,6 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    //public var location: CLLocationCoordinate2D?
     
     private var mapServices: MapServices!
     private var placeService = PlaceService()
@@ -64,6 +63,8 @@ class MapViewController: UIViewController {
                 let destinationCoordinate = CLLocationCoordinate2D(latitude: onRoutePlace.latitude, longitude: onRoutePlace.longitude)
                 let sourceCoordinate = mapServices.getUserCoordinate2D()
                 mapServices.displayRoute(sourceCoordinate: sourceCoordinate, destinationCoordinate: destinationCoordinate)
+            } else {
+                mapServices.removeRoute()
             }
         } catch {
             print(error)
@@ -158,6 +159,10 @@ extension MapViewController: RouteDelegate {
     func didTapLocation(locationCoordinate: CLLocationCoordinate2D) {
         (UIApplication.shared.delegate as! AppDelegate).clickedLocation = locationCoordinate
         self.mapView.setCenter(locationCoordinate, animated: true)
+    }
+    
+    func didTapCancel() {
+        mapServices.removeRoute()
     }
 }
 
