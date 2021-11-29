@@ -36,8 +36,11 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         super.viewDidLoad()
         
         do {
-            guard let list = try achievementService.retrieve() else { return }
-            listAchievements = list
+            let relatedAchievements = RelatedAchievements(place: self.place)
+            for uid in relatedAchievements.placeAchievements {
+                guard let conquista = try achievementService.retrieve(uid: uid) else { continue }
+                listAchievements.append(conquista)
+            }
         } catch {
             print(error)
         }
