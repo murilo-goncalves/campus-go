@@ -18,10 +18,12 @@ class AchievementCollectionViewCell: UICollectionViewCell {
 //    @IBOutlet weak var progress: UILabel!
     public var uid: UUID?
     
+    
     static let identifier = "AchievementCollectionViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.chevron.tintColor = UIColor.systemGray3
     }
     //
     public func configure(achievement: Achievement){
