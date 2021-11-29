@@ -56,6 +56,16 @@ class PlaceService {
         let result = try context.fetch(fetchRequest)
         return result[0] as? Place
     }
+    
+    func readOnRoute() throws -> Place? {
+        let places = try! readAll()
+        for place in places! {
+            if isOnRoute(uid: place.uid!) {
+                return place
+            }
+        }
+        return nil
+    }
 
     
     func update(uid: UUID, name: String, latitude: Double, longitude: Double) throws {
