@@ -53,10 +53,20 @@ class MapViewController: UIViewController {
         mapView.tintColor = Color.pink
         mapView.pointOfInterestFilter = .excludingAll
     }
+    
     override func viewDidAppear(_ animated: Bool) {
         mapServices.populateMap()
         if ((UIApplication.shared.delegate as! AppDelegate).clickedLocation != nil){
             self.mapView.centerToLocation(CLLocation(latitude: (UIApplication.shared.delegate as! AppDelegate).clickedLocation!.latitude, longitude: (UIApplication.shared.delegate as! AppDelegate).clickedLocation!.longitude))
+        }
+        do {
+            if let onRoutePlace = try placeService.readOnRoute() {
+                let destinationCoordinate = CLLocationCoordinate2D(latitude: onRoutePlace.latitude, longitude: onRoutePlace.longitude)
+                let sourceCoordinate = mapServices.getUserCoordinate2D()
+                mapServices.displayRoute(sourceCoordinate: sourceCoordinate, destinationCoordinate: destinationCoordinate)
+            }
+        } catch {
+            print(error)
         }
     }
 }
