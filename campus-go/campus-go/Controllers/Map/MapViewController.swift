@@ -149,6 +149,10 @@ extension MapViewController: RouteDelegate {
         (UIApplication.shared.delegate as! AppDelegate).clickedLocation = locationCoordinate
         self.mapView.setCenter(locationCoordinate, animated: true)
     }
+    
+    func didTapCancel() {
+        mapServices.removeRoute()
+    }
 }
 
 extension MapViewController: AnnotationDelegate {

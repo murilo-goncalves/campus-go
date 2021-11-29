@@ -136,7 +136,28 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.recentAchievement.collectionViewLayout = layout
         roundButtonsCorners()
         
+        if placeService.isOnRoute(uid: place.uid!){
+            goButton.setImage(nil, for: .normal)
+            goButton.setTitle("Cancelar Rota", for: .normal)
+            goButton.backgroundColor = Color.orange
+            goButton.removeTarget(self, action: #selector(self.goBtnAction), for: .touchUpInside)
+            goButton.addTarget(self, action: #selector(self.cancelRoute), for: .touchUpInside)
+        }
+        else {
+            goButton.addTarget(self, action: #selector(self.goBtnAction), for: .touchUpInside)
+        }
     }
+    
+    @objc private func cancelRoute() {
+        try! placeService.updateState(uid: place.uid!, newState: PlaceState.unknown)
+        annotationDelegate?.updateAnnotations()
+        goButton.setImage(UIImage(named: "goButton"), for: .normal)
+        goButton.setTitle("Go!", for: .normal)
+        goButton.backgroundColor = Color.pink
+        routeDelegate?.didTapCancel()
+        goButton.removeTarget(self, action: #selector(self.cancelRoute), for: .touchUpInside)
+    }
+    
     private func roundButtonsCorners(){
         goButton.layer.cornerRadius = 5
         placeButton.layer.cornerRadius = 5
@@ -178,7 +199,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.pageControl.currentPage = Int(pageNumber)
     }
     
-    @IBAction func goBtnAction(_ sender: UIButton) {
+    @objc private func goBtnAction() {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
         routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
         annotationDelegate?.updateAnnotations()
