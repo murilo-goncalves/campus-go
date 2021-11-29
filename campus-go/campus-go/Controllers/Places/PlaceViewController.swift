@@ -180,8 +180,6 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     @IBAction func goBtnAction(_ sender: UIButton) {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
-        routeDelegate?.didTapGo(destinationCoordinate: placeCoordinate!)
-        annotationDelegate?.updateAnnotations()
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.tabBarController?.selectedIndex = 1
     }
@@ -191,7 +189,6 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         self.tabBarController?.selectedIndex = 1
         (UIApplication.shared.delegate as! AppDelegate).clickedLocation = placeCoordinate!
         routeDelegate?.didTapLocation(locationCoordinate: placeCoordinate!)
-        
     }
 }
 
