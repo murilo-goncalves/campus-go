@@ -124,6 +124,12 @@ class MapServices: NSObject {
         }
     }
     
+    func removeRoute() {
+        if let mapView_ = mapView {
+            mapView_.removeOverlays(mapView.overlays)
+        }
+    }
+    
     public func getUserCoordinate2D() -> CLLocationCoordinate2D {
         return locationManager.location?.coordinate ?? MapConstants.unicampCoordinate
     }

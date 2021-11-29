@@ -46,7 +46,6 @@ public class Place: NSManagedObject, Decodable {
         
     }
 }
-
     
 extension CodingUserInfoKey {
   static let context = CodingUserInfoKey(rawValue: "context")

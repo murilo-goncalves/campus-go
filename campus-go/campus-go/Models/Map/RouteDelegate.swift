@@ -11,4 +11,5 @@ import CoreLocation
 protocol RouteDelegate: AnyObject {
     func didTapGo(destinationCoordinate: CLLocationCoordinate2D)
     func didTapLocation(locationCoordinate: CLLocationCoordinate2D)
+    func didTapCancel()
 }

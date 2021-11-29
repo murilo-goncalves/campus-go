@@ -78,6 +78,13 @@
     "placeID": 10,
     "nImages": 1,
     "relatedAchievements": "12 13 14 15"
+  },
+  {
+    "latitude": -22.8161766,
+    "longitude": -47.0677263,
+    "name": "IMECC - Instituto de Matemática, Estatística e Computação Científica",
+    "placeID": 11,
+    "nImages": 3,
+    "relatedAchievements": "12 13 14 15"
   }
-  
 ]

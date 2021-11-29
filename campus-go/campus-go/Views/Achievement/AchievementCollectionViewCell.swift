@@ -9,7 +9,7 @@ import UIKit
 
 class AchievementCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var progressBar: AchievementProgressView!
+    @IBOutlet weak var progressView: AchievementProgressView!
     @IBOutlet weak var stackLabels: UIStackView!
     @IBOutlet weak var chevron: UIImageView!
     @IBOutlet weak var progressLabel: UILabel!
@@ -18,10 +18,12 @@ class AchievementCollectionViewCell: UICollectionViewCell {
 //    @IBOutlet weak var progress: UILabel!
     public var uid: UUID?
     
+    
     static let identifier = "AchievementCollectionViewCell"
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.chevron.tintColor = UIColor.systemGray3
     }
     //
     public func configure(achievement: Achievement){
@@ -34,6 +36,7 @@ class AchievementCollectionViewCell: UICollectionViewCell {
         if(achievement.progress==0.0) {
             progressLabel.isHidden = true
         }
+        self.progressView.achievementImage.image = UIImage(named: "A-\(achievement.achievementID)")
     }
     
     static func nib() -> UINib{
