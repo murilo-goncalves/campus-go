@@ -85,11 +85,9 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
                
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{
-
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             imgView.translatesAutoresizingMaskIntoConstraints = false
             self.placeView.scrollView.addSubview(imgView)
-
             imgView.image = UIImage(named: images[index])
             imgView.contentMode = .scaleAspectFill
             imgView.layer.borderWidth = 0.5
@@ -103,24 +101,26 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
                 let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor)]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -8)]
                 NSLayoutConstraint.activate(constraints)
                 currentImageView = imgView
             }
+            
             if index > 0 && index < (images.count - 1){
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 16),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor)]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -16)
+                ]
                 NSLayoutConstraint.activate(constraints)
                 currentImageView = imgView
             }
             
             if index == (images.count - 1){
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 16),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor),
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -8),
                                    imgView.trailingAnchor.constraint(equalTo: placeView.scrollView.trailingAnchor)]
                 NSLayoutConstraint.activate(constraints)
             }
