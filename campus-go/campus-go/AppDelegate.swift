@@ -137,6 +137,22 @@ extension AppDelegate: CLLocationManagerDelegate {
                     print("Error adding notification with identifier: \(identifier)")
                 }
             })
+            let alertUtil = AlertUtil()
+            var place: Place?
+            do {
+                place = try placeService.read(uid: uid!)
+            }catch{
+                print(error)
+            }
+
+            if let currentViewController = getCurrentViewController(){
+                if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
+                    alertUtil.showAlert(viewController: alertViewController,place: place)
+                }else{
+                    print("Erro ao encontrar a view")
+                }
+            }
+            
         }
     }
 }

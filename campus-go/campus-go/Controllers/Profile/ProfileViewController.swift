@@ -13,23 +13,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
     @IBOutlet var profileView: ProfileView!
     
-    @objc func alertTest(){
-        let alertUtil = AlertUtil()
-        alertUtil.showAlert(viewController: self)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = Color.background
         setProfileTitle()
-        
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(alertTest))
-        profileView.profileTitleView.imageView.isUserInteractionEnabled = true
-        profileView.profileTitleView.imageView.addGestureRecognizer(tapGestureRecognizer)
-        
-       
-        
+            
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
         profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
@@ -39,11 +28,12 @@ class ProfileViewController: UIViewController {
         profileView.recentAchievementView.collectionViewLayout = layout
     }
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidLayoutSubviews() {
+        bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
+        setProgressView()
         profileView.profileTitleView.clipsToBounds = true
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2
-        setProgressView()
-        bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
+        
     }
     
     func setProfileTitle() {

@@ -51,9 +51,6 @@ class AlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //DELETE
-        setFakePlace()
-        
         if let place = place{
             setPlaceInfo(place)
         } else if let achievement = achievement {
@@ -114,16 +111,5 @@ class AlertViewController: UIViewController {
         progressView.setProgress(to: progress, animated: true)
         progressView.awakeFromNib()
     }
-    
-    
-    func setFakePlace(){
-        let service = PlaceService()
-        do {
-            place = try service.read(uid: UUID(uuidString: "316D1BA9-DE8F-4ED8-A8A1-410294307619")! )!
-        } catch {
-            print(error)
-        }
-    }
-    
     
 }

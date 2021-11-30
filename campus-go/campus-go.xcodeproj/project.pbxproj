@@ -32,6 +32,7 @@
 		5FFFB587272AEA4800C80C6F /* FloatingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FFFB586272AEA4800C80C6F /* FloatingPoint.swift */; };
 		61363655273E8690005EEDB4 /* AchievementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61363653273E8690005EEDB4 /* AchievementCollectionViewCell.swift */; };
 		61363656273E8690005EEDB4 /* AchievementCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 61363654273E8690005EEDB4 /* AchievementCollectionViewCell.xib */; };
+		613AC0D227564D380009AAC2 /* UIAplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613AC0D127564D380009AAC2 /* UIAplication.swift */; };
 		613C4C49270F2909005BF46E /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 613C4C48270F2909005BF46E /* UIImage.swift */; };
 		615CEF0B27074F9E00DF0DED /* PlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */; };
 		615CEF0C27074F9E00DF0DED /* PlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */; };
@@ -108,6 +109,7 @@
 		5FFFB586272AEA4800C80C6F /* FloatingPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatingPoint.swift; sourceTree = "<group>"; };
 		61363653273E8690005EEDB4 /* AchievementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementCollectionViewCell.swift; sourceTree = "<group>"; };
 		61363654273E8690005EEDB4 /* AchievementCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AchievementCollectionViewCell.xib; sourceTree = "<group>"; };
+		613AC0D127564D380009AAC2 /* UIAplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAplication.swift; sourceTree = "<group>"; };
 		613C4C48270F2909005BF46E /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		615CEF0927074F9D00DF0DED /* PlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		615CEF0A27074F9E00DF0DED /* PlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaceCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 				613C4C48270F2909005BF46E /* UIImage.swift */,
 				5FFFB584272AEA2500C80C6F /* CGFloat.swift */,
 				5FFFB586272AEA4800C80C6F /* FloatingPoint.swift */,
+				613AC0D127564D380009AAC2 /* UIAplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */,
 				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
+				613AC0D227564D380009AAC2 /* UIAplication.swift in Sources */,
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,
 				61C32DF2274FD03F00DDA279 /* AlertUtil.swift in Sources */,
 				5F3CC07D270B46EF00D33B44 /* AchievementController.swift in Sources */,
