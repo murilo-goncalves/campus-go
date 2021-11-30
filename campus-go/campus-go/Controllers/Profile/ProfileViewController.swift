@@ -56,8 +56,8 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.title.text = user?.name
     }
     
+    
     private func setProgressView() {
-        
         profileView.profileProgressView.experienceProgressView.textColor = Color.orange
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.experienceProgressView.textSize = CGFloat(20)

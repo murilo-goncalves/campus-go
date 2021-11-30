@@ -13,12 +13,11 @@ class UserService {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    func create(name: String, xp: Int64) {
+    func create(name: String) {
         
         let userEntity = NSEntityDescription.entity(forEntityName: "User", in: context)!
         let user = NSManagedObject(entity: userEntity, insertInto: context)
         user.setValue(name, forKey: "name")
-        user.setValue(xp, forKey: "xpPoints")
         
         try! context.save()
         
@@ -32,11 +31,10 @@ class UserService {
     }
 
     
-    func update(name: String, xp: Int64) throws {
+    func update(name: String) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         let obj = try context.fetch(fetchRequest).first as! NSManagedObject
         obj.setValue(name, forKey: "name")
-        obj.setValue(xp, forKey: "xpPoints")
         try context.save()
     }
     

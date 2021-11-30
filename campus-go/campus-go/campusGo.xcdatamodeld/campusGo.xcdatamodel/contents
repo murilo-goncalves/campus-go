@@ -25,12 +25,11 @@
     </entity>
     <entity name="User" representedClassName=".User" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="xpPoints" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="Achievement" positionX="27" positionY="72" width="128" height="119"/>
         <element name="Patent" positionX="0" positionY="45" width="128" height="74"/>
         <element name="Place" positionX="-36" positionY="9" width="128" height="149"/>
-        <element name="User" positionX="54" positionY="108" width="128" height="59"/>
+        <element name="User" positionX="54" positionY="108" width="128" height="44"/>
     </elements>
 </model>
