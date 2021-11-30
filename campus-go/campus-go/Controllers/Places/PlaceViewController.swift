@@ -257,5 +257,13 @@ extension PlaceViewController: UICollectionViewDelegateFlowLayout{
     }
     
 }
-
+extension PlaceViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
+    }
+}
 

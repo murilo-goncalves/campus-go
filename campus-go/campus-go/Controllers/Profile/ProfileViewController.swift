@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
     let achievementService = AchievementService()
     var listAchievements: [Achievement] = []
     
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -28,6 +29,7 @@ class ProfileViewController: UIViewController {
         }
         self.view.backgroundColor = Color.background
         setProfileTitle()
+            
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
         profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
@@ -37,13 +39,12 @@ class ProfileViewController: UIViewController {
         profileView.recentAchievementView.collectionViewLayout = layout
         
     }
-        
-    override func viewDidAppear(_ animated: Bool) {
-        
-        profileView.profileTitleView.clipsToBounds = true
-        profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2
-        setProgressView()
+
+    override func viewDidLayoutSubviews() {
         bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
+        setProgressView()
+        profileView.profileTitleView.clipsToBounds = true
+        profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2        
     }
     
     private func setProfileTitle() {
@@ -139,4 +140,13 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout{
         return 0
     }
     
+}
+extension ProfileViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
+    }
 }

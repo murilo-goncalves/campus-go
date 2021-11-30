@@ -187,3 +187,13 @@ extension MapViewController: AnnotationDelegate {
         mapServices.addCustomAnnotation(place: place!)
     }
 }
+
+extension MapViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
+    }
+}
