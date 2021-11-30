@@ -10,7 +10,7 @@ import UIKit
 
 struct AlertUtil{
     
-    func showAlert(viewController: AlertViewDelegate,place: Place?){
+    func showAlert(viewController: AlertViewDelegate,place: Place?,achievement: Achievement?){
         let storyboard = UIStoryboard(name: "Alert", bundle: nil)
         if let myAlert = storyboard.instantiateViewController(withIdentifier: "Alert") as? AlertViewController{
             myAlert.modalPresentationStyle = UIModalPresentationStyle.overFullScreen
@@ -18,8 +18,13 @@ struct AlertUtil{
             if let place_ = place{
                 myAlert.place = place_
             }
+            if let achievement_ = achievement {
+                myAlert.achievement = achievement_
+            }
+            
             myAlert.delegate = viewController
             viewController.present(myAlert, animated: true, completion: nil)
+            
         }
     }
 }

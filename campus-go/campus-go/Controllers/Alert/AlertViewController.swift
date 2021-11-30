@@ -50,7 +50,7 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        print(progressoPlaces())
         if let place = place{
             setPlaceInfo(place)
         } else if let achievement = achievement {
@@ -92,8 +92,8 @@ class AlertViewController: UIViewController {
     
     
     override func viewDidLayoutSubviews() {
-        setProgress(progressView: experienceProgressView,progress: 0.25)
-        setProgress(progressView: rigthProgressView,progress: 0.5)
+        setProgress(progressView: experienceProgressView,progress: 0.5)
+        setProgress(progressView: rigthProgressView,progress: progressoPlaces() )
         dismissButton.layer.cornerRadius = dismissButton.frame.height / 2
         dismissButton.backgroundColor = UIColor(rgb: 0xE4E3E6)
         dismissButton.tintColor = UIColor(rgb: 0x7E7F83)
@@ -111,5 +111,23 @@ class AlertViewController: UIViewController {
         progressView.setProgress(to: progress, animated: true)
         progressView.awakeFromNib()
     }
-    
+    func progressoPlaces() -> Double{
+        var numberKnow:Int = 0
+        let placeService = PlaceService()
+        do{
+            let places = try placeService.readAll()!
+            numberKnow = places.reduce(0) {
+                if( Int(PlaceState.known.rawValue) == Int($1.state) ){
+                    return $0 + 1
+                }
+                    
+                return $0
+            }
+            return (Double(numberKnow) / Double(places.count) )
+        }catch{
+            print(error)
+        }
+        return 0.0
+    }
+
 }

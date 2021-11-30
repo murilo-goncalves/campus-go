@@ -17,6 +17,10 @@ class ProfileViewController: UIViewController {
     let achievementService = AchievementService()
     var listAchievements: [Achievement] = []
     
+    @objc func alertTest(){
+        let alert = AlertUtil()
+        alert.showAlert(viewController: self, place: nil, achievement: nil)
+    }
     
     override func viewDidLoad() {
         
@@ -29,6 +33,10 @@ class ProfileViewController: UIViewController {
         }
         self.view.backgroundColor = Color.background
         setProfileTitle()
+        
+        profileView.profileTitleView.imageView.isUserInteractionEnabled = true
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(alertTest))
+        profileView.profileTitleView.imageView.addGestureRecognizer(tapGestureRecognizer)
             
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
