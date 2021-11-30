@@ -81,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!)
             }
             
-            _ = try! UserService().create(name: "placeholder", xp: 420)
+            _ = try! UserService().create(name: "placeholder")
             
         } catch {
             print("\(error)")
