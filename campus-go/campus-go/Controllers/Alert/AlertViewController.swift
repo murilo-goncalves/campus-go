@@ -76,7 +76,7 @@ class AlertViewController: UIViewController {
         if let name = place.name{
             nameLabel.text = name.components(separatedBy: " - ")[1]
         }
-        experienceLargeLabel.text = "+ 400"
+        experienceLargeLabel.text = "+ 5"
         experienceSmallLabel.text = "XP conquistado"
         rigthLargeLabel.text = "+1"
         rigthSmallLabel.text = "Lugar visitado"
