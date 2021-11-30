@@ -65,14 +65,14 @@
   {
     "progress": 0,
     "name": "Sem Férias",
-    "xpPoints": 5000,
+    "xpPoints": 500,
     "achievementID": 10,
     "objective": "Esteja na Unicamp no dia 25 de dezembro ou 1º de janeiro."
   },
   {
     "progress": 0,
     "name": "Astrônomo",
-    "xpPoints": 1000,
+    "xpPoints": 250,
     "achievementID": 11,
     "objective": "Visite o observatório durante a noite."
   },
@@ -93,7 +93,7 @@
   {
     "progress": 0,
     "name": "O Explorador",
-    "xpPoints": 5000,
+    "xpPoints": 500,
     "achievementID": 14,
     "objective": "Visite todos os locais desconhecidos."
   },

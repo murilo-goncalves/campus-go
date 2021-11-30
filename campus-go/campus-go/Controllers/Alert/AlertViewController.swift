@@ -50,7 +50,7 @@ class AlertViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(progressoPlaces())
+        
         if let place = place{
             setPlaceInfo(place)
         } else if let achievement = achievement {
@@ -59,6 +59,7 @@ class AlertViewController: UIViewController {
             print("Send a place or a achievement")
         }
     }
+
     
     func setParentViewLayout(){
         parentView.layer.borderColor = UIColor.lightGray.cgColor
@@ -82,9 +83,10 @@ class AlertViewController: UIViewController {
     }
     
     func setAchievementInfo(_ achievement: Achievement){
+        centralIcon.image = UIImage(named: "A-\(achievement.achievementID)")
         unlockLabel.text = "Você desbloqueou a conquista"
         nameLabel.text = achievement.name
-        experienceLargeLabel.text = "+ 400"
+        experienceLargeLabel.text = String(achievement.xpPoints)
         experienceSmallLabel.text = "XP conquistado"
         rigthLargeLabel.text = "+1"
         rigthSmallLabel.text = "Conquista alcançada"
@@ -92,8 +94,13 @@ class AlertViewController: UIViewController {
     
     
     override func viewDidLayoutSubviews() {
-        setProgress(progressView: experienceProgressView,progress: 0.5)
-        setProgress(progressView: rigthProgressView,progress: progressoPlaces() )
+        setProgress(progressView: experienceProgressView,progress: progressXp())
+        if place != nil {
+            setProgress(progressView: rigthProgressView,progress: progressPlaces() )
+        } else {
+            setProgress(progressView: rigthProgressView,progress: progressAchievement() )
+        }
+        
         dismissButton.layer.cornerRadius = dismissButton.frame.height / 2
         dismissButton.backgroundColor = UIColor(rgb: 0xE4E3E6)
         dismissButton.tintColor = UIColor(rgb: 0x7E7F83)
@@ -111,7 +118,8 @@ class AlertViewController: UIViewController {
         progressView.setProgress(to: progress, animated: true)
         progressView.awakeFromNib()
     }
-    func progressoPlaces() -> Double{
+    
+    func progressPlaces() -> Double{
         var numberKnow:Int = 0
         let placeService = PlaceService()
         do{
@@ -120,7 +128,6 @@ class AlertViewController: UIViewController {
                 if( Int(PlaceState.known.rawValue) == Int($1.state) ){
                     return $0 + 1
                 }
-                    
                 return $0
             }
             return (Double(numberKnow) / Double(places.count) )
@@ -129,5 +136,63 @@ class AlertViewController: UIViewController {
         }
         return 0.0
     }
-
+    
+    func progressXp() -> Double{
+        let defautXp = 5
+        
+        var totalXp:Int = 0
+        var currentXp:Int = 0
+        
+        let placeService = PlaceService()
+        let achievementService = AchievementService()
+        
+        do {
+            let achievements = try achievementService.retrieve()!
+            for achievement in achievements{
+                totalXp += Int(achievement.xpPoints)
+                if(achievement.progress == 1.0 ){
+                    currentXp += Int(achievement.xpPoints)
+                }
+            }
+            
+            let places = try placeService.readAll()!
+            for place in places{
+                totalXp += defautXp
+                if( Int(PlaceState.known.rawValue) == Int(place.state) ){
+                    currentXp += defautXp
+                }
+            }
+        } catch {
+            print(error)
+            totalXp = 1
+        }
+        return Double(currentXp)/Double(totalXp)
+    }
+    func progressAchievement() -> Double{
+        var numberAchievement:Int = 0
+        let achievementService = AchievementService()
+        do{
+            let achievements = try achievementService.retrieve()!
+            for achievement in achievements{
+                if(achievement.progress == 1.0 ){
+                    numberAchievement += 1
+                }
+            }
+            return (Double(numberAchievement) / Double(achievements.count) )
+        }catch{
+            print(error)
+        }
+        return 0.0
+    }
+    func fakeAchievement() -> Achievement? {
+        let achievementService = AchievementService()
+        do{
+            let achievements = try achievementService.retrieve()!
+            return achievements[0]
+        }catch{
+            print(error)
+        }
+        return nil
+    }
+    
 }

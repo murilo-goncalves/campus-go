@@ -61,26 +61,26 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="64" translatesAutoresizingMaskIntoConstraints="NO" id="iBm-9Q-gxq">
-                                        <rect key="frame" x="23" y="265.5" width="304" height="153.5"/>
+                                        <rect key="frame" x="55.5" y="265.5" width="239" height="121"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hlR-zW-ICK">
-                                                <rect key="frame" x="0.0" y="0.0" width="120" height="153.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="121"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Frd-ho-1HE" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="Frd-ho-1HE" secondAttribute="height" multiplier="1:1" id="pZz-fo-ekh"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS0-Fe-Qcw">
-                                                        <rect key="frame" x="0.0" y="120" width="120" height="21.5"/>
+                                                        <rect key="frame" x="0.0" y="87.5" width="87.5" height="21.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xp conquistado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isL-6X-NmS">
-                                                        <rect key="frame" x="0.0" y="141.5" width="120" height="12"/>
+                                                        <rect key="frame" x="0.0" y="109" width="87.5" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -88,23 +88,23 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NPJ-5x-lJs">
-                                                <rect key="frame" x="184" y="0.0" width="120" height="153.5"/>
+                                                <rect key="frame" x="151.5" y="0.0" width="87.5" height="121"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Dq-zG-L85" customClass="CircularProgressView" customModule="campus_go" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="87.5" height="87.5"/>
                                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="6Dq-zG-L85" secondAttribute="height" multiplier="1:1" id="Gmg-aZ-wBF"/>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vsj-tX-DIe">
-                                                        <rect key="frame" x="0.0" y="120" width="120" height="21.5"/>
+                                                        <rect key="frame" x="0.0" y="87.5" width="87.5" height="21.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xp conquistado" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98f-uc-iMh">
-                                                        <rect key="frame" x="0.0" y="141.5" width="120" height="12"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Xp conquistado" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="98f-uc-iMh">
+                                                        <rect key="frame" x="0.0" y="109" width="87.5" height="12"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -127,7 +127,7 @@
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="iBm-9Q-gxq" firstAttribute="top" secondItem="EAv-gj-cAK" secondAttribute="bottom" constant="32" id="5MQ-zB-MEB"/>
-                                    <constraint firstItem="6Dq-zG-L85" firstAttribute="width" secondItem="y2u-NI-AzX" secondAttribute="width" multiplier="0.342857" id="AEw-c5-ePI"/>
+                                    <constraint firstItem="6Dq-zG-L85" firstAttribute="width" secondItem="y2u-NI-AzX" secondAttribute="width" multiplier="0.25" id="AEw-c5-ePI"/>
                                     <constraint firstItem="E1f-pJ-SRB" firstAttribute="leading" secondItem="DMa-YI-STx" secondAttribute="leading" id="DI9-JH-Sad"/>
                                     <constraint firstItem="FHT-GV-kgI" firstAttribute="width" secondItem="y2u-NI-AzX" secondAttribute="width" multiplier="0.342857" id="Kc7-ck-zuT"/>
                                     <constraint firstItem="iBm-9Q-gxq" firstAttribute="centerX" secondItem="y2u-NI-AzX" secondAttribute="centerX" id="L5I-q5-ieb"/>
@@ -143,7 +143,7 @@
                                     <constraint firstItem="EAv-gj-cAK" firstAttribute="width" secondItem="y2u-NI-AzX" secondAttribute="width" multiplier="0.342857" id="kcY-0F-g4i"/>
                                     <constraint firstItem="DMa-YI-STx" firstAttribute="top" secondItem="y2u-NI-AzX" secondAttribute="top" constant="16" id="m9A-Cc-s7Z"/>
                                     <constraint firstItem="DMa-YI-STx" firstAttribute="leading" secondItem="y2u-NI-AzX" secondAttribute="leading" constant="16" id="sXT-1r-ltH"/>
-                                    <constraint firstItem="Frd-ho-1HE" firstAttribute="width" secondItem="y2u-NI-AzX" secondAttribute="width" multiplier="0.342857" id="t8z-c1-S8x"/>
+                                    <constraint firstItem="Frd-ho-1HE" firstAttribute="width" secondItem="y2u-NI-AzX" secondAttribute="width" multiplier="0.25" id="t8z-c1-S8x"/>
                                     <constraint firstItem="EAv-gj-cAK" firstAttribute="centerX" secondItem="y2u-NI-AzX" secondAttribute="centerX" id="zoh-4K-7cX"/>
                                 </constraints>
                             </view>
