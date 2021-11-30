@@ -63,14 +63,11 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
             placeView.nomeLugar.text = ""
         }
        
-        
         pictureService = Pictures(placeID: Int(place.placeID), numberOfPictures: Int(place.nImages))
         images = pictureService.listPictures
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
 
-        
-        
         if let userCoord = userCoordinate{
             let dist = calculaDistancia(userCoord, placeCoordinate)
             placeView.distanciaLugar.text = dist < 1.0 ? "\(dist*1000) m" : "\((dist*10).rounded()/10) km"
@@ -98,30 +95,29 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
             // precisa setar manualmente as constraints na scrollView
             // primeira imagem, intermediárias, última imagem
             if index == 0 {
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor, constant: 8),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -8)]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -15)]
                 NSLayoutConstraint.activate(constraints)
                 currentImageView = imgView
             }
             
             if index > 0 && index < (images.count - 1){
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 16),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 8),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -16)
-                ]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -4)]
                 NSLayoutConstraint.activate(constraints)
                 currentImageView = imgView
             }
             
             if index == (images.count - 1){
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 16),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 8),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -8),
-                                   imgView.trailingAnchor.constraint(equalTo: placeView.scrollView.trailingAnchor)]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -15),
+                                   imgView.trailingAnchor.constraint(equalTo: placeView.scrollView.trailingAnchor, constant: -8)]
                 NSLayoutConstraint.activate(constraints)
             }
             
