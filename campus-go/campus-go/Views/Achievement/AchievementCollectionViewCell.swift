@@ -37,6 +37,7 @@ class AchievementCollectionViewCell: UICollectionViewCell {
             progressLabel.isHidden = true
         }
         self.progressView.achievementImage.image = UIImage(named: "A-\(achievement.achievementID)")
+        self.progressView.setProgress(progress: achievement.progress)
     }
     
     static func nib() -> UINib{
