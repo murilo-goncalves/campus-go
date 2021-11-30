@@ -41,13 +41,14 @@
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90U-1E-XcO">
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="90U-1E-XcO">
                                         <rect key="frame" x="195" y="0.0" width="187" height="47.5"/>
                                         <color key="backgroundColor" systemColor="systemFillColor"/>
                                         <color key="tintColor" systemColor="systemPinkColor"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="mapButton">
+                                        <state key="normal" title=" Ver no mapa" image="mapButton">
                                             <color key="titleColor" systemColor="systemPinkColor"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
                                         </state>
                                         <connections>
                                             <action selector="mapButtonAction:" destination="1w6-VN-eV4" eventType="touchUpInside" id="QZX-Cz-9qH"/>
