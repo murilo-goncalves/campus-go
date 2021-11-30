@@ -59,7 +59,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
             for object in result {
                 do {
-                    let _ = try AchievementService().create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints)
+                    let achievementService = AchievementService()
+                    let _ = try achievementService.create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints)
                 } catch {
                     print(error)
                 }
@@ -183,7 +184,7 @@ extension AppDelegate: CLLocationManagerDelegate {
 
             if let currentViewController = getCurrentViewController(){
                 if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
-                    alertUtil.showAlert(viewController: alertViewController,place: place)
+                    alertUtil.showAlert(viewController: alertViewController,place: place,achievement: nil)
                 }else{
                     print("Erro ao encontrar a view")
                 }
