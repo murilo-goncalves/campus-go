@@ -16,6 +16,9 @@ class ProfileViewController: UIViewController {
     @IBOutlet var profileView: ProfileView!
     let achievementService = AchievementService()
     var listAchievements: [Achievement] = []
+    @IBOutlet weak var experienceProgressViewView: UIView!
+    @IBOutlet weak var placesProgressViewView: UIView!
+    @IBOutlet weak var achievementsProgressViewView: UIView!
     
     
     override func viewDidLoad() {
@@ -38,6 +41,22 @@ class ProfileViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         profileView.recentAchievementView.collectionViewLayout = layout
         
+        
+        let experienceGR = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        let placesGR = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        let achievementsGR = UITapGestureRecognizer(target: self, action: #selector(didTapView(_:)))
+        experienceGR.numberOfTapsRequired = 1
+        experienceGR.numberOfTouchesRequired = 1
+        placesGR.numberOfTapsRequired = 1
+        placesGR.numberOfTouchesRequired = 1
+        achievementsGR.numberOfTapsRequired = 1
+        achievementsGR.numberOfTouchesRequired = 1
+        experienceProgressViewView.addGestureRecognizer(experienceGR)
+        placesProgressViewView.addGestureRecognizer(placesGR)
+        achievementsProgressViewView.addGestureRecognizer(achievementsGR)
+        experienceProgressViewView.isUserInteractionEnabled = true
+        placesProgressViewView.isUserInteractionEnabled = true
+        achievementsProgressViewView.isUserInteractionEnabled = true
     }
 
     override func viewDidLayoutSubviews() {
@@ -45,6 +64,18 @@ class ProfileViewController: UIViewController {
         setProgressView()
         profileView.profileTitleView.clipsToBounds = true
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2        
+    }
+    
+    @objc func didTapView(_ gesture: UITapGestureRecognizer){
+        if gesture.view == experienceProgressViewView {
+            performSegue(withIdentifier: "goToRanks", sender: self)
+        }
+        if gesture.view == placesProgressViewView {
+            performSegue(withIdentifier: "goToPlaces", sender: self)
+        }
+        if gesture.view == achievementsProgressViewView {
+            performSegue(withIdentifier: "goToAchievementsList", sender: self)
+        }
     }
     
     private func setProfileTitle() {
