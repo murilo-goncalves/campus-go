@@ -164,8 +164,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeButton.layer.cornerRadius = 5
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
         placeView.recentAchievement.layer.borderWidth = 1
         placeView.recentAchievement.layer.borderColor = UIColor.lightGray.cgColor
         placeView.recentAchievement.layer.cornerRadius = 5
