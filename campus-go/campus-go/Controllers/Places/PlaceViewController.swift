@@ -201,6 +201,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     
     @objc private func goBtnAction() {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
+        routeDelegate?.didTapGo()
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.tabBarController?.selectedIndex = 1
     }

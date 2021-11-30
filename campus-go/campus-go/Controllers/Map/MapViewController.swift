@@ -151,18 +151,18 @@ extension MapViewController: MKMapViewDelegate {
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: RouteDelegate {
-    func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
-        mapServices.displayRoute(sourceCoordinate: mapServices.getUserCoordinate2D(),
-                                 destinationCoordinate: destinationCoordinate)
+    func didTapGo() {
+        mapView.setUserTrackingMode(.followWithHeading, animated: true)
     }
     
     func didTapLocation(locationCoordinate: CLLocationCoordinate2D) {
         (UIApplication.shared.delegate as! AppDelegate).clickedLocation = locationCoordinate
-        self.mapView.setCenter(locationCoordinate, animated: true)
+        mapView.setCenter(locationCoordinate, animated: true)
     }
     
     func didTapCancel() {
         mapServices.removeRoute()
+        mapView.setUserTrackingMode(.none, animated: true)
     }
 }
 
