@@ -16,26 +16,37 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     @IBOutlet weak var placeButton: UIButton!
     
     var place = Place()
+    var listAchievements: [Achievement] = []
     var pictureService = Pictures()
     var images: [String] = []
     let placeService = PlaceService()
+    let achievementService = AchievementService()
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-    let mapService = MapServices(nil)
-    
     
     //apenas recebendo infomração do PlacesViewController
     var indexPath: IndexPath!
     
-    var placeCoordinate: CLLocationCoordinate2D?
+    var annotation: CustomAnnotation?
     var userCoordinate: CLLocationCoordinate2D?
+    var placeCoordinate: CLLocationCoordinate2D?
     weak var routeDelegate: RouteDelegate?
     weak var annotationDelegate: AnnotationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        do {
+            let relatedAchievements = RelatedAchievements(place: self.place)
+            for uid in relatedAchievements.placeAchievements {
+                guard let conquista = try achievementService.retrieve(uid: uid) else { continue }
+                listAchievements.append(conquista)
+            }
+        } catch {
+            print(error)
+        }
+        
         self.view.backgroundColor = Color.background
-        userCoordinate = mapService.getUserCoordinate2D()
+
         placeCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         
         if let name = place.name {
@@ -125,7 +136,29 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.recentAchievement.collectionViewLayout = layout
         roundButtonsCorners()
         
+        if placeService.isOnRoute(uid: place.uid!){
+            goButton.setImage(nil, for: .normal)
+            goButton.setTitle("Cancelar Rota", for: .normal)
+            goButton.backgroundColor = Color.orange
+            goButton.removeTarget(self, action: #selector(self.goBtnAction), for: .touchUpInside)
+            goButton.addTarget(self, action: #selector(self.cancelRoute), for: .touchUpInside)
+        }
+        else {
+            goButton.addTarget(self, action: #selector(self.goBtnAction), for: .touchUpInside)
+        }
     }
+    
+    @objc private func cancelRoute() {
+        try! placeService.updateState(uid: place.uid!, newState: PlaceState.unknown)
+        goButton.setImage(UIImage(named: "goButton"), for: .normal)
+        goButton.setTitle("Go!", for: .normal)
+        goButton.backgroundColor = Color.pink
+        routeDelegate?.didTapCancel()
+        goButton.removeTarget(self, action: #selector(self.cancelRoute), for: .touchUpInside)
+        _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.tabBarController?.selectedIndex = 1
+    }
+    
     private func roundButtonsCorners(){
         goButton.layer.cornerRadius = 5
         placeButton.layer.cornerRadius = 5
@@ -167,34 +200,42 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.pageControl.currentPage = Int(pageNumber)
     }
     
-    @IBAction func goBtnAction(_ sender: UIButton) {
+    @objc private func goBtnAction() {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
-        annotationDelegate?.updateAnnotations()
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.tabBarController?.selectedIndex = 1
     }
     
+    @IBAction func mapButtonAction(_ sender: UIButton) {
+        _ = navigationController?.popViewController(animated: true)
+        self.tabBarController?.selectedIndex = 1
+        (UIApplication.shared.delegate as! AppDelegate).clickedLocation = placeCoordinate!
+        routeDelegate?.didTapLocation(locationCoordinate: placeCoordinate!)
+    }
 }
-
-
-
 
 
 extension PlaceViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(collectionView.frame.height / 76)
+        return min(Int(collectionView.frame.height / 76), listAchievements.count)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
-        cell.configure(hasProgress: false)
+        cell.configure(achievement: listAchievements[indexPath.row])
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
+            let cell = sender as! AchievementCollectionViewCell
+            do {
+                destVC.conquista_ = try achievementService.retrieve(uid: cell.uid!)
+            } catch {
+                print(error)
+            }
             destVC.loadViewIfNeeded()
         }
     }

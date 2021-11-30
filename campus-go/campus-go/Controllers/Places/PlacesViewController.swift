@@ -77,11 +77,11 @@ class PlacesViewController: UIViewController{
             return $0.state > $1.state
         })
     }
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         sortPlaces()
         self.collectionView.reloadData()
+        
     }
-
 }
 
 
