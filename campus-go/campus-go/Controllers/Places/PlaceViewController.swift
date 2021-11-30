@@ -164,8 +164,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeButton.layer.cornerRadius = 5
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLayoutSubviews() {
         placeView.recentAchievement.layer.borderWidth = 1
         placeView.recentAchievement.layer.borderColor = UIColor.lightGray.cgColor
         placeView.recentAchievement.layer.cornerRadius = 5
@@ -257,5 +256,13 @@ extension PlaceViewController: UICollectionViewDelegateFlowLayout{
     }
     
 }
-
+extension PlaceViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
+    }
+}
 
