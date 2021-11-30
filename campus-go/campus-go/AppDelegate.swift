@@ -15,7 +15,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var locationManager: CLLocationManager?
     var notificationCenter: UNUserNotificationCenter?
-
+    
+    //O ideal é fazer um singleton
+    var clickedLocation: CLLocationCoordinate2D?
+    
     var hasAlreadyLaunched: Bool!
     
     weak var annotationDelegate: AnnotationDelegate?
@@ -23,7 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         self.locationManager = CLLocationManager()
         self.locationManager!.delegate = self
-        
         hasAlreadyLaunched = UserDefaults.standard.bool(forKey: "hasAlreadyLaunched")
         
         if !hasAlreadyLaunched {
@@ -45,26 +47,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func preLoadCoreData() {
+    
+    func populateCoreDataAchievements() {
+        guard let path = Bundle.main.path(forResource: "Achievements", ofType: "json") else {return}
+        do {
+            let data = try Data(contentsOf: URL(fileURLWithPath: path))
+            let context = persistentContainer.newBackgroundContext()
+            let decoder = JSONDecoder()
+            decoder.userInfo[.context!] = context
+            let result = try decoder.decode([Achievement].self, from: data)
+
+            for object in result {
+                do {
+                    let _ = try AchievementService().create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints)
+                } catch {
+                    print(error)
+                }
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
+    func populateCoreDataPlaces() {
         guard let path = Bundle.main.path(forResource: "Places", ofType: "json") else { return }
         do {
             let data = try Data(contentsOf: URL(fileURLWithPath: path))
-            print(data)
             let context = persistentContainer.newBackgroundContext()
             let decoder = JSONDecoder()
             decoder.userInfo[.context!] = context
             let result = try decoder.decode([Place].self, from: data)
             for object in result {
-                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages)
+                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!)
             }
             let teste = try PlaceService().readAll()
-            for t in teste! {
-                print(t.nImages, t.placeID)
-            }
+            
+            _ = try! UserService().create(name: "placeholder", xp: 420)
+            
         } catch {
             print("\(error)")
         }
     }
+    
+    // MARK: First CoreData Load
+    func preLoadCoreData() {
+        populateCoreDataPlaces()
+        populateCoreDataAchievements()
+    }
+    
 
     // MARK: UISceneSession Lifecycle
 
@@ -76,6 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     lazy var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "campusGo")
+        container.persistentStoreDescriptions.append(storeDescription)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -84,6 +115,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return container
     }()
 
+    private lazy var storeDescription: NSPersistentStoreDescription = {
+            let storeDescription = NSPersistentStoreDescription()
+            storeDescription.shouldMigrateStoreAutomatically = true
+            storeDescription.shouldInferMappingModelAutomatically = true
+            return storeDescription
+    }()
+    
+    
     // MARK: - Core Data Saving support
 
     func saveContext () {
@@ -137,6 +176,22 @@ extension AppDelegate: CLLocationManagerDelegate {
                     print("Error adding notification with identifier: \(identifier)")
                 }
             })
+            let alertUtil = AlertUtil()
+            var place: Place?
+            do {
+                place = try placeService.read(uid: uid!)
+            }catch{
+                print(error)
+            }
+
+            if let currentViewController = getCurrentViewController(){
+                if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
+                    alertUtil.showAlert(viewController: alertViewController,place: place)
+                }else{
+                    print("Erro ao encontrar a view")
+                }
+            }
+            
         }
     }
 }

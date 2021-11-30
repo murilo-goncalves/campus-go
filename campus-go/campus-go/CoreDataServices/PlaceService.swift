@@ -22,7 +22,7 @@ class PlaceService {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    func create(name: String, latitude: Double, longitude: Double, placeID: Int64, nImages: Int64) throws -> UUID {
+    func create(name: String, latitude: Double, longitude: Double, placeID: Int64, nImages: Int64, relatedAchievements: String) throws -> UUID {
         let placeEntity = NSEntityDescription.entity(forEntityName: "Place", in: context)!
         let place = NSManagedObject(entity: placeEntity, insertInto: context)
         
@@ -34,6 +34,7 @@ class PlaceService {
         place.setValue(placeID, forKey: "placeID")
         place.setValue(PlaceState.unknown.rawValue, forKey: "state")
         place.setValue(nImages, forKey: "nImages")
+        place.setValue(relatedAchievements, forKey: "relatedAchievements")
         
         try context.save()
         
@@ -54,6 +55,16 @@ class PlaceService {
 
         let result = try context.fetch(fetchRequest)
         return result[0] as? Place
+    }
+    
+    func readOnRoute() throws -> Place? {
+        let places = try! readAll()
+        for place in places! {
+            if isOnRoute(uid: place.uid!) {
+                return place
+            }
+        }
+        return nil
     }
 
     

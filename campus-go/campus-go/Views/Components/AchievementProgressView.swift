@@ -11,6 +11,7 @@ import UIKit
 class AchievementProgressView: UIView {
     @IBOutlet weak var contentView: UIView!
     
+    @IBOutlet weak var achievementImage: UIImageView!
     override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
@@ -27,7 +28,7 @@ class AchievementProgressView: UIView {
         let progressLayer = CAShapeLayer()
         progressLayer.path = path.cgPath
         progressLayer.fillColor = UIColor.clear.cgColor
-        progressLayer.strokeColor = Color.lightOrange.cgColor
+        progressLayer.strokeColor = Color.orangeTrans.cgColor
         progressLayer.strokeStart = 0
         progressLayer.strokeEnd = 1
         progressLayer.lineWidth = 2
@@ -36,7 +37,7 @@ class AchievementProgressView: UIView {
         let layer = CAShapeLayer()
         layer.path = path.cgPath
         layer.fillColor = UIColor.clear.cgColor
-        layer.strokeColor = Color.lightOrange.cgColor
+        layer.strokeColor = Color.orange.cgColor
         layer.strokeStart = 0.8
         layer.strokeEnd = 1
         layer.lineWidth = 2
