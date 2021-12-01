@@ -44,13 +44,14 @@
                                 <rect key="frame" x="16" y="140" width="382" height="140"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Capivara" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="48Q-Bz-ZfU">
-                                        <rect key="frame" x="143.5" y="22.5" width="67" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="143.5" y="32" width="81.5" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="books" translatesAutoresizingMaskIntoConstraints="NO" id="MNj-X5-Wwl">
-                                        <rect key="frame" x="24" y="22.5" width="95.5" height="95.5"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="MNj-X5-Wwl">
+                                        <rect key="frame" x="24" y="24" width="95.5" height="92.5"/>
+                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="MNj-X5-Wwl" secondAttribute="height" multiplier="1:1" id="Mdc-jV-tza"/>
                                         </constraints>
@@ -59,12 +60,12 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstItem="48Q-Bz-ZfU" firstAttribute="top" secondItem="e6X-VH-HET" secondAttribute="top" constant="32" id="0Vi-u7-KNm"/>
                                     <constraint firstItem="48Q-Bz-ZfU" firstAttribute="leading" secondItem="MNj-X5-Wwl" secondAttribute="trailing" constant="24" id="412-Df-ibY"/>
                                     <constraint firstItem="MNj-X5-Wwl" firstAttribute="centerY" secondItem="e6X-VH-HET" secondAttribute="centerY" id="RwW-m1-TMN"/>
                                     <constraint firstItem="MNj-X5-Wwl" firstAttribute="width" secondItem="e6X-VH-HET" secondAttribute="width" multiplier="0.25" id="eHo-TO-QAF"/>
                                     <constraint firstAttribute="width" secondItem="e6X-VH-HET" secondAttribute="height" multiplier="191:70" id="gKI-5g-5PG"/>
                                     <constraint firstItem="MNj-X5-Wwl" firstAttribute="leading" secondItem="e6X-VH-HET" secondAttribute="leading" constant="24" id="kcl-KE-Ogj"/>
-                                    <constraint firstItem="48Q-Bz-ZfU" firstAttribute="top" secondItem="MNj-X5-Wwl" secondAttribute="top" id="qic-ym-ft1"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -228,7 +229,7 @@
                                 </connections>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9xv-Ey-VeS">
-                                <rect key="frame" x="16" y="502" width="382" height="295"/>
+                                <rect key="frame" x="16" y="494" width="382" height="303"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="SDS-a7-Obh">
                                     <size key="itemSize" width="382" height="76"/>
@@ -279,7 +280,7 @@
                             <constraint firstItem="e6X-VH-HET" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="tV8-5a-RTV"/>
                             <constraint firstItem="DIl-rw-4nP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="urb-m7-SnV"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="DIl-rw-4nP" secondAttribute="trailing" constant="16" id="vMv-ir-ZkQ"/>
-                            <constraint firstItem="9xv-Ey-VeS" firstAttribute="top" secondItem="ePn-TB-2vs" secondAttribute="bottom" constant="16" id="ykR-db-8vO"/>
+                            <constraint firstItem="9xv-Ey-VeS" firstAttribute="top" secondItem="ePn-TB-2vs" secondAttribute="bottom" constant="8" id="ykR-db-8vO"/>
                         </constraints>
                         <connections>
                             <outlet property="achievementsListButton" destination="qdF-qe-XUI" id="dnq-PI-Cp7"/>
@@ -377,8 +378,8 @@
         <segue reference="xwu-K2-cKi"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="books" width="512" height="512"/>
         <image name="crown.fill" catalog="system" width="128" height="92"/>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
