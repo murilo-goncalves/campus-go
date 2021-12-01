@@ -13,6 +13,8 @@
 		592DC69F27530CF600C8D070 /* RelatedAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592DC69E27530CF600C8D070 /* RelatedAchievements.swift */; };
 		593192EA27452E6C007F9312 /* Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593192E927452E6C007F9312 /* Pictures.swift */; };
 		595222292756714000430D95 /* UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595222282756714000430D95 /* UserAttributes.swift */; };
+		5952222B2757A3A600430D95 /* AppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952222A2757A3A600430D95 /* AppAttributes.swift */; };
+		5952222D2757A4CB00430D95 /* PercentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952222C2757A4CB00430D95 /* PercentValues.swift */; };
 		59BB17D02732C05600572780 /* AchievementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB17CF2732C05600572780 /* AchievementService.swift */; };
 		5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */; };
 		5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC070270B34FF00D33B44 /* AchievementListController.swift */; };
@@ -95,6 +97,8 @@
 		592DC69E27530CF600C8D070 /* RelatedAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedAchievements.swift; sourceTree = "<group>"; };
 		593192E927452E6C007F9312 /* Pictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictures.swift; sourceTree = "<group>"; };
 		595222282756714000430D95 /* UserAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttributes.swift; sourceTree = "<group>"; };
+		5952222A2757A3A600430D95 /* AppAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttributes.swift; sourceTree = "<group>"; };
+		5952222C2757A4CB00430D95 /* PercentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentValues.swift; sourceTree = "<group>"; };
 		59BB17CF2732C05600572780 /* AchievementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementService.swift; sourceTree = "<group>"; };
 		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
 		5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementList.storyboard; sourceTree = "<group>"; };
@@ -452,6 +456,8 @@
 			children = (
 				5F58A6C5275114E600700969 /* Constant.swift */,
 				595222282756714000430D95 /* UserAttributes.swift */,
+				5952222A2757A3A600430D95 /* AppAttributes.swift */,
+				5952222C2757A4CB00430D95 /* PercentValues.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -631,6 +637,7 @@
 				5FF8B7872707390700D7BE7D /* AchievementCell.swift in Sources */,
 				FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */,
 				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
+				5952222B2757A3A600430D95 /* AppAttributes.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
 				613AC0D227564D380009AAC2 /* UIAplication.swift in Sources */,
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,
@@ -666,6 +673,7 @@
 				628270BC273D51B800A540D3 /* RouteDelegate.swift in Sources */,
 				6254B627274531D300CE80F4 /* Achievement+CoreDataProperties.swift in Sources */,
 				61C32DEE274FCB4C00DDA279 /* AlertViewController.swift in Sources */,
+				5952222D2757A4CB00430D95 /* PercentValues.swift in Sources */,
 				629BD3AD270B2EC60068FF7A /* MapConstants.swift in Sources */,
 				592DC69F27530CF600C8D070 /* RelatedAchievements.swift in Sources */,
 				6254B626274531D300CE80F4 /* Achievement+CoreDataClass.swift in Sources */,
