@@ -40,6 +40,7 @@ class MapViewController: UIViewController {
         setupMapView()
         definesPresentationContext = true
         (UIApplication.shared.delegate as! AppDelegate).annotationDelegate = self
+        (UIApplication.shared.delegate as! AppDelegate).routeDelegate = self
         mapServices = MapServices(mapView)
         mapServices.populateMap()
     }
