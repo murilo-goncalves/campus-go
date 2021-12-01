@@ -31,24 +31,11 @@ class ProfileViewController: UIViewController {
 //    profileView.profileTitleView.imageView.isUserInteractionEnabled = true
 //    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(alertTest))
 //    profileView.profileTitleView.imageView.addGestureRecognizer(tapGestureRecognizer)
- 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        do {
-            guard let list = try achievementService.retrieve() else { return }
-            listAchievements = list
-        } catch {
-            print(error)
-        }
         self.view.backgroundColor = Color.background
-        self.lblPlaces.text = "\(userAttributes.getUserPlaces())"
-        self.lblXP.text = "\(userAttributes.getUserXP())"
-        self.lblAchievement.text = "\(userAttributes.getUserAchievements())"
         setProfileTitle()
-        
-
-            
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
         profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
@@ -76,7 +63,7 @@ class ProfileViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
-        setProgressView()
+        updateProgressView()
         profileView.profileTitleView.clipsToBounds = true
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2        
     }
@@ -92,7 +79,18 @@ class ProfileViewController: UIViewController {
             performSegue(withIdentifier: "goToAchievementsList", sender: self)
         }
     }
-    
+    private func updateProgressView() {
+        do {
+            guard let list = try achievementService.retrieve() else { return }
+            listAchievements = list
+        } catch {
+            print(error)
+        }
+        self.lblPlaces.text = "\(userAttributes.getUserPlaces())"
+        self.lblXP.text = "\(userAttributes.getUserXP())"
+        self.lblAchievement.text = "\(userAttributes.getUserAchievements())"
+        setProgressView()
+    }
     private func setProfileTitle() {
         
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
