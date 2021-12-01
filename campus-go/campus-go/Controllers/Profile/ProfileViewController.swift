@@ -12,10 +12,14 @@ import CoreData
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var bottomCollectionConstraint: NSLayoutConstraint!
+    @IBOutlet weak var lblXP: UILabel!
+    @IBOutlet weak var lblPlaces: UILabel!
+    @IBOutlet weak var lblAchievement: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet var profileView: ProfileView!
     let achievementService = AchievementService()
     var listAchievements: [Achievement] = []
+    let userAttributes = UserAttributes()
     @IBOutlet weak var experienceProgressViewView: UIView!
     @IBOutlet weak var placesProgressViewView: UIView!
     @IBOutlet weak var achievementsProgressViewView: UIView!
@@ -38,6 +42,9 @@ class ProfileViewController: UIViewController {
             print(error)
         }
         self.view.backgroundColor = Color.background
+        self.lblPlaces.text = "\(userAttributes.userNumberPlaces)"
+        self.lblXP.text = "\(userAttributes.userXP)"
+        self.lblAchievement.text = "\(userAttributes.userNumberAchievements)"
         setProfileTitle()
         
 
@@ -96,45 +103,103 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.title.text = user?.name
     }
     
-    private func setProgressView() {
-        
-        profileView.profileProgressView.experienceProgressView.textColor = Color.orange
+    private func setXPProgress() {
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.experienceProgressView.textSize = CGFloat(20)
-        profileView.profileProgressView.experienceProgressView.backgroundBarColor = Color.orangeTrans
-        profileView.profileProgressView.experienceProgressView.foregroundBarColor = Color.orange
-        profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.orange
-        profileView.profileProgressView.experienceProgressView.animationDuration = TimeInterval(1.0)
         profileView.profileProgressView.experienceProgressView.awakeFromNib()
-        setExperiencePercentage()
-        
-        profileView.profileProgressView.placesProgressView.text = "50%"
-        profileView.profileProgressView.placesProgressView.textColor = Color.orange
-        profileView.profileProgressView.placesProgressView.lineWidth = CGFloat(7)
-        profileView.profileProgressView.placesProgressView.textSize = CGFloat(20)
-        profileView.profileProgressView.placesProgressView.backgroundBarColor = Color.orangeTrans
-        profileView.profileProgressView.placesProgressView.foregroundBarColor = Color.orange
-        profileView.profileProgressView.placesProgressView.maximumBarColor = Color.orange
-        profileView.profileProgressView.placesProgressView.animationDuration = TimeInterval(1.0)
-        profileView.profileProgressView.placesProgressView.setProgress(to: 0.5, animated: true)
-        profileView.profileProgressView.placesProgressView.awakeFromNib()
-        
-        profileView.profileProgressView.achievementProgressView.text = "60%"
-        profileView.profileProgressView.achievementProgressView.textColor = Color.orange
-        profileView.profileProgressView.achievementProgressView.lineWidth = CGFloat(7)
-        profileView.profileProgressView.achievementProgressView.textSize = CGFloat(20)
-        profileView.profileProgressView.achievementProgressView.backgroundBarColor = Color.orangeTrans
-        profileView.profileProgressView.achievementProgressView.foregroundBarColor = Color.orange
-        profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.orange
-        profileView.profileProgressView.achievementProgressView.animationDuration = TimeInterval(1.0)
-        profileView.profileProgressView.achievementProgressView.setProgress(to: 0.6, animated: true)
-        profileView.profileProgressView.achievementProgressView.awakeFromNib()
+        let percentualXP = self.userAttributes.getPercentualXP()
+        //Aqui eu vou setar as cores de acordo com o progresso
+        if(percentualXP == 0.0) {
+            profileView.profileProgressView.experienceProgressView.text = "0%"
+            profileView.profileProgressView.experienceProgressView.textColor = Color.purple
+            profileView.profileProgressView.experienceProgressView.backgroundBarColor = Color.purpleTrans
+            profileView.profileProgressView.experienceProgressView.foregroundBarColor = Color.purple
+            profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.purple
+            
+        } else if(percentualXP == 1.0) {
+            profileView.profileProgressView.experienceProgressView.text = "100%"
+            profileView.profileProgressView.experienceProgressView.textColor = Color.green
+            profileView.profileProgressView.experienceProgressView.backgroundBarColor = Color.green
+            profileView.profileProgressView.experienceProgressView.foregroundBarColor = Color.green
+            profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.green
+        }
+        else {
+            profileView.profileProgressView.experienceProgressView.text = "\(Int(percentualXP * 100))%"
+            profileView.profileProgressView.experienceProgressView.setProgress(to: percentualXP, animated: true)
+            profileView.profileProgressView.experienceProgressView.animationDuration = TimeInterval(1.0)
+            profileView.profileProgressView.experienceProgressView.textColor = Color.orange
+            profileView.profileProgressView.experienceProgressView.backgroundBarColor = Color.orangeTrans
+            profileView.profileProgressView.experienceProgressView.foregroundBarColor = Color.orange
+            profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.orange
+        }
     }
     
-    private func setExperiencePercentage() {
-        let user = try! UserService().read()
-        profileView.profileProgressView.experienceProgressView.text = "\(String(format: "%.0f", Double(user!.xpPoints)/Constant.totalXP * 100))%"
-        profileView.profileProgressView.experienceProgressView.setProgress(to: Double(user!.xpPoints)/Constant.totalXP, animated: true)
+    private func setPlaceProgress() {
+        profileView.profileProgressView.placesProgressView.lineWidth = CGFloat(7)
+        profileView.profileProgressView.placesProgressView.textSize = CGFloat(20)
+        profileView.profileProgressView.placesProgressView.awakeFromNib()
+        let percentualPlaces = self.userAttributes.getPercentualPlaces()
+        //Aqui eu vou setar as cores de acordo com o progresso
+        if(percentualPlaces == 0.0) {
+            profileView.profileProgressView.placesProgressView.text = "0%"
+            profileView.profileProgressView.placesProgressView.textColor = Color.purple
+            profileView.profileProgressView.placesProgressView.backgroundBarColor = Color.purpleTrans
+            profileView.profileProgressView.placesProgressView.foregroundBarColor = Color.purple
+            profileView.profileProgressView.placesProgressView.maximumBarColor = Color.purple
+            
+        } else if(percentualPlaces == 1.0) {
+            profileView.profileProgressView.placesProgressView.text = "100%"
+            profileView.profileProgressView.placesProgressView.textColor = Color.green
+            profileView.profileProgressView.placesProgressView.backgroundBarColor = Color.green
+            profileView.profileProgressView.placesProgressView.foregroundBarColor = Color.green
+            profileView.profileProgressView.placesProgressView.maximumBarColor = Color.green
+        }
+        else {
+            profileView.profileProgressView.placesProgressView.text = "\(Int(percentualPlaces * 100))%"
+            profileView.profileProgressView.placesProgressView.setProgress(to: percentualPlaces, animated: true)
+            profileView.profileProgressView.placesProgressView.animationDuration = TimeInterval(1.0)
+            profileView.profileProgressView.placesProgressView.textColor = Color.orange
+            profileView.profileProgressView.placesProgressView.backgroundBarColor = Color.orangeTrans
+            profileView.profileProgressView.placesProgressView.foregroundBarColor = Color.orange
+            profileView.profileProgressView.placesProgressView.maximumBarColor = Color.orange
+        }
+    }
+    
+    private func setAchievementProgress() {
+        profileView.profileProgressView.achievementProgressView.lineWidth = CGFloat(7)
+        profileView.profileProgressView.achievementProgressView.textSize = CGFloat(20)
+        profileView.profileProgressView.achievementProgressView.awakeFromNib()
+        let percentualAchievements = self.userAttributes.getPercentualAchievements()
+        //Aqui eu vou setar as cores de acordo com o progresso
+        if(percentualAchievements == 0.0) {
+            profileView.profileProgressView.achievementProgressView.text = "0%"
+            profileView.profileProgressView.achievementProgressView.textColor = Color.purple
+            profileView.profileProgressView.achievementProgressView.backgroundBarColor = Color.purpleTrans
+            profileView.profileProgressView.achievementProgressView.foregroundBarColor = Color.purple
+            profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.purple
+            
+        } else if(percentualAchievements == 1.0) {
+            profileView.profileProgressView.achievementProgressView.text = "100%"
+            profileView.profileProgressView.achievementProgressView.textColor = Color.green
+            profileView.profileProgressView.achievementProgressView.backgroundBarColor = Color.green
+            profileView.profileProgressView.achievementProgressView.foregroundBarColor = Color.green
+            profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.green
+        }
+        else {
+            profileView.profileProgressView.achievementProgressView.text = "\(Int(percentualAchievements * 100))%"
+            profileView.profileProgressView.achievementProgressView.setProgress(to: percentualAchievements, animated: true)
+            profileView.profileProgressView.achievementProgressView.animationDuration = TimeInterval(1.0)
+            profileView.profileProgressView.achievementProgressView.textColor = Color.orange
+            profileView.profileProgressView.achievementProgressView.backgroundBarColor = Color.orangeTrans
+            profileView.profileProgressView.achievementProgressView.foregroundBarColor = Color.orange
+            profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.orange
+        }
+    }
+    private func setProgressView() {
+        
+        setXPProgress()
+        setPlaceProgress()
+        setAchievementProgress()
     }
     
 }

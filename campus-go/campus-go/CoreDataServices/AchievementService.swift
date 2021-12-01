@@ -33,7 +33,15 @@ class AchievementService{
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
     
         let result = try context.fetch(fetchRequest)
-        return result as? [Achievement]
+        guard var achievements = (result as? [Achievement]) else { return nil }
+        achievements.sort(by: {
+            if $0.progress == $1.progress {
+                return $0.name! < $1.name!
+            }
+            return $0.progress > $1.progress
+        })
+        return achievements
+        
     }
         
     func retrieve(uid: UUID) throws -> Achievement? {

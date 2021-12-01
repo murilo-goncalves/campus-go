@@ -17,7 +17,6 @@ extension User {
     }
 
     @NSManaged public var name: String?
-    @NSManaged public var xpPoints: Int64
 
 }
 

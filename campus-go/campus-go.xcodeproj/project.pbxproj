@@ -12,6 +12,7 @@
 		5908F9AC2743F6440021A80B /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5908F9AB2743F6440021A80B /* CustomAnnotation.swift */; };
 		592DC69F27530CF600C8D070 /* RelatedAchievements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592DC69E27530CF600C8D070 /* RelatedAchievements.swift */; };
 		593192EA27452E6C007F9312 /* Pictures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 593192E927452E6C007F9312 /* Pictures.swift */; };
+		595222292756714000430D95 /* UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595222282756714000430D95 /* UserAttributes.swift */; };
 		59BB17D02732C05600572780 /* AchievementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB17CF2732C05600572780 /* AchievementService.swift */; };
 		5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */; };
 		5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC070270B34FF00D33B44 /* AchievementListController.swift */; };
@@ -93,6 +94,7 @@
 		5908F9AB2743F6440021A80B /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		592DC69E27530CF600C8D070 /* RelatedAchievements.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedAchievements.swift; sourceTree = "<group>"; };
 		593192E927452E6C007F9312 /* Pictures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pictures.swift; sourceTree = "<group>"; };
+		595222282756714000430D95 /* UserAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttributes.swift; sourceTree = "<group>"; };
 		59BB17CF2732C05600572780 /* AchievementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementService.swift; sourceTree = "<group>"; };
 		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
 		5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementList.storyboard; sourceTree = "<group>"; };
@@ -449,6 +451,7 @@
 			isa = PBXGroup;
 			children = (
 				5F58A6C5275114E600700969 /* Constant.swift */,
+				595222282756714000430D95 /* UserAttributes.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -646,6 +649,7 @@
 				59BB17D02732C05600572780 /* AchievementService.swift in Sources */,
 				6254B629274531D300CE80F4 /* Place+CoreDataProperties.swift in Sources */,
 				5F3CC079270B444000D33B44 /* AchievementView.swift in Sources */,
+				595222292756714000430D95 /* UserAttributes.swift in Sources */,
 				62C2DF14270493D4002118A0 /* AppDelegate.swift in Sources */,
 				5F3FC701274FCD8F00B1E4B4 /* UserService.swift in Sources */,
 				61363655273E8690005EEDB4 /* AchievementCollectionViewCell.swift in Sources */,
