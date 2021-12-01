@@ -28,15 +28,15 @@
     "longitude": -47.066632,
     "name": "FEEC - Faculdade de Engenharia Elétrica e Computação",
     "placeID": 4,
-    "nImages": 2,
+    "nImages": 3,
     "relatedAchievements": "12 13 14"
   },
   {
-    "latitude": -22.821969,
-    "longitude": -47.069792,
+    "latitude": -22.8184252,
+    "longitude": -47.0725516,
     "name": "Placa Av. 2 - Placa da Unicamp Av. 2",
     "placeID": 5,
-    "nImages": 2,
+    "nImages": 1,
     "relatedAchievements": "12 13 14"
   },
   {
@@ -76,7 +76,7 @@
     "longitude": -47.063971,
     "name": "IC - Instituto de Computação",
     "placeID": 10,
-    "nImages": 1,
+    "nImages": 3,
     "relatedAchievements": "12 13 14"
   },
   {
@@ -108,7 +108,7 @@
     "longitude": -47.0652017,
     "name": "RA - Restaurante Administrativo",
     "placeID": 14,
-    "nImages": 3,
+    "nImages": 2,
     "relatedAchievements": "1 2 3 12 13 14"
   },
   {
@@ -140,6 +140,14 @@
     "longitude": -47.0697333,
     "name": "Placa Av. 1 - Placa da Unicamp Av. 1",
     "placeID": 18,
+    "nImages": 2,
+    "relatedAchievements": "12 13 14"
+  },
+  {
+    "latitude": -22.8152253,
+    "longitude": -47.0703129,
+    "name": "IA - Instituto de Artes",
+    "placeID": 19,
     "nImages": 2,
     "relatedAchievements": "12 13 14"
   }

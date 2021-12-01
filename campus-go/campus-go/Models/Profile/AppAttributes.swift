@@ -1,13 +1,13 @@
 //
-//  UserAttributes.swift
+//  AppAttributes.swift
 //  campus-go
 //
-//  Created by Luiz Gustavo Silva Aguiar on 30/11/21.
+//  Created by Luiz Gustavo Silva Aguiar on 01/12/21.
 //
 
 import Foundation
 
-struct UserAttributes {
+struct AppAttributes {
     let placeService = PlaceService()
     let achievementService = AchievementService()
     let placeDefaultXP = 20
@@ -30,40 +30,21 @@ struct UserAttributes {
         return nil
     }
     
-    func getUserXP() -> Int {
+    func getAllXP() -> Int {
         let listPlaces = readPlaces() ?? []
         let listAchievements = readAchievements() ?? []
-        var userXP = 0
-        for place in listPlaces {
-            if(place.state == PlaceState.known.rawValue) {
-                userXP+=placeDefaultXP
-            }
-        }
+        var xp = listPlaces.count * placeDefaultXP
         for ac in listAchievements {
-            if(ac.progress == 1.0) {
-                userXP += Int(ac.xpPoints)
-            }
+            xp += Int(ac.xpPoints)
         }
-        return userXP
+        return xp
     }
-    func getUserAchievements() -> Int {
+    func getAllAchievements() -> Int {
         let listAchievements = readAchievements() ?? []
-        var cnt = 0
-        for ac in listAchievements {
-            if(ac.progress == 1.0) {
-                cnt+=1
-            }
-        }
-        return cnt
+        return listAchievements.count
     }
-    func getUserPlaces() -> Int {
+    func getAllPlaces() -> Int {
         let listPlaces = readPlaces() ?? []
-        var cnt = 0
-        for place in listPlaces {
-            if(place.state == PlaceState.known.rawValue) {
-                cnt+=1
-            }
-        }
-        return cnt
+        return listPlaces.count
     }
 }
