@@ -37,7 +37,7 @@
                                     <fontDescription key="titleFontDescription" type="system" weight="semibold" pointSize="16"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="od3-0u-edn" kind="show" id="Hk7-LT-BD9"/>
+                                    <segue destination="od3-0u-edn" kind="show" identifier="" id="Hk7-LT-BD9"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e6X-VH-HET" customClass="ProfileTitleView" customModule="campus_go" customModuleProvider="target">
@@ -85,7 +85,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hNi-nd-Tus">
                                         <rect key="frame" x="8" y="8" width="366" height="134"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPr-oT-dYk" userLabel="XP">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LPr-oT-dYk" userLabel="Experience">
                                                 <rect key="frame" x="0.0" y="0.0" width="122" height="134"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2000" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vlN-YM-hSn" userLabel="xpPoints">
@@ -291,17 +291,43 @@
                     <navigationItem key="navigationItem" title="Perfil" id="Z0A-5r-CGH"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="achievementsProgressViewView" destination="1Ij-p0-HyU" id="QIj-Q4-jx1"/>
                         <outlet property="bottomCollectionConstraint" destination="QqC-TL-WXa" id="laR-CH-HfM"/>
                         <outlet property="lblAchievement" destination="5Oj-7t-zIV" id="bU3-Lv-ThS"/>
                         <outlet property="lblPlaces" destination="jeJ-Py-kd5" id="y4c-1S-oY5"/>
                         <outlet property="lblXP" destination="vlN-YM-hSn" id="WVc-ha-biW"/>
+                        <outlet property="experienceProgressViewView" destination="LPr-oT-dYk" id="0Fl-PU-ulg"/>
+                        <outlet property="placesProgressViewView" destination="urz-0f-jIe" id="WZn-le-I7p"/>
                         <outlet property="profileView" destination="5EZ-qb-Rvc" id="ino-A8-L5z"/>
                         <outlet property="titleLabel" destination="48Q-Bz-ZfU" id="KSX-dk-Sb5"/>
+                        <segue destination="od3-0u-edn" kind="show" identifier="goToAchievementsList" id="xwu-K2-cKi"/>
+                        <segue destination="uIa-T2-TPX" kind="show" identifier="goToPlaces" id="b1c-am-39l"/>
+                        <segue destination="LDL-Ic-n2T" kind="show" identifier="goToRanks" id="TIb-qA-Zh0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1026.0869565217392" y="123.88392857142857"/>
+        </scene>
+        <!--RanksStoryboard-->
+        <scene sceneID="Vne-KR-F28">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RanksStoryboard" id="LDL-Ic-n2T" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ZtI-bh-YH9"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sW7-aH-CaF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1666" y="-10"/>
+        </scene>
+        <!--Places-->
+        <scene sceneID="hDL-fo-OrH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Places" referencedIdentifier="Places" id="uIa-T2-TPX" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="l5j-qx-XhY"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Tgp-U6-Uvp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1667" y="38"/>
         </scene>
         <!--AchievementList-->
         <scene sceneID="FnI-x3-TtU">
@@ -311,7 +337,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bIA-e2-UVY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1650" y="124"/>
+            <point key="canvasLocation" x="1667" y="106"/>
         </scene>
         <!--Achievement-->
         <scene sceneID="L2f-Hb-G5h">
@@ -350,6 +376,9 @@
             <point key="canvasLocation" x="115.94202898550725" y="123.88392857142857"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="xwu-K2-cKi"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="books" width="512" height="512"/>
         <image name="crown.fill" catalog="system" width="128" height="92"/>

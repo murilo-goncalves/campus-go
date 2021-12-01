@@ -99,7 +99,7 @@ extension MapViewController: MKMapViewDelegate {
         case .known:
             annotationView?.image = UIImage(named: "known-pin-green")
         case .onRoute:
-            annotationView?.image = UIImage(named: "unknown-pin-orange")
+            annotationView?.image = UIImage(named: "on-route")
         }
 
         annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
@@ -111,15 +111,26 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // do something
-        view.frame.size = CGSize(width: MapConstants.selectedAnnitationWidht, height: MapConstants.selectedAnnotationHeight)
-        view.centerOffset = .zero
+        view.transform = CGAffineTransform.identity
+        view.detailCalloutAccessoryView?.transform = CGAffineTransform.identity
+        UIView.animate(withDuration: 0.5, animations: {
+            view.transform = view.transform.scaledBy(x: 1.2, y: 1.2)
+        })
+
     }
     
+    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped: UIControl){
+        
+    }
+
+            
+
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         UIView.animate(withDuration: 0.5, animations: {
-            view.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
+            view.transform = CGAffineTransform.identity
         })
+
+        
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -151,18 +162,18 @@ extension MapViewController: MKMapViewDelegate {
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: RouteDelegate {
-    func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
-        mapServices.displayRoute(sourceCoordinate: mapServices.getUserCoordinate2D(),
-                                 destinationCoordinate: destinationCoordinate)
+    func didTapGo() {
+        mapView.setUserTrackingMode(.followWithHeading, animated: true)
     }
     
     func didTapLocation(locationCoordinate: CLLocationCoordinate2D) {
         (UIApplication.shared.delegate as! AppDelegate).clickedLocation = locationCoordinate
-        self.mapView.setCenter(locationCoordinate, animated: true)
+        mapView.setCenter(locationCoordinate, animated: true)
     }
     
     func didTapCancel() {
         mapServices.removeRoute()
+        mapView.setUserTrackingMode(.none, animated: true)
     }
 }
 

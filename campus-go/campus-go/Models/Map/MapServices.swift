@@ -119,6 +119,9 @@ class MapServices: NSObject {
             for route in response.routes {
                 if let mapView_ = self.mapView {
                     mapView_.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
+                    for step in route.steps {
+                        print(step)
+                    }
                 }
             }
         }
