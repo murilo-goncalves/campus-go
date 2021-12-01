@@ -29,15 +29,18 @@ class MapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
-    private var mapServices: MapServices!
     
+    private var mapServices: MapServices!
+    private var placeService = PlaceService()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = Color.background
         title = "Mapa"
         setupMapView()
         definesPresentationContext = true
         (UIApplication.shared.delegate as! AppDelegate).annotationDelegate = self
-
+        (UIApplication.shared.delegate as! AppDelegate).routeDelegate = self
         mapServices = MapServices(mapView)
         mapServices.populateMap()
     }
@@ -53,6 +56,20 @@ class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         mapServices.populateMap()
+        if ((UIApplication.shared.delegate as! AppDelegate).clickedLocation != nil){
+            self.mapView.centerToLocation(CLLocation(latitude: (UIApplication.shared.delegate as! AppDelegate).clickedLocation!.latitude, longitude: (UIApplication.shared.delegate as! AppDelegate).clickedLocation!.longitude))
+        }
+        do {
+            if let onRoutePlace = try placeService.readOnRoute() {
+                let destinationCoordinate = CLLocationCoordinate2D(latitude: onRoutePlace.latitude, longitude: onRoutePlace.longitude)
+                let sourceCoordinate = mapServices.getUserCoordinate2D()
+                mapServices.displayRoute(sourceCoordinate: sourceCoordinate, destinationCoordinate: destinationCoordinate)
+            } else {
+                mapServices.removeRoute()
+            }
+        } catch {
+            print(error)
+        }
     }
 }
 
@@ -83,7 +100,7 @@ extension MapViewController: MKMapViewDelegate {
         case .known:
             annotationView?.image = UIImage(named: "known-pin-green")
         case .onRoute:
-            annotationView?.image = UIImage(named: "unknown-pin-orange")
+            annotationView?.image = UIImage(named: "on-route")
         }
 
         annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
@@ -95,15 +112,26 @@ extension MapViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        // do something
-        view.frame.size = CGSize(width: MapConstants.selectedAnnitationWidht, height: MapConstants.selectedAnnotationHeight)
-        view.centerOffset = .zero
+        view.transform = CGAffineTransform.identity
+        view.detailCalloutAccessoryView?.transform = CGAffineTransform.identity
+        UIView.animate(withDuration: 0.5, animations: {
+            view.transform = view.transform.scaledBy(x: 1.2, y: 1.2)
+        })
+
     }
     
+    func mapView(mapView: MKMapView, annotationView: MKAnnotationView, calloutAccessoryControlTapped: UIControl){
+        
+    }
+
+            
+
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         UIView.animate(withDuration: 0.5, animations: {
-            view.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
+            view.transform = CGAffineTransform.identity
         })
+
+        
     }
     
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
@@ -117,11 +145,14 @@ extension MapViewController: MKMapViewDelegate {
         
         return renderer
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeDetails" {
             if let destVC = segue.destination as? PlaceViewController,
                let annotation = sender as? CustomAnnotation {
                 destVC.place = mapServices.getPlace(uid: annotation.uid)!
+                destVC.userCoordinate = mapServices.getUserCoordinate2D()
+                destVC.annotation = annotation
                 destVC.routeDelegate = self
                 destVC.annotationDelegate = self
             }
@@ -132,13 +163,49 @@ extension MapViewController: MKMapViewDelegate {
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: RouteDelegate {
-    func didTapGo(destinationCoordinate: CLLocationCoordinate2D) {
+    func didTapGo() {
+        mapView.setUserTrackingMode(.followWithHeading, animated: true)
+    }
+    
+    func didTapLocation(locationCoordinate: CLLocationCoordinate2D) {
+        (UIApplication.shared.delegate as! AppDelegate).clickedLocation = locationCoordinate
+        mapView.setCenter(locationCoordinate, animated: true)
+    }
+    
+    func didTapCancel() {
+        mapServices.removeRoute()
+        mapView.setUserTrackingMode(.none, animated: true)
     }
 }
 
 extension MapViewController: AnnotationDelegate {
     func updateAnnotations(){
-        mapView.removeAnnotations(mapView.annotations)
-        mapServices.populateMap()
+        for annotation in mapView.annotations {
+            DispatchQueue.main.async {
+                if let annotation = annotation as? CustomAnnotation {
+                    self.updateAnnotation(annotation: annotation)
+                } else {
+                    print(annotation)
+                }
+                
+            }
+        }
+    }
+    
+    func updateAnnotation(annotation: CustomAnnotation) {
+        mapView.removeAnnotation(annotation)
+        let uid = annotation.uid
+        let place = try! placeService.read(uid: uid)
+        mapServices.addCustomAnnotation(place: place!)
+    }
+}
+
+extension MapViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
     }
 }

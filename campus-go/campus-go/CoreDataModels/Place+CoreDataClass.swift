@@ -13,7 +13,7 @@ import CoreData
 public class Place: NSManagedObject, Decodable {
 
     enum CodingKeys: CodingKey {
-        case latitude, longitude, placeID, name, nImages
+        case latitude, longitude, placeID, name, nImages, relatedAchievements
     }
     
     // MARK: - Decodable
@@ -30,6 +30,7 @@ public class Place: NSManagedObject, Decodable {
         self.placeID = try container.decode(Int64.self, forKey: .placeID)
         self.name = try container.decode(String.self, forKey: .name)
         self.nImages = try container.decode(Int64.self, forKey: .nImages)
+        self.relatedAchievements = try container.decode(String.self, forKey: .relatedAchievements)
 
     }
     
@@ -41,9 +42,10 @@ public class Place: NSManagedObject, Decodable {
         try container.encode(name, forKey: .name)
         try container.encode(placeID, forKey: .placeID)
         try container.encode(nImages, forKey: .nImages)
+        try container.encode(relatedAchievements, forKey: .relatedAchievements)
+        
     }
 }
-
     
 extension CodingUserInfoKey {
   static let context = CodingUserInfoKey(rawValue: "context")

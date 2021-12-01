@@ -16,8 +16,7 @@ extension User {
         return NSFetchRequest<User>(entityName: "User")
     }
 
-    @NSManaged public var name: Int64
-    @NSManaged public var xpPoints: Int64
+    @NSManaged public var name: String?
 
 }
 

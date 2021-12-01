@@ -54,7 +54,7 @@ class MapServices: NSObject {
             return geofenceRegion
     }
     
-    private func addCustomAnnotation(place: Place) {
+    func addCustomAnnotation(place: Place) {
         let coordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         let pin = CustomAnnotation(uid: place.uid!, state: PlaceState(rawValue: Int(place.state))!, coordinate: coordinate)
         
@@ -78,15 +78,12 @@ class MapServices: NSObject {
     }
     
     public func populateMap(){
-        if let mapView_ = mapView {
-            mapView_.removeOverlays(mapView.overlays)
-        }
+        let annotations = mapView.annotations
+        mapView.removeAnnotations(annotations)
         let listPlaces = getPlaces()!
         for place in listPlaces {
-            addCustomAnnotation(place: place)
-            if(Int(place.state) == Int(PlaceState.onRoute.rawValue)) {
-                self.displayRoute(sourceCoordinate: self.getUserCoordinate2D() ,
-                                  destinationCoordinate: CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude))
+            DispatchQueue.main.async {
+                self.addCustomAnnotation(place: place)
             }
         }
     }
@@ -122,8 +119,17 @@ class MapServices: NSObject {
             for route in response.routes {
                 if let mapView_ = self.mapView {
                     mapView_.addOverlay(route.polyline, level: MKOverlayLevel.aboveRoads)
+                    for step in route.steps {
+                        print(step)
+                    }
                 }
             }
+        }
+    }
+    
+    func removeRoute() {
+        if let mapView_ = mapView {
+            mapView_.removeOverlays(mapView.overlays)
         }
     }
     

@@ -10,11 +10,15 @@ import UIKit
 
 struct Color {
     static let pink = UIColor.systemPink
-    static let lightGreen = UIColor(red: 106, green: 217, blue: 134)
-    static let lightPurple = UIColor(red: 154, green: 153, blue: 238)
-    static let lightOrange = UIColor(red: 252, green: 178, blue: 74)
-    static let green = UIColor(rgb: 0x34C759)
-    static let purple = UIColor(rgb: 0x5856D6)
-    static let orange = UIColor(rgb: 0xFF9500)
+    static let lightGreen = UIColor(rgb: 0x6AD986)
+    static let lightPurple = UIColor(rgb: 0x9A99EE)
+    static let lightOrange = UIColor(rgb: 0xFCB24A)
+    static let green = UIColor.systemGreen
+    static let purple = UIColor.systemPurple
+    static let orange = UIColor.systemOrange
+    static let greenTrans = UIColor.systemGreen.withAlphaComponent(0.2)
+    static let purpleTrans = UIColor.systemPurple.withAlphaComponent(0.2)
+    static let orangeTrans = UIColor.systemOrange.withAlphaComponent(0.2)
+    static let background = UIColor.systemGray6
     
 }

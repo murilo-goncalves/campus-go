@@ -9,5 +9,7 @@ import Foundation
 import CoreLocation
 
 protocol RouteDelegate: AnyObject {
-    func didTapGo(destinationCoordinate: CLLocationCoordinate2D)
+    func didTapGo()
+    func didTapLocation(locationCoordinate: CLLocationCoordinate2D)
+    func didTapCancel()
 }

@@ -18,22 +18,22 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="SfE-rM-hP8">
-                        <rect key="frame" x="92" y="9" width="90.5" height="58.5"/>
+                        <rect key="frame" x="92" y="9" width="214" height="58.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Título" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sac-5m-bkS">
-                                <rect key="frame" x="0.0" y="0.0" width="90.5" height="20.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="214" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Conheça tudo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WjD-YN-KjE">
-                                <rect key="frame" x="0.0" y="22.5" width="90.5" height="17"/>
+                                <rect key="frame" x="0.0" y="22.5" width="214" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5% concluído" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMo-fo-mPi">
-                                <rect key="frame" x="0.0" y="41.5" width="90.5" height="17"/>
+                                <rect key="frame" x="0.0" y="41.5" width="214" height="17"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <color key="textColor" systemColor="systemGrayColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,6 +54,7 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="SfE-rM-hP8" secondAttribute="trailing" constant="40" id="3rT-VY-rTh"/>
                 <constraint firstItem="gAL-vi-4fV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="OFj-hP-Wh5"/>
                 <constraint firstItem="zgV-SQ-0WH" firstAttribute="centerY" secondItem="gAL-vi-4fV" secondAttribute="centerY" id="XFU-lF-8Pc"/>
                 <constraint firstItem="gAL-vi-4fV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="Xxb-P6-zgQ"/>
@@ -65,8 +66,10 @@
             <size key="customSize" width="346" height="76"/>
             <connections>
                 <outlet property="chevron" destination="zgV-SQ-0WH" id="SSW-xy-66U"/>
-                <outlet property="progress" destination="gAL-vi-4fV" id="5gr-nl-xKb"/>
+                <outlet property="name" destination="sac-5m-bkS" id="Cmv-W8-lfO"/>
+                <outlet property="objective" destination="WjD-YN-KjE" id="GNV-Ay-o28"/>
                 <outlet property="progressLabel" destination="YMo-fo-mPi" id="huZ-Bm-lVQ"/>
+                <outlet property="progressView" destination="gAL-vi-4fV" id="jeM-aJ-73A"/>
                 <outlet property="stackLabels" destination="SfE-rM-hP8" id="YgF-af-sEj"/>
             </connections>
             <point key="canvasLocation" x="346.37681159420293" y="81.026785714285708"/>

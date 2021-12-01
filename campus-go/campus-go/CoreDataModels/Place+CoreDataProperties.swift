@@ -23,24 +23,7 @@ extension Place {
     @NSManaged public var uid: UUID?
     @NSManaged public var nImages: Int64
     @NSManaged public var state: Int64
-    @NSManaged public var relatedAchievements: NSSet?
-
-}
-
-// MARK: Generated accessors for relatedAchievements
-extension Place {
-
-    @objc(addRelatedAchievementsObject:)
-    @NSManaged public func addToRelatedAchievements(_ value: Achievement)
-
-    @objc(removeRelatedAchievementsObject:)
-    @NSManaged public func removeFromRelatedAchievements(_ value: Achievement)
-
-    @objc(addRelatedAchievements:)
-    @NSManaged public func addToRelatedAchievements(_ values: NSSet)
-
-    @objc(removeRelatedAchievements:)
-    @NSManaged public func removeFromRelatedAchievements(_ values: NSSet)
+    @NSManaged public var relatedAchievements: String?
 
 }
 

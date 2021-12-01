@@ -10,29 +10,43 @@ import CoreLocation
 import Foundation
 class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate {
     
+    @IBOutlet weak var bottomCollectionConstraints: NSLayoutConstraint!
     @IBOutlet var placeView: PlaceView!
+    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var placeButton: UIButton!
     
     var place = Place()
+    var listAchievements: [Achievement] = []
     var pictureService = Pictures()
     var images: [String] = []
     let placeService = PlaceService()
+    let achievementService = AchievementService()
     var frame = CGRect(x: 0, y: 0, width: 0, height: 0)
-    let mapService = MapServices(nil)
-    
     
     //apenas recebendo infomração do PlacesViewController
     var indexPath: IndexPath!
     
-    var placeCoordinate: CLLocationCoordinate2D?
+    var annotation: CustomAnnotation?
     var userCoordinate: CLLocationCoordinate2D?
+    var placeCoordinate: CLLocationCoordinate2D?
     weak var routeDelegate: RouteDelegate?
     weak var annotationDelegate: AnnotationDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(rgb: 0xF2F2F7)
-        userCoordinate = mapService.getUserCoordinate2D()
+        do {
+            let relatedAchievements = RelatedAchievements(place: self.place)
+            for uid in relatedAchievements.placeAchievements {
+                guard let conquista = try achievementService.retrieve(uid: uid) else { continue }
+                listAchievements.append(conquista)
+            }
+        } catch {
+            print(error)
+        }
+        
+        self.view.backgroundColor = Color.background
+
         placeCoordinate = CLLocationCoordinate2D(latitude: place.latitude, longitude: place.longitude)
         
         if let name = place.name {
@@ -49,67 +63,61 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
             placeView.nomeLugar.text = ""
         }
        
-        
         pictureService = Pictures(placeID: Int(place.placeID), numberOfPictures: Int(place.nImages))
         images = pictureService.listPictures
         placeView.pageControl.numberOfPages = images.count
         placeView.pageControl.currentPage = 0
 
-        
         if let userCoord = userCoordinate{
             let dist = calculaDistancia(userCoord, placeCoordinate)
             placeView.distanciaLugar.text = dist < 1.0 ? "\(dist*1000) m" : "\((dist*10).rounded()/10) km"
         } else {
             placeView.distanciaLugar.text = ""
         }
-
-        
         
         placeView.recentAchievement.layer.cornerRadius = 15.0
         placeView.recentAchievement.layer.borderWidth = 5.0
         placeView.recentAchievement.layer.borderColor = UIColor.clear.cgColor
         placeView.recentAchievement.layer.masksToBounds = true
-       
-        //apenas usando a informação do PlacesViewController
-        //print("You tapped me", indexPath! )
-        
+               
         var currentImageView: UIImageView! = nil
         for index in 0..<images.count{
-
             let imgView = UIImageView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
             imgView.translatesAutoresizingMaskIntoConstraints = false
             self.placeView.scrollView.addSubview(imgView)
-
             imgView.image = UIImage(named: images[index])
             imgView.contentMode = .scaleAspectFill
+            imgView.layer.borderWidth = 0.5
+            imgView.layer.borderColor = UIColor.lightGray.cgColor
             imgView.layer.cornerRadius = 10
             imgView.clipsToBounds = true
             
             // precisa setar manualmente as constraints na scrollView
             // primeira imagem, intermediárias, última imagem
             if index == 0 {
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: placeView.scrollView.leadingAnchor, constant: 8),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor)]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -15)]
                 NSLayoutConstraint.activate(constraints)
                 currentImageView = imgView
             }
+            
             if index > 0 && index < (images.count - 1){
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 8),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor)]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -4)]
                 NSLayoutConstraint.activate(constraints)
                 currentImageView = imgView
             }
             
             if index == (images.count - 1){
-                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor),
+                let constraints = [imgView.leadingAnchor.constraint(equalTo: currentImageView.trailingAnchor, constant: 8),
                                    imgView.topAnchor.constraint(equalTo: placeView.scrollView.topAnchor),
                                    imgView.heightAnchor.constraint(equalTo: placeView.scrollView.heightAnchor),
-                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor),
-                                   imgView.trailingAnchor.constraint(equalTo: placeView.scrollView.trailingAnchor)]
+                                   imgView.widthAnchor.constraint(equalTo: placeView.scrollView.widthAnchor, constant: -15),
+                                   imgView.trailingAnchor.constraint(equalTo: placeView.scrollView.trailingAnchor, constant: -8)]
                 NSLayoutConstraint.activate(constraints)
             }
             
@@ -122,40 +130,58 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.recentAchievement.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
         let layout = UICollectionViewFlowLayout()
         placeView.recentAchievement.collectionViewLayout = layout
+        roundButtonsCorners()
         
+        if placeService.isOnRoute(uid: place.uid!){
+            goButton.setImage(nil, for: .normal)
+            goButton.setTitle("Cancelar Rota", for: .normal)
+            goButton.backgroundColor = Color.orange
+            goButton.removeTarget(self, action: #selector(self.goBtnAction), for: .touchUpInside)
+            goButton.addTarget(self, action: #selector(self.cancelRoute), for: .touchUpInside)
+        }
+        else {
+            goButton.addTarget(self, action: #selector(self.goBtnAction), for: .touchUpInside)
+        }
     }
     
-    //Depois de aparecer na tela
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    @objc private func cancelRoute() {
+        try! placeService.updateState(uid: place.uid!, newState: PlaceState.unknown)
+        goButton.setImage(UIImage(named: "goButton"), for: .normal)
+        goButton.setTitle("Go!", for: .normal)
+        goButton.backgroundColor = Color.pink
+        routeDelegate?.didTapCancel()
+        goButton.removeTarget(self, action: #selector(self.cancelRoute), for: .touchUpInside)
+        _ = navigationController?.popViewController(animated: true)
+        self.navigationController?.tabBarController?.selectedIndex = 1
+    }
+    
+    private func roundButtonsCorners(){
+        goButton.layer.cornerRadius = 5
+        placeButton.layer.cornerRadius = 5
+    }
+    
+    override func viewDidLayoutSubviews() {
         placeView.recentAchievement.layer.borderWidth = 1
         placeView.recentAchievement.layer.borderColor = UIColor.lightGray.cgColor
         placeView.recentAchievement.layer.cornerRadius = 5
-        //print(placeView.scrollView.frame)
+        bottomCollectionConstraints.constant = bottomCollectionConstraints.constant + CGFloat(Int(placeView.recentAchievement.frame.height) % 76)
     }
     
-    //Antes de aparecer na tela
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //print(placeView.scrollView.frame)
     }
     
     //Calcula a distância entre o usuário e o lugar
-    
     func calculaDistancia(_ userLocation: CLLocationCoordinate2D?, _ placeLocation: CLLocationCoordinate2D?) -> Double {
         
-        guard let userLocation = userLocation else {
-            return -1.0
-        }
-        guard let placeLocation = placeLocation else {
-            return -1.0
-        }
-        
+        guard let userLocation = userLocation else { return -1.0 }
+        guard let placeLocation = placeLocation else { return -1.0 }
         let uLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
         let pLocation = CLLocation(latitude: placeLocation.latitude, longitude: placeLocation.longitude)
         var distance  = uLocation.distance(from: pLocation) as Double
         formataDistancia(&distance)
         return distance
+        
     }
     //formata a distancia para quilômetros com duas casas decimais
     func formataDistancia(_ distance: inout Double) {
@@ -169,56 +195,71 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
         placeView.pageControl.currentPage = Int(pageNumber)
     }
     
-    @IBAction func goBtnAction(_ sender: UIButton) {
+    @objc private func goBtnAction() {
         try! placeService.updateState(uid: place.uid!, newState: PlaceState.onRoute)
-        annotationDelegate?.updateAnnotations()
+        routeDelegate?.didTapGo()
         _ = navigationController?.popViewController(animated: true)
         self.navigationController?.tabBarController?.selectedIndex = 1
+    }
+    
+    @IBAction func mapButtonAction(_ sender: UIButton) {
+        _ = navigationController?.popViewController(animated: true)
+        self.tabBarController?.selectedIndex = 1
+        (UIApplication.shared.delegate as! AppDelegate).clickedLocation = placeCoordinate!
+        routeDelegate?.didTapLocation(locationCoordinate: placeCoordinate!)
     }
 }
 
 
-
-
-
-extension PlaceViewController: UICollectionViewDataSource{
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
-    }
+extension PlaceViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(collectionView.frame.height / 76)
+        return min(Int(collectionView.frame.height / 76), listAchievements.count)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AchievementCollectionViewCell.identifier, for: indexPath) as! AchievementCollectionViewCell
-        cell.configure(hasProgress: false)
+        cell.configure(achievement: listAchievements[indexPath.row])
         return cell
-        
     }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showAchievement" {
             let destVC = segue.destination as! AchievementController
+            let cell = sender as! AchievementCollectionViewCell
+            do {
+                destVC.conquista_ = try achievementService.retrieve(uid: cell.uid!)
+            } catch {
+                print(error)
+            }
             destVC.loadViewIfNeeded()
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "showAchievement", sender: collectionView.cellForItem(at: indexPath))
         collectionView.deselectItem(at: indexPath, animated: true)
-        
     }
-
+    
 }
 extension PlaceViewController: UICollectionViewDelegateFlowLayout{
     // MARK: UICollectionViewDelegateFlowLayout methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: placeView.recentAchievement.frame.width ,height: 76)
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
     
 }
-
+extension PlaceViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
+    }
+}
 
