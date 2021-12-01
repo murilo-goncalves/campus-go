@@ -45,7 +45,7 @@ class PlaceCollectionViewCell: UICollectionViewCell {
             imageView.image = UIImage(named: String(place.placeID) + "-1")!.convertToGrayScale()
             mapPin.isHidden = false
             label.text = screenState == PlaceScreenState.small ? "" : "Em rota"
-            mapPin.image =  UIImage(named: "unknown-pin-soft-orange")
+            mapPin.image =  UIImage(named: "on-route-soft")
             bottomColor.backgroundColor = Color.lightOrange
         }
     }
