@@ -104,7 +104,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.experienceProgressView.textSize = CGFloat(20)
         profileView.profileProgressView.experienceProgressView.awakeFromNib()
-        let percentualXP = PercentValues().getPercentualXP()
+        let percentualXP = PercentValues.getPercentualXP()
         //Aqui eu vou setar as cores de acordo com o progresso
         if(percentualXP == 0.0) {
             profileView.profileProgressView.experienceProgressView.text = "0%"
@@ -135,7 +135,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.placesProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.placesProgressView.textSize = CGFloat(20)
         profileView.profileProgressView.placesProgressView.awakeFromNib()
-        let percentualPlaces = PercentValues().getPercentualPlaces()
+        let percentualPlaces = PercentValues.getPercentualPlaces()
         //Aqui eu vou setar as cores de acordo com o progresso
         if(percentualPlaces == 0.0) {
             profileView.profileProgressView.placesProgressView.text = "0%"
@@ -166,7 +166,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.achievementProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.achievementProgressView.textSize = CGFloat(20)
         profileView.profileProgressView.achievementProgressView.awakeFromNib()
-        let percentualAchievements = PercentValues().getPercentualAchievements()
+        let percentualAchievements = PercentValues.getPercentualAchievements()
         //Aqui eu vou setar as cores de acordo com o progresso
         if(percentualAchievements == 0.0) {
             profileView.profileProgressView.achievementProgressView.text = "0%"
