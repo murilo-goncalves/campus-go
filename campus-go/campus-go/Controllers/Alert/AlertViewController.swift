@@ -63,7 +63,7 @@ class AlertViewController: UIViewController {
 
     
     func setParentViewLayout(){
-        parentView.layer.cornerRadius = 5
+        parentView.layer.cornerRadius = 8
         parentView.layer.borderColor = UIColor.lightGray.cgColor
         parentView.layer.borderWidth = 0.5
         parentView.layer.shadowColor = UIColor.black.cgColor
