@@ -31,24 +31,11 @@ class ProfileViewController: UIViewController {
 //    profileView.profileTitleView.imageView.isUserInteractionEnabled = true
 //    let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(alertTest))
 //    profileView.profileTitleView.imageView.addGestureRecognizer(tapGestureRecognizer)
- 
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        do {
-            guard let list = try achievementService.retrieve() else { return }
-            listAchievements = list
-        } catch {
-            print(error)
-        }
         self.view.backgroundColor = Color.background
-        self.lblPlaces.text = "\(userAttributes.getUserPlaces())"
-        self.lblXP.text = "\(userAttributes.getUserXP())"
-        self.lblAchievement.text = "\(userAttributes.getUserAchievements())"
         setProfileTitle()
-        
-
-            
         profileView.profileProgressView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.recentAchievementView.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
         profileView.recentAchievementView.layer.borderColor = UIColor.lightGray.cgColor
@@ -76,7 +63,7 @@ class ProfileViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         bottomCollectionConstraint.constant = bottomCollectionConstraint.constant + CGFloat(Int(profileView.recentAchievementView.frame.height) % 76)
-        setProgressView()
+        updateProgressView()
         profileView.profileTitleView.clipsToBounds = true
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2        
     }
@@ -92,7 +79,18 @@ class ProfileViewController: UIViewController {
             performSegue(withIdentifier: "goToAchievementsList", sender: self)
         }
     }
-    
+    private func updateProgressView() {
+        do {
+            guard let list = try achievementService.retrieve() else { return }
+            listAchievements = list
+        } catch {
+            print(error)
+        }
+        self.lblPlaces.text = "\(userAttributes.getUserPlaces())"
+        self.lblXP.text = "\(userAttributes.getUserXP())"
+        self.lblAchievement.text = "\(userAttributes.getUserAchievements())"
+        setProgressView()
+    }
     private func setProfileTitle() {
         
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
@@ -106,7 +104,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.experienceProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.experienceProgressView.textSize = CGFloat(20)
         profileView.profileProgressView.experienceProgressView.awakeFromNib()
-        let percentualXP = PercentValues().getPercentualXP()
+        let percentualXP = PercentValues.getPercentualXP()
         //Aqui eu vou setar as cores de acordo com o progresso
         if(percentualXP == 0.0) {
             profileView.profileProgressView.experienceProgressView.text = "0%"
@@ -137,7 +135,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.placesProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.placesProgressView.textSize = CGFloat(20)
         profileView.profileProgressView.placesProgressView.awakeFromNib()
-        let percentualPlaces = PercentValues().getPercentualPlaces()
+        let percentualPlaces = PercentValues.getPercentualPlaces()
         //Aqui eu vou setar as cores de acordo com o progresso
         if(percentualPlaces == 0.0) {
             profileView.profileProgressView.placesProgressView.text = "0%"
@@ -168,7 +166,7 @@ class ProfileViewController: UIViewController {
         profileView.profileProgressView.achievementProgressView.lineWidth = CGFloat(7)
         profileView.profileProgressView.achievementProgressView.textSize = CGFloat(20)
         profileView.profileProgressView.achievementProgressView.awakeFromNib()
-        let percentualAchievements = PercentValues().getPercentualAchievements()
+        let percentualAchievements = PercentValues.getPercentualAchievements()
         //Aqui eu vou setar as cores de acordo com o progresso
         if(percentualAchievements == 0.0) {
             profileView.profileProgressView.achievementProgressView.text = "0%"
