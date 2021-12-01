@@ -78,7 +78,7 @@ class AlertViewController: UIViewController {
         if let name = place.name{
             nameLabel.text = name.components(separatedBy: " - ")[1]
         }
-        experienceLargeLabel.text = "+ 5"
+        experienceLargeLabel.text = "+ 20"
         experienceSmallLabel.text = "XP conquistado"
         rigthLargeLabel.text = "+1"
         rigthSmallLabel.text = "Lugar visitado"
@@ -140,7 +140,7 @@ class AlertViewController: UIViewController {
     }
     
     func progressXp() -> Double{
-        let defautXp = 5
+        let defautXp = 20
         
         var totalXp:Int = 0
         var currentXp:Int = 0
