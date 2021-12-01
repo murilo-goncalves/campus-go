@@ -58,10 +58,12 @@ class AlertViewController: UIViewController {
         } else {
             print("Send a place or a achievement")
         }
+        setParentViewLayout()
     }
 
     
     func setParentViewLayout(){
+        parentView.layer.cornerRadius = 5
         parentView.layer.borderColor = UIColor.lightGray.cgColor
         parentView.layer.borderWidth = 0.5
         parentView.layer.shadowColor = UIColor.black.cgColor
