@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var locationManager: CLLocationManager?
     var notificationCenter: UNUserNotificationCenter?
+    weak var routeDelegate: RouteDelegate?
     
     //O ideal é fazer um singleton
     var clickedLocation: CLLocationCoordinate2D?
@@ -176,6 +177,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                     print("Error adding notification with identifier: \(identifier)")
                 }
             })
+            routeDelegate?.didTapCancel()
             let alertUtil = AlertUtil()
             var place: Place?
             do {
@@ -183,7 +185,6 @@ extension AppDelegate: CLLocationManagerDelegate {
             }catch{
                 print(error)
             }
-
             if let currentViewController = getCurrentViewController(){
                 if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
                     alertUtil.showAlert(viewController: alertViewController,place: place,achievement: nil)
@@ -191,6 +192,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                     print("Erro ao encontrar a view")
                 }
             }
+            
             
         }
     }
@@ -203,4 +205,5 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
         completionHandler([.list, .banner])
     }
 }
+
 
