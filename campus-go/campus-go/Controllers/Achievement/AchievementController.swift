@@ -27,7 +27,7 @@ class AchievementController: UIViewController {
             achievementView.secondLabel.text = "Conquista completa"
         }
         else {
-            achievementView.secondLabel.text = "Você completou \(conquista.progress) da conquista"
+            achievementView.secondLabel.text = "Você completou \((conquista.progress*100)/100)% da conquista"
         }
     }
     func buildImage(imageID: Int ) -> UIImageView {

@@ -293,10 +293,10 @@
                     <connections>
                         <outlet property="achievementsProgressViewView" destination="1Ij-p0-HyU" id="QIj-Q4-jx1"/>
                         <outlet property="bottomCollectionConstraint" destination="QqC-TL-WXa" id="laR-CH-HfM"/>
+                        <outlet property="experienceProgressViewView" destination="LPr-oT-dYk" id="0Fl-PU-ulg"/>
                         <outlet property="lblAchievement" destination="5Oj-7t-zIV" id="bU3-Lv-ThS"/>
                         <outlet property="lblPlaces" destination="jeJ-Py-kd5" id="y4c-1S-oY5"/>
                         <outlet property="lblXP" destination="vlN-YM-hSn" id="WVc-ha-biW"/>
-                        <outlet property="experienceProgressViewView" destination="LPr-oT-dYk" id="0Fl-PU-ulg"/>
                         <outlet property="placesProgressViewView" destination="urz-0f-jIe" id="WZn-le-I7p"/>
                         <outlet property="profileView" destination="5EZ-qb-Rvc" id="ino-A8-L5z"/>
                         <outlet property="titleLabel" destination="48Q-Bz-ZfU" id="KSX-dk-Sb5"/>
