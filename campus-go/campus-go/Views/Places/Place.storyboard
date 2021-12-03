@@ -25,7 +25,14 @@
                                 <viewLayoutGuide key="frameLayoutGuide" id="WYm-Oc-g6F"/>
                             </scrollView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="Bbo-Ru-2WZ">
+
                                 <rect key="frame" x="129.5" y="360.5" width="155.5" height="26"/>
+
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="26" id="fdW-Uw-2gT"/>
+                                    <constraint firstAttribute="width" constant="155.5" id="ft5-dD-wUe"/>
+                                </constraints>
+
                                 <color key="pageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="currentPageIndicatorTintColor" systemColor="systemPinkColor"/>
                             </pageControl>
@@ -104,6 +111,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="1BY-Ti-KbK">
                                 <rect key="frame" x="16" y="549" width="382" height="248"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="285.5" id="7Ct-FY-qZ7"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="lPZ-hc-sgD">
                                     <size key="itemSize" width="343" height="76"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -133,8 +143,8 @@
                             <constraint firstItem="BUc-zp-h1Q" firstAttribute="trailing" secondItem="OLX-ec-Fhd" secondAttribute="trailing" constant="16" id="2mK-7n-p8J"/>
                             <constraint firstItem="OLX-ec-Fhd" firstAttribute="leading" secondItem="BUc-zp-h1Q" secondAttribute="leading" constant="16" id="2vv-Tp-kRh"/>
                             <constraint firstItem="CmP-UD-Cd6" firstAttribute="leading" secondItem="BUc-zp-h1Q" secondAttribute="leading" constant="16" id="2zf-TF-LXk"/>
+                            <constraint firstItem="Bbo-Ru-2WZ" firstAttribute="top" secondItem="Lrc-Wc-7yZ" secondAttribute="bottom" constant="8" id="5bC-cD-V8C"/>
                             <constraint firstItem="BUc-zp-h1Q" firstAttribute="trailing" secondItem="GZv-x6-J0T" secondAttribute="trailing" constant="16" id="6Mo-1L-NNy"/>
-                            <constraint firstItem="Bbo-Ru-2WZ" firstAttribute="top" secondItem="Lrc-Wc-7yZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Ejs-56-cJ7"/>
                             <constraint firstItem="Bbo-Ru-2WZ" firstAttribute="centerX" secondItem="BUc-zp-h1Q" secondAttribute="centerX" id="Erq-N6-EnC"/>
                             <constraint firstItem="Lrc-Wc-7yZ" firstAttribute="top" secondItem="BUc-zp-h1Q" secondAttribute="top" constant="14" id="PcG-bZ-2FE"/>
                             <constraint firstItem="BUc-zp-h1Q" firstAttribute="bottom" secondItem="1BY-Ti-KbK" secondAttribute="bottom" constant="16" id="RiI-Xw-f28"/>
@@ -150,7 +160,9 @@
                             <constraint firstItem="CmP-UD-Cd6" firstAttribute="centerX" secondItem="BUc-zp-h1Q" secondAttribute="centerX" id="p0H-DY-YWv"/>
                             <constraint firstItem="BUc-zp-h1Q" firstAttribute="trailing" secondItem="CmP-UD-Cd6" secondAttribute="trailing" constant="16" id="peU-1K-nGi"/>
                             <constraint firstItem="Lrc-Wc-7yZ" firstAttribute="width" secondItem="BUc-zp-h1Q" secondAttribute="width" multiplier="0.95" id="umV-03-zQs"/>
+
                             <constraint firstItem="Lrc-Wc-7yZ" firstAttribute="height" secondItem="BUc-zp-h1Q" secondAttribute="height" multiplier="0.382743" id="zRo-Xc-7Tm"/>
+
                         </constraints>
                         <connections>
                             <outlet property="distanciaLugar" destination="UBN-AP-MgV" id="Unv-Qa-4QG"/>
