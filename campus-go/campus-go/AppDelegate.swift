@@ -152,6 +152,9 @@ extension AppDelegate: CLLocationManagerDelegate {
     
     func handleEvent(forRegion region: CLRegion!) {
         let placeService = PlaceService()
+        let validator = Validator()
+        let alertUtil = AlertUtil()
+        
         let uid = UUID(uuidString: region.identifier)
         let onRoute = placeService.isOnRoute(uid: uid!)
         let wasDiscovered = placeService.wasDiscovered(uid: uid!)
@@ -189,7 +192,6 @@ extension AppDelegate: CLLocationManagerDelegate {
             if(wasDiscovered) {
                 return
             }
-            let alertUtil = AlertUtil()
             var place: Place?
             do {
                 place = try placeService.read(uid: uid!)
@@ -203,8 +205,18 @@ extension AppDelegate: CLLocationManagerDelegate {
                     print("Erro ao encontrar a view")
                 }
             }
-            
-            
+        }
+        
+        let achievements = validator.didValidate()
+        if (achievements.isEmpty) { return }
+        for achievement in achievements {
+            if let currentViewController = getCurrentViewController() {
+                if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
+                    alertUtil.showAlert(viewController: alertViewController,place: nil, achievement: achievement)
+                } else {
+                    print("Erro ao encontrar a view")
+                }
+            }
         }
     }
 }
