@@ -32,8 +32,8 @@ class PlaceService {
         place.setValue(latitude, forKey: "latitude")
         place.setValue(longitude, forKey: "longitude")
         place.setValue(placeID, forKey: "placeID")
-        place.setValue(PlaceState.unknown.rawValue, forKey: "state")
-        place.setValue(PlaceState.unknown.rawValue, forKey: "prevState")
+        place.setValue(Int64(PlaceState.unknown.rawValue), forKey: "state")
+        place.setValue(Int64(PlaceState.unknown.rawValue), forKey: "prevState")
         place.setValue(nImages, forKey: "nImages")
         place.setValue(relatedAchievements, forKey: "relatedAchievements")
         
