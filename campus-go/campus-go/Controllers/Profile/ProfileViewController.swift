@@ -68,6 +68,16 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2        
     }
     
+//    private func setProfileTitleInteraction(){
+////        let pickerController = UIImagePickerController()
+////        pickerController.delegate = self
+////        pickerController.allowsEditing = true
+////        pickerController.mediaTypes = ["public.image"]
+////        pickerController.sourceType = .camera
+//        let tapGesture = UIGestureRecognizer(target: self, action: #selector(self.imageTapped))
+//        profileView.profileTitleView.imageView.addGestureRecognizer(tapGesture)
+//        profileView.profileTitleView.imageView.isUserInteractionEnabled = true
+//    }
     @objc func didTapView(_ gesture: UITapGestureRecognizer){
         if gesture.view == experienceProgressViewView {
             performSegue(withIdentifier: "goToRanks", sender: self)
@@ -249,5 +259,20 @@ extension ProfileViewController: AlertViewDelegate{
             placeViewController.place = place
             self.navigationController?.pushViewController(placeViewController, animated: true)
         }
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate,          UINavigationControllerDelegate {
+    
+    @IBAction func imageTap(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        profileView.profileTitleView.imageView.image = image
+        self.dismiss(animated: true)
     }
 }
