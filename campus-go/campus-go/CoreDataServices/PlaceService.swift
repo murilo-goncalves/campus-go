@@ -109,6 +109,11 @@ class PlaceService {
         return place.state == PlaceState.onRoute.rawValue
     }
     
+    func wasDiscovered(uid: UUID) -> Bool {
+        let place = try! read(uid: uid)!
+        return place.prevState == PlaceState.known.rawValue
+    }
+    
     func delete(uid: UUID) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
         fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
