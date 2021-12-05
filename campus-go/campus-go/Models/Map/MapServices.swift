@@ -133,7 +133,7 @@ class MapServices: NSObject {
         }
     }
     
-    public func getUserCoordinate2D() -> CLLocationCoordinate2D {
+    public static func getUserCoordinate2D() -> CLLocationCoordinate2D {
         return locationManager.location?.coordinate ?? MapConstants.unicampCoordinate
     }
     

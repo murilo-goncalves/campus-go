@@ -95,6 +95,7 @@ extension PlacesViewController: UICollectionViewDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "placeDetails", let dest = segue.destination as? PlaceViewController, let place = sender as? Place {
             dest.place = place
+            dest.userCoordinate = MapServices.getUserCoordinate2D()
             dest.placeCoordinate = CLLocationCoordinate2D.init(latitude: place.latitude, longitude: place.longitude)
         }
     }
