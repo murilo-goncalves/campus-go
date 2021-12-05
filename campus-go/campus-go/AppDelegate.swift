@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!)
             }
             
-            _ = try! UserService().create(name: "Nome")
+            _ = try! UserService().create(name: "goCampus")
             
         } catch {
             print("\(error)")
@@ -151,9 +151,18 @@ extension AppDelegate: CLLocationManagerDelegate {
     }
     
     func handleEvent(forRegion region: CLRegion!) {
+        let placeService = PlaceService()
+        let uid = UUID(uuidString: region.identifier)
+        let onRoute = placeService.isOnRoute(uid: uid!)
+        let wasDiscovered = placeService.wasDiscovered(uid: uid!)
         let content = UNMutableNotificationContent()
-        content.title = "Parabéns!"
-        content.body = "Lugar desbloqueado"
+        if(wasDiscovered) {
+            content.title = "Parabéns!"
+            content.body = "Você chegou ao seu destino"
+        } else {
+            content.title = "Parabéns!"
+            content.body = "Lugar desbloqueado"
+        }
         content.sound = UNNotificationSound.default
 
         let timeInSeconds: TimeInterval = (1)
@@ -166,9 +175,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                                             trigger: trigger)
         
         // if region was on route switch place state to "known" and show notification
-        let placeService = PlaceService()
-        let uid = UUID(uuidString: region.identifier)
-        if (placeService.isOnRoute(uid: uid!)) {
+        if (onRoute) {
             try! placeService.updateState(uid: uid!, newState: PlaceState.known)
             annotationDelegate?.updateAnnotations()
             locationManager?.stopMonitoring(for: region!)
@@ -178,6 +185,10 @@ extension AppDelegate: CLLocationManagerDelegate {
                 }
             })
             routeDelegate?.didTapCancel()
+            //Se o lugar já havia sido descoberto então não há nada mais para fazer
+            if(wasDiscovered) {
+                return
+            }
             let alertUtil = AlertUtil()
             var place: Place?
             do {
