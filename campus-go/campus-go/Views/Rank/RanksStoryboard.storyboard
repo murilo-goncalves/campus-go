@@ -17,8 +17,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Uf-1J-rMm">
-                                <rect key="frame" x="24" y="417.5" width="366" height="61"/>
-                                <string key="text">Hi, this is the placeholder for our ranks screen we will add in the future. Now keep exploring and thankyou for testing our app.</string>
+                                <rect key="frame" x="24" y="407.5" width="366" height="81.5"/>
+                                <string key="text">Olá, este é o espaço reservado para a tela de ranking, que adicionaremos no futuro. Continue explorando e obrigado por testar nosso aplicativo!</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
