@@ -12,7 +12,7 @@ class Validator {
     let achievementService = AchievementService()
     
     private func validateFirstPlace() -> Achievement? {
-        let achievementId = Int64(4) // id da conquista de desbloquear primeiro lugar
+        let achievementId = Int64(12) // id da conquista de desbloquear primeiro lugar
         let achievementUid = try! achievementService.retrieve(achievementID: achievementId)
         let achievement = try! achievementService.retrieve(uid: achievementUid!)
         if (achievement?.progress == 1.0) { return nil }

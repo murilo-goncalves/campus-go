@@ -188,21 +188,19 @@ extension AppDelegate: CLLocationManagerDelegate {
                 }
             })
             routeDelegate?.didTapCancel()
-            //Se o lugar já havia sido descoberto então não há nada mais para fazer
-            if(wasDiscovered) {
-                return
-            }
-            var place: Place?
-            do {
-                place = try placeService.read(uid: uid!)
-            }catch{
-                print(error)
-            }
-            if let currentViewController = getCurrentViewController(){
-                if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
-                    alertUtil.showAlert(viewController: alertViewController,place: place,achievement: nil)
-                }else{
-                    print("Erro ao encontrar a view")
+            if(!wasDiscovered) {
+                var place: Place?
+                do {
+                    place = try placeService.read(uid: uid!)
+                } catch {
+                    print(error)
+                }
+                if let currentViewController = getCurrentViewController(){
+                    if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
+                        alertUtil.showAlert(viewController: alertViewController,place: place,achievement: nil)
+                    } else{
+                        print("Erro ao encontrar a view")
+                    }
                 }
             }
         }
