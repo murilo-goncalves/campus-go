@@ -60,6 +60,16 @@ class PlaceService {
         return result[0] as? Place
     }
     
+    func readByID(placeID: Int64) throws -> UUID? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "placeID = \(placeID)", placeID as CVarArg)
+
+        let result = try context.fetch(fetchRequest)
+        let achievement = result[0] as? Place
+        return achievement?.uid
+    }
+    
     func readOnRoute() throws -> Place? {
         let places = try! readAll()
         for place in places! {

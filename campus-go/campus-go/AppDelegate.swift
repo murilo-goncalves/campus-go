@@ -61,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for object in result {
                 do {
                     let achievementService = AchievementService()
-                    let _ = try achievementService.create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints)
+                    let _ = try achievementService.create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints, relatedPlaces: object.relatedPlaces)
                 } catch {
                     print(error)
                 }
@@ -164,7 +164,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             content.body = "Você chegou ao seu destino"
         } else {
             content.title = "Parabéns!"
-            content.body = "Lugar desbloqueado"
+            content.body = "Você descobriu um novo lugar"
         }
         content.sound = UNNotificationSound.default
 
