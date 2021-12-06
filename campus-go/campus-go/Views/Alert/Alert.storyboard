@@ -191,11 +191,20 @@
                         <outlet property="rigthProgressView" destination="6Dq-zG-L85" id="ypS-4o-fR4"/>
                         <outlet property="rigthSmallLabel" destination="98f-uc-iMh" id="vry-57-f8H"/>
                         <outlet property="unlockLabel" destination="E1f-pJ-SRB" id="fdF-Ht-ZQ2"/>
+                        <segue destination="MTZ-Dp-QEx" kind="presentation" identifier="achievementSegue" id="UMC-lP-SJm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="77.678571428571431"/>
+        </scene>
+        <!--Achievement-->
+        <scene sceneID="Ym1-Kp-Vz4">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Achievement" id="MTZ-Dp-QEx" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nj9-YY-288" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="985" y="78"/>
         </scene>
     </scenes>
     <resources>

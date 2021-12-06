@@ -178,6 +178,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                                             trigger: trigger)
         
         // if region was on route switch place state to "known" and show notification
+        
         if (onRoute) {
             try! placeService.updateState(uid: uid!, newState: PlaceState.known)
             annotationDelegate?.updateAnnotations()
@@ -188,7 +189,24 @@ extension AppDelegate: CLLocationManagerDelegate {
                 }
             })
             routeDelegate?.didTapCancel()
-            if(!wasDiscovered) {
+            
+            let achievements =  validator.didValidate()
+            if (!achievements.isEmpty) {
+                for achievement in achievements {
+                    if let currentViewController = getCurrentViewController() {
+                        if currentViewController.children.count > 0{
+                            if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
+                                alertUtil.showAlert(viewController: alertViewController,place: nil, achievement: achievement)
+                            } else {
+                                print("Erro ao encontrar a view")
+                            }
+                        } else {
+                                print("Erro ao encontrar CurrentView")
+                        }
+
+                    }
+                }
+            } else if (!wasDiscovered) {
                 var place: Place?
                 do {
                     place = try placeService.read(uid: uid!)
@@ -204,20 +222,8 @@ extension AppDelegate: CLLocationManagerDelegate {
                 }
             }
         }
+       
         
-        let achievements = validator.didValidate()
-        if (achievements.isEmpty) { return }
-        for achievement in achievements {
-            if let currentViewController = getCurrentViewController() {
-                //o app crasha aqui
-                print(currentViewController.children.count)
-                if let alertViewController = currentViewController as? AlertViewDelegate {
-                    alertUtil.showAlert(viewController: alertViewController,place: nil, achievement: achievement)
-                } else {
-                    print("Erro ao encontrar a view")
-                }
-            }
-        }
     }
 }
 

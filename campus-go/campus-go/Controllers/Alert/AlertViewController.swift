@@ -39,13 +39,22 @@ class AlertViewController: UIViewController {
     }
     
     @IBAction func seeDetails(_ sender: UIButton) {
-        
-        self.dismiss(animated: true, completion: {
-            if let place = self.place {
-                self.delegate?.goToDetails(place: place)
-            }
-           
-        })
+        if achievement != nil {
+            performSegue(withIdentifier: "achievementSegue", sender: self)
+        } else {
+            self.dismiss(animated: true, completion: {
+                if let place = self.place {
+                    self.delegate?.goToDetails(place: place)
+                }
+            })
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "achievementSegue" {
+            let destVC = segue.destination as! AchievementController
+            destVC.conquista_ = achievement
+        }
     }
     
     override func viewDidLoad() {
@@ -197,4 +206,14 @@ class AlertViewController: UIViewController {
         return nil
     }
     
+}
+
+extension AlertViewController: AlertViewDelegate{
+    func goToDetails(place: Place) {
+        let storyboard = UIStoryboard(name: "Place", bundle: nil)
+        if let placeViewController = storyboard.instantiateViewController(withIdentifier: "PlaceDetails") as? PlaceViewController{
+            placeViewController.place = place
+            self.navigationController?.pushViewController(placeViewController, animated: true)
+        }
+    }
 }
