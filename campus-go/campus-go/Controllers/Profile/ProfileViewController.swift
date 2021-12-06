@@ -96,6 +96,9 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderWidth = 1
+        
+        profileView.profileTitleView.title.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapTitle)))
+        
         let user = try! UserService().read()
         profileView.profileTitleView.title.text = user?.name
         if user?.image == nil {
@@ -201,6 +204,29 @@ class ProfileViewController: UIViewController {
         setXPProgress()
         setPlaceProgress()
         setAchievementProgress()
+    }
+    
+    @objc func tapTitle(sender: UITapGestureRecognizer) {
+        let alertController = UIAlertController(title: "Nome", message: "Insira um nome", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Nome"
+        }
+
+
+        // add the buttons/actions to the view controller
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Salvar", style: .default) { _ in
+            
+            self.profileView.profileTitleView.title.text = alertController.textFields![0].text
+
+            try! UserService().update(name: alertController.textFields![0].text!)
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        present(alertController, animated: true, completion: nil)
     }
     
 }
