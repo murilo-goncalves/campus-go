@@ -96,8 +96,16 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderColor = UIColor.lightGray.cgColor
         profileView.profileTitleView.imageView.layer.borderWidth = 1
+        
+        profileView.profileTitleView.title.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapTitle)))
+        
         let user = try! UserService().read()
         profileView.profileTitleView.title.text = user?.name
+        if user?.image == nil {
+            profileView.profileTitleView.imageView.image = UIImage(systemName: "person.fill")
+        } else {
+            profileView.profileTitleView.imageView.image = UIImage(data: user!.image!)
+        }
     }
     
     private func setXPProgress() {
@@ -198,6 +206,29 @@ class ProfileViewController: UIViewController {
         setAchievementProgress()
     }
     
+    @objc func tapTitle(sender: UITapGestureRecognizer) {
+        let alertController = UIAlertController(title: "Nome", message: "Insira um nome", preferredStyle: .alert)
+        
+        alertController.addTextField { (textField) in
+            textField.placeholder = "Nome"
+        }
+
+
+        // add the buttons/actions to the view controller
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let saveAction = UIAlertAction(title: "Salvar", style: .default) { _ in
+            
+            self.profileView.profileTitleView.title.text = alertController.textFields![0].text
+
+            try! UserService().update(name: alertController.textFields![0].text!)
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(saveAction)
+
+        present(alertController, animated: true, completion: nil)
+    }
+    
 }
 
 extension ProfileViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -249,5 +280,22 @@ extension ProfileViewController: AlertViewDelegate{
             placeViewController.place = place
             self.navigationController?.pushViewController(placeViewController, animated: true)
         }
+    }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate,          UINavigationControllerDelegate {
+    
+    @IBAction func imageTap(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        present(picker, animated: true)
+    }
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        let image = info[.editedImage] as? UIImage
+        profileView.profileTitleView.imageView.image = image
+        let userService = UserService()
+        try! userService.update(image: (image?.pngData())!)
+        self.dismiss(animated: true)
     }
 }

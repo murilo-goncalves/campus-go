@@ -38,4 +38,11 @@ class UserService {
         try context.save()
     }
     
+    func update(image: Data) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        let obj = try context.fetch(fetchRequest).first as! NSManagedObject
+        obj.setValue(image, forKey: "image")
+        try context.save()
+    }
+    
 }
