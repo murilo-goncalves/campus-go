@@ -41,6 +41,12 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
                 guard let conquista = try achievementService.retrieve(uid: uid) else { continue }
                 listAchievements.append(conquista)
             }
+            listAchievements.sort(by: {
+                if $0.progress == $1.progress {
+                    return $0.name! < $1.name!
+                }
+                return $0.progress > $1.progress
+            })
         } catch {
             print(error)
         }
@@ -234,6 +240,10 @@ extension PlaceViewController: UICollectionViewDataSource {
                 print(error)
             }
             destVC.loadViewIfNeeded()
+        }
+        else if segue.identifier == "showRelatedAchievements" {
+            let destVC = segue.destination as! AchievementListController
+            destVC.listAchievements = self.listAchievements
         }
     }
     

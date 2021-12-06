@@ -76,7 +76,7 @@
                                             <fontDescription key="titleFontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="vW8-HE-d1w" kind="show" id="2JW-et-ASp"/>
+                                            <segue destination="vW8-HE-d1w" kind="show" identifier="showRelatedAchievements" id="2JW-et-ASp"/>
                                         </connections>
                                     </button>
                                 </subviews>
