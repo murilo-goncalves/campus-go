@@ -68,16 +68,6 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2        
     }
     
-//    private func setProfileTitleInteraction(){
-////        let pickerController = UIImagePickerController()
-////        pickerController.delegate = self
-////        pickerController.allowsEditing = true
-////        pickerController.mediaTypes = ["public.image"]
-////        pickerController.sourceType = .camera
-//        let tapGesture = UIGestureRecognizer(target: self, action: #selector(self.imageTapped))
-//        profileView.profileTitleView.imageView.addGestureRecognizer(tapGesture)
-//        profileView.profileTitleView.imageView.isUserInteractionEnabled = true
-//    }
     @objc func didTapView(_ gesture: UITapGestureRecognizer){
         if gesture.view == experienceProgressViewView {
             performSegue(withIdentifier: "goToRanks", sender: self)
@@ -108,6 +98,11 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.imageView.layer.borderWidth = 1
         let user = try! UserService().read()
         profileView.profileTitleView.title.text = user?.name
+        if user?.image == nil {
+            profileView.profileTitleView.imageView.image = UIImage(systemName: "person.fill")
+        } else {
+            profileView.profileTitleView.imageView.image = UIImage(data: user!.image!)
+        }
     }
     
     private func setXPProgress() {
@@ -273,6 +268,8 @@ extension ProfileViewController: UIImagePickerControllerDelegate,          UINav
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[.editedImage] as? UIImage
         profileView.profileTitleView.imageView.image = image
+        let userService = UserService()
+        try! userService.update(image: (image?.pngData())!)
         self.dismiss(animated: true)
     }
 }
