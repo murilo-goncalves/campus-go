@@ -83,7 +83,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!)
             }
             
-            _ = try! UserService().create(name: "Nome")
+            _ = try! UserService().create(name: "goCampus")
             
         } catch {
             print("\(error)")
@@ -151,9 +151,18 @@ extension AppDelegate: CLLocationManagerDelegate {
     }
     
     func handleEvent(forRegion region: CLRegion!) {
+        let placeService = PlaceService()
+        let uid = UUID(uuidString: region.identifier)
+        let onRoute = placeService.isOnRoute(uid: uid!)
+        let wasDiscovered = placeService.wasDiscovered(uid: uid!)
         let content = UNMutableNotificationContent()
-        content.title = "Parabéns!"
-        content.body = "Lugar desbloqueado"
+        if(wasDiscovered) {
+            content.title = "Parabéns!"
+            content.body = "Você chegou ao seu destino"
+        } else {
+            content.title = "Parabéns!"
+            content.body = "Lugar desbloqueado"
+        }
         content.sound = UNNotificationSound.default
 
         let timeInSeconds: TimeInterval = (1)
@@ -166,9 +175,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                                             trigger: trigger)
         
         // if region was on route switch place state to "known" and show notification
-        let placeService = PlaceService()
-        let uid = UUID(uuidString: region.identifier)
-        if (placeService.isOnRoute(uid: uid!)) {
+        if (onRoute) {
             try! placeService.updateState(uid: uid!, newState: PlaceState.known)
             annotationDelegate?.updateAnnotations()
             locationManager?.stopMonitoring(for: region!)
@@ -178,18 +185,20 @@ extension AppDelegate: CLLocationManagerDelegate {
                 }
             })
             routeDelegate?.didTapCancel()
-            let alertUtil = AlertUtil()
-            var place: Place?
-            do {
-                place = try placeService.read(uid: uid!)
-            }catch{
-                print(error)
-            }
-            if let currentViewController = getCurrentViewController(){
-                if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
-                    alertUtil.showAlert(viewController: alertViewController,place: place,achievement: nil)
-                }else{
-                    print("Erro ao encontrar a view")
+            if(!wasDiscovered) {
+                let alertUtil = AlertUtil()
+                var place: Place?
+                do {
+                    place = try placeService.read(uid: uid!)
+                }catch{
+                    print(error)
+                }
+                if let currentViewController = getCurrentViewController(){
+                    if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
+                        alertUtil.showAlert(viewController: alertViewController,place: place,achievement: nil)
+                    }else{
+                        print("Erro ao encontrar a view")
+                    }
                 }
             }
             

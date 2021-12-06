@@ -104,6 +104,10 @@ extension MapViewController: MKMapViewDelegate {
         }
 
         annotationView?.frame.size = CGSize(width: MapConstants.annotationWidth, height: MapConstants.annotationHeight)
+        if let frame  = annotationView?.frame {
+            annotationView?.frame.origin = CGPoint(x: frame.origin.x , y: frame.origin.y-frame.height/2)
+        }
+        
         let btn = UIButton(type: .detailDisclosure )
         btn.setImage( UIImage(systemName: "chevron.right"), for: .normal)
         btn.tintColor = Color.pink

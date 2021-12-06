@@ -145,7 +145,8 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
     }
     
     @objc private func cancelRoute() {
-        try! placeService.updateState(uid: place.uid!, newState: PlaceState.unknown)
+        let newState = Int(place.prevState) == PlaceState.known.rawValue ? PlaceState.known : PlaceState.unknown
+        try! placeService.updateState(uid: place.uid!, newState: newState)
         goButton.setImage(UIImage(named: "goButton"), for: .normal)
         goButton.setTitle("Go!", for: .normal)
         goButton.backgroundColor = Color.pink

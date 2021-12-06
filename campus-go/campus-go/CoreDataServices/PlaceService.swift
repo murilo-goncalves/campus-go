@@ -32,7 +32,8 @@ class PlaceService {
         place.setValue(latitude, forKey: "latitude")
         place.setValue(longitude, forKey: "longitude")
         place.setValue(placeID, forKey: "placeID")
-        place.setValue(PlaceState.unknown.rawValue, forKey: "state")
+        place.setValue(Int64(PlaceState.unknown.rawValue), forKey: "state")
+        place.setValue(Int64(PlaceState.unknown.rawValue), forKey: "prevState")
         place.setValue(nImages, forKey: "nImages")
         place.setValue(relatedAchievements, forKey: "relatedAchievements")
         
@@ -84,6 +85,8 @@ class PlaceService {
         fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
         let obj = try context.fetch(fetchRequest)
         let objUpdate = obj[0] as! NSManagedObject
+        let prevState = objUpdate.value(forKey: "state")
+        objUpdate.setValue(prevState, forKey: "prevState")
         objUpdate.setValue(newState.rawValue, forKey: "state")
         try context.save()
     }
@@ -104,6 +107,11 @@ class PlaceService {
     func isOnRoute(uid: UUID) -> Bool {
         let place = try! read(uid: uid)!
         return place.state == PlaceState.onRoute.rawValue
+    }
+    
+    func wasDiscovered(uid: UUID) -> Bool {
+        let place = try! read(uid: uid)!
+        return place.prevState == PlaceState.known.rawValue
     }
     
     func delete(uid: UUID) throws {
