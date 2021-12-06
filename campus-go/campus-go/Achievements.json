@@ -4,105 +4,120 @@
     "name": "Comilão I",
     "xpPoints": 20,
     "achievementID": 1,
-    "objective": "Vá a qualquer restaurante universitário 5 vezes."
+    "objective": "Vá a qualquer restaurante universitário 5 vezes.",
+    "relatedPlaces": "1 13 14"
   },
   {
     "progress": 0,
     "name": "Comilão II",
     "xpPoints": 50,
     "achievementID": 2,
-    "objective": "Vá a qualquer restaurante universitário 10 vezes."
+    "objective": "Vá a qualquer restaurante universitário 10 vezes.",
+    "relatedPlaces": "1 13 14"
   },
   {
     "progress": 0,
     "name": "Comilão III",
     "xpPoints": 200,
     "achievementID": 3,
-    "objective": "Vá a qualquer restaurante universitário 25 vezes."
+    "objective": "Vá a qualquer restaurante universitário 25 vezes.",
+    "relatedPlaces": "1 13 14"
   },
   {
     "progress": 0,
     "name": "Só o Básico I",
     "xpPoints": 20,
     "achievementID": 4,
-    "objective": "Vá a um Ciclo Básico (CB ou PB) 5 vezes."
+    "objective": "Vá a um Ciclo Básico (CB ou PB) 5 vezes.",
+    "relatedPlaces": "8 12"
   },
   {
     "progress": 0,
     "name": "Só o Básico II",
     "xpPoints": 50,
     "achievementID": 5,
-    "objective": "Vá a um Ciclo Básico (CB ou PB) 10 vezes."
+    "objective": "Vá a um Ciclo Básico (CB ou PB) 10 vezes.",
+    "relatedPlaces": "8 12"
   },
   {
     "progress": 0,
     "name": "Só o Básico III",
     "xpPoints": 200,
     "achievementID": 6,
-    "objective": "Vá a um Ciclo Básico (CB ou PB) 25 vezes."
+    "objective": "Vá a um Ciclo Básico (CB ou PB) 25 vezes.",
+    "relatedPlaces": "8 12"
   },
   {
     "progress": 0,
     "name": "Veterano I",
     "xpPoints": 10,
     "achievementID": 7,
-    "objective": "Entre na Unicamp 5 vezes."
+    "objective": "Entre na Unicamp 5 vezes.",
+    "relatedPlaces": "None"
   },
   {
     "progress": 0,
     "name": "Veterano II",
     "xpPoints": 25,
     "achievementID": 8,
-    "objective": "Entre na Unicamp 10 vezes."
+    "objective": "Entre na Unicamp 10 vezes.",
+    "relatedPlaces": "None"
   },
   {
     "progress": 0,
     "name": "Veterano III",
     "xpPoints": 100,
     "achievementID": 9,
-    "objective": "Entre na Unicamp 25 vezes."
+    "objective": "Entre na Unicamp 25 vezes.",
+    "relatedPlaces": "None"
   },
   {
     "progress": 0,
     "name": "Sem Férias",
     "xpPoints": 500,
     "achievementID": 10,
-    "objective": "Esteja na Unicamp no dia 25 de dezembro ou 1º de janeiro."
+    "objective": "Esteja na Unicamp no dia 25 de dezembro ou 1º de janeiro.",
+    "relatedPlaces": "None"
   },
   {
     "progress": 0,
     "name": "Astrônomo",
     "xpPoints": 250,
     "achievementID": 11,
-    "objective": "Visite o observatório durante a noite."
+    "objective": "Visite o observatório durante a noite.",
+    "relatedPlaces": "15"
   },
   {
     "progress": 0,
     "name": "O Começo",
     "xpPoints": 10,
     "achievementID": 12,
-    "objective": "Descubra seu primeiro local."
+    "objective": "Descubra seu primeiro local.",
+    "relatedPlaces": "All"
   },
   {
     "progress": 0,
     "name": "Pegando o Jeito",
     "xpPoints": 200,
     "achievementID": 13,
-    "objective": "Descubra 5 locais."
+    "objective": "Descubra 5 locais.",
+    "relatedPlaces": "All"
   },
   {
     "progress": 0,
     "name": "O Explorador",
     "xpPoints": 500,
     "achievementID": 14,
-    "objective": "Visite todos os locais desconhecidos."
+    "objective": "Visite todos os locais desconhecidos.",
+    "relatedPlaces": "All"
   },
   {
     "progress": 0,
     "name": "Exibicionista",
     "xpPoints": 500,
     "achievementID": 15,
-    "objective": "Compartilhe o seu perfil."
+    "objective": "Compartilhe o seu perfil.",
+    "relatedPlaces": "None"
   }
   
 ]
