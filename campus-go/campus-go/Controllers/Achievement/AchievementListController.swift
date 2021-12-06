@@ -17,12 +17,20 @@ class AchievementListController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            guard let list = try achievementService.retrieve() else { return }
-            listAchievements = list
-        } catch {
-            print(error)
+        if(listAchievements.count == 0) {
+            do {
+                guard let list = try achievementService.retrieve() else { return }
+                listAchievements = list
+            } catch {
+                print(error)
+            }
         }
+        listAchievements.sort(by: {
+            if $0.progress == $1.progress {
+                return $0.name! < $1.name!
+            }
+            return $0.progress > $1.progress
+        })
         achievementListView.achievementCollection.delegate = self
         achievementListView.achievementCollection.dataSource = self
         achievementListView.achievementCollection.register(AchievementCollectionViewCell.nib(), forCellWithReuseIdentifier: AchievementCollectionViewCell.identifier)
