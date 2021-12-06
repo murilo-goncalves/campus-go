@@ -155,7 +155,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         let validator = Validator()
         let alertUtil = AlertUtil()
         
-        let uid = UUID(uuidString: region.identifier)
+        let uid = UUID(uuidString: region.identifier) //uid do place que chegamos
         let onRoute = placeService.isOnRoute(uid: uid!)
         let wasDiscovered = placeService.wasDiscovered(uid: uid!)
         let content = UNMutableNotificationContent()
@@ -177,6 +177,12 @@ extension AppDelegate: CLLocationManagerDelegate {
                                             content: content,
                                             trigger: trigger)
         
+        //Quando chegamos a um novo lugar devemos incrementar o número de visitas em 1
+        do {
+            try placeService.incrementNumberOfVisits(uid: uid!)
+        } catch {
+            print(error)
+        }
         // if region was on route switch place state to "known" and show notification
         
         if (onRoute) {

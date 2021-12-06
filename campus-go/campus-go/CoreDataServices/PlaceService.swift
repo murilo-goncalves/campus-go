@@ -37,7 +37,7 @@ class PlaceService {
         place.setValue(nImages, forKey: "nImages")
         place.setValue(relatedAchievements, forKey: "relatedAchievements")
         place.setValue(category, forKey: "category")
-        place.setValue(0, forKey: "nVisits")
+        place.setValue(Int64(0), forKey: "nVisits")
         
         try context.save()
         
@@ -91,6 +91,29 @@ class PlaceService {
         objUpdate.setValue(prevState, forKey: "prevState")
         objUpdate.setValue(newState.rawValue, forKey: "state")
         try context.save()
+    }
+    
+    private func update(uid: UUID, newNVisits: Int64) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
+        fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
+        let obj = try context.fetch(fetchRequest)
+        let objUpdate = obj[0] as! NSManagedObject
+        objUpdate.setValue(newNVisits, forKey: "nVisits")
+        try context.save()
+    }
+    
+    func incrementNumberOfVisits(uid: UUID) throws {
+        do {
+            guard let place = try read(uid: uid) else { return }
+            let newNVisits = Int(place.nVisits) + 1
+            do {
+                try update(uid: uid, newNVisits: Int64(newNVisits))
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
     }
     
     func updateState(uid: UUID, newState: PlaceState) throws {
