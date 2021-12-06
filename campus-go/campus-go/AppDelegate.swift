@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             decoder.userInfo[.context!] = context
             let result = try decoder.decode([Place].self, from: data)
             for object in result {
-                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!)
+                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!, category: object.category!)
             }
             
             _ = try! UserService().create(name: "goCampus")

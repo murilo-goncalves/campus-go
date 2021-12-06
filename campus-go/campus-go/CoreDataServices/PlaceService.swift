@@ -22,7 +22,7 @@ class PlaceService {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    func create(name: String, latitude: Double, longitude: Double, placeID: Int64, nImages: Int64, relatedAchievements: String) throws -> UUID {
+    func create(name: String, latitude: Double, longitude: Double, placeID: Int64, nImages: Int64, relatedAchievements: String, category: String) throws -> UUID {
         let placeEntity = NSEntityDescription.entity(forEntityName: "Place", in: context)!
         let place = NSManagedObject(entity: placeEntity, insertInto: context)
         
@@ -36,6 +36,8 @@ class PlaceService {
         place.setValue(Int64(PlaceState.unknown.rawValue), forKey: "prevState")
         place.setValue(nImages, forKey: "nImages")
         place.setValue(relatedAchievements, forKey: "relatedAchievements")
+        place.setValue(category, forKey: "category")
+        place.setValue(0, forKey: "nVisits")
         
         try context.save()
         
