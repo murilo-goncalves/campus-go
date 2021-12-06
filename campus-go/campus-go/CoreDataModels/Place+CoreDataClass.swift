@@ -31,6 +31,7 @@ public class Place: NSManagedObject, Decodable {
         self.name = try container.decode(String.self, forKey: .name)
         self.nImages = try container.decode(Int64.self, forKey: .nImages)
         self.relatedAchievements = try container.decode(String.self, forKey: .relatedAchievements)
+        
 
     }
     
