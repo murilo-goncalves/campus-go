@@ -209,7 +209,9 @@ extension AppDelegate: CLLocationManagerDelegate {
         if (achievements.isEmpty) { return }
         for achievement in achievements {
             if let currentViewController = getCurrentViewController() {
-                if let alertViewController = currentViewController.children[0] as? AlertViewDelegate {
+                //o app crasha aqui
+                print(currentViewController.children.count)
+                if let alertViewController = currentViewController as? AlertViewDelegate {
                     alertUtil.showAlert(viewController: alertViewController,place: nil, achievement: achievement)
                 } else {
                     print("Erro ao encontrar a view")
