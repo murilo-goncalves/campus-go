@@ -60,7 +60,7 @@ class PlaceViewController: UIViewController, UIScrollViewDelegate, UICollectionV
                 title = name.components(separatedBy: " - ")[0]
                 placeView.nomeLugar.text = name
             } else {
-                title = "Desconhecido"
+                title = "????"
                 placeView.nomeLugar.text = "Lugar desconhecido"
             }
             
