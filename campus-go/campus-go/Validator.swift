@@ -22,6 +22,17 @@ class Validator {
         }
         return nil
     }
+    private func validateAllPlaces() -> Achievement? {
+        let achievementId = Int64(14) // id da conquista de desbloquear primeiro lugar
+        let achievementUid = try! achievementService.retrieve(achievementID: achievementId)
+        let achievement = try! achievementService.retrieve(uid: achievementUid!)
+        if (achievement?.progress == 1.0) { return nil }
+        if (userAttributes.getUserPlaces() == 15) {
+            try! achievementService.updateProgress(uid: achievementUid!, progress: 1.0)
+            return achievement
+        }
+        return nil
+    }
     
     func didValidate() -> [Achievement] {
         var validatedAchievements = [Achievement]()
@@ -29,6 +40,9 @@ class Validator {
             validatedAchievements.append(achievement)
         }
         
+        if let achievement = validateAllPlaces() {
+            validatedAchievements.append(achievement)
+        }
         return validatedAchievements
     }
 }
