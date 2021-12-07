@@ -61,7 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for object in result {
                 do {
                     let achievementService = AchievementService()
-                    let _ = try achievementService.create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints, relatedPlaces: object.relatedPlaces!)
+                    let _ = try achievementService.create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints, relatedPlaces: object.relatedPlaces!, nVisits: object.nVisits)
+                    print(object.nVisits)
                 } catch {
                     print(error)
                 }

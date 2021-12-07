@@ -3,6 +3,7 @@
     <entity name="Achievement" representedClassName="Achievement" syncable="YES">
         <attribute name="achievementID" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="nVisits" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="objective" optional="YES" attributeType="String"/>
         <attribute name="progress" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="relatedPlaces" optional="YES" attributeType="String"/>
@@ -31,7 +32,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Achievement" positionX="27" positionY="72" width="128" height="134"/>
+        <element name="Achievement" positionX="27" positionY="72" width="128" height="149"/>
         <element name="Patent" positionX="0" positionY="45" width="128" height="74"/>
         <element name="Place" positionX="-36" positionY="9" width="128" height="194"/>
         <element name="User" positionX="54" positionY="108" width="128" height="44"/>
