@@ -16,6 +16,7 @@
 		595222292756714000430D95 /* UserAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595222282756714000430D95 /* UserAttributes.swift */; };
 		5952222B2757A3A600430D95 /* AppAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952222A2757A3A600430D95 /* AppAttributes.swift */; };
 		5952222D2757A4CB00430D95 /* PercentValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5952222C2757A4CB00430D95 /* PercentValues.swift */; };
+		59B57541275E93E700EEDFE0 /* RelatedPlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B57540275E93E700EEDFE0 /* RelatedPlaces.swift */; };
 		59BB17D02732C05600572780 /* AchievementService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59BB17CF2732C05600572780 /* AchievementService.swift */; };
 		5F3CC06E270B272B00D33B44 /* AchievementList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */; };
 		5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3CC070270B34FF00D33B44 /* AchievementListController.swift */; };
@@ -101,6 +102,7 @@
 		595222282756714000430D95 /* UserAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAttributes.swift; sourceTree = "<group>"; };
 		5952222A2757A3A600430D95 /* AppAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAttributes.swift; sourceTree = "<group>"; };
 		5952222C2757A4CB00430D95 /* PercentValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentValues.swift; sourceTree = "<group>"; };
+		59B57540275E93E700EEDFE0 /* RelatedPlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = RelatedPlaces.swift; path = "campus-go/Models/RelatedPlaces.swift"; sourceTree = SOURCE_ROOT; };
 		59BB17CF2732C05600572780 /* AchievementService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AchievementService.swift; sourceTree = "<group>"; };
 		5F0F136A270C805600105B7D /* campus-go.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "campus-go.entitlements"; sourceTree = "<group>"; };
 		5F3CC06D270B272B00D33B44 /* AchievementList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = AchievementList.storyboard; sourceTree = "<group>"; };
@@ -323,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				59269F1E275A51CA00A0042A /* Validator.swift */,
+				59B57540275E93E700EEDFE0 /* RelatedPlaces.swift */,
 			);
 			path = Achievement;
 			sourceTree = "<group>";
@@ -641,6 +644,7 @@
 				FC58847E2730382700CF3EAB /* PlaceView.swift in Sources */,
 				FC89EC7B27296DD900BE724D /* PlaceViewController.swift in Sources */,
 				5952222B2757A3A600430D95 /* AppAttributes.swift in Sources */,
+				59B57541275E93E700EEDFE0 /* RelatedPlaces.swift in Sources */,
 				5F3CC071270B34FF00D33B44 /* AchievementListController.swift in Sources */,
 				613AC0D227564D380009AAC2 /* UIAplication.swift in Sources */,
 				5FFFB583272AEA0900C80C6F /* CircularProgressView.swift in Sources */,

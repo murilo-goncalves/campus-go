@@ -61,7 +61,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             for object in result {
                 do {
                     let achievementService = AchievementService()
-                    let _ = try achievementService.create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints)
+                    let _ = try achievementService.create(achievementID: object.achievementID, objective: object.objective!, name: object.name!, progress: object.progress, xpPoints: object.xpPoints, relatedPlaces: object.relatedPlaces!, nVisits: object.nVisits)
+                    print(object.nVisits)
                 } catch {
                     print(error)
                 }
@@ -80,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             decoder.userInfo[.context!] = context
             let result = try decoder.decode([Place].self, from: data)
             for object in result {
-                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!)
+                let _ = try! PlaceService().create(name: object.name!, latitude: object.latitude, longitude: object.longitude, placeID: object.placeID, nImages: object.nImages, relatedAchievements: object.relatedAchievements!, category: object.category!)
             }
             
             _ = try! UserService().create(name: "goCampus")
@@ -155,7 +156,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         let validator = Validator()
         let alertUtil = AlertUtil()
         
-        let uid = UUID(uuidString: region.identifier)
+        let uid = UUID(uuidString: region.identifier) //uid do place que chegamos
         let onRoute = placeService.isOnRoute(uid: uid!)
         let wasDiscovered = placeService.wasDiscovered(uid: uid!)
         let content = UNMutableNotificationContent()
@@ -164,7 +165,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             content.body = "Você chegou ao seu destino"
         } else {
             content.title = "Parabéns!"
-            content.body = "Lugar desbloqueado"
+            content.body = "Você descobriu um novo lugar"
         }
         content.sound = UNNotificationSound.default
 
@@ -177,6 +178,12 @@ extension AppDelegate: CLLocationManagerDelegate {
                                             content: content,
                                             trigger: trigger)
         
+        //Quando chegamos a um novo lugar devemos incrementar o número de visitas em 1
+        do {
+            try placeService.incrementNumberOfVisits(uid: uid!)
+        } catch {
+            print(error)
+        }
         // if region was on route switch place state to "known" and show notification
         
         if (onRoute) {

@@ -13,7 +13,7 @@ import CoreData
 public class Achievement: NSManagedObject, Decodable {
     
     enum CodingKeys: CodingKey {
-        case achievementID, name, progress, xpPoints, objective
+        case achievementID, name, progress, xpPoints, objective, relatedPlaces, nVisits
     }
     
     // MARK: - Decodable
@@ -30,6 +30,8 @@ public class Achievement: NSManagedObject, Decodable {
         self.progress = try container.decode(Double.self, forKey: .progress)
         self.xpPoints = try container.decode(Int64.self, forKey: .xpPoints)
         self.objective = try container.decode(String.self, forKey: .objective)
+        self.relatedPlaces = try container.decode(String.self, forKey: .relatedPlaces)
+        self.nVisits = try container.decode(Int64.self, forKey: .nVisits)
     }
     
     // MARK: - Decodable
@@ -40,5 +42,7 @@ public class Achievement: NSManagedObject, Decodable {
         try container.encode(progress, forKey: .progress)
         try container.encode(xpPoints, forKey: .xpPoints)
         try container.encode(objective, forKey: .objective)
+        try container.encode(relatedPlaces, forKey: .relatedPlaces)
+        try container.encode(nVisits, forKey: .nVisits)
     }
 }
