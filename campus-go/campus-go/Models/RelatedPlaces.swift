@@ -9,7 +9,7 @@ import Foundation
 
 struct RelatedPlaces {
     var achievementPlaces: [UUID] = []
-    init(achievement: Achievement) {
+    init(_ achievement: Achievement) {
         guard let list = achievement.relatedPlaces?.components(separatedBy: " ") else { return }
         //Não existe lugar relacionado a esta conquista
         if list[0] == "None" {

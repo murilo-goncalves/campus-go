@@ -79,7 +79,7 @@ class PlaceService {
         }
         return nil
     }
-
+    
     
     func update(uid: UUID, name: String, latitude: Double, longitude: Double) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
@@ -138,7 +138,19 @@ class PlaceService {
         }
         try update(uid: uid, newState: newState)
     }
-    
+    func retrieveByUUIDs(uuids: [UUID]) -> [Place] {
+        var places: [Place] = []
+        for uuid in uuids {
+            do {
+                if let place = try read(uid: uuid) {
+                    places.append(place)
+                }
+            } catch {
+                continue
+            }
+        }
+        return places
+    }
     func isOnRoute(uid: UUID) -> Bool {
         let place = try! read(uid: uid)!
         return place.state == PlaceState.onRoute.rawValue

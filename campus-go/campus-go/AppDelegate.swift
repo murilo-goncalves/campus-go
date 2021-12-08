@@ -160,7 +160,11 @@ extension AppDelegate: CLLocationManagerDelegate {
                     routeDelegate?.didTapCancel()
                     annotationDelegate?.updateAnnotations()
                     showNotification(uid: uid)
-                    try! placeService.updateState(uid: uid, newState: PlaceState.known)
+                    do {
+                        try placeService.updateState(uid: uid, newState: PlaceState.known)
+                    } catch {
+                        print("Não consegui dar update no estado do lugar")
+                    }
                 }
                 let jaMostrei = showAchievements()
                 if(!jaMostrei && onRoute && !wasDiscovered) {
