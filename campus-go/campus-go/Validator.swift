@@ -49,6 +49,7 @@ class Validator {
         let possibleAchievements = achievementService.retrieveByUUIDs(uuids: uuids)
         var achievements: [Achievement] = []
         for _ac in possibleAchievements {
+            if _ac.progress == 1.0 || _ac.relatedPlaces == "None" { continue }
             if let ac = validateAchievementWithVisits(_ac) {
                 achievements.append(ac)
             }

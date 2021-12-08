@@ -151,7 +151,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             do {
                 guard let place = try placeService.read(uid: uid) else { return }
                 let onRoute = Int(place.state) == PlaceState.onRoute.rawValue
-                let wasDiscovered = Int(place.prevState) == PlaceState.known.rawValue
+                let wasDiscovered = Int(place.state) == PlaceState.known.rawValue
                 if(onRoute || wasDiscovered) {
                     try placeService.incrementNumberOfVisits(uid: uid)
                 }
