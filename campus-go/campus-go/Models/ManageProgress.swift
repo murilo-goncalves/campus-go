@@ -26,13 +26,15 @@ struct ManageProgress {
         progress = (progress*10).rounded()/10
     }
     
-    func update(achievement: Achievement) {
+    func update(achievement: Achievement) -> Achievement {
         let newProgress = calculateNewProgress(achievement)
+        if newProgress <= achievement.progress { return  achievement}
         do {
             try achievementService.updateProgress(uid: achievement.uid!, progress: newProgress)
         } catch {
             print(error)
         }
+        return achievement
     }
     
     

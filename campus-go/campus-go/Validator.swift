@@ -10,7 +10,7 @@ import Foundation
 class Validator {
     let userAttributes = UserAttributes()
     let achievementService = AchievementService()
-    
+    let manageProgress = ManageProgress()
     private func validateFirstPlace() -> Achievement? {
         let achievementId = Int64(12) // id da conquista de desbloquear primeiro lugar
         let achievementUid = try! achievementService.retrieve(achievementID: achievementId)
@@ -33,8 +33,30 @@ class Validator {
         }
         return nil
     }
-    
-    func didValidate() -> [Achievement] {
+    //Retorna 1 se conquistou o achievement e 0 se ele já foi conquistado ou só atualizou o estado
+    private func validateAchievementWithVisits(_ achievement: Achievement) -> Achievement? {
+        let achievementUpdated = manageProgress.update(achievement: achievement)
+        if(achievementUpdated.progress == 1.0) {
+            return achievementUpdated
+        } else {
+            return nil
+        }
+    }
+    private func validateAchievementsWithVisits(_ place: Place) -> [Achievement] {
+        //Pega os uuids de todos os achievements relacionados a este lugar
+        let uuids = RelatedAchievements(place).placeAchievements
+        //possiveis achievements a serem validados
+        let possibleAchievements = achievementService.retrieveByUUIDs(uuids: uuids)
+        var achievements: [Achievement] = []
+        for _ac in possibleAchievements {
+            if let ac = validateAchievementWithVisits(_ac) {
+                achievements.append(ac)
+            }
+        }
+        return achievements
+    }
+    //Valida ao chegar em um lugar
+    func didValidate(place: Place) -> [Achievement] {
         var validatedAchievements = [Achievement]()
         if let achievement = validateFirstPlace() {
             validatedAchievements.append(achievement)
@@ -43,6 +65,11 @@ class Validator {
         if let achievement = validateAllPlaces() {
             validatedAchievements.append(achievement)
         }
+        
+        for achievement in validateAchievementsWithVisits(place) {
+            validatedAchievements.append(achievement)
+        }
+        
         return validatedAchievements
     }
 }

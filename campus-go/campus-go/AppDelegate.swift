@@ -166,7 +166,7 @@ extension AppDelegate: CLLocationManagerDelegate {
                         print("Não consegui dar update no estado do lugar")
                     }
                 }
-                let jaMostrei = showAchievements()
+                let jaMostrei = showAchievements(place: place)
                 if(!jaMostrei && onRoute && !wasDiscovered) {
                     showPlaceAlert(uid: uid)
                 }
@@ -222,9 +222,9 @@ extension AppDelegate: CLLocationManagerDelegate {
             }
         }
     }
-    func showAchievements() -> Bool {
+    func showAchievements(place: Place) -> Bool {
         let validator = Validator()
-        let achievements =  validator.didValidate()
+        let achievements =  validator.didValidate(place: place)
         for achievement in achievements {
             showAchievementAlert(achievement)
         }

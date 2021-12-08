@@ -114,6 +114,19 @@ class AchievementService{
         context.delete(objectToDelete)
         
         try context.save()
-        
+    }
+    
+    func retrieveByUUIDs(uuids: [UUID]) -> [Achievement] {
+        var achievements: [Achievement] = []
+        for uuid in uuids {
+            do {
+                if let achievement = try retrieve(uid: uuid) {
+                    achievements.append(achievement)
+                }
+            } catch {
+                continue
+            }
+        }
+        return achievements
     }
 }
