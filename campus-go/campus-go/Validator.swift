@@ -22,16 +22,29 @@ class Validator {
         }
         return nil
     }
+    
+    private func validateMidPlaces() -> Achievement? {
+        let achievementId = Int64(13) // id da conquista de desbloquear primeiro lugar
+        let achievementUid = try! achievementService.retrieve(achievementID: achievementId)
+        let achievement = try! achievementService.retrieve(uid: achievementUid!)
+        if (achievement?.progress == 1.0) { return nil }
+        var newProgress = Double(userAttributes.getUserPlaces())/5.0
+        manageProgress.formataProgress(&newProgress)
+        try! achievementService.updateProgress(uid: achievementUid!, progress: newProgress)
+        if(newProgress != 1.0) { return nil }
+        return achievement
+    }
+    
     private func validateAllPlaces() -> Achievement? {
         let achievementId = Int64(14) // id da conquista de desbloquear primeiro lugar
         let achievementUid = try! achievementService.retrieve(achievementID: achievementId)
         let achievement = try! achievementService.retrieve(uid: achievementUid!)
         if (achievement?.progress == 1.0) { return nil }
-        if (userAttributes.getUserPlaces() == 15) {
-            try! achievementService.updateProgress(uid: achievementUid!, progress: 1.0)
-            return achievement
-        }
-        return nil
+        var newProgress = Double(userAttributes.getUserPlaces())/15.0
+        manageProgress.formataProgress(&newProgress)
+        try! achievementService.updateProgress(uid: achievementUid!, progress: newProgress)
+        if(newProgress != 1.0) { return nil }
+        return achievement
     }
     //Retorna 1 se conquistou o achievement e 0 se ele já foi conquistado ou só atualizou o estado
     private func validateAchievementWithVisits(_ achievement: Achievement) -> Achievement? {
@@ -60,6 +73,10 @@ class Validator {
     func didValidate(place: Place) -> [Achievement] {
         var validatedAchievements = [Achievement]()
         if let achievement = validateFirstPlace() {
+            validatedAchievements.append(achievement)
+        }
+        
+        if let achievement = validateMidPlaces() {
             validatedAchievements.append(achievement)
         }
         
