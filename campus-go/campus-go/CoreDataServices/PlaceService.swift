@@ -22,7 +22,7 @@ class PlaceService {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
     
-    func create(name: String, latitude: Double, longitude: Double, placeID: Int64, nImages: Int64, relatedAchievements: String) throws -> UUID {
+    func create(name: String, latitude: Double, longitude: Double, placeID: Int64, nImages: Int64, relatedAchievements: String, category: String) throws -> UUID {
         let placeEntity = NSEntityDescription.entity(forEntityName: "Place", in: context)!
         let place = NSManagedObject(entity: placeEntity, insertInto: context)
         
@@ -36,6 +36,8 @@ class PlaceService {
         place.setValue(Int64(PlaceState.unknown.rawValue), forKey: "prevState")
         place.setValue(nImages, forKey: "nImages")
         place.setValue(relatedAchievements, forKey: "relatedAchievements")
+        place.setValue(category, forKey: "category")
+        place.setValue(Int64(0), forKey: "nVisits")
         
         try context.save()
         
@@ -58,6 +60,16 @@ class PlaceService {
         return result[0] as? Place
     }
     
+    func readByID(placeID: Int64) throws -> UUID? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "placeID = \(placeID)", placeID as CVarArg)
+
+        let result = try context.fetch(fetchRequest)
+        let achievement = result[0] as? Place
+        return achievement?.uid
+    }
+    
     func readOnRoute() throws -> Place? {
         let places = try! readAll()
         for place in places! {
@@ -67,7 +79,7 @@ class PlaceService {
         }
         return nil
     }
-
+    
     
     func update(uid: UUID, name: String, latitude: Double, longitude: Double) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
@@ -91,6 +103,29 @@ class PlaceService {
         try context.save()
     }
     
+    private func update(uid: UUID, newNVisits: Int64) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Place")
+        fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
+        let obj = try context.fetch(fetchRequest)
+        let objUpdate = obj[0] as! NSManagedObject
+        objUpdate.setValue(newNVisits, forKey: "nVisits")
+        try context.save()
+    }
+    
+    func incrementNumberOfVisits(uid: UUID) throws {
+        do {
+            guard let place = try read(uid: uid) else { return }
+            let newNVisits = Int(place.nVisits) + 1
+            do {
+                try update(uid: uid, newNVisits: Int64(newNVisits))
+            } catch {
+                print(error)
+            }
+        } catch {
+            print(error)
+        }
+    }
+    
     func updateState(uid: UUID, newState: PlaceState) throws {
         let places = try! readAll()!
         
@@ -103,7 +138,19 @@ class PlaceService {
         }
         try update(uid: uid, newState: newState)
     }
-    
+    func retrieveByUUIDs(uuids: [UUID]) -> [Place] {
+        var places: [Place] = []
+        for uuid in uuids {
+            do {
+                if let place = try read(uid: uuid) {
+                    places.append(place)
+                }
+            } catch {
+                continue
+            }
+        }
+        return places
+    }
     func isOnRoute(uid: UUID) -> Bool {
         let place = try! read(uid: uid)!
         return place.state == PlaceState.onRoute.rawValue

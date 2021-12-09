@@ -12,7 +12,8 @@ class AchievementService{
     var context: NSManagedObjectContext {
         return (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     }
-    func create(achievementID: Int64, objective: String, name: String, progress: Double, xpPoints: Int64) throws -> Achievement? {
+    
+    func create(achievementID: Int64, objective: String, name: String, progress: Double, xpPoints: Int64, relatedPlaces: String, nVisits: Int64) throws -> Achievement? {
         let achievementEntity = NSEntityDescription.entity(forEntityName: "Achievement", in: context)!
         let achievement = NSManagedObject(entity: achievementEntity, insertInto: context)
         let uid = UUID()
@@ -22,7 +23,8 @@ class AchievementService{
         achievement.setValue(achievementID, forKey: "achievementID")
         achievement.setValue(uid, forKey: "uid")
         achievement.setValue(objective, forKey: "objective")
-        
+        achievement.setValue(relatedPlaces, forKey: "relatedPlaces")
+        achievement.setValue(nVisits, forKey: "nVisits")
         
         try context.save()
 
@@ -44,6 +46,7 @@ class AchievementService{
         let result = try context.fetch(fetchRequest)
         return result[0] as? Achievement
     }
+    
     func retrieve(achievementID: Int64) throws -> UUID? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
         fetchRequest.fetchLimit = 1
@@ -78,6 +81,21 @@ class AchievementService{
         
     }
     
+    func updateProgress(uid: UUID, progress: Double?) throws {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
+        fetchRequest.fetchLimit = 1
+        fetchRequest.predicate = NSPredicate(format: "uid = %@", uid as CVarArg)
+        
+        let result =  try context.fetch(fetchRequest)
+        let objectUpdate = result[0] as! NSManagedObject
+        
+        if let newProgress = progress {
+            objectUpdate.setValue(newProgress, forKey: "progress")
+        }
+        
+        try context.save()
+    }
+    
     func delete(uid: UUID) throws {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Achievement")
         fetchRequest.fetchLimit = 1
@@ -88,6 +106,19 @@ class AchievementService{
         context.delete(objectToDelete)
         
         try context.save()
-        
+    }
+    
+    func retrieveByUUIDs(uuids: [UUID]) -> [Achievement] {
+        var achievements: [Achievement] = []
+        for uuid in uuids {
+            do {
+                if let achievement = try retrieve(uid: uuid) {
+                    achievements.append(achievement)
+                }
+            } catch {
+                continue
+            }
+        }
+        return achievements
     }
 }

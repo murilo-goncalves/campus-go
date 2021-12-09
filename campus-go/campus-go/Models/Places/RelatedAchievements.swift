@@ -9,7 +9,7 @@ import Foundation
 
 struct RelatedAchievements {
     var placeAchievements: [UUID] = []
-    init(place: Place) {
+    init(_ place: Place) {
         guard let list = place.relatedAchievements?.components(separatedBy: " ") else { return }
         for id in list {
             do {

@@ -22,6 +22,8 @@ extension Achievement {
     @NSManaged public var uid: UUID?
     @NSManaged public var xpPoints: Int64
     @NSManaged public var objective: String?
+    @NSManaged public var relatedPlaces: String?
+    @NSManaged public var nVisits: Int64
 
 }
 

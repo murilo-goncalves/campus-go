@@ -25,6 +25,8 @@ extension Place {
     @NSManaged public var state: Int64
     @NSManaged public var relatedAchievements: String?
     @NSManaged public var prevState: Int64
+    @NSManaged public var category: String?
+    @NSManaged public var nVisits: Int64
 
 }
 

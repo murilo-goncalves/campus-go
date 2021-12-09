@@ -11,6 +11,7 @@ struct UserAttributes {
     let placeService = PlaceService()
     let achievementService = AchievementService()
     let placeDefaultXP = 20
+    
     func readPlaces() -> [Place]? {
         do {
             guard let listPlaces = try placeService.readAll() else { return nil }
@@ -20,6 +21,7 @@ struct UserAttributes {
         }
         return nil
     }
+    
     func readAchievements() -> [Achievement]? {
         do {
             guard let listAchievements = try achievementService.retrieve() else { return nil}
