@@ -200,6 +200,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             }
         })
     }
+  
     func showPlaceAlert(uid: UUID) {
         let place: Place? = {
             do {
@@ -222,6 +223,7 @@ extension AppDelegate: CLLocationManagerDelegate {
             }
         }
     }
+  
     func showAchievements(place: Place) -> Bool {
         let validator = Validator()
         let achievements =  validator.didValidate(place: place)
@@ -230,6 +232,7 @@ extension AppDelegate: CLLocationManagerDelegate {
         }
         return !achievements.isEmpty
     }
+  
     func showAchievementAlert(_ achievement: Achievement) {
         if let currentViewController = getCurrentViewController() {
             let alertUtil = AlertUtil()

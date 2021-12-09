@@ -17,6 +17,7 @@ extension User {
     }
 
     @NSManaged public var name: String?
+    @NSManaged public var image: Data?
 
 }
 
