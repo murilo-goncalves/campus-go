@@ -67,6 +67,9 @@ class ProfileViewController: UIViewController {
         profileView.profileTitleView.clipsToBounds = true
         profileView.profileTitleView.imageView.layer.cornerRadius = profileView.profileTitleView.imageView.layer.frame.width/2        
     }
+    override func viewWillAppear(_ animated: Bool) {
+        updateProgressView()
+    }
     
     @objc func didTapView(_ gesture: UITapGestureRecognizer){
         if gesture.view == experienceProgressViewView {
