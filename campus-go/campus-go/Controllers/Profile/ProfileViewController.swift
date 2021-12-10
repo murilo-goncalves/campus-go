@@ -80,13 +80,19 @@ class ProfileViewController: UIViewController {
         }
     }
     private func updateProgressView() {
-        setProgressView()
         do {
             guard let list = try achievementService.retrieve() else { return }
             listAchievements = list
+            listAchievements.sort(by: {
+                if $0.progress == $1.progress {
+                    return $0.name! < $1.name!
+                }
+                return $0.progress > $1.progress
+            })
         } catch {
             print(error)
         }
+        setProgressView()
         self.lblPlaces.text = "\(userAttributes.getUserPlaces())"
         self.lblXP.text = "\(userAttributes.getUserXP())"
         self.lblAchievement.text = "\(userAttributes.getUserAchievements())"
@@ -134,13 +140,13 @@ class ProfileViewController: UIViewController {
             profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.green
         }
         else {
-            profileView.profileProgressView.experienceProgressView.text = "\(Int(percentualXP * 100))%"
             profileView.profileProgressView.experienceProgressView.setProgress(to: percentualXP, animated: true)
             profileView.profileProgressView.experienceProgressView.animationDuration = TimeInterval(1.0)
             profileView.profileProgressView.experienceProgressView.textColor = Color.orange
             profileView.profileProgressView.experienceProgressView.backgroundBarColor = Color.orangeTrans
             profileView.profileProgressView.experienceProgressView.foregroundBarColor = Color.orange
             profileView.profileProgressView.experienceProgressView.maximumBarColor = Color.orange
+            profileView.profileProgressView.experienceProgressView.text = "\(Int(percentualXP * 100))%"
         }
     }
     
@@ -165,13 +171,13 @@ class ProfileViewController: UIViewController {
             profileView.profileProgressView.placesProgressView.maximumBarColor = Color.green
         }
         else {
-            profileView.profileProgressView.placesProgressView.text = "\(Int(percentualPlaces * 100))%"
             profileView.profileProgressView.placesProgressView.setProgress(to: percentualPlaces, animated: true)
             profileView.profileProgressView.placesProgressView.animationDuration = TimeInterval(1.0)
             profileView.profileProgressView.placesProgressView.textColor = Color.orange
             profileView.profileProgressView.placesProgressView.backgroundBarColor = Color.orangeTrans
             profileView.profileProgressView.placesProgressView.foregroundBarColor = Color.orange
             profileView.profileProgressView.placesProgressView.maximumBarColor = Color.orange
+            profileView.profileProgressView.placesProgressView.text = "\(Int(percentualPlaces * 100))%"
         }
     }
     
@@ -196,13 +202,13 @@ class ProfileViewController: UIViewController {
             profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.green
         }
         else {
-            profileView.profileProgressView.achievementProgressView.text = "\(Int(percentualAchievements * 100))%"
             profileView.profileProgressView.achievementProgressView.setProgress(to: percentualAchievements, animated: true)
             profileView.profileProgressView.achievementProgressView.animationDuration = TimeInterval(1.0)
             profileView.profileProgressView.achievementProgressView.textColor = Color.orange
             profileView.profileProgressView.achievementProgressView.backgroundBarColor = Color.orangeTrans
             profileView.profileProgressView.achievementProgressView.foregroundBarColor = Color.orange
             profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.orange
+            profileView.profileProgressView.achievementProgressView.text = "\(Int(percentualAchievements * 100))%"
         }
     }
     
