@@ -80,6 +80,7 @@ class ProfileViewController: UIViewController {
         }
     }
     private func updateProgressView() {
+        setProgressView()
         do {
             guard let list = try achievementService.retrieve() else { return }
             listAchievements = list
@@ -89,7 +90,11 @@ class ProfileViewController: UIViewController {
         self.lblPlaces.text = "\(userAttributes.getUserPlaces())"
         self.lblXP.text = "\(userAttributes.getUserXP())"
         self.lblAchievement.text = "\(userAttributes.getUserAchievements())"
-        setProgressView()
+    }
+    private func setProgressView() {
+        setXPProgress()
+        setPlaceProgress()
+        setAchievementProgress()
     }
     private func setProfileTitle() {
         
@@ -199,11 +204,6 @@ class ProfileViewController: UIViewController {
             profileView.profileProgressView.achievementProgressView.foregroundBarColor = Color.orange
             profileView.profileProgressView.achievementProgressView.maximumBarColor = Color.orange
         }
-    }
-    private func setProgressView() {
-        setXPProgress()
-        setPlaceProgress()
-        setAchievementProgress()
     }
     
     @objc func tapTitle(sender: UITapGestureRecognizer) {

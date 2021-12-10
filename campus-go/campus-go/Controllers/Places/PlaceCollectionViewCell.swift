@@ -22,8 +22,8 @@ class PlaceCollectionViewCell: UICollectionViewCell {
     }
     public func configure(screenState: PlaceScreenState,place: Place){
         self.layer.cornerRadius = imageView.frame.width * 0.05
-        imageView.layer.borderWidth = 0.5
-        imageView.layer.borderColor = UIColor.lightGray.cgColor
+        self.layer.borderWidth = 0.5
+        self.layer.borderColor = UIColor.lightGray.cgColor
         mapPin.image = mapPin.image?.withRenderingMode(.alwaysTemplate)
         let status = PlaceState(rawValue: Int(place.state))
         if(status == PlaceState.known){
