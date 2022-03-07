@@ -21,10 +21,10 @@ struct MapConstants {
     
     static let routeLineWidth = 5.0
     
-    static let annotationHeight: Double = 30
-    static let annotationWidth: Double = 18
-    static let selectedAnnotationHeight: Double = 60
-    static let selectedAnnitationWidht: Double = 36
+    static let annotationHeight: Double = 40
+    static let annotationWidth: Double = 24
+    static let selectedAnnotationHeight: Double = 80
+    static let selectedAnnitationWidht: Double = 48
     
     static let fenceRadius: Double = 10
 }
